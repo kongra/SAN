@@ -66,6 +66,6 @@ insert into pricelists(since, until) values(now(), null);
 
 insert into prices(pricelist, product, value)
 values
-((select id from pricelists limit 1),
+((select id from pricelists order by id desc limit 1),
  (select id from products where name='Rakieta Wilson'),
  300);
