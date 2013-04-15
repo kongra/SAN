@@ -1,4 +1,6 @@
-package san.jipp.math;
+package san.jipp;
+
+import san.jipp.math.Complex;
 
 public class Lect03 {
 

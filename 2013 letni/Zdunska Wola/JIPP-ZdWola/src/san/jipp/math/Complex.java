@@ -11,6 +11,10 @@ public class Complex {
     this.im = im;
   }
 
+  public Complex(double value) {
+    this(value, 0);
+  }
+
   public String repr() {
     if (re != 0) {
       if (im != 0) {
@@ -31,5 +35,44 @@ public class Complex {
   public Complex add(Complex other) {
     return new Complex(this.re + other.re, this.im + other.im);
   }
+
+  public Complex add(double value) {
+    return add(new Complex(value));
+  }
+
+  @Override
+  public int hashCode() {
+    final int prime = 31;
+    int result = 1;
+    long temp;
+    temp = Double.doubleToLongBits(im);
+    result = prime * result + (int) (temp ^ (temp >>> 32));
+    temp = Double.doubleToLongBits(re);
+    result = prime * result + (int) (temp ^ (temp >>> 32));
+    return result;
+  }
+
+  @Override
+  public boolean equals(Object obj) {
+    if (this == obj) {
+      return true;
+    }
+    if (obj == null) {
+      return false;
+    }
+    if (!(obj instanceof Complex)) {
+      return false;
+    }
+    Complex other = (Complex) obj;
+    if (Double.doubleToLongBits(im) != Double.doubleToLongBits(other.im)) {
+      return false;
+    }
+    if (Double.doubleToLongBits(re) != Double.doubleToLongBits(other.re)) {
+      return false;
+    }
+    return true;
+  }
+  
+  
 
 }
