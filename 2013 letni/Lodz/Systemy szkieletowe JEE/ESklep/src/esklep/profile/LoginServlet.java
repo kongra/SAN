@@ -1,6 +1,8 @@
 package esklep.profile;
 
 import java.io.IOException;
+import java.sql.SQLException;
+
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -14,9 +16,9 @@ import javax.servlet.http.HttpServletResponse;
   "/profile/login"
 })
 public class LoginServlet extends HttpServlet {
-  
+
   public static final String LOGGED_IN = "logged-in";
-  
+
   private static final long serialVersionUID = 1L;
 
   /**
@@ -48,7 +50,7 @@ public class LoginServlet extends HttpServlet {
   }
 
   private boolean isValidUser(String nick, String pass) {
-    return "user".equals(nick) && "12345".equals(pass);
+    return Profile.authenticate(nick, pass) != null;
   }
 
 }
