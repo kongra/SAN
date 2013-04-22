@@ -1,9 +1,6 @@
 package san.jdbc;
 
-import java.sql.DriverManager;
 import java.sql.SQLException;
-import java.sql.Statement;
-
 import san.jdbc.open.OType;
 
 public class TestJDCB {
