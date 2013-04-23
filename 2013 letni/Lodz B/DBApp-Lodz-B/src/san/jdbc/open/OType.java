@@ -1,49 +1,33 @@
 package san.jdbc.open;
 
-import san.jdbc.IntRef;
-import san.jdbc.JDBCWrites;
-import san.jdbc.WithJDBCConnection;
-import san.jdbc.WithJDBCQueryResults;
-import san.jdbc.WithinJDBCTransacion;
+import san.util.IntRef;
 
 public class OType {
 
   public static OType intern(final String name) {
     final IntRef id = new IntRef(-1);
 
-    new WithJDBCConnection() {
-      @Override
-      protected void run() {
-        new WithinJDBCTransacion(connection) {
-          @Override
-          protected void run() {
-            // T
-            new WithJDBCQueryResults(connection,
-                "select id from otypes where name='" + name + "'") {
-              @Override
-              public void step() {
-                id.value = get("id");
-              }
-            };
-
-            if (id.value == -1) {
-              JDBCWrites.update(connection,
-                "insert into otypes(name) values ('" + name + "')");
-
-              new WithJDBCQueryResults(connection,
-                  "select id from otypes where name='" + name + "'") {
-                @Override
-                public void step() {
-                  id.value = get("id");
-                }
-              };
-            }
-
-            // ~T
-          }
-        };
-      }
-    };
+    /*
+     * new WithJDBCConnection() {
+     * 
+     * @Override protected void run() { new WithinJDBCTransacion(connection) {
+     * 
+     * @Override protected void run() { // T new
+     * WithJDBCQueryResults(connection, "select id from otypes where name='" +
+     * name + "'") {
+     * 
+     * @Override public void step() { id.value = get("id"); } };
+     * 
+     * if (id.value == -1) { JDBCWrites.update(connection,
+     * "insert into otypes(name) values ('" + name + "')");
+     * 
+     * new WithJDBCQueryResults(connection, "select id from otypes where name='"
+     * + name + "'") {
+     * 
+     * @Override public void step() { id.value = get("id"); } }; }
+     * 
+     * // ~T } }; } };
+     */
 
     return new OType(id.value);
   }
