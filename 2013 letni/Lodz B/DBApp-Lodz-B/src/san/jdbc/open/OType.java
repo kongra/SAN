@@ -1,33 +1,48 @@
 package san.jdbc.open;
 
-import san.util.IntRef;
+import san.jdbc.JDBC;
+import san.util.Body;
+import san.util.Doclean;
+import san.util.refs.IntRef;
 
 public class OType {
 
-  public static OType intern(final String name) {
-    final IntRef id = new IntRef(-1);
+  public static OType ofName(final String name) {
+    final IntRef id = IntRef.initially(0);
 
-    /*
-     * new WithJDBCConnection() {
-     * 
-     * @Override protected void run() { new WithinJDBCTransacion(connection) {
-     * 
-     * @Override protected void run() { // T new
-     * WithJDBCQueryResults(connection, "select id from otypes where name='" +
-     * name + "'") {
-     * 
-     * @Override public void step() { id.value = get("id"); } };
-     * 
-     * if (id.value == -1) { JDBCWrites.update(connection,
-     * "insert into otypes(name) values ('" + name + "')");
-     * 
-     * new WithJDBCQueryResults(connection, "select id from otypes where name='"
-     * + name + "'") {
-     * 
-     * @Override public void step() { id.value = get("id"); } }; }
-     * 
-     * // ~T } }; } };
-     */
+    Doclean.run(new Runnable() {
+      @Override
+      public void run() {
+        JDBC.withConnection(JDBC.pool(), new Runnable() {
+          @Override
+          public void run() {
+            JDBC.withTransaction(new Runnable() {
+              @Override
+              public void run() {
+                String query =
+                    "select id from otypes where name='" + name + "'";
+                Body body = new Body() {
+                  @Override
+                  public void run() throws Break, Continue {
+                    id.value = JDBC.get("id");
+                  }
+                };
+
+                int steps = JDBC.withQueryResults(query, body);
+                if (steps == 0) {
+                  // NO MATCHING RECORDS, LET'S CREATE ONE ...
+                  JDBC.executeUpdate("insert into otypes(name) values ('"
+                      + name + "')");
+
+                  // ... AND READ THE NEW ID INTO id.value
+                  JDBC.withQueryResults(query, body);
+                }
+              }
+            });
+          }
+        });
+      }
+    });
 
     return new OType(id.value);
   }
@@ -64,4 +79,5 @@ public class OType {
     return true;
   }
 
+  
 }

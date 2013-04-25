@@ -1,5 +1,6 @@
-package san.jdbc;
+package test.san.jdbc;
 
+import san.jdbc.JDBC;
 import san.util.Body;
 import san.util.Doclean;
 

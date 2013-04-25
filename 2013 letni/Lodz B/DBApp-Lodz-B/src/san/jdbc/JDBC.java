@@ -4,6 +4,7 @@ import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.sql.Savepoint;
 import java.sql.Statement;
 
 import javax.sql.DataSource;
@@ -13,6 +14,7 @@ import org.postgresql.ds.PGPoolingDataSource;
 import san.util.Body;
 import san.util.Doclean;
 import san.util.DynVar;
+import san.util.refs.IntRef;
 
 public class JDBC {
 
@@ -77,7 +79,7 @@ public class JDBC {
     }
   }
 
-  public static void withQueryResults(String query, final Body step) {
+  public static int withQueryResults(String query, final Body step) {
     try {
       Doclean doclean = Doclean.assertDoclean();
       final ResultSet rs = createStatement().executeQuery(query);
@@ -96,12 +98,15 @@ public class JDBC {
         }
       });
 
+      final IntRef stepsCount = IntRef.initially(0);
+
       resultSet.binding(rs, new Runnable() {
         @Override
         public void run() {
           try {
             while (rs.next()) {
               try {
+                stepsCount.value += 1;
                 step.run();
               }
               catch (Body.Break br) {
@@ -117,6 +122,84 @@ public class JDBC {
           }
         }
       });
+
+      return stepsCount.value;
+    }
+    catch (SQLException e) {
+      throw new RuntimeException(e);
+    }
+  }
+
+  public static void withTransaction(int isolationLevel, Runnable body) {
+    Connection conn = JDBC.connection();
+    try {
+      boolean originalAutoCommit = conn.getAutoCommit();
+      int originalIsolationLevel = conn.getTransactionIsolation();
+
+      try {
+        conn.setAutoCommit(false);
+        conn.setTransactionIsolation(isolationLevel);
+
+        body.run();
+        conn.commit();
+      }
+      catch (Exception e) {
+        conn.rollback();
+        throw new RuntimeException(e);
+      }
+      finally {
+        conn.setAutoCommit(originalAutoCommit);
+        conn.setTransactionIsolation(originalIsolationLevel);
+      }
+    }
+    catch (SQLException e) {
+      throw new RuntimeException(e);
+    }
+  }
+
+  public static void withTransaction(Runnable body) {
+    withTransaction(Connection.TRANSACTION_READ_COMMITTED, body);
+  }
+
+  public static void commit() {
+    try {
+      JDBC.connection().commit();
+    }
+    catch (SQLException e) {
+      throw new RuntimeException(e);
+    }
+  }
+
+  public static void rollback() {
+    try {
+      JDBC.connection().rollback();
+    }
+    catch (SQLException e) {
+      throw new RuntimeException(e);
+    }
+  }
+
+  public static void rollback(Savepoint savepoint) {
+    try {
+      JDBC.connection().rollback(savepoint);
+    }
+    catch (SQLException e) {
+      throw new RuntimeException(e);
+    }
+  }
+
+  public static Savepoint setSavepoint() {
+    try {
+      return JDBC.connection().setSavepoint();
+    }
+    catch (SQLException e) {
+      throw new RuntimeException(e);
+    }
+  }
+
+  public static Savepoint setSavepoint(String name) {
+    try {
+      return JDBC.connection().setSavepoint(name);
     }
     catch (SQLException e) {
       throw new RuntimeException(e);
