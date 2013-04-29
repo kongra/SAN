@@ -1,52 +1,68 @@
 package san.jipp.math;
 
-public class Complex {
+public abstract class Complex {
 
-  public final double real;
-
-  public final double imag;
-
-  public Complex(double real, double imag) {
-    this.real = real;
-    this.imag = imag;
+  public static Complex rectangular(double real, double imag) {
+    return new RectangularComplex(real, imag);
   }
 
-  public Complex(double value) {
-    this(value, 0);
+  public static Complex polar(double modulus, double argument) {
+    return new PolarComplex(modulus, argument);
   }
+
+  public abstract double real();
+
+  public abstract double imag();
+
+  public abstract double modulus(); // |z|
+
+  public abstract double argument(); // φ
+
+  @Override
+  public abstract String toString();
+
+  public abstract Complex toPolar();
+
+  public abstract Complex toRectangular();
 
   public Complex add(Complex other) {
-    return new Complex(this.real + other.real, this.imag + other.imag);
-  }
-
-  public Complex add(double value) {
-    return add(new Complex(value));
+    return Complex.rectangular(this.real() + other.real(), this.imag()
+        + other.imag());
   }
 
   @Override
-  public String toString() {
-    if (this.real != 0) {
-      if (this.imag != 0) {
-        // (real +- imagj)
-        StringBuilder buf = new StringBuilder("(");
-        buf.append(this.real);
-        buf.append(this.imag < 0 ? "-" : "+");
-        buf.append(abs(this.imag)).append("j");
-        return buf.append(")").toString();
-      }
-      // (real + 0j)
-      return new StringBuilder("(").append(this.real).append("+0j)").toString();
-    }
-    if (this.imag != 0) {
-      return new StringBuilder(this.imag < 0 ? "-" : "")
-          .append(abs(this.imag)).append("j").toString();
-    }
-    return "0j";
-
+  public int hashCode() {
+    final int prime = 31;
+    int result = 1;
+    long temp;
+    temp = Double.doubleToLongBits(imag());
+    result = prime * result + (int) (temp ^ (temp >>> 32));
+    temp = Double.doubleToLongBits(real());
+    result = prime * result + (int) (temp ^ (temp >>> 32));
+    return result;
   }
 
-  private static double abs(double x) {
-    return x < 0 ? -x : x;
+  @Override
+  public boolean equals(Object obj) {
+    if (this == obj) {
+      return true;
+    }
+    if (obj == null) {
+      return false;
+    }
+    if (!(obj instanceof Complex)) {
+      return false;
+    }
+    Complex other = (Complex) obj;
+    if (Double.doubleToLongBits(imag()) != Double
+        .doubleToLongBits(other.imag())) {
+      return false;
+    }
+    if (Double.doubleToLongBits(real()) != Double
+        .doubleToLongBits(other.real())) {
+      return false;
+    }
+    return true;
   }
 
 }

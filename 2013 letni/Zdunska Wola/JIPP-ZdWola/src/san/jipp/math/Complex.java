@@ -1,43 +1,38 @@
 package san.jipp.math;
 
-public class Complex {
+public abstract class Complex extends Number {
 
-  public final double re;
-
-  public final double im;
-
-  public Complex(double re, double im) {
-    this.re = re;
-    this.im = im;
+  public static Complex rectangular(double re, double im) {
+    return new RectangularComplex(re, im);
   }
 
-  public Complex(double value) {
-    this(value, 0);
+  public static Complex rectangular(double value) {
+    return rectangular(value, 0);
   }
 
-  public String repr() {
-    if (re != 0) {
-      if (im != 0) {
-        // re + im j
-        return new StringBuilder().append("(").append(re).append("+")
-            .append(im).append("j").append(")").toString();
-      }
-      // re
-      return new StringBuilder().append("(").append(re).append("+0.0j)")
-          .toString();
-    }
-    if (im != 0) {
-      return String.valueOf(im) + "j";
-    }
-    return "0.0j";
+  public static Complex polar(double modulus, double argument) {
+    return new PolarComplex(modulus, argument);
   }
 
-  public Complex add(Complex other) {
-    return new Complex(this.re + other.re, this.im + other.im);
-  }
+  public abstract double re();
+
+  public abstract double im();
+
+  public abstract double modulus();
+
+  public abstract double argument();
+
+  public abstract Complex toRectangular();
+
+  public abstract Complex toPolar();
+
+  @Override
+  public abstract String toString();
+
+  public abstract Complex add(Complex other);
 
   public Complex add(double value) {
-    return add(new Complex(value));
+    return add(Complex.rectangular(value));
   }
 
   @Override
@@ -45,9 +40,9 @@ public class Complex {
     final int prime = 31;
     int result = 1;
     long temp;
-    temp = Double.doubleToLongBits(im);
+    temp = Double.doubleToLongBits(im());
     result = prime * result + (int) (temp ^ (temp >>> 32));
-    temp = Double.doubleToLongBits(re);
+    temp = Double.doubleToLongBits(re());
     result = prime * result + (int) (temp ^ (temp >>> 32));
     return result;
   }
@@ -64,15 +59,33 @@ public class Complex {
       return false;
     }
     Complex other = (Complex) obj;
-    if (Double.doubleToLongBits(im) != Double.doubleToLongBits(other.im)) {
+    if (Double.doubleToLongBits(im()) != Double.doubleToLongBits(other.im())) {
       return false;
     }
-    if (Double.doubleToLongBits(re) != Double.doubleToLongBits(other.re)) {
+    if (Double.doubleToLongBits(re()) != Double.doubleToLongBits(other.re())) {
       return false;
     }
     return true;
   }
-  
-  
+
+  @Override
+  public double doubleValue() {
+    return re();
+  }
+
+  @Override
+  public float floatValue() {
+    return (float) doubleValue();
+  }
+
+  @Override
+  public int intValue() {
+    return (int) doubleValue();
+  }
+
+  @Override
+  public long longValue() {
+    return (long) doubleValue();
+  }
 
 }

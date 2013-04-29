@@ -6,6 +6,8 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 
+import org.apache.commons.codec.digest.DigestUtils;
+
 public class Profile {
 
   static {
@@ -32,24 +34,24 @@ public class Profile {
           DriverManager.getConnection("jdbc:postgresql://localhost/MAAS",
             "scott", "tiger");
       stmt = conn.createStatement();
-      rs = stmt.executeQuery("select id, passwd from users where login=" + login);
-      
-      if(!rs.next()) {
+      rs =
+          stmt.executeQuery("select id, passwd from users where login='"
+              + login + "'");
+
+      if (!rs.next()) {
         return null;
       }
-      
+
       long id = rs.getLong("id");
       String md5passwd = rs.getString("passwd");
-      
-      
-      
-      return id;
+
+      return md5passwd.equals(DigestUtils.md5Hex(passwd)) ? id : null;
     }
     catch (Exception e) {
       return null;
     }
     finally {
-      if(rs != null) {
+      if (rs != null) {
         try {
           rs.close();
         }
