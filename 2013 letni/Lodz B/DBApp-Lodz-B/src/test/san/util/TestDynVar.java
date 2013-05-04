@@ -6,24 +6,37 @@ import junit.framework.TestCase;
 
 public class TestDynVar extends TestCase {
 
+  public static final DynVar<Integer> var1 = DynVar.initially(34);
+  
+  public static void foo() {
+    System.out.println("W wywołaniu foo () " + var1.value());
+  }
+  
+  public static void bar() {
+    System.out.println("W wywołaniu bar () " + var1.value());
+  }
+  
   public void test() {
-    final DynVar<Integer> var1 = DynVar.initially(34);
-
-    var1.binding(245, new Runnable() {
+    System.out.println("Przed wywołaniami " + var1.value());
+    
+    var1.binding(15, new Runnable() {
       @Override
       public void run() {
-        System.out.println(var1.value());
-      }
+        foo();
+        
+        var1.binding(23, new Runnable(){
+          @Override
+          public void run() {
+            bar();            
+          }          
+        });
+      }      
     });
     
-    var1.binding(245, Body.pass);
+    foo();
+    bar();
     
-    var1.binding(245, new Body() {
-      @Override
-      public void run() throws Break, Continue {
-        System.out.println(var1.value());
-      }
-    });
+    System.out.println("Po wywołaniach " + var1.value());
   }
 
 }

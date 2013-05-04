@@ -60,11 +60,6 @@ public abstract class Complex extends Number {
   }
 
   @Override
-  public byte byteValue() {
-    return (byte) doubleValue();
-  }
-
-  @Override
   public double doubleValue() {
     return this.re();
   }
@@ -82,11 +77,6 @@ public abstract class Complex extends Number {
   @Override
   public long longValue() {
     return (long) doubleValue();
-  }
-
-  @Override
-  public short shortValue() {
-    return (short) doubleValue();
   }
 
 }
