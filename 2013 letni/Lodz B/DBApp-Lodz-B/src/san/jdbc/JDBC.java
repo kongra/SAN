@@ -216,6 +216,20 @@ public class JDBC {
     }
   }
 
+  public static void inDefaultENV(final Runnable body) {
+    Doclean.run(new Runnable() {
+      @Override
+      public void run() {
+        JDBC.withConnection(JDBC.pool(), new Runnable() {
+          @Override
+          public void run() {
+            JDBC.withTransaction(body);
+          }
+        });
+      }
+    });
+  }
+
   public static Connection connection() {
     return connection.value();
   }

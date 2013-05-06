@@ -1,6 +1,5 @@
 package test.san.util;
 
-import san.util.Body;
 import san.util.DynVar;
 import junit.framework.TestCase;
 

@@ -2,55 +2,47 @@ package san.jdbc.open;
 
 import san.jdbc.JDBC;
 import san.util.Body;
-import san.util.Doclean;
 import san.util.refs.IntRef;
+import san.util.refs.LongRef;
 
 public class OType {
 
   public static OType ofName(final String name) {
     final IntRef id = IntRef.initially(0);
 
-    Doclean.run(new Runnable() {
+    JDBC.inDefaultENV(new Runnable() {
       @Override
       public void run() {
-        JDBC.withConnection(JDBC.pool(), new Runnable() {
+        String query = "select id from otypes where name='" + name + "'";
+        Body body = new Body() {
           @Override
-          public void run() {
-            JDBC.withTransaction(new Runnable() {
-              @Override
-              public void run() {
-                String query =
-                    "select id from otypes where name='" + name + "'";
-                Body body = new Body() {
-                  @Override
-                  public void run() throws Break, Continue {
-                    id.value = JDBC.get("id");
-                  }
-                };
-
-                int steps = JDBC.withQueryResults(query, body);
-                if (steps == 0) {
-                  // NO MATCHING RECORDS, LET'S CREATE ONE ...
-                  JDBC.executeUpdate("insert into otypes(name) values ('"
-                      + name + "')");
-
-                  // ... AND READ THE NEW ID INTO id.value
-                  JDBC.withQueryResults(query, body);
-                }
-              }
-            });
+          public void run() throws Break, Continue {
+            id.value = JDBC.get("id");
           }
-        });
+        };
+
+        int steps = JDBC.withQueryResults(query, body);
+        if (steps == 0) {
+          // NO MATCHING RECORDS, LET'S CREATE ONE ...
+          JDBC
+              .executeUpdate("insert into otypes(name) values ('" + name + "')");
+
+          // ... AND READ THE NEW ID INTO id.value
+          JDBC.withQueryResults(query, body);
+        }
       }
     });
 
-    return new OType(id.value);
+    return new OType(id.value, name);
   }
 
-  public final int id;
+  private final int id;
 
-  private OType(int id) {
+  private final String name;
+
+  private OType(int id, String name) {
     this.id = id;
+    this.name = name;
   }
 
   @Override
@@ -79,5 +71,33 @@ public class OType {
     return true;
   }
 
-  
+  public int id() {
+    return id;
+  }
+
+  public String name() {
+    return name;
+  }
+
+  public OObj create() {
+    final LongRef oid = LongRef.initially(-1);
+
+    JDBC.inDefaultENV(new Runnable() {
+      @Override
+      public void run() {
+        JDBC.executeUpdate("insert into oobjects(otype) values("
+            + OType.this.id() + ")");
+        JDBC.withQueryResults(
+          "select id from otypes order by id desc limit 1;", new Body() {
+            @Override
+            public void run() throws Break, Continue {
+              Integer value = JDBC.get("id");
+              oid.value = value;
+            }
+          });
+      }
+    });
+    return new OObj(oid.value, this);
+  }
+
 }

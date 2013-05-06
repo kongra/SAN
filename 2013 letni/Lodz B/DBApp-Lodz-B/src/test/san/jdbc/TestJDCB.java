@@ -2,7 +2,6 @@ package test.san.jdbc;
 
 import san.jdbc.JDBC;
 import san.util.Body;
-import san.util.Doclean;
 
 public class TestJDCB {
 
@@ -21,7 +20,7 @@ public class TestJDCB {
     });
   }
 
-  private static void iterUsers() {
+  static void iterUsers() {
     JDBC.withQueryResults("select * from users", new Body() {
       @Override
       public void run() throws Break, Continue {
