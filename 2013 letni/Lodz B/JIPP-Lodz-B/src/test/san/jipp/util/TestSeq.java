@@ -2,25 +2,30 @@ package test.san.jipp.util;
 
 import san.jipp.util.LinkedSeq;
 import san.jipp.util.Seq;
+import san.jipp.util.SeqTools;
 
 public class TestSeq {
 
   public static void main(String[] args) {
-    Seq coll = LinkedSeq.EMPTY.addToFront(4).addToFront(3).addToFront(1);
+    Seq<Integer> coll = LinkedSeq.create(1, 2, 3, 4, 5, 6);
     System.out.println(coll);
-    
-    System.out.println(LinkedSeq.EMPTY);
-    System.out.println(LinkedSeq.EMPTY.first());
-    System.out.println(LinkedSeq.EMPTY.rest() == LinkedSeq.EMPTY);
-    
-    Seq coll1 = LinkedSeq.EMPTY.addToFront(4).addToFront(3).addToFront(1);
-    
-    System.out.println(coll1.equals(coll));
-    
-    System.out.println(LinkedSeq.EMPTY.hashCode());
-    
-    System.out.println(coll.hashCode());
-    System.out.println(coll1.hashCode());
+
+    Integer sum = SeqTools.reduce(coll, new SeqTools.BinaryFn<Integer>() {
+      @Override
+      public Integer call(Integer lhs, Integer rhs) {
+        return lhs + rhs;
+      }
+    }, 0);
+
+    // Integer sum = (Integer) SeqTools.reduce(coll, new SeqTools.BinaryFn() {
+    // @Override
+    // public Object call(Object lhs, Object rhs) {
+    // int a = (Integer) lhs;
+    // int b = (Integer) rhs;
+    //
+    // return a + b;
+    // }
+    // }, 0);
   }
 
 }

@@ -1,11 +1,13 @@
 package san.jipp.util;
 
-public interface Seq {
+public interface Seq<T> {
   
-  Seq addToFront(Object obj);
+  Seq addToFront(T obj);
   
-  Object first();
+  T first();
   
-  Seq rest();
+  Seq<T> rest();
+  
+  boolean isEmpty();
   
 }
