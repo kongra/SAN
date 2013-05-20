@@ -35,9 +35,9 @@ public abstract class Complex {
     final int prime = 31;
     int result = 1;
     long temp;
-    temp = Double.doubleToLongBits(imag());
+    temp = Double.doubleToLongBits(this.imag());
     result = prime * result + (int) (temp ^ (temp >>> 32));
-    temp = Double.doubleToLongBits(real());
+    temp = Double.doubleToLongBits(this.real());
     result = prime * result + (int) (temp ^ (temp >>> 32));
     return result;
   }

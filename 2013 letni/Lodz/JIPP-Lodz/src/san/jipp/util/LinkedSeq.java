@@ -1,8 +1,17 @@
 package san.jipp.util;
 
-public class LinkedSeq implements Seq {
-  
-  public static final Seq EMPTY = new Seq() {
+public class LinkedSeq<T> implements Seq<T> {
+
+  @SuppressWarnings("unchecked")
+  public static <S, T extends S> Seq<S> withElements(T... elements) {
+    Seq<S> result = EMPTY;
+    for (int i = elements.length - 1; i >= 0; i--) {
+      result = result.addToFront(elements[i]);
+    }
+    return result;
+  }
+
+  private static final Seq EMPTY = new Seq() {
 
     @Override
     public Seq rest() {
@@ -14,38 +23,50 @@ public class LinkedSeq implements Seq {
       return null;
     }
 
-    @SuppressWarnings("synthetic-access")
+    @SuppressWarnings( {
+        "synthetic-access", "unchecked"
+    })
     @Override
     public Seq addToFront(Object obj) {
       return new LinkedSeq(obj, this);
     }
-    
+
+    @Override
+    public boolean isEmpty() {
+      return true;
+    }
+
   };
 
-  private final Object first;
+  private final T first;
 
-  private final Seq rest;
+  private final Seq<T> rest;
 
-  private LinkedSeq(Object first, Seq rest) {
+  private LinkedSeq(T first, Seq<T> rest) {
     this.first = first;
     this.rest = rest;
   }
 
   @Override
-  public Object first() {
+  public T first() {
     return this.first;
   }
 
   @Override
-  public Seq rest() {
+  public Seq<T> rest() {
     return this.rest;
   }
 
   @Override
-  public Seq addToFront(Object obj) {
-    return new LinkedSeq(obj, this);
+  public Seq addToFront(T obj) {
+    return new LinkedSeq<T>(obj, this);
   }
-  
+
+  @Override
+  public boolean isEmpty() {
+    return false;
+  }
+
   @Override
   public String toString() {
     StringBuilder buf = new StringBuilder("(");
@@ -61,7 +82,7 @@ public class LinkedSeq implements Seq {
 
     return buf.append(")").toString();
   }
-  
+
   @Override
   public int hashCode() {
     final int prime = 31;
