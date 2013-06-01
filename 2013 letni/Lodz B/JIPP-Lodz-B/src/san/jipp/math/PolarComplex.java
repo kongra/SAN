@@ -1,49 +1,123 @@
 package san.jipp.math;
 
-class PolarComplex extends Complex {
+import san.jipp.util.Seq;
 
-  private final double modulus;
+class PolarComplex<T extends Num<T>> extends Complex<T> {
 
-  private final double argument;
+  private final T modulus;
 
-  PolarComplex(double modulus, double argument) {
+  private final T argument;
+
+  PolarComplex(T modulus, T argument) {
     this.modulus = modulus;
     this.argument = argument;
   }
 
   @Override
-  public double argument() {
+  public T argument() {
     return this.argument;
   }
 
   @Override
-  public double im() {
-    return this.modulus() * Math.sin(this.argument());
+  public T im() {
+    return this.modulus().mul(this.argument().sin());
   }
 
   @Override
-  public double modulus() {
+  public T modulus() {
     return this.modulus;
   }
 
   @Override
-  public double re() {
-    return this.modulus() * Math.cos(this.argument());
+  public T re() {
+    return this.modulus().mul(this.argument().cos());
   }
 
   @Override
-  public Complex algebraic() {
+  public Complex<T> algebraic() {
     return Complex.algebraic(this.re(), this.im());
   }
 
   @Override
-  public Complex polar() {
+  public Complex<T> polar() {
     return this;
   }
 
   @Override
   public String toString() {
     return modulus() + "∠" + argument();
+  }
+
+  @Override
+  public Complex<T> add(Complex<T> other) {
+    // TODO Auto-generated method stub
+    return null;
+  }
+
+  @Override
+  public Complex<T> div(Complex<T> other) {
+    // TODO Auto-generated method stub
+    return null;
+  }
+
+  @Override
+  public boolean gt(Complex<T> other) {
+    // TODO Auto-generated method stub
+    return false;
+  }
+
+  @Override
+  public Complex<T> mul(Complex<T> other) {
+    // TODO Auto-generated method stub
+    return null;
+  }
+
+  @Override
+  public Complex<T> sub(Complex<T> other) {
+    // TODO Auto-generated method stub
+    return null;
+  }
+
+  @Override
+  public Complex<T> cos() {
+    // TODO Auto-generated method stub
+    return null;
+  }
+
+  @Override
+  public Complex<T> sin() {
+    // TODO Auto-generated method stub
+    return null;
+  }
+
+  @Override
+  public Seq<Complex<T>> squareRoots() {
+    // TODO Auto-generated method stub
+    return null;
+  }
+
+  @Override
+  public boolean isNegative() {
+    // TODO Auto-generated method stub
+    return false;
+  }
+
+  @Override
+  public boolean isPositive() {
+    // TODO Auto-generated method stub
+    return false;
+  }
+
+  @Override
+  public boolean isZero() {
+    // TODO Auto-generated method stub
+    return false;
+  }
+
+  @Override
+  public Complex<T> abs() {
+    // TODO Auto-generated method stub
+    return null;
   }
 
 }

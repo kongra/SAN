@@ -1,39 +1,35 @@
 package san.jipp.math;
 
-public abstract class Complex extends Number {
+public abstract class Complex<T extends Num<T>> implements Num<Complex<T>> {
 
-  public static Complex algebraic(double re, double im) {
-    return new AlgebraicComplex(re, im);
+  public static <S extends Num<S>> Complex<S> algebraic(S re, S im) {
+    return new AlgebraicComplex<S>(re, im);
   }
 
-  public static Complex polar(double modulus, double argument) {
-    return new PolarComplex(modulus, argument);
+  public static <S extends Num<S>> Complex<S> polar(S modulus, S argument) {
+    return new PolarComplex<S>(modulus, argument);
   }
 
-  public abstract double re();
+  public abstract T re();
 
-  public abstract double im();
+  public abstract T im();
 
-  public abstract double modulus();
+  public abstract T modulus();
 
-  public abstract double argument();
+  public abstract T argument();
 
-  public abstract Complex polar();
+  public abstract Complex<T> polar();
 
-  public abstract Complex algebraic();
-
-  public Complex add(Complex other) {
-    return Complex.algebraic(this.re() + other.re(), this.im() + other.im());
-  }
+  public abstract Complex<T> algebraic();
 
   @Override
   public int hashCode() {
     final int prime = 31;
     int result = 1;
     long temp;
-    temp = Double.doubleToLongBits(im());
+    temp = im().hashCode();
     result = prime * result + (int) (temp ^ (temp >>> 32));
-    temp = Double.doubleToLongBits(re());
+    temp = re().hashCode();
     result = prime * result + (int) (temp ^ (temp >>> 32));
     return result;
   }
@@ -50,33 +46,12 @@ public abstract class Complex extends Number {
       return false;
     }
     Complex other = (Complex) obj;
-    if (Double.doubleToLongBits(im()) != Double.doubleToLongBits(other.im())) {
+    if (!im().equals(other.im())) {
       return false;
     }
-    if (Double.doubleToLongBits(re()) != Double.doubleToLongBits(other.re())) {
+    if (!re().equals(other.re())) {
       return false;
     }
     return true;
   }
-
-  @Override
-  public double doubleValue() {
-    return this.re();
-  }
-
-  @Override
-  public float floatValue() {
-    return (float) doubleValue();
-  }
-
-  @Override
-  public int intValue() {
-    return (int) doubleValue();
-  }
-
-  @Override
-  public long longValue() {
-    return (long) doubleValue();
-  }
-
 }

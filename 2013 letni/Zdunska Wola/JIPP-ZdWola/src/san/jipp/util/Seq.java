@@ -7,5 +7,7 @@ public interface Seq {
   Object first();
   
   Seq rest();
+
+  boolean isEmpty();
   
 }

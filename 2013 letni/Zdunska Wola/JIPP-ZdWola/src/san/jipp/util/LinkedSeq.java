@@ -1,8 +1,16 @@
 package san.jipp.util;
 
 public class LinkedSeq implements Seq {
+  
+  public static Seq withElements(Object... elements) {
+    Seq result = EMPTY;
+    for(int i = elements.length - 1; i >= 0; i--) {
+      result = result.addToFront(elements[i]);
+    }
+    return result;
+  }
 
-  public static final Seq EMPTY = new Seq() {
+  private static final Seq EMPTY = new Seq() {
 
     @Override
     public Seq rest() {
@@ -19,6 +27,17 @@ public class LinkedSeq implements Seq {
     public Seq addToFront(Object obj) {
       return new LinkedSeq(obj, this);
     }
+
+    @Override
+    public boolean isEmpty() {
+      return true;
+    }
+
+    @Override
+    public String toString() {
+      return "()";
+    }
+    
   };
 
   private final Object first;
@@ -100,5 +119,10 @@ public class LinkedSeq implements Seq {
     }
     return true;
   }
-  
+
+  @Override
+  public boolean isEmpty() {
+    return false;
+  }
+
 }

@@ -40,9 +40,9 @@ public abstract class Complex extends Number {
     final int prime = 31;
     int result = 1;
     long temp;
-    temp = Double.doubleToLongBits(im());
+    temp = Double.doubleToLongBits(this.im());
     result = prime * result + (int) (temp ^ (temp >>> 32));
-    temp = Double.doubleToLongBits(re());
+    temp = Double.doubleToLongBits(this.re());
     result = prime * result + (int) (temp ^ (temp >>> 32));
     return result;
   }

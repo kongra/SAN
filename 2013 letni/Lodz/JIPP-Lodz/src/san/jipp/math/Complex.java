@@ -9,7 +9,7 @@ public abstract class Complex {
   public static Complex polar(double modulus, double argument) {
     return new PolarComplex(modulus, argument);
   }
-
+  
   public abstract double real();
 
   public abstract double imag();
