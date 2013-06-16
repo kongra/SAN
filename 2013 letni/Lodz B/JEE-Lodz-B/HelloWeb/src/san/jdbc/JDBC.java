@@ -143,7 +143,7 @@ public class JDBC {
         body.run();
         conn.commit();
       }
-      catch (Exception e) {
+      catch (Throwable e) {
         conn.rollback();
         throw new RuntimeException(e);
       }

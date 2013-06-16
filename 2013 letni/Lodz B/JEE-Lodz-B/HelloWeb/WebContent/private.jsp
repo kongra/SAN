@@ -1,4 +1,4 @@
-<%@page import="san.profile.Profile"%>
+<%@page import="san.profile.ProfileManager"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
@@ -10,7 +10,7 @@
 <body>
 
 	<%
-	  if (session.getAttribute(Profile.UID) != null) {
+	  if (session.getAttribute(ProfileManager.UID) != null) {
 	%>
 	Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce diam
 	nibh, egestas sed viverra vel, tristique in augue. Praesent venenatis

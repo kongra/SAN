@@ -1,0 +1,15 @@
+<web-app xmlns="http://caucho.com/ns/resin">
+
+	<conf:Config xmlns:conf="urn:java:san.config">
+		<conf:value>ąęśćółżźń</conf:value>
+	</conf:Config>
+
+	<database jndi-name='jdbc/MAAS'>
+		<driver type="org.postgresql.Driver">
+			<url>jdbc:postgresql://localhost/MAAS</url>
+			<user>scott</user>
+			<password>tiger</password>
+		</driver>
+	</database>
+
+</web-app>
