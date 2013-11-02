@@ -1,4 +1,4 @@
-package san.jee;
+package san.jee.lect01;
 
 public class Lect01 {
 
