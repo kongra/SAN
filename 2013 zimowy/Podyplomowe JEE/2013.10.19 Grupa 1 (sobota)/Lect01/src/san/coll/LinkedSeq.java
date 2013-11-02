@@ -1,5 +1,7 @@
 package san.coll;
 
+import san.coll.fn.Unary;
+
 public class LinkedSeq implements ISeq {
 
   public static ISeq create(Object... elements) {
@@ -10,7 +12,7 @@ public class LinkedSeq implements ISeq {
     return result;
   }
 
-  private static final ISeq EMPTY = new ISeq() {
+  public static final ISeq EMPTY = new ISeq() {
     @Override
     public Object first() {
       return null;
@@ -32,6 +34,7 @@ public class LinkedSeq implements ISeq {
       return true;
     }
 
+    
   };
 
   private final Object first;
@@ -67,10 +70,11 @@ public class LinkedSeq implements ISeq {
   public String toString() {
     final StringBuilder buf = new StringBuilder("(");
 
-    Utils.doSeq(this.interpose(", "), new Unary() {
+    Utils.doSeq(this, new Unary() {
       @Override
-      public void call(Object element) {
+      public Object call(Object element) {
         buf.append(element);
+        return null;
       }
     });
 
