@@ -1,7 +1,7 @@
 package san.coll.fn;
 
-public interface NoArg {
+public interface NoArg<T> {
 
-  Object call();
+  T call();
   
 }

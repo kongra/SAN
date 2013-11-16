@@ -1,13 +1,15 @@
 package san.coll;
 
-public interface ISeq {
+public interface ISeq<T> {
 
-  Object first();
+  T first();
 
-  ISeq rest();
+  ISeq<T> rest();
   
-  ISeq cons(Object obj);
+  ISeq<T> cons(T obj);
 
   boolean isEmpty();
+  
+  ISeq<T> interpose(T separator);
 
 }

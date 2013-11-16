@@ -48,15 +48,17 @@ public class Utils {
     });
   }
 
-  public static ISeq map(Unary f, ISeq coll) {
-    ISeq result = LinkedSeq.EMPTY;
-    ISeq seq = coll;
-    while (!seq.isEmpty()) {
-      result = result.cons(f.call(seq.first()));
-      seq = seq.rest();
+  public static ISeq map(final Unary f, final ISeq coll) {
+    if (coll.isEmpty()) {
+      return LinkedSeq.EMPTY;
     }
 
-    return result;
+    return LazySeq.create(f.call(coll.first()), new NoArg() {
+      @Override
+      public Object call() {
+        return map(f, coll.rest());
+      }
+    });
   }
 
   public static Object reduce(Binary f, Object start, ISeq coll) {
@@ -67,6 +69,62 @@ public class Utils {
     }
 
     return value;
+  }
+
+  public static ISeq interpose(final Object separator, final ISeq coll) {
+    // EMPTY ONE - KEEP IT
+    if (coll.isEmpty()) {
+      return LinkedSeq.EMPTY;
+    }
+
+    // SINGLETON - KEEP IT
+    if (coll.rest().isEmpty()) {
+      return coll;
+    }
+
+    return LazySeq.create(coll.first(), new NoArg() {
+      @Override
+      public Object call() {
+        return LazySeq.create(separator, new NoArg() {
+          @Override
+          public Object call() {
+            return interpose(separator, coll.rest());
+          }
+        });
+      }
+    });
+  }
+
+  public static String toString(ISeq coll) {
+    final StringBuilder buf = new StringBuilder("(");
+
+    Utils.doSeq(coll.interpose(", "), new Unary() {
+      @Override
+      public Object call(Object element) {
+        buf.append(element);
+        return null;
+      }
+    });
+
+    return buf.append(")").toString();
+  }
+
+  public static ISeq repeat(final Object obj) {
+    return LazySeq.create(obj, new NoArg() {
+      @Override
+      public Object call() {
+        return repeat(obj);
+      }
+    });
+  }
+
+  public static ISeq repeatedly(final NoArg f) {
+    return LazySeq.create(f.call(), new NoArg() {
+      @Override
+      public Object call() {
+        return repeatedly(f);
+      }
+    });
   }
 
   private Utils() {

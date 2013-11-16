@@ -1,9 +1,9 @@
 package san.coll.fn;
 
-public class Promise {
+public class Delay {
 
-  public static Promise create(NoArg producer) {
-    return new Promise(producer);
+  public static Delay create(NoArg producer) {
+    return new Delay(producer);
   }
 
   private final NoArg producer;
@@ -12,7 +12,7 @@ public class Promise {
   
   private Object value;
 
-  private Promise(NoArg producer) {
+  private Delay(NoArg producer) {
     this.producer = producer;
   }
 
@@ -20,7 +20,6 @@ public class Promise {
     if (!produced) {
       value = producer.call();
       produced = true;
-      System.out.println("Wyprodukowałem " + value);
     }
     return value;
   }

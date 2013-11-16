@@ -4,8 +4,6 @@ public class TestPoli {
 
   public static void bar(final T obj) {
     obj.foo();
-    
-    obj = T.create();
   }
   
   public static void main(final String[] args) {

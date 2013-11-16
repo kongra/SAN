@@ -34,7 +34,11 @@ public class LinkedSeq implements ISeq {
       return true;
     }
 
-    
+    @Override
+    public ISeq interpose(Object separator) {
+      return this;
+    }
+
   };
 
   private final Object first;
@@ -67,18 +71,13 @@ public class LinkedSeq implements ISeq {
   }
 
   @Override
+  public ISeq interpose(Object separator) {
+    return Utils.interpose(separator, this);
+  }
+
+  @Override
   public String toString() {
-    final StringBuilder buf = new StringBuilder("(");
-
-    Utils.doSeq(this, new Unary() {
-      @Override
-      public Object call(Object element) {
-        buf.append(element);
-        return null;
-      }
-    });
-
-    return buf.append(")").toString();
+    return Utils.toString(this);
   }
 
 }
