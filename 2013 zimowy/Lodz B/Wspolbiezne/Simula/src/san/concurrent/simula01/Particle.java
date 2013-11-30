@@ -59,6 +59,10 @@ public class Particle implements Runnable {
         pane = this.pane;
       }
       pane.repaint();
+      
+//      synchronized(this) {
+//        this.pane.repaint();
+//      }
     }
   }
 
