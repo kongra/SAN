@@ -9,11 +9,14 @@ public class Lect01 {
     byte b = 1;
     short s = 2;
     
+    @SuppressWarnings("unused")
     int x = b + s;
   }
 
   private static void test2() {
     double[][] a = {{1, 2, 3}, {3, 4, 5}, {6, 7, 8}};
+    
+    @SuppressWarnings("unused")
     double[] b = a[0];
   }
 

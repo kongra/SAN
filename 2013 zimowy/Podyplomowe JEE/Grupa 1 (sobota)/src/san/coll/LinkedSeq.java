@@ -1,32 +1,37 @@
 package san.coll;
 
-import san.coll.fn.Unary;
+public class LinkedSeq<T> implements ISeq<T> {
 
-public class LinkedSeq implements ISeq {
-
-  public static ISeq create(Object... elements) {
-    ISeq result = EMPTY;
+  @SafeVarargs
+  public static <S> ISeq<S> create(S... elements) {
+    ISeq<S> result = empty();
     for (int i = elements.length - 1; i >= 0; i--) {
       result = result.cons(elements[i]);
     }
     return result;
   }
 
-  public static final ISeq EMPTY = new ISeq() {
+  @SuppressWarnings("unchecked")
+  public static <S> ISeq<S> empty() {
+    return (ISeq<S>) EMPTY;
+  }
+
+  private static final ISeq<Object> EMPTY = new ISeq<Object>() {
+
     @Override
     public Object first() {
       return null;
     }
 
     @Override
-    public ISeq rest() {
+    public ISeq<Object> rest() {
       return this;
     }
 
     @SuppressWarnings("synthetic-access")
     @Override
-    public ISeq cons(Object obj) {
-      return new LinkedSeq(obj, this);
+    public ISeq<Object> cons(Object obj) {
+      return new LinkedSeq<>(obj, this);
     }
 
     @Override
@@ -35,34 +40,34 @@ public class LinkedSeq implements ISeq {
     }
 
     @Override
-    public ISeq interpose(Object separator) {
+    public ISeq<Object> interpose(Object separator) {
       return this;
     }
 
   };
 
-  private final Object first;
+  private final T first;
 
-  private final ISeq rest;
+  private final ISeq<T> rest;
 
-  private LinkedSeq(Object first, ISeq rest) {
+  private LinkedSeq(T first, ISeq<T> rest) {
     this.first = first;
     this.rest = rest;
   }
 
   @Override
-  public Object first() {
+  public T first() {
     return this.first;
   }
 
   @Override
-  public ISeq rest() {
+  public ISeq<T> rest() {
     return this.rest;
   }
 
   @Override
-  public ISeq cons(Object obj) {
-    return new LinkedSeq(obj, this);
+  public ISeq<T> cons(T obj) {
+    return new LinkedSeq<T>(obj, this);
   }
 
   @Override
@@ -71,7 +76,7 @@ public class LinkedSeq implements ISeq {
   }
 
   @Override
-  public ISeq interpose(Object separator) {
+  public ISeq<T> interpose(T separator) {
     return Utils.interpose(separator, this);
   }
 

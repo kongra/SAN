@@ -20,28 +20,28 @@ public class TestISeq {
     // System.out.println(suma);
 
     ISeq coll = Utils.repeat(2);
-    
+
     Utils.doSeq(coll, 15, new Unary() {
       @Override
       public Object call(Object element) {
         System.out.println(element);
         return null;
-      }      
+      }
     });
-    
+
     coll = Utils.repeatedly(new NoArg() {
       @Override
       public Object call() {
         return 5;
       }
     });
-    
+
     Utils.doSeq(coll, 15, new Unary() {
       @Override
       public Object call(Object element) {
         System.out.println(element);
         return null;
-      }      
+      }
     });
   }
 
@@ -78,20 +78,12 @@ public class TestISeq {
   }
 
   private static void testNaturals() {
-    ISeq naturals = Utils.integers(-10);
+    ISeq<Long> naturals = Utils.integers(-10);
 
-    Utils.doSeq(naturals, 5, new Unary() {
+    Utils.doSeq(naturals, 5, new Unary<Void, Long>() {
       @Override
-      public Object call(Object element) {
-        System.out.println(element);
-        return null;
-      }
-    });
-
-    Utils.doSeq(naturals, 10, new Unary() {
-      @Override
-      public Object call(Object element) {
-        System.out.println(element);
+      public Void call(Long param) {
+        System.out.println(param);
         return null;
       }
     });

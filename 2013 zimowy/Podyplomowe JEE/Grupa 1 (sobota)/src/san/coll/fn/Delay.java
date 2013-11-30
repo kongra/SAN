@@ -1,22 +1,22 @@
 package san.coll.fn;
 
-public class Delay {
+public class Delay<T> {
 
-  public static Delay create(NoArg producer) {
-    return new Delay(producer);
+  public static <S> Delay create(NoArg<S> producer) {
+    return new Delay<S>(producer);
   }
 
-  private final NoArg producer;
+  private final NoArg<T> producer;
 
   private boolean produced;
   
-  private Object value;
+  private T value;
 
-  private Delay(NoArg producer) {
+  private Delay(NoArg<T> producer) {
     this.producer = producer;
   }
 
-  public Object call() {
+  public T call() {
     if (!produced) {
       value = producer.call();
       produced = true;

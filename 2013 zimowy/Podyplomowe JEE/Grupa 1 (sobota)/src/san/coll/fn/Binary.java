@@ -1,7 +1,7 @@
 package san.coll.fn;
 
-public interface Binary {
+public interface Binary<R, S, T> {
 
-  Object call(Object lhs, Object rhs);
+  R call(S lhs, T rhs);
   
 }

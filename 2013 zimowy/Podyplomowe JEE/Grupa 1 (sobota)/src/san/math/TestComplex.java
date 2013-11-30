@@ -1,7 +1,5 @@
 package san.math;
 
-import static org.junit.Assert.*;
-
 import org.junit.Test;
 
 public class TestComplex {
@@ -16,6 +14,7 @@ public class TestComplex {
     Complex<Complex<Double>> re = null; // = ...
     Complex<Complex<Double>> im = null; // = ...
     
+    @SuppressWarnings("unused")
     Complex<Complex<Complex<Double>>> a = Complex.carthesian(re, im);
 
     z.add(c);

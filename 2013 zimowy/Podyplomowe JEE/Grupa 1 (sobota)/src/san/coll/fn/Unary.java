@@ -1,7 +1,7 @@
 package san.coll.fn;
 
-public interface Unary {
+public interface Unary<R, S> {
 
-  Object call(Object param);
+  R call(S param);
   
 }

@@ -1,4 +1,4 @@
-package san.lext03;
+package san.jee.lect03;
 
 public class TestBox {
 

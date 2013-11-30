@@ -1,4 +1,4 @@
-package san.lext03;
+package san.jee.lect03;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -49,6 +49,7 @@ public class TestCollections {
       destination.add(element);
     }
 
+    @SuppressWarnings("unused")
     T obj = creator.call();
   }
 

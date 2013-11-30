@@ -7,6 +7,7 @@ public class TestPoli {
   }
   
   public static void main(final String[] args) {
+    @SuppressWarnings("unused")
     T obj = T.create();
     bar(new S(null));
 

@@ -2,41 +2,38 @@ package san.coll;
 
 import san.coll.fn.NoArg;
 import san.coll.fn.Delay;
-import san.coll.fn.Unary;
 
-public class LazySeq implements ISeq {
+public class LazySeq<T> implements ISeq<T> {
 
-  public static ISeq create(Object first, NoArg producer) {
-    return new LazySeq(first, Delay.create(producer));
+  @SuppressWarnings("unchecked")
+  public static <S> ISeq<S> create(S first, NoArg<ISeq<S>> producer) {
+    return new LazySeq<S>(first, Delay.create(producer));
   }
 
-  private final Object first;
+  private final T first;
 
-  private final Delay promise;
+  private final Delay<ISeq<T>> promise;
 
-  private LazySeq(Object first, Delay promise) {
+  private LazySeq(T first, Delay<ISeq<T>> promise) {
     this.first = first;
     this.promise = promise;
   }
 
   @Override
-  public Object first() {
+  public T first() {
     return this.first;
   }
 
   @Override
-  public ISeq rest() {
-    return (ISeq) promise.call();
+  public ISeq<T> rest() {
+    return promise.call();
   }
 
   @Override
-  public ISeq cons(Object obj) {
-    @SuppressWarnings("unused")
-    int x;
-    
-    return create(obj, new NoArg() {
+  public ISeq<T> cons(T obj) {
+    return create(obj, new NoArg<ISeq<T>>() {
       @Override
-      public Object call() {
+      public ISeq<T> call() {
         return LazySeq.this;
       }
     });
@@ -53,7 +50,7 @@ public class LazySeq implements ISeq {
   }
 
   @Override
-  public ISeq interpose(Object separator) {
+  public ISeq<T> interpose(T separator) {
     return Utils.interpose(separator, this);
   }
 
