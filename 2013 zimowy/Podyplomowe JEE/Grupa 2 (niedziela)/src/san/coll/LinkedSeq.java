@@ -1,10 +1,12 @@
 package san.coll;
 
+import java.util.Iterator;
+
 public final class LinkedSeq implements ISeq {
 
   public static ISeq create(Object... elements) {
     ISeq result = ISeq.NULL;
-    for(int i = elements.length - 1; i != -1; i--) {
+    for (int i = elements.length - 1; i != -1; i--) {
       result = result.cons(elements[i]);
     }
 
@@ -26,6 +28,11 @@ public final class LinkedSeq implements ISeq {
     return new LinkedSeq(obj, this);
   }
 
+  @Override
+  public Iterator iterator() {
+    return Utils.iterator(this);
+  }
+
   private final Object first;
 
   private final ISeq rest;
@@ -40,5 +47,4 @@ public final class LinkedSeq implements ISeq {
     return Utils.toString(this);
   }
 
-  
 }

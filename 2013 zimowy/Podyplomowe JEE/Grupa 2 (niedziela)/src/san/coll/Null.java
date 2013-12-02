@@ -1,5 +1,7 @@
 package san.coll;
 
+import java.util.Iterator;
+
 class Null implements ISeq {
 
   static final Null INSTANCE = new Null();
@@ -24,6 +26,11 @@ class Null implements ISeq {
     return "()";
   }
 
+  @Override
+  public Iterator iterator() {
+    return Utils.iterator(this);
+  }
+  
   private Null() {
     ;
   }

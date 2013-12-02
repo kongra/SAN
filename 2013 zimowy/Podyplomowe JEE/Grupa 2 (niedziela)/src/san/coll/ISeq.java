@@ -1,6 +1,6 @@
 package san.coll;
 
-public interface ISeq {
+public interface ISeq extends Iterable {
 
   final ISeq NULL = Null.INSTANCE;
 

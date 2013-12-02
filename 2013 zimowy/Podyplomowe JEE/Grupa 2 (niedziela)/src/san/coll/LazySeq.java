@@ -1,5 +1,7 @@
 package san.coll;
 
+import java.util.Iterator;
+
 import san.fn.Delay;
 import san.fn.Nullary;
 
@@ -27,6 +29,11 @@ public class LazySeq implements ISeq {
   @Override
   public String toString() {
     return Utils.toString(this);
+  }
+  
+  @Override
+  public Iterator iterator() {
+    return Utils.iterator(this);
   }
 
   private final Object first;

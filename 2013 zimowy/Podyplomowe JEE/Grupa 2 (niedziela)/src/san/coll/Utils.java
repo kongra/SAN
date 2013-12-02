@@ -1,5 +1,7 @@
 package san.coll;
 
+import java.util.Iterator;
+
 import san.fn.Binary;
 import san.fn.Nullary;
 import san.fn.UnaryBody;
@@ -18,12 +20,16 @@ public class Utils {
     // }
     // }
 
-    doseq(coll, new UnaryBody() {
-      @Override
-      public void run(Object element) {
-        result.append(element);
-      }
-    });
+//    doseq(coll, new UnaryBody() {
+//      @Override
+//      public void run(Object element) {
+//        result.append(element);
+//      }
+//    });
+    
+    for (Object element : coll) {
+      result.append(element);
+    }
 
     return result.append(")").toString();
   }
@@ -65,8 +71,8 @@ public class Utils {
     return reduce(f, coll.first(), coll.rest());
   }
 
-  public static Object reduce(Binary f, Object start, ISeq coll) {
-    Object result = start;
+  public static Object reduce(Binary f, Object initially, ISeq coll) {
+    Object result = initially;
     ISeq s = coll;
     while (s != ISeq.NULL) {
       result = f.call(result, s.first());
@@ -75,6 +81,10 @@ public class Utils {
     return result;
   }
 
+  public static Iterator iterator(ISeq coll) {
+    return new ISeqIterator(coll);
+  }
+  
   public static ISeq naturals() {
     return integersAscending(0);
   }

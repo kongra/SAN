@@ -1,5 +1,7 @@
 package san.lect02;
 
+import java.util.Iterator;
+
 import san.coll.ISeq;
 import san.coll.Utils;
 import san.fn.Binary;
@@ -13,7 +15,11 @@ public class Lect02 {
     // test02();
 
     ISeq n = Utils.naturals();
-    System.out.println(Utils.reduce(Binary.LONG_ADD, Utils.take(10, n)));
+    // System.out.println(Utils.reduce(Binary.LONG_ADD, Utils.take(10, n)));
+    for (Object object : Utils.take(10, n)) {
+      System.out.println(object);
+    }
+    
   }
 
   private static void test02() {
