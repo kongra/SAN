@@ -14,7 +14,7 @@ public class Test01 {
     return Test01.running;
   }
 
-  private static final Object starter = new Object();
+  static final Object starter = new Object();
 
   static class MyTask implements Runnable {
     @Override

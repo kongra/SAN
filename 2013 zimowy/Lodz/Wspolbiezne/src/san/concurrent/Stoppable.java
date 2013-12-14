@@ -6,12 +6,12 @@ public abstract class Stoppable implements Runnable {
 
   private final AtomicBoolean stopped = new AtomicBoolean(false);
 
-  public void stop() {
-    this.stopped.set(true);
+  public boolean isStopped() {
+    return stopped.get();
   }
 
-  public boolean isStopped() {
-    return this.stopped.get();
+  public void stop() {
+    stopped.set(true);
   }
 
 }
