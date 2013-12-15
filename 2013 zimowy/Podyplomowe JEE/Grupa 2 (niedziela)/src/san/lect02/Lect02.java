@@ -1,10 +1,7 @@
 package san.lect02;
 
-import java.util.Iterator;
-
 import san.coll.ISeq;
 import san.coll.Utils;
-import san.fn.Binary;
 import san.fn.Delay;
 import san.fn.Nullary;
 
