@@ -5,7 +5,7 @@ import java.util.List;
 
 public class Doclean {
 
-  public static final DynVar<Doclean> context = DynVar.initially(null);
+  private static final DynVar<Doclean> context = DynVar.initially(null);
 
   /**
    * Runs the body of code wihin a new established cleanup context. Cleans the
@@ -51,7 +51,7 @@ public class Doclean {
     bodies.add(0, cleanupBody);
   }
 
-  private List<Runnable> bodies = new LinkedList<Runnable>();
+  private final List<Runnable> bodies = new LinkedList<Runnable>();
 
   private Doclean() {
     ;

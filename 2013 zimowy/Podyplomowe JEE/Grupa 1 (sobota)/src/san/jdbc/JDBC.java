@@ -6,6 +6,8 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Savepoint;
 import java.sql.Statement;
+import java.util.Iterator;
+import java.util.NoSuchElementException;
 
 import javax.sql.DataSource;
 
@@ -25,8 +27,8 @@ public class JDBC {
   public static void withConnection(String url, String user, String pass,
       Runnable body) {
     try {
-      withConnection(Doclean.assertDoclean(), DriverManager.getConnection(url,
-        user, pass), body);
+      withConnection(Doclean.assertDoclean(),
+        DriverManager.getConnection(url, user, pass), body);
     }
     catch (SQLException e) {
       throw new RuntimeException(e);
@@ -126,6 +128,69 @@ public class JDBC {
       return stepsCount.value;
     }
     catch (SQLException e) {
+      throw new RuntimeException(e);
+    }
+  }
+
+  public static Iterator<ResultSet> resultSetIterator(String query) {
+    Doclean doclean = Doclean.assertDoclean();
+    try {
+      final ResultSet rs = createStatement().executeQuery(query);
+
+      doclean.register(new Runnable() {
+        @Override
+        public void run() {
+          try {
+            rs.close();
+          }
+          catch (SQLException e) {
+            throw new RuntimeException(e);
+          }
+        }
+      });
+
+      return new Iterator<ResultSet>() {
+
+        private boolean prefetched;
+
+        private boolean ended;
+
+        @Override
+        public boolean hasNext() {
+          if (prefetched) {
+            return !ended;
+          }
+          ended = nextStep();
+          prefetched = true;
+          return !ended;
+        }
+
+        private boolean nextStep() {
+          try {
+            return !rs.next();
+          }
+          catch (SQLException e) {
+            throw new RuntimeException(e);
+          }
+        }
+
+        @Override
+        public ResultSet next() {
+          if (!hasNext()) {
+            throw new NoSuchElementException();
+          }
+          prefetched = false;
+          return rs;
+        }
+
+        @Override
+        public void remove() {
+          throw new UnsupportedOperationException();
+        }
+
+      };
+    }
+    catch (SQLException | RuntimeException e) {
       throw new RuntimeException(e);
     }
   }
@@ -281,9 +346,9 @@ public class JDBC {
     pool = new PGPoolingDataSource();
     pool.setDataSourceName("A Data Source");
     pool.setServerName("localhost");
-    pool.setDatabaseName("MAAS");
-    pool.setUser("scott");
-    pool.setPassword("tiger");
+    pool.setDatabaseName("JEE1");
+    pool.setUser("jee1");
+    pool.setPassword("jee1");
     pool.setMaxConnections(10);
 
     Runtime.getRuntime().addShutdownHook(new Thread() {

@@ -12,15 +12,15 @@ public class DynVar<T> {
     return new DynVar<S>(null);
   }
 
-  @SuppressWarnings("unchecked")
   public T value() {
-    Stack<Object> stack = localStacks.get();
-    return !stack.isEmpty() ? (T) stack.peek() : initialValue;
+    Stack<T> stack = localStacks.get();
+    return !stack.isEmpty() ? stack.peek() : initialValue;
   }
 
   public void binding(T value, Runnable body) {
-    Stack<Object> stack = localStacks.get();
+    Stack<T> stack = localStacks.get();
     stack.push(value);
+
     try {
       body.run();
     }
@@ -29,11 +29,11 @@ public class DynVar<T> {
     }
   }
 
-  private final ThreadLocal<Stack<Object>> localStacks =
-      new ThreadLocal<Stack<Object>>() {
+  private final ThreadLocal<Stack<T>> localStacks =
+      new ThreadLocal<Stack<T>>() {
         @Override
-        protected Stack<Object> initialValue() {
-          return new Stack<Object>();
+        protected Stack<T> initialValue() {
+          return new Stack<T>();
         }
       };
 
