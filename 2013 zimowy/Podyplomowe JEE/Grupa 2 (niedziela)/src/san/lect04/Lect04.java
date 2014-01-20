@@ -1,8 +1,5 @@
 package san.lect04;
 
-import java.util.ArrayList;
-import java.util.List;
-
 public class Lect04 {
 
   static void foo() {

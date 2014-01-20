@@ -6,10 +6,8 @@ public class Delay<T> {
     return new Delay<S>(producer);
   }
 
-  private final NoArg<T> producer;
+  private NoArg<T> producer;
 
-  private boolean produced;
-  
   private T value;
 
   private Delay(NoArg<T> producer) {
@@ -17,11 +15,19 @@ public class Delay<T> {
   }
 
   public T call() {
-    if (!produced) {
-      value = producer.call();
-      produced = true;
+    synchronized (this) {
+      if (producer == null) {
+        return value;
+      }
     }
-    return value;
+
+    T val = producer.call();
+    
+    synchronized (this) {
+      value = val;
+      producer = null;
+      return value;
+    }
   }
 
 }

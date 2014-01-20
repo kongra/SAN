@@ -8,7 +8,7 @@ public class Delay<T> {
     return new Delay<>(provider);
   }
 
-  public T deref() {
+  public synchronized T deref() {
     if (pending) {
       value = provider.call();
       pending = false;
