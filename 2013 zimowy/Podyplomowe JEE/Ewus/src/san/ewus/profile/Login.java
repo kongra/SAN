@@ -2,7 +2,6 @@ package san.ewus.profile;
 
 import java.io.IOException;
 
-import javax.annotation.Resource;
 import javax.inject.Inject;
 import javax.inject.Named;
 import javax.servlet.ServletException;
@@ -20,7 +19,6 @@ public final class Login extends HttpServlet {
 
   private static final long serialVersionUID = 1L;
 
-  // @Resource(name = "jdbc/JEE1")
   @Inject @Named("java:comp/env/jdbc/JEE1")
   private DataSource dataSource;
 
