@@ -7,14 +7,12 @@ import java.util.List;
 import javax.persistence.Access;
 import javax.persistence.AccessType;
 import javax.persistence.Basic;
-import javax.persistence.EmbeddedId;
 import javax.persistence.Entity;
 import javax.persistence.EnumType;
 import javax.persistence.Enumerated;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.IdClass;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.SequenceGenerator;
@@ -24,14 +22,9 @@ import javax.persistence.Transient;
 @Entity
 @Table(name = "EMPLOYEES")
 @Access(AccessType.FIELD)
-@IdClass(EmpID.class)
 public class Employee implements Serializable {
 
   // @Id
-  // @GeneratedValue(strategy = GenerationType.SEQUENCE, generator =
-  // "EMPLOYEE_ID_GEN")
-  // @SequenceGenerator(name = "EMPLOYEE_ID_GEN", sequenceName =
-  // "EMPLOYEE_ID_SEQ")
   // @GeneratedValue(strategy = GenerationType.TABLE, generator =
   // "EMPLOYEE_ID_GEN")
   // @TableGenerator(name = "EMPLOYEE_ID_GEN", table = "SEQUENCE_TABLE",
@@ -39,9 +32,8 @@ public class Employee implements Serializable {
   // private long id;
 
   @Id
-  private long deptId;
-
-  @Id
+  @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "EMPLOYEE_ID_GEN")
+  @SequenceGenerator(name = "EMPLOYEE_ID_GEN", sequenceName = "EMPLOYEE_ID_SEQ")
   private long id;
 
   private String firstName;
@@ -57,20 +49,8 @@ public class Employee implements Serializable {
   @OneToMany
   private List<Employee> managedEmployees;
 
-  public long getDeptId() {
-    return deptId;
-  }
-
-  public void setDeptId(long deptId) {
-    this.deptId = deptId;
-  }
-
   public long getId() {
     return id;
-  }
-
-  public void setId(long id) {
-    this.id = id;
   }
 
   public String getFirstName() {
