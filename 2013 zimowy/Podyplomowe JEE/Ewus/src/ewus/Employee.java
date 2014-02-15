@@ -2,24 +2,30 @@ package ewus;
 
 import java.io.Serializable;
 import java.math.BigDecimal;
-import java.util.List;
 
 import javax.persistence.Access;
 import javax.persistence.AccessType;
 import javax.persistence.Basic;
+import javax.persistence.DiscriminatorColumn;
+import javax.persistence.DiscriminatorValue;
 import javax.persistence.Entity;
 import javax.persistence.EnumType;
 import javax.persistence.Enumerated;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.Inheritance;
+import javax.persistence.InheritanceType;
 import javax.persistence.ManyToOne;
-import javax.persistence.OneToMany;
 import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 import javax.persistence.Transient;
 
 @Entity
+@Inheritance(strategy=InheritanceType.SINGLE_TABLE)
+ @DiscriminatorColumn(name="EMP_TYPE")
+ @DiscriminatorValue("E")
 @Table(name = "EMPLOYEES")
 @Access(AccessType.FIELD)
 public class Employee implements Serializable {
@@ -43,11 +49,8 @@ public class Employee implements Serializable {
   @Transient
   private Money salary;
 
-  @ManyToOne
-  private Employee manager;
-
-  @OneToMany
-  private List<Employee> managedEmployees;
+  @ManyToOne(fetch=FetchType.LAZY)
+  private Manager manager;
 
   public long getId() {
     return id;
@@ -69,25 +72,12 @@ public class Employee implements Serializable {
     this.lastName = lastName;
   }
 
-  public Employee getManager() {
+  public Manager getManager() {
     return manager;
   }
 
-  private void setManager(Employee manager) {
+  protected void setManager(Manager manager) {
     this.manager = manager;
-  }
-
-  public List<Employee> getManagedEmployees() {
-    return managedEmployees;
-  }
-
-  public void setManagedEmployees(List<Employee> managedEmployees) {
-    this.managedEmployees = managedEmployees;
-    for (Employee employee : managedEmployees) {
-      if (!this.equals(employee.getManager())) {
-        employee.setManager(this);
-      }
-    }
   }
 
   @Access(AccessType.PROPERTY)

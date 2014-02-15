@@ -14,7 +14,9 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import ewus.Currency;
+import ewus.Doctor;
 import ewus.Employee;
+import ewus.Manager;
 import ewus.Money;
 
 @WebServlet("/emp/AddEmp")
@@ -47,8 +49,18 @@ public class AddEmp extends HttpServlet {
     paniKowalska.setLastName("Kowalska");
     paniKowalska.setSalary(salary);
 
+    Manager manager = new Manager();
+    manager.setFirstName("Adam");
+    manager.setLastName("Nowak");
+    manager.setManagedEmployees(Arrays.asList(panKowalski, paniKowalska));
+    
+    Doctor doc = new Doctor();
+    doc.setFirstName("Michał");
+    doc.setLastName("Nowakowski");
+    doc.setSpec("Ginekologia");
+    
     // paniKowalska.setManager(panKowalski);
-    panKowalski.setManagedEmployees(Arrays.asList(paniKowalska));
+    // panKowalski.setManagedEmployees(Arrays.asList(paniKowalska));
 
     EntityManager em = null;
 
@@ -58,11 +70,14 @@ public class AddEmp extends HttpServlet {
 
       em.persist(panKowalski);
       em.persist(paniKowalska);
+      em.persist(manager);
+      em.persist(doc);
 
       em.flush();
 
-      Employee anna = em.find(Employee.class, paniKowalska.getId());
-      System.out.println("Anna zarabia " + anna.getSalary());
+//      Employee anna = em.find(Employee.class, paniKowalska.getId());
+//      System.out.println("Anna zarabia " + anna.getSalary());      
+//      Doctor lekarz = em.find(Doctor.class, doc.getId());
 
       em.getTransaction().commit();
     }
