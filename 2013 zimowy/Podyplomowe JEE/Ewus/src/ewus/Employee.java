@@ -2,12 +2,12 @@ package ewus;
 
 import java.io.Serializable;
 import java.math.BigDecimal;
+import java.util.Map;
 
 import javax.persistence.Access;
 import javax.persistence.AccessType;
 import javax.persistence.Basic;
-import javax.persistence.DiscriminatorColumn;
-import javax.persistence.DiscriminatorValue;
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.EnumType;
 import javax.persistence.Enumerated;
@@ -18,14 +18,17 @@ import javax.persistence.Id;
 import javax.persistence.Inheritance;
 import javax.persistence.InheritanceType;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
+import javax.persistence.OneToOne;
 import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 import javax.persistence.Transient;
+import javax.persistence.Version;
 
 @Entity
-@Inheritance(strategy=InheritanceType.SINGLE_TABLE)
- @DiscriminatorColumn(name="EMP_TYPE")
- @DiscriminatorValue("E")
+@Inheritance(strategy = InheritanceType.JOINED)
+// @DiscriminatorColumn(name="EMP_TYPE")
+// @DiscriminatorValue("E")
 @Table(name = "EMPLOYEES")
 @Access(AccessType.FIELD)
 public class Employee implements Serializable {
@@ -42,6 +45,9 @@ public class Employee implements Serializable {
   @SequenceGenerator(name = "EMPLOYEE_ID_GEN", sequenceName = "EMPLOYEE_ID_SEQ")
   private long id;
 
+  @Version
+  private long version;
+
   private String firstName;
 
   private String lastName;
@@ -49,11 +55,28 @@ public class Employee implements Serializable {
   @Transient
   private Money salary;
 
-  @ManyToOne(fetch=FetchType.LAZY)
+  @ManyToOne(fetch = FetchType.LAZY)
   private Manager manager;
+
+  @OneToOne(fetch = FetchType.LAZY, cascade = {
+      CascadeType.PERSIST, CascadeType.REMOVE, CascadeType.MERGE
+  })
+  private Address address;
+
+  // private | official | fax → Phone
+  @OneToMany(cascade={CascadeType.PERSIST, CascadeType.REMOVE})
+  private Map<String, Phone> phones;
 
   public long getId() {
     return id;
+  }
+
+  public long getVersion() {
+    return version;
+  }
+
+  public void setVersion(long version) {
+    this.version = version;
   }
 
   public String getFirstName() {
@@ -106,6 +129,22 @@ public class Employee implements Serializable {
 
   public void setSalary(Money salary) {
     this.salary = salary;
+  }
+
+  public Address getAddress() {
+    return address;
+  }
+
+  public void setAddress(Address address) {
+    this.address = address;
+  }
+
+  public Map<String, Phone> getPhones() {
+    return phones;
+  }
+
+  public void setPhones(Map<String, Phone> phones) {
+    this.phones = phones;
   }
 
   private static final long serialVersionUID = 1L;

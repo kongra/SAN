@@ -2,17 +2,18 @@ package ewus;
 
 import java.util.List;
 
-import javax.persistence.DiscriminatorValue;
 import javax.persistence.Entity;
 import javax.persistence.OneToMany;
+import javax.persistence.OrderBy;
 import javax.persistence.Table;
 
 @Entity
-@DiscriminatorValue("M")
-// @Table(name = "MANAGERS")
+// @DiscriminatorValue("M")
+@Table(name = "MANAGERS")
 public class Manager extends Employee {
 
   @OneToMany
+  @OrderBy("firstName")
   private List<Employee> managedEmployees;
   
   public List<Employee> getManagedEmployees() {

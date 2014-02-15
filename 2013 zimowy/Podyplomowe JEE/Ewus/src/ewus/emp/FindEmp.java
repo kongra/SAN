@@ -15,6 +15,7 @@ import javax.servlet.http.HttpServletResponse;
 
 import ewus.Doctor;
 import ewus.Employee;
+import ewus.Manager;
 
 @WebServlet("/emp/FindEmp")
 public class FindEmp extends HttpServlet {
@@ -38,7 +39,8 @@ public class FindEmp extends HttpServlet {
       em = emFactory.createEntityManager();
       em.getTransaction().begin();
       // ginsQuery(em, request, response);
-      empsQuery(em, request, response);
+      // empsQuery(em, request, response);
+      managerQuery(em);
       em.getTransaction().commit();
     }
     finally {
@@ -49,13 +51,33 @@ public class FindEmp extends HttpServlet {
 
   }
 
+  private void managerQuery(EntityManager em) {
+    Query query = em.createQuery("Select mgr from Manager mgr");
+    query.setMaxResults(1);
+    List<Manager> mgrs = query.getResultList();
+
+    Manager manager = mgrs.get(0);
+    System.out.println(manager.getId() + " " + manager.getFirstName() + " "
+        + manager.getLastName());
+
+    List<Employee> emps = manager.getManagedEmployees();
+    System.out.println(emps.getClass());
+    
+    for (Employee emp : emps) {
+      System.out.println(emp.getId() + " " + emp.getFirstName() + " "
+          + emp.getLastName());
+    }
+
+  }
+
   private void empsQuery(EntityManager em, HttpServletRequest request,
       HttpServletResponse response) {
 
-    Query query = em.createQuery("Select emp from Employee emp where "
-        + "emp.firstName = :firstName");
+    Query query =
+        em.createQuery("Select emp from Employee emp where "
+            + "emp.firstName = :firstName");
     query.setParameter("firstName", "Anna");
-    
+
     @SuppressWarnings("unchecked")
     List<Employee> emps = query.getResultList();
     for (Employee emp : emps) {
