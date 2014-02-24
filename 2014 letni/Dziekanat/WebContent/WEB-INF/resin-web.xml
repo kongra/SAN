@@ -1,0 +1,12 @@
+<web-app xmlns="http://caucho.com/ns/resin">
+
+  <database jndi-name="java:comp/env/jdbc/SAN">
+    <driver type="org.postgresql.Driver">
+      <url>jdbc:postgresql://localhost/SAN</url>
+      <user>san</user>
+      <password>san</password>
+    </driver>
+    <max-connections>50</max-connections>
+  </database>
+  
+</web-app>
