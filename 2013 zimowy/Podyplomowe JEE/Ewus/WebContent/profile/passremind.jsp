@@ -8,10 +8,9 @@
 </head>
 <body>
 
-<form method="POST" action="./Login">
+<form method="POST" action="./Passremind">
   Login:&nbsp;<input type="text" name="login" value=""/><br>
-  Hasło:&nbsp;<input type="password" name="password" value=""/><br>
-  <input type="submit" value="Loguj się"/>
+  <input type="submit" value="Przypomnij hasło"/>
 </form>
 
 </body>

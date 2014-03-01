@@ -26,5 +26,6 @@
 	<classpathentry kind="lib" path="WebContent/WEB-INF/lib/javassist-3.18.1-GA.jar"/>
 	<classpathentry kind="lib" path="WebContent/WEB-INF/lib/jboss-logging-3.1.0.GA.jar"/>
 	<classpathentry kind="lib" path="WebContent/WEB-INF/lib/jboss-transaction-api_1.1_spec-1.0.1.Final.jar"/>
+	<classpathentry kind="lib" path="WebContent/WEB-INF/lib/commons-lang3-3.2.1.jar" sourcepath="/home/kongra/Devel/Libs/commons-lang3-3.2.1/commons-lang3-3.2.1-sources.jar"/>
 	<classpathentry kind="output" path="build/classes"/>
 </classpath>
