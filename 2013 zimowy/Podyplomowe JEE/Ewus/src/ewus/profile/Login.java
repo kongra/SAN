@@ -15,7 +15,13 @@ import org.apache.commons.lang3.StringUtils;
 public class Login extends HttpServlet {
 
   @EJB
-  private RemoteProfileTools profileTools;
+  private ProfileTools profileTools;
+
+  @EJB
+  private Counter counter;
+
+  @EJB
+  private GlobalCache cache;
 
   public Login() {
     super();
@@ -24,6 +30,15 @@ public class Login extends HttpServlet {
   @Override
   protected void doPost(HttpServletRequest request, HttpServletResponse response)
       throws ServletException, IOException {
+
+    long count = counter.incrementAndGet();
+    System.out.println("Count: " + count);
+    System.out.println("W keszu: " + cache.get("count", 0));
+    cache.put("count", count);
+
+    if (count == 3) {
+      counter.remove();
+    }
 
     String login = request.getParameter("login");
     String password = request.getParameter("password");

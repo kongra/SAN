@@ -17,7 +17,7 @@ import org.apache.commons.lang3.StringUtils;
 public class Passremind extends HttpServlet {
 
   @EJB
-  private RemoteProfileTools profileTools;
+  private ProfileTools profileTools;
 
   public Passremind() {
     super();
