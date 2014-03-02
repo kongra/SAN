@@ -10,5 +10,8 @@
 
 <h1>Witamy w sklepie internetowym Eshop!!!</h1>
 
+<a href="profile/loginform.jsp">Zaloguj się</a><br/>
+<a href="profile/register.jsp">Zarejestruj się</a><br/>
+
 </body>
 </html>

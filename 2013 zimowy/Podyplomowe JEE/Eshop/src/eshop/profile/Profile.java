@@ -2,12 +2,32 @@ package eshop.profile;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.NamedQuery;
+import javax.persistence.SequenceGenerator;
+import javax.persistence.Table;
+import javax.persistence.TableGenerator;
 
 @Entity
+@Table(name = "PROFILES")
+@NamedQuery(name="findProfileByLogin", query="Select p from Profile p where p.login = :login")
 public class Profile {
 
+  // @Id
+  // @GeneratedValue(strategy = GenerationType.TABLE, generator =
+  // "PROFILES_ID_TAB")
+  // @TableGenerator(name = "PROFILES_ID_TAB", table = "SEQUENCE_TABLE",
+  // pkColumnName = "SEQ_NAME", valueColumnName = "COUNT",
+  // pkColumnValue = "PROFILES_ID_TAB", allocationSize = 100)
+
+  // @Id
+  // @GeneratedValue(strategy=GenerationType.IDENTITY)
+
   @Id
+  @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "PROFILES_SEQ")
+  @SequenceGenerator(name = "PROFILES_SEQ", allocationSize = 100, sequenceName = "PROFILES_SEQ")
   private long id;
 
   @Column(unique = true)
@@ -19,12 +39,8 @@ public class Profile {
 
   private String lastName;
 
-  public long getId() {
+  public long id() {
     return id;
-  }
-
-  public void setId(long id) {
-    this.id = id;
   }
 
   public String getLogin() {

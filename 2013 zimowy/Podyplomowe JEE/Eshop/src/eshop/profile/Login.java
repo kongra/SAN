@@ -2,7 +2,6 @@ package eshop.profile;
 
 import java.io.IOException;
 
-import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.PersistenceUnit;
 import javax.servlet.ServletException;
@@ -36,31 +35,6 @@ public class Login extends HttpServlet {
     }
     
     System.out.println("Tworzymy profil ...");
-    
-    Profile user = new Profile();
-    user.setId(1);
-    user.setLogin("adam");
-    user.setPassword("12345");
-    user.setFirstName("Adam");
-    user.setLastName("Kowalski");
-    
-    EntityManager em = null;
-    try {
-      em = emFactory.createEntityManager();
-      em.getTransaction().begin();
-      
-      em.persist(user);
-      
-      em.getTransaction().commit();
-    }
-    catch(Throwable t) {
-      t.printStackTrace(System.err);
-    }
-    finally {
-      if(em != null) {
-        em.close();
-      }
-    }
     
     response.sendRedirect("../");
   }
