@@ -1,6 +1,8 @@
 package eshop.profile;
 
 import java.io.IOException;
+import java.util.Arrays;
+import java.util.HashSet;
 
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
@@ -39,6 +41,8 @@ public class Register extends HttpServlet {
     }
 
     EntityManager em = null;
+    boolean wasRolledBack = false;
+
     try {
       em = emFactory.createEntityManager();
       em.getTransaction().begin();
@@ -47,27 +51,45 @@ public class Register extends HttpServlet {
       Profile profile = ProfileTools.findProfile(em, login);
       if (profile != null) {
         System.out.println("Login już istnieje!!!");
+        // em.getTransaction().rollback();
         response.sendRedirect("./register.jsp");
         return;
       }
 
-      Profile user = new Profile();
+      Address address = new Address();
+      address.setStreet("Tokarzewskiego");
+      address.setCity("Łódź");
+      address.setCountry("Poland");
+      address.setNumber("2a");      
 
+      Profile user = new Profile();
       user.setLogin(login);
       user.setPassword(password);
       user.setFirstName(firstName);
       user.setLastName(lastName);
+      
+      user.setAddress(address);
+      address.setProfiles(new HashSet<>(Arrays.asList(user)));
+      
+      em.persist(address);
       em.persist(user);
-      
+
+      em.flush();
+
       System.out.println("Zarejestrowano użytkownika.");
-      
-      em.getTransaction().commit();
     }
-    catch (Throwable t) {
+    catch (RuntimeException t) {
       t.printStackTrace(System.err);
+      if (em != null) {
+        em.getTransaction().rollback();
+        wasRolledBack = true;
+      }
     }
     finally {
       if (em != null) {
+        if (!wasRolledBack) {
+          em.getTransaction().commit();
+        }
         em.close();
       }
     }
