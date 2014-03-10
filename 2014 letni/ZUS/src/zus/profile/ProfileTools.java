@@ -3,6 +3,8 @@ package zus.profile;
 import java.util.List;
 
 import javax.ejb.Stateless;
+import javax.ejb.TransactionAttribute;
+import javax.ejb.TransactionAttributeType;
 import javax.persistence.EntityManager;
 import javax.persistence.NoResultException;
 import javax.persistence.PersistenceContext;
@@ -14,6 +16,7 @@ public class ProfileTools {
   @PersistenceContext(unitName = "ZUS")
   private EntityManager em;
 
+  @TransactionAttribute(TransactionAttributeType.REQUIRED)
   public Profile findProfile(String login) {
     Query query = em.createNamedQuery("findProfileByLogin");
     query.setParameter("login", login);
@@ -53,7 +56,6 @@ public class ProfileTools {
     }
 
     Profile profile = new Profile();
-    profile.setId(1);
     profile.setLogin(login);
     profile.setPassword(password);
     profile.setFirstName(firstName);
