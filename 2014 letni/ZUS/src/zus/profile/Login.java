@@ -2,9 +2,7 @@ package zus.profile;
 
 import java.io.IOException;
 
-import javax.persistence.EntityManager;
-import javax.persistence.EntityManagerFactory;
-import javax.persistence.PersistenceUnit;
+import javax.ejb.EJB;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -16,8 +14,8 @@ import org.apache.commons.lang3.StringUtils;
 @WebServlet("/profile/Login")
 public class Login extends HttpServlet {
 
-  @PersistenceUnit(unitName = "ZUS")
-  private EntityManagerFactory emFactory;
+  @EJB
+  private ProfileTools profileTools;
 
   public Login() {
     super();
@@ -38,43 +36,14 @@ public class Login extends HttpServlet {
     login = StringUtils.trim(login);
     password = StringUtils.trim(password);
 
-    EntityManager em = null;
-    boolean rollBack = false;
-
-    try {
-      em = emFactory.createEntityManager();
-      em.getTransaction().begin();
-
-      Profile profile = ProfileTools.findProfile(em, login);
-      if (profile == null) {
-        response.sendRedirect("./login.jsp");
-        return;
-      }
-
-      if (!password.equals(profile.getPassword())) {
-        response.sendRedirect("./login.jsp");
-        return;
-      }
-
-      request.getSession().setAttribute(Profile.TAG, profile);
-      response.sendRedirect("../index.jsp");
+    Profile profile = profileTools.authenticate(login, password);
+    if (profile == null) {
+      response.sendRedirect("./login.jsp");
+      return;
     }
-    catch (RuntimeException e) {
-      rollBack = true;
-      e.printStackTrace(System.err);
-    }
-    finally {
-      if (em != null) {
-        if (rollBack) {
-          em.getTransaction().rollback();
-        }
-        else {
-          em.getTransaction().commit();
-        }
 
-        em.close();
-      }
-    }
+    request.getSession().setAttribute(Profile.TAG, profile);
+    response.sendRedirect("../index.jsp");
   }
 
   private static final long serialVersionUID = 1L;

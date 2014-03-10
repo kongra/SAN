@@ -2,13 +2,19 @@ package zus.profile;
 
 import java.util.List;
 
+import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
 import javax.persistence.NoResultException;
+import javax.persistence.PersistenceContext;
 import javax.persistence.Query;
 
+@Stateless
 public class ProfileTools {
 
-  public static Profile findProfile(EntityManager em, String login) {
+  @PersistenceContext(unitName = "ZUS")
+  private EntityManager em;
+
+  public Profile findProfile(String login) {
     Query query = em.createNamedQuery("findProfileByLogin");
     query.setParameter("login", login);
     List results = query.getResultList();
@@ -18,7 +24,7 @@ public class ProfileTools {
     return (Profile) results.get(0);
   }
 
-  public static Long findProfileId(EntityManager em, String login) {
+  public Long findProfileId(String login) {
     Query query = em.createNamedQuery("findProfileIdByLogin");
     query.setParameter("login", login);
 
@@ -28,6 +34,33 @@ public class ProfileTools {
     catch (NoResultException e) {
       return null;
     }
+  }
+
+  public Profile authenticate(String login, String password) {
+    Profile profile = findProfile(login);
+    if (profile != null && profile.getPassword().equals(password)) {
+      return profile;
+    }
+    return null;
+  }
+
+  public Profile register(String login, String password, String firstName,
+      String lastName) {
+
+    Long id = findProfileId(login);
+    if (id != null) {
+      return null;
+    }
+
+    Profile profile = new Profile();
+    profile.setId(1);
+    profile.setLogin(login);
+    profile.setPassword(password);
+    profile.setFirstName(firstName);
+    profile.setLastName(lastName);
+
+    em.persist(profile);
+    return profile;
   }
 
 }
