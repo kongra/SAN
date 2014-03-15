@@ -3,6 +3,8 @@ package ewus.profile;
 import java.util.HashMap;
 import java.util.Map;
 
+import javax.ejb.AccessTimeout;
+import javax.ejb.ConcurrentAccessTimeoutException;
 import javax.ejb.Lock;
 import javax.ejb.LockType;
 import javax.ejb.Singleton;
@@ -20,8 +22,10 @@ public class GlobalCache {
     return notFound;
   }
 
+  @AccessTimeout(2000)
   @Lock(LockType.WRITE)
-  public Object put(Object key, Object value) {
+  public Object put(Object key, Object value)
+      throws ConcurrentAccessTimeoutException {
     return cache.put(key, value);
   }
 

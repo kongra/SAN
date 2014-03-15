@@ -2,13 +2,17 @@ package ewus.profile;
 
 import java.util.concurrent.Future;
 
+import javax.annotation.PostConstruct;
+import javax.annotation.PreDestroy;
 import javax.annotation.Resource;
 import javax.ejb.AsyncResult;
 import javax.ejb.Asynchronous;
+import javax.ejb.EJB;
 import javax.ejb.SessionContext;
 import javax.ejb.Stateless;
 import javax.ejb.TransactionAttribute;
 import javax.ejb.TransactionAttributeType;
+import javax.interceptor.Interceptors;
 import javax.persistence.EntityManager;
 import javax.persistence.NoResultException;
 import javax.persistence.PersistenceContext;
@@ -23,6 +27,9 @@ public class ProfileTools {
 
   @Resource
   private SessionContext ctx;
+  
+  @EJB
+  private Newsletter newsletter;
 
   @TransactionAttribute(TransactionAttributeType.SUPPORTS)
   public Profile findProfile(String login) {
@@ -30,6 +37,9 @@ public class ProfileTools {
     query.setParameter("login", login);
 
     try {
+      newsletter.setup(14, 25, 15);
+      newsletter.newSetup(15);
+      
       return (Profile) query.getSingleResult();
     }
     catch (NoResultException | QueryTimeoutException e) {
@@ -41,6 +51,7 @@ public class ProfileTools {
     }
   }
 
+  @Interceptors(Println.class)
   @TransactionAttribute(TransactionAttributeType.SUPPORTS)
   public Profile findProfile(String login, String password) {
     Profile profile = findProfile(login);
@@ -87,5 +98,29 @@ public class ProfileTools {
 
     return new AsyncResult<Profile>(profile);
   }
+
+  @PostConstruct
+  private void postConstruct() {
+    System.out.println("postConstruct() dla ziarna " + this);
+  }
+
+  @PreDestroy
+  private void preDestroy() {
+    System.out.println("preDestroy() dla ziarna " + this);
+  }
+
+  // @AroundInvoke
+  // private Object println(InvocationContext ic) {
+  // System.out.println("Przed wywołaniem...");
+  // try {
+  // return ic.proceed();
+  // }
+  // catch (Exception e) {
+  // throw new RuntimeException(e);
+  // }
+  // finally {
+  // System.out.println("Po wywołaniu");
+  // }
+  // }
 
 }
