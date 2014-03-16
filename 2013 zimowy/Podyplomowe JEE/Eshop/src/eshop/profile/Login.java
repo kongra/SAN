@@ -2,8 +2,7 @@ package eshop.profile;
 
 import java.io.IOException;
 
-import javax.persistence.EntityManagerFactory;
-import javax.persistence.PersistenceUnit;
+import javax.ejb.EJB;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -14,9 +13,9 @@ import org.apache.commons.lang3.StringUtils;
 
 @WebServlet("/profile/Login")
 public class Login extends HttpServlet {
-  
-  @PersistenceUnit(unitName="Eshop")
-  private EntityManagerFactory emFactory;
+
+  @EJB
+  private ProfileTools profileTools;
 
   public Login() {
     super();
@@ -25,18 +24,23 @@ public class Login extends HttpServlet {
   @Override
   protected void doPost(HttpServletRequest request, HttpServletResponse response)
       throws ServletException, IOException {
-    
+
     String login = request.getParameter("login");
     String password = request.getParameter("password");
-    
-    if(StringUtils.isBlank(login) || StringUtils.isBlank(password)) {
+
+    if (StringUtils.isBlank(login) || StringUtils.isBlank(password)) {
       response.sendRedirect("./loginform.jsp");
       return;
     }
-    
-    System.out.println("Tworzymy profil ...");
-    
-    response.sendRedirect("../");
+
+    Profile profile = profileTools.authenticate(login, password);
+    if (null == profile) {
+      response.sendRedirect("./loginform.jsp");
+      return;
+    }
+
+    request.getSession().setAttribute(Profile.TAG, profile);
+    response.sendRedirect("../index.jsp");
   }
 
   private static final long serialVersionUID = 1L;

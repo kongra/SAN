@@ -6,10 +6,13 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinTable;
 import javax.persistence.OneToMany;
 import javax.persistence.SequenceGenerator;
+import javax.persistence.Table;
 
 @Entity
+@Table(name="ADDRESSES")
 public class Address {
 
   @Id
@@ -28,7 +31,12 @@ public class Address {
   private String country;
 
   @OneToMany
-  private Set<Profile> profiles;
+  @JoinTable(name = "ADDRESSES_B2BS")
+  private Set<B2B> b2bs;
+
+  @OneToMany
+  @JoinTable(name = "ADDRESSES_B2CS")
+  private Set<B2C> b2cs;
 
   public long id() {
     return id;
@@ -74,12 +82,20 @@ public class Address {
     this.country = country;
   }
 
-  public Set<Profile> getProfiles() {
-    return profiles;
+  public Set<B2B> getB2bs() {
+    return b2bs;
   }
 
-  public void setProfiles(Set<Profile> profiles) {
-    this.profiles = profiles;
+  public void setB2bs(Set<B2B> b2bs) {
+    this.b2bs = b2bs;
+  }
+
+  public Set<B2C> getB2cs() {
+    return b2cs;
+  }
+
+  public void setB2cs(Set<B2C> b2cs) {
+    this.b2cs = b2cs;
   }
 
 }
