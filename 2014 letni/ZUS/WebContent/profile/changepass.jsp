@@ -1,4 +1,3 @@
-<%@page import="zus.profile.Profile"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 
@@ -8,24 +7,20 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>Insert title here</title>
+<title>Zmień hasło</title>
 </head>
 <body>
 
-	<h1>Witaj w ZUS-ie !!!</h1>
-	Masz takie możliwości:
-	<br />
-
 	<c:choose>
 		<c:when test="${!empty sessionScope.PROFILE}">
-			<a href="./profile/Logout">Wyloguj się</a>
-			<br />
-			<a href="./profile/changepass.jsp">Zmień hasło</a>
+			<form method="post" action="./ChangePassword">
+				Stare hasło:<input type="password" name="oldPassword"><br />
+				Nowe hasło: <input type="password" name="newPassword"><br />
+				<input type="submit" value="Zmień hasło" />
+			</form>
 		</c:when>
 		<c:otherwise>
-			<a href="./profile/login.jsp">Loguj się</a>
-			<br />
-			<a href="./profile/register.jsp">Załóż nowe konto</a>
+			<h1>Aby zmienić hasło musisz się zalogować.</h1>
 		</c:otherwise>
 	</c:choose>
 

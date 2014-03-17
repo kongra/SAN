@@ -7,6 +7,7 @@ import javax.ejb.TransactionAttribute;
 import javax.ejb.TransactionAttributeType;
 import javax.persistence.EntityManager;
 import javax.persistence.NoResultException;
+import javax.persistence.OptimisticLockException;
 import javax.persistence.PersistenceContext;
 import javax.persistence.Query;
 
@@ -47,22 +48,42 @@ public class ProfileTools {
     return null;
   }
 
-  public Profile register(String login, String password, String firstName,
-      String lastName) {
+  public Person register(String login, String password, String firstName,
+      String lastName, Gender gender) {
 
     Long id = findProfileId(login);
     if (id != null) {
       return null;
     }
 
-    Profile profile = new Profile();
-    profile.setLogin(login);
-    profile.setPassword(password);
-    profile.setFirstName(firstName);
-    profile.setLastName(lastName);
+    Person person = new Person();
+    person.setLogin(login);
+    person.setPassword(password);
+    person.setFirstName(firstName);
+    person.setLastName(lastName);
+    person.setGender(gender);
 
-    em.persist(profile);
-    return profile;
+    em.persist(person);
+    return person;
   }
 
+  public Profile changePassword(Profile profile, String oldPassword,
+      String newPassword) {
+
+    try {
+      profile = em.merge(profile);
+    }
+    catch (OptimisticLockException e) {
+      System.out
+          .println("Błąd optimistycznego blokowania, nie mogę kontynuować");
+      return null;
+    }
+
+    if (!profile.getPassword().equals(oldPassword)) {
+      return null;
+    }
+
+    profile.setPassword(newPassword);
+    return profile;
+  }
 }

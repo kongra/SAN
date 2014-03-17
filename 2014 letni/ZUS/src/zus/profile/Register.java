@@ -40,7 +40,7 @@ public class Register extends HttpServlet {
     String lastName = StringUtils.trim(request.getParameter("lastName"));
 
     Profile profile =
-        profileTools.register(login, password, firstName, lastName);
+        profileTools.register(login, password, firstName, lastName, Gender.MALE);
     
     if (profile == null) {
       response.sendRedirect("./register.jsp");
