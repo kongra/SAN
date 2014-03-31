@@ -12,6 +12,7 @@ import javax.persistence.ManyToOne;
 import javax.persistence.NamedQuery;
 import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
+import javax.persistence.Version;
 
 @Entity
 @Table(name = "PROFILES")
@@ -19,11 +20,16 @@ import javax.persistence.Table;
 @DiscriminatorColumn(name = "PROFILE_TYPE")
 @NamedQuery(name = "findProfileByLogin", query = "Select p from Profile p where p.login = :login")
 public class Profile {
+  
+  public static final String TAG = "profile";
 
   @Id
   @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "PROFILE_ID_GEN")
   @SequenceGenerator(name = "PROFILE_ID_GEN", sequenceName = "PROFILES_ID_SEQ", allocationSize = 100)
   private long id;
+  
+  @Version
+  private long version;
 
   @Column(unique = true, nullable = false)
   private String login;

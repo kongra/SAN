@@ -11,13 +11,15 @@ import javax.servlet.http.HttpServletResponse;
 
 import org.apache.commons.lang3.StringUtils;
 
-@WebServlet("/profile/Register")
-public class Register extends HttpServlet {
+@WebServlet("/profile/Login")
+public class Login extends HttpServlet {
+
+  private static final long serialVersionUID = 1L;
 
   @EJB
   private ProfileTools profileTools;
 
-  public Register() {
+  public Login() {
     super();
   }
 
@@ -29,22 +31,18 @@ public class Register extends HttpServlet {
     String password = request.getParameter("password");
 
     if (StringUtils.isBlank(login) || StringUtils.isBlank(password)) {
-      response.sendRedirect("./register.jsp");
+      response.sendRedirect("./login.jsp");
       return;
     }
 
-    String firstName = request.getParameter("firstName");
-    String lastName = request.getParameter("lastName");
-    
-    Profile profile = profileTools.register(login, password, firstName, lastName);
-    if(profile == null) {
-      response.sendRedirect("./register.jsp");
+    Profile profile = profileTools.authenticate(login, password);
+    if (profile == null) {
+      response.sendRedirect("./login.jsp");
       return;
     }
-    
+
     request.getSession().setAttribute(Profile.TAG, profile);
     response.sendRedirect("../index.jsp");
   }
 
-  private static final long serialVersionUID = 1L;
 }

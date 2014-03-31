@@ -5,9 +5,15 @@ import java.util.HashSet;
 
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
+import javax.persistence.OptimisticLockException;
 import javax.persistence.PersistenceContext;
 import javax.persistence.Query;
+import javax.servlet.http.HttpSession;
 
+import org.joda.time.DateTime;
+
+import eshop.currencies.Currency;
+import eshop.currencies.Money;
 import eshop.utils.Coll;
 
 @Stateless
@@ -32,6 +38,8 @@ public class ProfileTools {
 
     user.setAddress(address);
     address.setB2cs(new HashSet<>(Arrays.asList(user)));
+
+    updateRecentLogTime(user);
 
     em.persist(address);
     em.persist(user);
@@ -60,23 +68,55 @@ public class ProfileTools {
     }
 
     if (profile.getPassword().equals(password)) {
+      updateRecentLogTime(profile);
+      
+      Money recentSalary = profile.getSalary();
+      Money newSalary;
+      if(recentSalary == null) {
+        newSalary = Money.of(100, Currency.PLN);
+      }
+      else {
+        System.out.println("recentSalary " + recentSalary);
+        newSalary = Money.of(100, Currency.PLN).add(recentSalary);
+      }
+      profile.setSalary(newSalary);
+      
       return profile;
     }
     return null;
   }
 
-  public Profile changePassword(Profile profile, String oldPassword,
-      String newPassword) {
-    
-    profile = em.merge(profile);
-    
+  public static void updateRecentLogTime(Profile profile) {
+    profile.setRecentLogTime(DateTime.now());
+  }
+
+  public OpResult changePassword(HttpSession session, Profile profile,
+      String oldPassword, String newPassword) {
+
+    profile = mergeProfile(session, profile);
+    if (profile == null) {
+      return OpResult.lockLogout();
+    }
+
     if (!profile.getPassword().equals(oldPassword)) {
       System.out.println("Niezgodność oldPass i profile.pass");
-      return null;
+      return OpResult.error(profile);
     }
     profile.setPassword(newPassword);
 
     System.out.println("Hasło zmienione");
+    return OpResult.ok(profile);
+  }
+
+  public Profile mergeProfile(HttpSession session, Profile profile) {
+    try {
+      profile = em.merge(profile);
+    }
+    catch (OptimisticLockException ole) {
+      Logout.logout(session);
+      System.err.println(ole);
+      return null;
+    }
     return profile;
   }
 

@@ -1,12 +1,20 @@
-<web-app xmlns="http://caucho.com/ns/resin">
+<web-app xmlns="http://caucho.com/ns/resin"
+         xmlns:ee="urn:java:ee" 
+         xmlns:resin="urn:java:com.caucho.resin"
+         xmlns:jms="urn:java:com.caucho.jms"
+	       xmlns:jms-res="urn:java:com.caucho.jms.resource">
 
-  <database jndi-name="java:comp/env/jdbc/JEE1">
-    <driver type="org.postgresql.Driver">
-      <url>jdbc:postgresql://localhost/JEE1</url>
-      <user>jee1</user>
-      <password>jee1</password>
-    </driver>
-    <max-connections>50</max-connections>
-  </database>
-  
+	<database jndi-name="java:comp/env/jdbc/JEE1">
+		<driver type="org.postgresql.Driver">
+			<url>jdbc:postgresql://localhost/JEE1</url>
+			<user>jee1</user>
+			<password>jee1</password>
+		</driver>
+		<max-connections>50</max-connections>
+	</database>
+
+   <jms-connection-factory uri="resin:" />
+   <jms-topic name="temacik" uri="memory:" />
+   <jms-queue name="kolejeczka" uri="memory:" />
+
 </web-app>

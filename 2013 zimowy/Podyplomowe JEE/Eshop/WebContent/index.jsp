@@ -16,9 +16,11 @@
 	<c:choose>
 		<c:when test="${!empty sessionScope.profile}">
 			<a href="./profile/Logout">Wyloguj się</a>
+			<br />
+			<a href="./profile/changepass.jsp">Zmień hasło</a>
 		</c:when>
 		<c:otherwise>
-			<a href="./profile/login.jsp">Loguj się</a>
+			<a href="./profile/loginform.jsp">Loguj się</a>
 			<br />
 			<a href="./profile/register.jsp">Załóż nowe konto</a>
 		</c:otherwise>

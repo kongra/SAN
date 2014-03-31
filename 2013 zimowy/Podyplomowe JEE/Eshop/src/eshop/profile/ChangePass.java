@@ -8,6 +8,7 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import org.apache.commons.lang3.StringUtils;
 
@@ -48,14 +49,19 @@ public class ChangePass extends HttpServlet {
     oldPassword = StringUtils.trim(oldPassword);
     newPassword = StringUtils.trim(newPassword);
 
-    profile = profileTools.changePassword(profile, oldPassword, newPassword);
+    HttpSession session = request.getSession();
+    OpResult result =
+        profileTools.changePassword(session, profile, oldPassword, newPassword);
 
-    if (profile != null) {
-      request.getSession().setAttribute(Profile.TAG, profile);
+    if (result.status == OpStatus.ERROR) {
+      session.setAttribute(Profile.TAG, profile);
+      response.sendRedirect("./changepass.jsp");
+    }
+    else if (result.status == OpStatus.LOCK_LOGOUT) {
       response.sendRedirect("../index.jsp");
     }
     else {
-      response.sendRedirect("./changepass.jsp");
+      response.sendRedirect("../index.jsp");
     }
 
   }

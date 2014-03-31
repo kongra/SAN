@@ -1,31 +1,33 @@
-package eshop.profile;
+package eshop.currencies;
 
 import java.io.IOException;
 
+import javax.ejb.EJB;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.HttpSession;
 
-@WebServlet("/profile/Logout")
-public class Logout extends HttpServlet {
-
+@WebServlet("/currencies/NBP")
+public class NBP extends HttpServlet {
+  
   private static final long serialVersionUID = 1L;
 
-  public Logout() {
+  @EJB
+  private NBPParser parser;
+  
+  public NBP() {
     super();
   }
 
   @Override
   protected void doGet(HttpServletRequest request, HttpServletResponse response)
       throws ServletException, IOException {
-    logout(request.getSession());
-    response.sendRedirect("../index.jsp");
+    
+    parser.loadCurrencyRates();
+    System.out.println("Sukces");
+    
   }
 
-  public static void logout(HttpSession session) {
-    session.invalidate();
-  }
 }

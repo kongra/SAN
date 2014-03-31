@@ -11,13 +11,15 @@ import javax.servlet.http.HttpServletResponse;
 
 import org.apache.commons.lang3.StringUtils;
 
-@WebServlet("/profile/Register")
-public class Register extends HttpServlet {
+@WebServlet("/profile/Changepass")
+public class Changepass extends HttpServlet {
+
+  private static final long serialVersionUID = 1L;
 
   @EJB
   private ProfileTools profileTools;
 
-  public Register() {
+  public Changepass() {
     super();
   }
 
@@ -25,26 +27,23 @@ public class Register extends HttpServlet {
   protected void doPost(HttpServletRequest request, HttpServletResponse response)
       throws ServletException, IOException {
 
-    String login = request.getParameter("login");
-    String password = request.getParameter("password");
+    String oldPassword = request.getParameter("oldPassword");
+    String newPassword = request.getParameter("newPassword");
 
-    if (StringUtils.isBlank(login) || StringUtils.isBlank(password)) {
-      response.sendRedirect("./register.jsp");
+    if (StringUtils.isBlank(oldPassword) || StringUtils.isBlank(newPassword)) {
+      response.sendRedirect("./changepass.jsp");
       return;
     }
 
-    String firstName = request.getParameter("firstName");
-    String lastName = request.getParameter("lastName");
-    
-    Profile profile = profileTools.register(login, password, firstName, lastName);
-    if(profile == null) {
-      response.sendRedirect("./register.jsp");
+    Profile profile = (Profile) request.getSession().getAttribute(Profile.TAG);
+    profile = profileTools.changePassword(profile, oldPassword, newPassword);
+    if (profile == null) {
+      response.sendRedirect("./changepass.jsp");
       return;
     }
-    
+
     request.getSession().setAttribute(Profile.TAG, profile);
     response.sendRedirect("../index.jsp");
   }
 
-  private static final long serialVersionUID = 1L;
 }
