@@ -5,6 +5,7 @@ import java.util.HashMap;
 import java.util.Map;
 
 import javax.annotation.PostConstruct;
+import javax.ejb.EJB;
 import javax.ejb.Lock;
 import javax.ejb.LockType;
 import javax.ejb.Singleton;
@@ -23,6 +24,9 @@ public class RateMemoizer {
     }
     return memoizer;
   }
+
+  @EJB
+  private MoneyTools moneyTools;
 
   private final Map<Currency, BigDecimal> rates = new HashMap<>();
 
@@ -44,6 +48,21 @@ public class RateMemoizer {
 
   @PostConstruct
   private void initialize() {
-    // 1. READ rates FROM JPA - TODO
+    RatesColl rc = moneyTools.findMostRecentRatesColl();
+    if (rc == null) {
+      System.out.println("Nie ma żadnego RatesColl. "
+          + "RateMemoizer pozostaje pusty");
+      return;
+    }
+
+    Map<Currency, Rate> r = rc.getRates();
+    Map<Currency, BigDecimal> newRates = new HashMap<>(r.size());
+    for (Map.Entry<Currency, Rate> entry : r.entrySet()) {
+      newRates.put(entry.getKey(), entry.getValue().value());
+    }
+
+    set(newRates);
+
+    System.out.println("RateMemoizer zainicjowany najnowszymi kursami walut.");
   }
 }

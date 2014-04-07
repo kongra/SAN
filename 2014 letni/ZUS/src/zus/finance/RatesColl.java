@@ -8,12 +8,14 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.OneToMany;
+import javax.persistence.ManyToMany;
+import javax.persistence.NamedQuery;
 import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 
 @Entity
 @Table(name = "RATES_COLLS")
+@NamedQuery(name = "findMostRecentRatesColl", query = "Select rc from RatesColl rc order by rc.id desc")
 public class RatesColl {
 
   @Id
@@ -21,7 +23,7 @@ public class RatesColl {
   @SequenceGenerator(name = "RATES-COLLS-ID-GEN", allocationSize = 100, sequenceName = "RATES_COLLS_ID_SEQ")
   private long id;
 
-  @OneToMany
+  @ManyToMany
   private Map<Currency, Rate> rates;
 
   private Date publicationDate;

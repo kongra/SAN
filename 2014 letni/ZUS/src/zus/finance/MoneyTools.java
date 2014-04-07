@@ -73,8 +73,14 @@ public class MoneyTools {
     em.persist(rate);
     return rate;
   }
+  
+  @SuppressWarnings("unchecked")
+  public RatesColl findMostRecentRatesColl() {
+    Query query = em.createNamedQuery("findMostRecentRatesColl");
+    return Coll.first(query.getResultList(), null);
+  }
 
   public boolean importNBP() {
-    return new NBPParser(em, ctx).parse();
+    return new NBPParser(this, em, ctx).parse();
   }
 }
