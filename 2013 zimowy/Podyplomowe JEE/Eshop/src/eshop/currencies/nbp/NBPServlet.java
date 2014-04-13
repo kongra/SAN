@@ -1,4 +1,4 @@
-package eshop.currencies;
+package eshop.currencies.nbp;
 
 import java.io.IOException;
 
@@ -9,15 +9,15 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-@WebServlet("/currencies/NBP")
-public class NBP extends HttpServlet {
+@WebServlet("/currencies/NBPServlet")
+public class NBPServlet extends HttpServlet {
   
   private static final long serialVersionUID = 1L;
 
   @EJB
   private NBPParser parser;
   
-  public NBP() {
+  public NBPServlet() {
     super();
   }
 
@@ -25,7 +25,7 @@ public class NBP extends HttpServlet {
   protected void doGet(HttpServletRequest request, HttpServletResponse response)
       throws ServletException, IOException {
     
-    parser.loadCurrencyRates();
+    parser.updateCurrencyRates();
     System.out.println("Sukces");
     
   }

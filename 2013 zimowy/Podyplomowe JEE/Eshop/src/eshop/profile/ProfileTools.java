@@ -12,7 +12,6 @@ import javax.servlet.http.HttpSession;
 
 import org.joda.time.DateTime;
 
-import eshop.currencies.Currency;
 import eshop.currencies.Money;
 import eshop.utils.Coll;
 
@@ -73,11 +72,11 @@ public class ProfileTools {
       Money recentSalary = profile.getSalary();
       Money newSalary;
       if(recentSalary == null) {
-        newSalary = Money.of(100, Currency.PLN);
+        newSalary = Money.of(100, "PLN");
       }
       else {
         System.out.println("recentSalary " + recentSalary);
-        newSalary = Money.of(100, Currency.PLN).add(recentSalary);
+        newSalary = Money.of(100, "PLN").add(recentSalary);
       }
       profile.setSalary(newSalary);
       
