@@ -111,6 +111,11 @@ public class NBPParser {
         parsePosition(position, rates);
       }
 
+      // Dodanie PLN
+      Currency pln = moneyTools.internCurrency("PLN", "Polski Złoty");
+      Rate one = moneyTools.internRate(BigDecimal.ONE);
+      rates.put(pln, one);
+      
       CurrencyRates cr = new CurrencyRates(tableNumber, publicationDate, rates);
       em.persist(cr);
 

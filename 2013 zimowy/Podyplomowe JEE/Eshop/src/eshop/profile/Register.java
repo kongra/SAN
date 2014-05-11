@@ -11,24 +11,30 @@ import javax.servlet.http.HttpServletResponse;
 
 import org.apache.commons.lang3.StringUtils;
 
+import eshop.currencies.Money;
+import eshop.currencies.MoneyTools;
+
 @WebServlet("/profile/Register")
 public class Register extends HttpServlet {
 
   @EJB
   private ProfileTools profileTools;
 
+  @EJB
+  private MoneyTools moneyTools;
+
   public Register() {
     super();
   }
 
   @Override
-  protected void doPost(HttpServletRequest request, HttpServletResponse response)
-      throws ServletException, IOException {
+  protected void doPost(final HttpServletRequest request,
+      final HttpServletResponse response) throws ServletException, IOException {
 
-    String login = request.getParameter("login");
-    String password = request.getParameter("password");
-    String firstName = request.getParameter("firstName");
-    String lastName = request.getParameter("lastName");
+    final String login = request.getParameter("login");
+    final String password = request.getParameter("password");
+    final String firstName = request.getParameter("firstName");
+    final String lastName = request.getParameter("lastName");
 
     if (StringUtils.isBlank(login) || StringUtils.isBlank(password)) {
       System.out.println("Brak loginu i/lub hasła!!!");
@@ -36,25 +42,43 @@ public class Register extends HttpServlet {
       return;
     }
 
-    Address address = new Address();
+    final Address address = new Address();
     address.setStreet("Tokarzewskiego");
     address.setCity("Łódź");
     address.setCountry("Poland");
     address.setNumber("2a");
 
-    Gender gender = Gender.MALE;
-    
-    Profile profile =
-        profileTools.registerB2C(login, password, firstName, lastName, address, gender);
-    
-    if (profile == null) {
-      response.sendRedirect("./register.jsp");
-      System.out.println("Login już istnieje!!!");
-      return;
-    }
+    final Gender gender = Gender.MALE;
 
-    request.getSession().setAttribute(Profile.TAG, profile);
-    response.sendRedirect("../index.jsp");
+    MoneyTools.binding(moneyTools, new Runnable() {
+      @SuppressWarnings("synthetic-access")
+      @Override
+      public void run() {
+        Profile profile =
+            profileTools.registerB2C(login, password, firstName, lastName,
+              address, gender, Money.of(3500, "PLN"));
+
+        if (profile == null) {
+          try {
+            response.sendRedirect("./register.jsp");
+          }
+          catch (IOException e) {
+            throw new RuntimeException(e);
+          }
+          System.out.println("Login już istnieje!!!");
+          return;
+        }
+
+        request.getSession().setAttribute(Profile.TAG, profile);
+        try {
+          response.sendRedirect("../index.jsp");
+        }
+        catch (IOException e) {
+          throw new RuntimeException(e);
+        }
+      }
+    });
+
   }
 
   private static final long serialVersionUID = 1L;

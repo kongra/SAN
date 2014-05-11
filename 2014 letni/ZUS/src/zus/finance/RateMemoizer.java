@@ -3,7 +3,6 @@ package zus.finance;
 import java.math.BigDecimal;
 import java.util.HashMap;
 import java.util.Map;
-
 import javax.annotation.PostConstruct;
 import javax.ejb.EJB;
 import javax.ejb.Lock;
@@ -39,7 +38,7 @@ public class RateMemoizer {
   public void update(Map<Currency, BigDecimal> rates) {
     rates.putAll(rates);
   }
-
+  
   @Lock(LockType.WRITE)
   public void set(Map<Currency, BigDecimal> rates) {
     rates.clear();

@@ -6,7 +6,7 @@ public class TestNBPParser {
 
   @Test
   public void test() {
-    new NBPParser(null, null, null).parse();
+    new NBPParser(null, null, null, null).parse();
   }
 
 }

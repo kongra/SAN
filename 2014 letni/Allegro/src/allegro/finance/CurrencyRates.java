@@ -1,6 +1,7 @@
 package allegro.finance;
 
 import java.sql.Timestamp;
+import java.util.Date;
 import java.util.Map;
 
 import javax.persistence.Column;
@@ -9,13 +10,17 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.ManyToMany;
+import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
 import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 
 @Entity
 @Table(name = "CURRENCY_RATES")
-@NamedQuery(name="currencyRates", query = "Select cr from CurrencyRates cr order by cr.importTime desc")
+@NamedQueries({
+  @NamedQuery(name = "currencyRates", query = "Select cr from CurrencyRates cr order by cr.importTime desc"),
+  @NamedQuery(name = "findCurrencRatesByTableNumber", query = "Select cr from CurrencyRates cr where cr.tableNumber = :tableNumber")
+})
 public class CurrencyRates {
 
   @Id
@@ -26,6 +31,12 @@ public class CurrencyRates {
   @Column(nullable = false, unique = true)
   private Timestamp importTime;
 
+  @Column(nullable = false)
+  private Date publicationDate;
+
+  @Column(nullable = false, unique = true)
+  private String tableNumber;
+
   @ManyToMany
   private Map<Currency, Rate> rates;
 
@@ -33,9 +44,12 @@ public class CurrencyRates {
 
   }
 
-  public CurrencyRates(Timestamp importTime, Map<Currency, Rate> rates) {
-    this.importTime = importTime;
+  public CurrencyRates(Date publicationDate, String tableNumber,
+      Map<Currency, Rate> rates) {
+    this.publicationDate = publicationDate;
+    this.tableNumber = tableNumber;
     this.rates = rates;
+    this.importTime = new Timestamp(System.currentTimeMillis());
   }
 
   @Override

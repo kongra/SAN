@@ -3,6 +3,8 @@ package zus.finance;
 import java.math.BigDecimal;
 
 import javax.annotation.Resource;
+import javax.ejb.EJB;
+import javax.ejb.Schedule;
 import javax.ejb.SessionContext;
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
@@ -22,6 +24,9 @@ public class MoneyTools {
   
   @Resource
   private SessionContext ctx;
+  
+  @EJB
+  private RateMemoizer rateMemoizer;
 
   public Currency internCurrency(String code, String name, String symbol) {
     if (StringUtils.isBlank(code)) {
@@ -80,7 +85,8 @@ public class MoneyTools {
     return Coll.first(query.getResultList(), null);
   }
 
+  @Schedule(hour="10", minute="30")
   public boolean importNBP() {
-    return new NBPParser(this, em, ctx).parse();
+    return new NBPParser(this, em, ctx, rateMemoizer).parse();
   }
 }

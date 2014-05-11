@@ -8,6 +8,8 @@ import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.HashMap;
 import java.util.Map;
+import java.util.Set;
+import java.util.Map.Entry;
 
 import javax.ejb.SessionContext;
 import javax.persistence.EntityManager;
@@ -28,6 +30,7 @@ import org.xml.sax.SAXException;
 import zus.finance.Currency;
 import zus.finance.MoneyTools;
 import zus.finance.Rate;
+import zus.finance.RateMemoizer;
 import zus.finance.RatesColl;
 
 public class NBPParser {
@@ -66,14 +69,18 @@ public class NBPParser {
 
   private final SessionContext ctx;
 
-  public NBPParser(MoneyTools moneyTools, EntityManager em, SessionContext ctx) {
+  private final RateMemoizer rateMemoizer;
+
+  public NBPParser(MoneyTools moneyTools, EntityManager em, SessionContext ctx,
+      RateMemoizer rateMemoizer) {
     this.moneyTools = moneyTools;
     this.em = em;
     this.ctx = ctx;
+    this.rateMemoizer = rateMemoizer;
   }
 
   public boolean parse() {
-    final String URL = "http://www.nbp.pl/kursy/xml/a066z140404.xml";
+    final String URL = "http://www.nbp.pl/kursy/xml/LastA.xml";
     DocumentBuilderFactory dbFactory = DocumentBuilderFactory.newInstance();
     try {
       DocumentBuilder builder = dbFactory.newDocumentBuilder();
@@ -91,7 +98,7 @@ public class NBPParser {
       RatesColl rc = new RatesColl(publicationDate, rates);
       em.persist(rc);
 
-      // TODO: Aktualizować RatesHolder
+      updateRateMemoizer(rates);
 
       System.out
           .println("Proces importu nowego zestawienia kursów zakończony.");
@@ -105,6 +112,15 @@ public class NBPParser {
     }
   }
 
+  private void updateRateMemoizer(Map<Currency, Rate> rates) {
+    Map<Currency, BigDecimal> m = new HashMap<>(rates.size());
+    Set<Entry<Currency, Rate>> s = rates.entrySet();
+    for (Entry<Currency, Rate> entry : s) {
+      m.put(entry.getKey(), entry.getValue().value());
+    }
+    rateMemoizer.update(m);
+  }
+
   private Map<Currency, Rate> processRates(Document doc)
       throws XPathExpressionException, ParseException {
     NodeList positions =
@@ -115,7 +131,7 @@ public class NBPParser {
     for (int i = 0, n = positions.getLength(); i < n; i++) {
       processPositionNode(positions.item(i), currencyToRates);
     }
-    return null;
+    return currencyToRates;
   }
 
   private void processPositionNode(Node positionNode,

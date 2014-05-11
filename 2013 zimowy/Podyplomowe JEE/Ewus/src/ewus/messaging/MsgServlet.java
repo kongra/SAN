@@ -52,8 +52,8 @@ public class MsgServlet extends HttpServlet {
       MessageProducer producer = session.createProducer(temacik);
       producer.send(new TextMessageImpl(msg));
       
-      producer = session.createProducer(kolejeczka);
-      producer.send(new TextMessageImpl(msg));
+//      MessageProducer producer = session.createProducer(kolejeczka);
+//      producer.send(new TextMessageImpl(msg));
     }
     catch (JMSException e) {
       e.printStackTrace();

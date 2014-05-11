@@ -1,12 +1,18 @@
 package allegro.finance;
 
 import java.math.BigDecimal;
+import java.util.Date;
+import java.util.Map;
 
 import javax.ejb.EJB;
 import javax.ejb.Stateless;
+import javax.ejb.TransactionAttribute;
+import javax.ejb.TransactionAttributeType;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 import javax.persistence.Query;
+
+import org.w3c.dom.Document;
 
 import allegro.util.Coll;
 import allegro.util.DynVar;
@@ -81,6 +87,34 @@ public class MoneyTools {
     return Coll.first(query.getResultList(), null);
   }
 
+  @TransactionAttribute(TransactionAttributeType.NEVER)
+  public boolean updateCurrencyRates() {
+    Document doc = NBPParser.grab();
+    if (doc != null) {
+      return updateCurrencyRates(doc);
+    }
+    return false;
+  }
+
+  @TransactionAttribute(TransactionAttributeType.REQUIRED)
+  public boolean updateCurrencyRates(Document doc) {
+    return NBPParser.parseAndUpdate(this, holder, doc);
+  }
+
+  @SuppressWarnings("unchecked")
+  public CurrencyRates findCurrencyRatesByTableNumber(String tableNumber) {
+    Query query = em.createNamedQuery("findCurrencRatesByTableNumber");
+    query.setParameter("tableNumber", tableNumber);
+    return Coll.first(query.getResultList(), null);
+  }
+
+  public CurrencyRates createCurrencyRates(Date publicationDate,
+      String tableNumber, Map<Currency, Rate> rates) {
+    CurrencyRates cr = new CurrencyRates(publicationDate, tableNumber, rates);
+    em.persist(cr);
+    return cr;
+  }
+
   @EJB
   private CurrencyRatesHolder holder;
 
@@ -91,10 +125,9 @@ public class MoneyTools {
         MoneyTools.binding(MoneyTools.this, new Runnable() {
           @Override
           public void run() {
-            
+
             Money salary = Money.of(1250, "USD");
-          
-          
+
           }
         });
       }

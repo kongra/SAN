@@ -22,7 +22,7 @@ public class ProfileTools {
   private EntityManager em;
 
   public B2C registerB2C(String login, String password, String firstName,
-      String lastName, Address address, Gender gender) {
+      String lastName, Address address, Gender gender, Money salary) {
 
     if (null != findProfileID(login)) {
       return null;
@@ -38,6 +38,8 @@ public class ProfileTools {
     user.setAddress(address);
     address.setB2cs(new HashSet<>(Arrays.asList(user)));
 
+    user.setSalary(salary);
+    
     updateRecentLogTime(user);
 
     em.persist(address);

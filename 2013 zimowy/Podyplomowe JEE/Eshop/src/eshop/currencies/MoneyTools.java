@@ -27,7 +27,7 @@ public class MoneyTools {
     return value;
   }
 
-  public void binding(MoneyTools moneyTools, Runnable body) {
+  public static void binding(MoneyTools moneyTools, Runnable body) {
     VAR.binding(moneyTools, body);
   }
 
