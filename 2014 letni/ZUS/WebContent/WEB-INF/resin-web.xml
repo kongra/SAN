@@ -9,4 +9,8 @@
     <max-connections>50</max-connections>
   </database>
   
+  <jms-connection-factory uri="resin:"/>
+  <jms-queue name="queue1" uri="memory:"/>
+  <jms-topic name="topic1" uri="memory:"/>
+  
 </web-app>
