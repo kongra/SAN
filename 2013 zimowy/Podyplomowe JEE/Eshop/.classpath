@@ -13,5 +13,17 @@
 	<classpathentry kind="lib" path="WebContent/WEB-INF/lib/joda-time-2.3.jar"/>
 	<classpathentry kind="con" path="org.eclipse.jdt.junit.JUNIT_CONTAINER/4"/>
 	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER/org.eclipse.jdt.internal.debug.ui.launcher.StandardVMType/jdk1.8.0_05"/>
+	<classpathentry kind="lib" path="/home/kongra/Javasoft/resin-4.0.39/lib/activation.jar"/>
+	<classpathentry kind="lib" path="/home/kongra/Javasoft/resin-4.0.39/lib/eclipselink-2.4.0.jar"/>
+	<classpathentry kind="lib" path="/home/kongra/Javasoft/resin-4.0.39/lib/hibernate-validator-4.3.0.Final.jar"/>
+	<classpathentry kind="lib" path="/home/kongra/Javasoft/resin-4.0.39/lib/javaee-16.jar"/>
+	<classpathentry kind="lib" path="/home/kongra/Javasoft/resin-4.0.39/lib/javamail-141.jar"/>
+	<classpathentry kind="lib" path="/home/kongra/Javasoft/resin-4.0.39/lib/javax.faces-2.1.24.jar"/>
+	<classpathentry kind="lib" path="/home/kongra/Javasoft/resin-4.0.39/lib/jboss-logging-3.1.0.CR2.jar"/>
+	<classpathentry kind="lib" path="/home/kongra/Javasoft/resin-4.0.39/lib/resin.jar"/>
+	<classpathentry kind="lib" path="/home/kongra/Javasoft/resin-4.0.39/lib/resin-eclipselink.jar"/>
+	<classpathentry kind="lib" path="/home/kongra/Javasoft/resin-4.0.39/lib/validation-api-1.0.0.GA.jar"/>
+	<classpathentry kind="lib" path="/home/kongra/Javasoft/resin-4.0.39/lib/webservices-extra-api.jar"/>
+	<classpathentry kind="lib" path="/home/kongra/Javasoft/resin-4.0.39/lib/webutil.jar"/>
 	<classpathentry kind="output" path="build/classes"/>
 </classpath>

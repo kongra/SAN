@@ -1,6 +1,8 @@
 package allegro.finance;
 
 import java.io.IOException;
+import java.math.BigDecimal;
+import java.text.DecimalFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
@@ -34,6 +36,9 @@ public class NBPParser {
 
   private static final SimpleDateFormat publicationDateFormat =
       new SimpleDateFormat("yyyy-MM-dd");
+
+  private static final DecimalFormat rateFormat =
+      new DecimalFormat("####,####");
 
   private static final XPathExpression positionExpression;
 
@@ -78,9 +83,9 @@ public class NBPParser {
 
       Date publicationDate = publicationDateFormat.parse(publicationDateString);
 
-      // if (moneyTools.findCurrencyRatesByTableNumber(tableNumber) != null) {
-      // return false;
-      // }
+      if (moneyTools.findCurrencyRatesByTableNumber(tableNumber) != null) {
+        return false;
+      }
 
       Map<Currency, Rate> rates = new HashMap<>();
       NodeList positions =
@@ -91,7 +96,7 @@ public class NBPParser {
         parsePosition(moneyTools, rates, pos);
       }
 
-      // moneyTools.createCurrencyRates(publicationDate, tableNumber, rates);
+      moneyTools.createCurrencyRates(publicationDate, tableNumber, rates);
       return true;
     }
     catch (XPathExpressionException | ParseException e) {
@@ -101,14 +106,20 @@ public class NBPParser {
   }
 
   private static void parsePosition(MoneyTools moneyTools,
-      Map<Currency, Rate> rates, Node pos) throws XPathExpressionException {
+      Map<Currency, Rate> rates, Node pos) throws XPathExpressionException,
+      ParseException {
     String name = (String) nameExpression.evaluate(pos, XPathConstants.STRING);
     String code = (String) codeExpression.evaluate(pos, XPathConstants.STRING);
     String rateString =
         (String) rateExpression.evaluate(pos, XPathConstants.STRING);
-    
-    
-    
+
+    BigDecimal rateValue =
+        BigDecimal.valueOf(rateFormat.parse(rateString).doubleValue());
+
+    Currency c = moneyTools.internCurrency(code, name);
+    Rate rate = moneyTools.internRate(rateValue);
+
+    rates.put(c, rate);
   }
 
   public static Document grab() {

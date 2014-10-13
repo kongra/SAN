@@ -51,12 +51,6 @@ public class Doclean {
     bodies.add(0, cleanupBody);
   }
 
-  private final List<Runnable> bodies = new LinkedList<Runnable>();
-
-  private Doclean() {
-    ;
-  }
-
   private void clear() {
     for (Runnable body : bodies) {
       try {
@@ -66,6 +60,12 @@ public class Doclean {
         e.printStackTrace();
       }
     }
+  }
+
+  private final List<Runnable> bodies = new LinkedList<Runnable>();
+
+  private Doclean() {
+    ;
   }
 
 }

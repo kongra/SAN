@@ -1,0 +1,10 @@
+Polecenia:
+
+* Jeżeli występuje w polu jakaś wartość → akcja
+* Jeśli nie występuje to -> akcja
+* Spełnianie przez wartość reguły, podanej w formie np. wyrażenia regularnego.
+* Warunki postaci jeżeli -> to
+* Akcje polegające na łączeniu listowej struktury danych z grupami znaczników w dokumencie.
+
+Słowa kluczowe:
+akcja, pole, jeżeli, reguła, warunek, połącz, zastąp, wpisz, usuń

@@ -95,9 +95,6 @@ public class NBPParser {
       String tableNumber =
           (String) TABLE_NUMBER_EXPR.evaluate(doc, XPathConstants.STRING);
 
-      // TODO: nie działać, gdy się okaże, że zestawienie już zostało wciągnięte
-      // do systemu
-
       String publicationDateString =
           (String) PUBLICATION_DATE_EXPR.evaluate(doc, XPathConstants.STRING);
       Date publicationDate =

@@ -5,9 +5,8 @@ import java.util.Date;
 import java.util.Map;
 
 import javax.ejb.EJB;
+import javax.ejb.Schedule;
 import javax.ejb.Stateless;
-import javax.ejb.TransactionAttribute;
-import javax.ejb.TransactionAttributeType;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 import javax.persistence.Query;
@@ -87,7 +86,7 @@ public class MoneyTools {
     return Coll.first(query.getResultList(), null);
   }
 
-  @TransactionAttribute(TransactionAttributeType.NEVER)
+  @Schedule(hour="12", minute="27")
   public boolean updateCurrencyRates() {
     Document doc = NBPParser.grab();
     if (doc != null) {
@@ -96,7 +95,6 @@ public class MoneyTools {
     return false;
   }
 
-  @TransactionAttribute(TransactionAttributeType.REQUIRED)
   public boolean updateCurrencyRates(Document doc) {
     return NBPParser.parseAndUpdate(this, holder, doc);
   }
