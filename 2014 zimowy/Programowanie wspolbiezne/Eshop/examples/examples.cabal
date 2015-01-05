@@ -1,0 +1,14 @@
+name:                examples
+version:             0.1.0.0
+author:              Konrad Grzanek
+maintainer:          kongra@gmail.com
+build-type:          Simple
+cabal-version:       >=1.10
+
+executable examples
+  ghc-options:         -O2 -W -Wall -funbox-strict-fields -rtsopts -threaded
+  main-is:             Main.hs
+  build-depends:       base >=4.7 && <4.8
+                     , stm >= 2.4.3
+                     , Eshop
+  default-language:    Haskell2010
