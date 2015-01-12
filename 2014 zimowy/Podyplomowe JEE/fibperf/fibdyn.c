@@ -18,7 +18,7 @@ static FibCount* fibcount(long n)
 	FibCount* c2 = fibcount(n-2);
 	FibCount* result = (FibCount*) malloc(sizeof (FibCount));
 	result->value = c1->value + c2->value;
-	result->count = c1->count + c2->count;
+	result->count = c1->count + c2->count + 1;
 
 	free(c1);
 	free(c2);
@@ -26,16 +26,16 @@ static FibCount* fibcount(long n)
 	return result;
 }
 
-static void test(void)
+static void test(long n)
 {
-	FibCount* c = fibcount(37);
+	FibCount* c = fibcount(n);
 	printf ("%ld, %ld\n", c->value, c->count);
 	free(c);
 }
 
 int main(void)
 {
-	for(int i = 0; i < 1; i++) {
-		test();
-	}
+	test(37);
+	test(38);
+	test(39);
 }

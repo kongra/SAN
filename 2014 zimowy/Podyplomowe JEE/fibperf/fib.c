@@ -13,7 +13,7 @@ static FibCount fibcount(long n)
 	}
 	FibCount c1 = fibcount(n-1);
 	FibCount c2 = fibcount(n-2);
-	FibCount result = { c1.value + c2.value, c1.count + c2.count };
+	FibCount result = { c1.value + c2.value, c1.count + c2.count + 1 };
 	return result;
 }
 

@@ -16,7 +16,7 @@ static FibCount fibcount(long n) {
 	}
 	FibCount c1 = fibcount(n-1);
 	FibCount c2 = fibcount(n-2);
-	return FibCount(c1.value + c2.value, c1.count + c2.count);
+	return FibCount(c1.value + c2.value, c1.count + c2.count + 1);
 }
 
 static void test(long n)
