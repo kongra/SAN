@@ -1,0 +1,12 @@
+<web-app xmlns="http://caucho.com/ns/resin">
+
+  <database jndi-name="java:comp/env/jdbc/JEE3">
+    <driver type="org.postgresql.Driver">
+      <url>jdbc:postgresql://localhost/JEE3</url>
+      <user>jee3</user>
+      <password>jee3</password>
+    </driver>
+    <max-connections>50</max-connections>
+  </database>
+
+</web-app>
