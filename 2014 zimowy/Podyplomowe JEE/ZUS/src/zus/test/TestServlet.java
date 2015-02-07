@@ -2,23 +2,18 @@ package zus.test;
 
 import java.io.IOException;
 import java.io.PrintWriter;
-import java.sql.Connection;
-import java.sql.SQLException;
+import java.math.BigDecimal;
 
-import javax.annotation.Resource;
 import javax.ejb.EJB;
-import javax.persistence.EntityManager;
-import javax.persistence.EntityManagerFactory;
-import javax.persistence.Persistence;
-import javax.persistence.PersistenceContext;
-import javax.persistence.PersistenceUnit;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import javax.sql.DataSource;
 
+import zus.money.Currency;
+import zus.money.Money;
+import zus.profile.Employee;
 import zus.profile.Profile;
 import zus.profile.ProfileTools;
 
@@ -27,7 +22,7 @@ public class TestServlet extends HttpServlet {
 
   @EJB
   private ProfileTools profileTools;
-  
+
   public TestServlet() {
     super();
   }
@@ -42,15 +37,16 @@ public class TestServlet extends HttpServlet {
     try (PrintWriter out = response.getWriter()) {
       out.println("<h1>ąęśćółżźń</h1>");
     }
-   
-    Profile p = profileTools.createProfile("jan", "1234", "Jan", "Kowalski");
-    if(p == null) {
-      System.out.println("Utworzenie nie powiodło się.");
-    }
-    else {
-      System.out.println("Utworzono konto użytkownika.");
-    }
-    
+
+    Profile p =
+        profileTools.createProfile("jan", "1234", "Jan", "Kowalski", new Money(
+            Currency.PLN, new BigDecimal("500.0")));
+
+    Employee e =
+        profileTools
+            .createEmployee("robert", "2345", "Robert", "Nowak",
+              "Wydział Dochodów", new Money(Currency.USD, new BigDecimal(
+                  "1500.0")));
   }
 
   private static final long serialVersionUID = 1L;

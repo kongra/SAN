@@ -14,5 +14,6 @@
 	<classpathentry kind="con" path="org.eclipse.jst.j2ee.internal.web.container"/>
 	<classpathentry kind="con" path="org.eclipse.jst.j2ee.internal.module.container"/>
 	<classpathentry kind="lib" path="WebContent/WEB-INF/lib/postgresql-9.3-1102.jdbc41.jar"/>
+	<classpathentry kind="lib" path="WebContent/WEB-INF/lib/guava-18.0.jar"/>
 	<classpathentry kind="output" path="build/classes"/>
 </classpath>

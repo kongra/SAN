@@ -7,6 +7,8 @@ import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 import javax.persistence.Query;
 
+import zus.money.Money;
+
 @Stateless
 public class ProfileTools {
 
@@ -29,6 +31,22 @@ public class ProfileTools {
     return profiles.get(0);
   }
 
+  public Long findProfileIdByLogin(String login) {
+    Query q = em.createNamedQuery("findProfileIdByLogin");
+    q.setParameter("login", login);
+
+    @SuppressWarnings("unchecked")
+    final List<Profile> profiles = q.getResultList();
+    if (profiles.isEmpty()) {
+      return null;
+    }
+    return profiles.get(0).getId();
+  }
+
+  public boolean profileExists(String login) {
+    return null != findProfileIdByLogin(login);
+  }
+
   /**
    * @param login
    * @param passwd
@@ -37,10 +55,9 @@ public class ProfileTools {
    * @return newly created profile unless one with login already exists.
    */
   public Profile createProfile(String login, String passwd, String firstName,
-      String lastName) {
+      String lastName, Money contrib) {
 
-    Profile existingOne = findProfileByLogin(login);
-    if (null != existingOne) {
+    if (profileExists(login)) {
       return null;
     }
 
@@ -49,9 +66,33 @@ public class ProfileTools {
     p.setPasswd(passwd);
     p.setFirstName(firstName);
     p.setLastName(lastName);
+    p.setContrib(contrib);
 
     em.persist(p);
     return p;
   }
 
+  public void setContrib(Profile p, Money contrib) {
+    p.setContrib(contrib);
+    em.merge(p);
+  }
+
+  public Employee createEmployee(String login, String passwd, String firstName,
+      String lastName, String dept, Money contrib) {
+    
+    if (profileExists(login)) {
+      return null;
+    }
+
+    Employee e = new Employee();
+    e.setLogin(login);
+    e.setPasswd(passwd);
+    e.setFirstName(firstName);
+    e.setLastName(lastName);
+    e.setDept(dept);
+    e.setContrib(contrib);
+
+    em.persist(e);
+    return e;
+  }
 }
