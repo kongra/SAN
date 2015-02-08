@@ -36,11 +36,11 @@ public class ProfileTools {
     q.setParameter("login", login);
 
     @SuppressWarnings("unchecked")
-    final List<Profile> profiles = q.getResultList();
-    if (profiles.isEmpty()) {
+    final List<Long> ids = q.getResultList();
+    if (ids.isEmpty()) {
       return null;
     }
-    return profiles.get(0).getId();
+    return ids.get(0);
   }
 
   public boolean profileExists(String login) {

@@ -55,10 +55,7 @@ public class Profile {
 
   @Access(AccessType.PROPERTY)
   private BigDecimal getContribAmount() {
-    if (null == contrib) {
-      return null;
-    }
-    return contrib.amount;
+    return null == contrib ? null : contrib.amount;
   }
 
   public void setContribAmount(BigDecimal amount) {
@@ -69,10 +66,7 @@ public class Profile {
   @Access(AccessType.PROPERTY)
   @Enumerated(EnumType.ORDINAL)
   private Currency getContribCurrency() {
-    if (null == contrib) {
-      return null;
-    }
-    return contrib.currency;
+    return null == contrib ? null : contrib.currency;
   }
 
   public void setContribCurrency(Currency c) {
