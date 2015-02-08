@@ -1,19 +1,31 @@
 package zus.profile;
 
+import java.util.Arrays;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
 import javax.ejb.Stateless;
+import javax.ejb.TransactionAttribute;
+import javax.ejb.TransactionAttributeType;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 import javax.persistence.Query;
 
+import zus.doc.Doc;
 import zus.money.Money;
+import zus.org.Dept;
+import zus.org.DeptKey;
 
 @Stateless
 public class ProfileTools {
 
   @PersistenceContext(unitName = "ZUS")
   private EntityManager em;
+  
+  public Dept findDept() {
+    return em.find(Dept.class, new DeptKey(0, 0));
+  }
 
   /**
    * @param login
@@ -95,4 +107,18 @@ public class ProfileTools {
     em.persist(e);
     return e;
   }
+  
+//  @TransactionAttribute(TransactionAttributeType.MANDATORY)
+//  public void addDoc(Client c, Doc d) {
+//    Set<Doc> docs = c.getDocs();
+//    if(docs != null) {
+//      docs.add(d);
+//    }
+//    else {
+//      c.setDocs(new HashSet<>(Arrays.asList(d)));
+//    }
+//    d.setClient(c);
+//    // em.merge(c);
+//    // em.merge(d);
+//  }
 }

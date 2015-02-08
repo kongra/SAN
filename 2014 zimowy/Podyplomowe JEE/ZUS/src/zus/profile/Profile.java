@@ -28,7 +28,6 @@ import zus.money.Money;
 @DiscriminatorColumn(name = "profile_type")
 @Access(AccessType.FIELD)
 @Table(name = "profiles")
-
 @NamedQueries({
   @NamedQuery(name = "findProfileByLogin", query = "Select p from Profile p where p.login = :login"),
   @NamedQuery(name = "findProfileIdByLogin", query = "Select p.id from Profile p where p.login = :login"),
