@@ -13,6 +13,7 @@ import javax.servlet.http.HttpServletResponse;
 
 import zus.money.Currency;
 import zus.money.Money;
+import zus.profile.Profile;
 import zus.profile.ProfileTools;
 
 @WebServlet("/test/servlet")
@@ -39,8 +40,8 @@ public class TestServlet extends HttpServlet {
     profileTools.createProfile("jan", "1234", "Jan", "Kowalski", new Money(
         Currency.PLN, new BigDecimal("500.0")));
 
-    profileTools.createEmployee("robert", "2345", "Robert", "Nowak",
-      "Wydział Dochodów", new Money(Currency.USD, new BigDecimal("1500.0")));
+//    profileTools.createEmployee("robert", "2345", "Robert", "Nowak",
+//      "Wydział Dochodów", new Money(Currency.USD, new BigDecimal("1500.0")));
   }
 
   private static final long serialVersionUID = 1L;

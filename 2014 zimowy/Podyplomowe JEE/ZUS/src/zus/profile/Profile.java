@@ -19,6 +19,7 @@ import javax.persistence.NamedQuery;
 import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 import javax.persistence.Transient;
+import javax.persistence.Version;
 
 import zus.money.Currency;
 import zus.money.Money;
@@ -38,6 +39,9 @@ public class Profile {
   @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "profile_seq")
   @SequenceGenerator(name = "profile_seq", sequenceName = "profile_seq", allocationSize = 100)
   private long id;
+  
+  @Version
+  private long version;
 
   @Column(nullable = false, unique = true)
   private String login;

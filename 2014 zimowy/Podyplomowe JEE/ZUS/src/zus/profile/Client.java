@@ -2,8 +2,6 @@ package zus.profile;
 
 import java.io.Serializable;
 import java.util.List;
-import java.util.Set;
-
 import javax.persistence.*;
 
 import zus.doc.Doc;

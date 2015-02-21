@@ -6,8 +6,6 @@ import java.util.List;
 
 import javax.persistence.*;
 
-import org.hibernate.annotations.ForeignKey;
-
 import zus.profile.Client;
 
 @Entity
@@ -21,7 +19,7 @@ public class Doc implements Serializable {
   @Basic(fetch = FetchType.LAZY)
   private String content;
 
-  private Timestamp times;
+  private Timestamp time;
 
   @ManyToMany(fetch = FetchType.LAZY)
   private List<Client> clients;
