@@ -1,0 +1,21 @@
+* Zmodyfikuj plik Euler1.java tak, aby wypisywane na ekran były
+  wyłącznie liczby:
+  - parzyste
+  - nieparzyste
+* Na podstawie Heron.java
+  - Uzależnij ilość operacji, które wykonuje algorytm od pewnej liczby całkowiej n określającej tę ilość.
+  - Uzależnij ilość operacji, które wykonuje algorytm od dodatkowego parametru ε dla procedury sqrt.
+* Euler 4
+  https://projecteuler.net/problem=4
+* Euler 5
+  https://projecteuler.net/problem=5
+
+* Napisz procedurę, która określa, ile razy fib jest wywoływana
+   w czasie obliczania fib(n). Chodzi o klasyczną definicję procedury zaprezentowaną na wykładzie
+  - Zaproponuj rekurencyjną wersję procedury fib, która obliczy fib(50) w czasie poniżej 1ms.
+  - Zaproponuj iteracyjną (z pętlą while) wersję procedury fib, która obliczy fib(50) w czasie poniżej 1ms.
+* Napisz procedurę, która oblicza wartość iloczynu skalarnego 2 wektorów
+  Wektory mają być reprezentowane w postaci tablic.
+* Napisz procedurę, która realizuje rzutowanie wektora a na wektor b.
+  Reprezentacja wektorów ma być zrealizowana w postaci tablic.
+* Napisz procedurę, które realizuje iloczyn wektorowy wektorów a i b.

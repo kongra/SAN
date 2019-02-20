@@ -1,0 +1,48 @@
+* Assignment 1
+  Install Java Development Kit, version 1.8 or 1.9
+  Install IntelliJ/Eclipse/Netbeans or other IDE
+  Create a class that represents a washing machine with the following
+  (hidden, private) properties and messages to manipulate them:
+  - Water temp.
+  - Numbers of rotations per minute 600 .. 1200
+  - Washing time
+  - Program: full, normal, delicate
+  - running
+
+* Assignment 2
+  - Define constructors for the class from Assignment 1
+  - Use this symbol everywhere in the definition of class from Assignment 1
+* Assignment 3
+  Add other relevant arith. operators to san.math.PlanarComplex.
+* Assignment 4
+  Create a class Vector3D for representing vectors in 3D space. Implement:
+  - dot product of 2 Vector3D objects
+  - vector addition
+  - multiplication of a Vector3D by a real number
+  - vector length (Euclidean norm)
+* Assignment 5
+  - Create a hierarchy of vehicles (flying, rolling on wheels, moving on water)
+  - At least 12 classes
+  - At least 3 level deep
+  - Add methods and fields to the designed classes.
+* Assignment 6
+  - Define a hierarchy of at least 6 classes at least 3 levels depth with:
+  - Some abstract methods
+  - Some concrete methods
+  - Some overriden methods
+* Assignment 7
+  Define 3 different polymorphic procedures and show their use
+* Assignment 8
+  Add +, -, *, / to abstract Complex class and its implementations: Planar and Polar.
+* Assignment 9
+  Define a generic method in GenericLogisticCentre to make a re-packing of Boxes
+  in such a way that an information will be logged about the thing being re-packed.
+* Assignment 10
+  Provide a reasonable implementation of toString for LinkedSeq.
+
+0-4  - lack of grade
+   5 - 3
+   6 - 3.5
+   7 - 4
+   8 - 4.5
+9-10 - 5

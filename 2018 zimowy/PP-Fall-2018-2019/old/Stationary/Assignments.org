@@ -1,0 +1,7 @@
+* Zmodyfikuj plik Euler1.java tak, aby wypisywane na ekran były
+  wyłącznie liczby:
+  - parzyste
+  - nieparzyste
+* Na podstawie Heron.java
+  - Uzależnij ilość operacji, które wykonuje algorytm od pewnej liczby całkowiej n określającej tę ilość.
+  - Uzależnij ilość operacji, które wykonuje algorytm od dodatkowego parametru ε dla procedury sqrt.

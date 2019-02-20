@@ -1,0 +1,14 @@
+* Assignment 1
+  Write fib (see san.pp.Program03) in such a way that computing fib(50) would take under 1 second.
+  The procedure should use recursion.
+* Assignment 2
+  Rewrite the procedure from Assignment 01 to use while loop instead of recursion.
+* Assignment 3
+  Implement scalar projection of vector x onto vector y in an n-th dimensional vector space.
+  https://en.wikipedia.org/wiki/Dot_product
+* Assignment 4
+  https://projecteuler.net/problem=4
+* Assignment 5
+  Change san.pp.Heron.java by allowing to control the number of iterations by:
+  - adding a changeable epsilon value (0.0001 or different)
+  - specifying integral number of iterations

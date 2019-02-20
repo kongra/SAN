@@ -1,0 +1,12 @@
+W dowolnym języku programowania, chyba że określono inaczej:
+
+* Zad. 1. Zrealizuj funkcjonalność delay.
+* Zad. 2. Napisz własną realizację wzorca Future.
+* Zad. 3. Napisz własną realizację wzorca Promise.
+* Zad. 4. Zrealizuj program o dowolnej tematyce z wykorzystaniem Software Transactional Memory (Clojure lub Haskell)
+* Zad. 5. Zrealizuj program o dowolnej tematyce z wykorzystaniem atomów.
+
+Uwaga!
+Na ocenę max. 4- proszę wykonać obydwa poniższe zadania:
+Zadanie 6. Zrealizuj w dowolnym języku program rozwiązujący problem czytelników i pisarzy.
+Zadanie 7. Zrealizuj w dowolnym języku program rozwiązujący problem 5 filozofów.

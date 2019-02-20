@@ -1,0 +1,22 @@
+* Euler 4
+  https://projecteuler.net/problem=4
+* Euler 5
+  https://projecteuler.net/problem=5
+* Ciąg Fibonacciego zdefiniowany jest dla liczb naturalnych:
+   fib(0) = 0, fib(1) = 1, fib(n) = fib(n-1) + fib(n-2)
+  - Zrealizuj procedurę fib w-g powyższej definicji i przeanalizuj czasy
+    działania fib(n) dla rosnących wartości n
+  - Zaproponuj rekurencyjną wersję procedury fib,
+    która obliczy fib(50) w czasie poniżej 1ms.
+  - Zaproponuj iteracyjną (z pętlą while) wersję procedury fib,
+    która obliczy fib(50) w czasie poniżej 1ms.
+* Mając daną klasę Complex będącą reprezentacją liczb zespolonych
+  - Zrealizuj brakujące operatory -, *, /
+  - Zrealizuj operator sprzężenia
+  - [*] Zaproponuj przejście na postać polarną liczby zespolonej, określając
+    strukturę klasy oraz operatory modulus/argument (angle)
+* Napisz procedurę, która oblicza wartość iloczynu skalarnego 2 wektorów
+  Wektory mają być reprezentowane w postaci tablic.
+* Napisz procedurę, która realizuje rzutowanie wektora a na wektor b.
+  Reprezentacja wektorów ma być zrealizowana w postaci tablic.
+* Napisz procedurę, która realizuje iloczyn wektorowy wektorów a i b.

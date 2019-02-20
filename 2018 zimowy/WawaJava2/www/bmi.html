@@ -1,0 +1,54 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>
+      BMI Calculator
+    </title>
+    <script>
+      function bmi(height, weight) {
+        var result = weight / (height * height);
+        return result;
+      }
+
+      function onGoClick() {
+        var name = document.getElementById("firstName").value;
+        var h    = document.getElementById("height").value;
+        var w    = document.getElementById("weight").value;
+
+        var result = name + ", your BMI is " + bmi(h, w);
+        document.getElementById("result").textContent = result;
+      }
+
+    </script>
+  </head>
+  <body>
+    <h1>Body Mass Index</h1>
+
+    <table border="0" cellspacing="10">
+      <tr>
+        <td>First Name:</td>
+        <td><input type="text" id="firstName" style="border-color:rgb(0, 0, 0)"/></td>
+      </tr>
+      <tr>
+        <td>Height:</td>
+        <td><input type="text" id="height" style="border-color:rgb(0, 0, 0)"/></td>
+      </tr>
+      <tr>
+        <td>Weight:</td>
+        <td><input type="text" id="weight" style="border-color:rgb(0, 0, 0)"/></td>
+      </tr>
+      <tr>
+        <td></td>
+        <td style="text-align: right;"><input type="button"
+                                              style="border-width: 2px; border-style: solid;"
+                                              value="Go"
+                                              onclick="onGoClick()"/></td>
+      </tr>
+      <tr>
+        <td colspan="2"><div id="result">Click Go</div></td>
+      </tr>
+    </table>
+
+  </body>
+</html>
