@@ -1,0 +1,8 @@
+* Assignment 0
+  Install JDK in your computer (at home/school).
+* Assignment 1
+  Provide an implementation of factorial function. Study the correctness of the
+  arguments in a way similar to what we did during the class/lab.
+  factorial(n) =
+    1                  for n = 0
+    n * factorial(n-1) for n > 0

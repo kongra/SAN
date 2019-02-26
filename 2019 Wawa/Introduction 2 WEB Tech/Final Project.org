@@ -1,0 +1,6 @@
+* Create your own WEB page (website) using the following technologies:
+** HTML
+** JavaScript
+** CSS (especially CSS Grid and/or Bootstrap)
+
+The page should provide some functionality that can only be implemented using JS.
