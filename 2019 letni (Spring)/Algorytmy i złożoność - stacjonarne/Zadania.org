@@ -1,0 +1,5 @@
+* Szybkie potęgowanie
+  a. Zaimplementować rekurencyjną procedurę szybkiego potęgowania. Uruchomić dla
+     kilku wartości a i n. Wykorzystać klasę java.math.BigInteger.
+  b. Zaproponować wersję powyższej procedury wykorzystującą jedynie instrukcje
+     warunkowe oraz instrukcję skoku (pętlę while).
