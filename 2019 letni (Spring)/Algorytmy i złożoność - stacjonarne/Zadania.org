@@ -3,3 +3,17 @@
      kilku wartości a i n. Wykorzystać klasę java.math.BigInteger.
   b. Zaproponować wersję powyższej procedury wykorzystującą jedynie instrukcje
      warunkowe oraz instrukcję skoku (pętlę while).
+* Permutacje
+  Napisz procedurę, która mając daną tablicę jednowymiarową (o rozmiarze n)
+  dowolnych elementów (int, String, itd.) zwraca wszystkie permutacje tych
+  elementów. Wynik powinien być dwuwymiarową tablicą o n! wierszach i n
+  kolumnach:
+
+  permutacje([1 2 3 4]) = [[1, 2, 3, 4]
+                           [1, 2, 4, 3]
+                           [1, 3, 2, 4]
+                           [1, 3, 4, 2]
+
+                           ...
+
+                           [4, 3, 2, 1]]
