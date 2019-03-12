@@ -6,3 +6,7 @@
   factorial(n) =
     1                  for n = 0
     n * factorial(n-1) for n > 0
+* Assignment 2
+  - Euler 2
+  - Euler 4
+  - Euler 9
