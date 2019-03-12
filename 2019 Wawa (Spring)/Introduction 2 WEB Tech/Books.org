@@ -1,0 +1,18 @@
+2011 Head First HTML5 Programming
+2011 HTML5 and CSS3 in The Real World May
+2011 HTML5 Mastery
+2012 Robbins J., Learning Web Design, 4th Edition
+2014 Modern Web Essentials Using JavaScript and HTML5
+
+2011 Meyer E. A., Css Pocket Reference, 4th Edition
+2015 McFarland D., CSS The Missing Manual, 4th Edition
+2017 Rachel Andrew, The New CSS Layout
+2016 Lea Verou, CSS Secrets
+
+2011 Oreilly, JavaScript: The Definitive Guide, 6th Edition
+2010 Sefanov S., JavaScript Patterns
+2008 Crockford D., JavaScript: The Good Parts
+
+2004 Williams R., The Non-Designer's Design Book
+1998 Tufte E.R, Envisioning Information
+2001 Tufte E.R., The Visual Display of Quantitative Information (2nd Edition)

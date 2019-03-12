@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="user-scalable=no, initial-scale=1, maximum-scale=1, minimum-scale=1, width=device-width, height=device-height" />
+
+    <meta http-equiv="x-ua-compatible"        content="ie=edge"/>
+    <meta name="apple-mobile-web-app-capable" content="yes"/>
+    <meta name="mobile-web-app-capable"       content="yes"/>
+
+    <meta http-equiv="Cache-Control"          content="no-cache, no-store, must-revalidate"/>
+    <meta http-equiv="Pragma"                 content="no-cache" />
+    <meta http-equiv="Expires"                content="0" />
+
+    <title>BMI Calc</title>
+    <link href="https://fonts.googleapis.com/css?family=Lobster+Two" rel="stylesheet">
+
+  </head>
+
+  <body>
+    <h1>Please, enter the parameters of your body:</h1>
+    Mass [kg]:<br>
+    <input type="text" id="bmi-mass"/><br>
+    Height [m]:<br>
+    <input type="text" id="bmi-height"/><br>
+    <input type="button" value="Show BMI" onclick="updateBMIResult()"/><br>
+    <h3 id="bmi-result">Your BMI is:</h3>
+
+    <script type="text/javascript" src="bmi.js"></script>
+  </body>
+
+</html>
