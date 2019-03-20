@@ -1,0 +1,20 @@
+body {
+    background-color: #7d70ba;
+    font-family: "Lobster Two", serif;
+}
+
+/* input[type="text"] { */
+/*     background-color: #5cc8ff; */
+/* } */
+
+#bmi-mass {
+    background-color: #5cc8ff;
+}
+
+#bmi-height {
+    background-color: #93867f;
+}
+
+.my-header {
+    color: #fff;
+}

@@ -14,17 +14,22 @@
 
     <title>BMI Calc</title>
     <link href="https://fonts.googleapis.com/css?family=Lobster+Two" rel="stylesheet">
+    <link href="bmi.css" rel="stylesheet">
 
   </head>
 
+  <!-- * HTML Tags -->
+  <!-- * IDs       -->
+  <!-- * Classes   -->
+
   <body>
-    <h1>Please, enter the parameters of your body:</h1>
+    <h1 class="my-header">Please, enter the parameters of your body:</h1>
     Mass [kg]:<br>
     <input type="text" id="bmi-mass"/><br>
     Height [m]:<br>
     <input type="text" id="bmi-height"/><br>
     <input type="button" value="Show BMI" onclick="updateBMIResult()"/><br>
-    <h3 id="bmi-result">Your BMI is:</h3>
+    <h3 id="bmi-result" class="my-header">Your BMI is:</h3>
 
     <script type="text/javascript" src="bmi.js"></script>
   </body>
