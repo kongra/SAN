@@ -1,0 +1,30 @@
+* {
+    margin:  0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+.padding5px {
+    padding: 5px;
+}
+
+#hello-label {
+    /* padding-top: 5px; */
+    /* padding-bottom: 10px; */
+    /* padding: 10px 12px 13px 14px; */
+    /* margin:  11px 12px 13px 14px; */
+    background-color: #ffaabb;
+    /* border: 1px solid black; */
+}
+
+.c1 {
+    background-color: red;
+}
+
+.c2 {
+    background-color: green;
+}
+
+.c3 {
+    background-color: blue;
+}
