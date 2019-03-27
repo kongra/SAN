@@ -26,4 +26,9 @@ public class Nil<T> implements Seq<T> {
   public boolean isEmpty() {
     return true;
   }
+
+  @Override
+  public Seq<T> cons(T e) {
+    return new LinkedSeq<>(e, this);
+  }
 }

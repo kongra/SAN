@@ -5,7 +5,7 @@ public class LinkedSeq<T> implements Seq<T> {
   public static <T> Seq<T> make(T... elems) {
     Seq<T> result = Nil.get();
     for (int i = elems.length - 1; i >= 0; i--) {
-      result = new LinkedSeq<>(elems[i], result);
+      result = result.cons(elems[i]);
     }
     return result;
   }
@@ -14,7 +14,7 @@ public class LinkedSeq<T> implements Seq<T> {
 
   private final Seq<T> rest;
 
-  public LinkedSeq(T first, Seq<T> rest) {
+  LinkedSeq(T first, Seq<T> rest) {
     this.first = first;
     this.rest = rest;
   }
@@ -32,5 +32,10 @@ public class LinkedSeq<T> implements Seq<T> {
   @Override
   public boolean isEmpty() {
     return false;
+  }
+
+  @Override
+  public Seq<T> cons(T e) {
+    return new LinkedSeq<>(e, this);
   }
 }
