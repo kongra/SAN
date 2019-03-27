@@ -17,3 +17,18 @@
                            ...
 
                            [4, 3, 2, 1]]
+
+* Sekwencja niezmienna (1)
+  Zrealizuj operator allIndexesOf, który działa, jak następuje:
+  Seq<String>  napisy = LinkedSeq.make("a", "b", "c", "d", "a");
+  Seq<Integer> result = napisy.allIndexesOf(s -> "a".equals(s)); // => (0, 4)
+
+* Sekwencja niezmienna (2)
+  Zrealizuj operator findAll, który działa, jak poniżej:
+  Seq<String> napisy = LinkedSeq.make("aaa", "bb", "cccc", "ddd");
+  Seq<String> result = napisy.findAll(s -> s.lenght() == 3); // => ("aaa", "ddd")
+
+* Sekwencja niezmienna (3)
+  Korzystając z operatora fmap napisz program który:
+  - Buduje listę elementów typu String (Seq<String>)
+  - Zwraca listę długości tych elementów
