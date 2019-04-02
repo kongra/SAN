@@ -10,3 +10,6 @@
   - Euler 2
   - Euler 4
   - Euler 9
+* Assignment 3
+  - Implement -, *, / for Complex class
+  - Implement conjugate operator for Complex class

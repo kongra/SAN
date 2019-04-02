@@ -1,21 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="88402472-6395-4f88-bd10-45bc57fa92f8" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/src/san/lodz/math/Binary.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/san/lodz/math/Nullary.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/san/lodz/math/TestFns.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/san/lodz/math/Unary.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/AlgoLodz/san/lodz/algo/utils/LinkedSeq.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/AlgoLodz/san/lodz/algo/utils/LinkedSeq.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/AlgoLodz/san/lodz/algo/utils/Nil.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/AlgoLodz/san/lodz/algo/utils/Nil.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/AlgoLodz/san/lodz/algo/utils/Program.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/AlgoLodz/san/lodz/algo/utils/Program.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/AlgoLodz/san/lodz/algo/utils/Seq.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/AlgoLodz/san/lodz/algo/utils/Seq.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/san/lodz/algo/utils/LinkedSeq.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/san/lodz/algo/utils/LinkedSeq.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/san/lodz/algo/utils/Nil.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/san/lodz/algo/utils/Nil.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/san/lodz/algo/utils/Program.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/san/lodz/algo/utils/Program.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/san/lodz/algo/utils/Seq.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/san/lodz/algo/utils/Seq.java" afterDir="false" />
-    </list>
+    <list default="true" id="88402472-6395-4f88-bd10-45bc57fa92f8" name="Default Changelist" comment="" />
     <ignored path="$PROJECT_DIR$/out/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -63,7 +49,6 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -93,6 +78,7 @@
           <select />
         </subPane>
       </pane>
+      <pane id="Scope" />
       <pane id="PackagesPane" />
     </panes>
   </component>
@@ -161,7 +147,7 @@
   <component name="ToolWindowManager">
     <frame x="0" y="-1" width="1600" height="870" extended-state="6" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" weight="0.17696267" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.17696267" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Image Layers" order="2" />
       <window_info id="Designer" order="3" />
