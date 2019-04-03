@@ -32,3 +32,7 @@
   Korzystając z operatora fmap napisz program który:
   - Buduje listę elementów typu String (Seq<String>)
   - Zwraca listę długości tych elementów
+* Sekwencja nieskończona
+  Korzystając z LazySeq, operatorów iterate i fmap zrealizuj
+  nieskończony ciąg 0, 1, 1, 2, 3, 5, 8, 13, ...
+  Hint: Stwórz klasę Pair reprezentującą pary obiektów.

@@ -1,6 +1,6 @@
 package san.lodz.algo.utils;
 
-public class Program {
+public class TestSeq {
 
   public static void main(String... args) {
     Seq<String> napisy =
