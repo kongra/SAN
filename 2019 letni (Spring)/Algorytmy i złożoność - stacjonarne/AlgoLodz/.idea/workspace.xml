@@ -2,14 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="88402472-6395-4f88-bd10-45bc57fa92f8" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/.idea/uiDesigner.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/san/lodz/algo/utils/Delay.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/san/lodz/algo/utils/LazySeq.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/san/lodz/algo/utils/TestDelay.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/san/lodz/algo/utils/TestLazySeq.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../../2019 Wawa (Spring)/OO/WawaJava/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../../../2019 Wawa (Spring)/OO/WawaJava/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/san/lodz/algo/utils/Program.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/san/lodz/algo/utils/TestSeq.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../JEE (IV sem.)/UniOffice/src/san/office/Hello.java" beforeDir="false" afterPath="$PROJECT_DIR$/../../JEE (IV sem.)/UniOffice/src/san/office/Hello.java" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -19,22 +13,14 @@
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
   <component name="FileEditorManager">
-    <leaf>
+    <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/san/lodz/algo/utils/LazySeq.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="349">
-              <caret line="45" lean-forward="true" selection-start-line="43" selection-start-column="4" selection-end-line="45" />
+            <state relative-caret-position="510">
+              <caret line="45" selection-start-line="43" selection-start-column="4" selection-end-line="45" />
               <folding>
                 <element signature="imports" expanded="true" />
-                <element signature="e#105#106#0" expanded="true" />
-                <element signature="e#126#127#0" expanded="true" />
-                <element signature="e#164#165#0" expanded="true" />
-                <element signature="e#185#186#0" expanded="true" />
-                <element signature="e#227#228#0" expanded="true" />
-                <element signature="e#249#250#0" expanded="true" />
-                <element signature="e#471#472#0" expanded="true" />
-                <element signature="e#502#503#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -43,8 +29,8 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/san/lodz/algo/utils/TestLazySeq.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="336">
-              <caret line="8" column="44" lean-forward="true" selection-start-line="8" selection-start-column="44" selection-end-line="8" selection-end-column="44" />
+            <state relative-caret-position="120">
+              <caret line="8" column="44" selection-start-line="8" selection-start-column="44" selection-end-line="8" selection-end-column="44" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -55,7 +41,7 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/san/lodz/algo/utils/Seq.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="352">
+            <state relative-caret-position="1245">
               <caret line="84" column="3" selection-start-line="84" selection-start-column="3" selection-end-line="84" selection-end-column="3" />
               <folding>
                 <element signature="imports" expanded="true" />
@@ -108,7 +94,6 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="PackagesPane" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -145,6 +130,7 @@
           <select />
         </subPane>
       </pane>
+      <pane id="PackagesPane" />
       <pane id="Scope" />
     </panes>
   </component>
@@ -239,9 +225,10 @@
     <servers />
   </component>
   <component name="ToolWindowManager">
-    <frame x="0" y="-1" width="1600" height="870" extended-state="6" />
+    <frame x="0" y="-1" width="1024" height="738" extended-state="6" />
+    <editor active="true" />
     <layout>
-      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.17953669" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.18711656" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Image Layers" order="2" />
       <window_info id="Designer" order="3" />
@@ -378,9 +365,19 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/src/san/lodz/algo/utils/LazySeq.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="510">
+          <caret line="45" selection-start-line="43" selection-start-column="4" selection-end-line="45" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/san/lodz/algo/utils/Seq.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="352">
+        <state relative-caret-position="1245">
           <caret line="84" column="3" selection-start-line="84" selection-start-column="3" selection-end-line="84" selection-end-column="3" />
           <folding>
             <element signature="imports" expanded="true" />
@@ -388,28 +385,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/san/lodz/algo/utils/LazySeq.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="349">
-          <caret line="45" lean-forward="true" selection-start-line="43" selection-start-column="4" selection-end-line="45" />
-          <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="e#105#106#0" expanded="true" />
-            <element signature="e#126#127#0" expanded="true" />
-            <element signature="e#164#165#0" expanded="true" />
-            <element signature="e#185#186#0" expanded="true" />
-            <element signature="e#227#228#0" expanded="true" />
-            <element signature="e#249#250#0" expanded="true" />
-            <element signature="e#471#472#0" expanded="true" />
-            <element signature="e#502#503#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/san/lodz/algo/utils/TestLazySeq.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="336">
-          <caret line="8" column="44" lean-forward="true" selection-start-line="8" selection-start-column="44" selection-end-line="8" selection-end-column="44" />
+        <state relative-caret-position="120">
+          <caret line="8" column="44" selection-start-line="8" selection-start-column="44" selection-end-line="8" selection-end-column="44" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
