@@ -1,0 +1,36 @@
+* {
+    margin:  0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+.container {
+    width:   100vw;
+    height:  100vh;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+}
+
+.container div {
+    border: 1px solid #ccc;
+    padding: 10px;
+    width: 200px;
+    height: 100px;
+}
+
+.item1 {
+    order: 4;
+}
+
+.item2 {
+    order: 1;
+}
+
+.item3 {
+    order: 2;
+}
+
+.item4 {
+    order: 3;
+}
