@@ -15,9 +15,9 @@ public interface Seq<T> {
 
   default String asString() {
     StringBuilder buf = new StringBuilder("(");
-    this.forEach((e, isEmpty) -> {
+    this.forEach((e, isLast) -> {
       buf.append(e);
-      if (!isEmpty) {
+      if (!isLast) {
         buf.append(",");
       }
       return null;
@@ -78,9 +78,6 @@ public interface Seq<T> {
   }
 
   default <S> Seq<S> fmap(Unary<T, S> f) {
-    if (this.isEmpty())
-      return Nil.get();
-
-    return this.rest().fmap(f).cons(f.call(this.first()));
+    return LazySeq.fmap(f, this);
   }
 }

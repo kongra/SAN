@@ -40,6 +40,13 @@ public class LazySeq<T> implements Seq<T> {
     return new LazySeq<>(start, () -> iterate(f, f.call(start)));
   }
 
+  public static <T, S> Seq<S> fmap(Unary<T, S> f, Seq<T> s) {
+    if (s.isEmpty())
+      return Nil.get();
+
+    return new LazySeq<>(f.call(s.first()), () -> fmap(f, s.rest()));
+  }
+
   public static <T> Seq<T> take(int n, Seq<T> s) {
     if(n == 0)
       return Nil.get();

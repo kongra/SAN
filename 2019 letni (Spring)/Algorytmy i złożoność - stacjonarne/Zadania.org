@@ -36,4 +36,9 @@
   Korzystając z LazySeq, operatorów iterate i fmap zrealizuj
   nieskończony ciąg 0, 1, 1, 2, 3, 5, 8, 13, ...
   Hint 1: Stwórz klasę Pair reprezentującą pary obiektów
-  Hint 1: Zrealizuj operator fmap wykorzystujący odroczenie
+  Hint 2: Zrealizuj operator fmap wykorzystujący odroczenie
+* DLinkedList
+  - Zrealizuj operator indexOf(value)
+  - Zrealizuj operator addBefore(index, value)
+  - Zrealizuj operator addAfter(index, value)
+  - Zrealizuj operator delete(index)
