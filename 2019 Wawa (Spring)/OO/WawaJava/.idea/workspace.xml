@@ -1,7 +1,15 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="11c3768c-9d15-4846-92e3-1a1de8fff447" name="Default Changelist" comment="" />
+    <list default="true" id="11c3768c-9d15-4846-92e3-1a1de8fff447" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/.idea/uiDesigner.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/edu/san/math/PlanarComplex.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/edu/san/math/PolarComplex.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/edu/san/math/Complex.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/edu/san/math/Complex.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/edu/san/math/TestComplex.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/edu/san/math/TestComplex.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../2019 letni (Spring)/Algorytmy i złożoność - stacjonarne/AlgoLodz/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../../../2019 letni (Spring)/Algorytmy i złożoność - stacjonarne/AlgoLodz/.idea/workspace.xml" afterDir="false" />
+    </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -9,13 +17,91 @@
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
+  <component name="DefaultGradleProjectSettings">
+    <option name="testRunner" value="GRADLE" />
+    <option name="delegatedBuild" value="true" />
+  </component>
   <component name="FileEditorManager">
-    <leaf />
+    <leaf>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/edu/san/math/PlanarComplex.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="99">
+              <caret line="51" column="3" lean-forward="true" selection-start-line="51" selection-start-column="3" selection-end-line="51" selection-end-column="3" />
+              <folding>
+                <element signature="e#840#841#0" expanded="true" />
+                <element signature="e#859#860#0" expanded="true" />
+                <element signature="e#942#943#0" expanded="true" />
+                <element signature="e#961#962#0" expanded="true" />
+                <element signature="e#1052#1053#0" expanded="true" />
+                <element signature="e#1070#1071#0" expanded="true" />
+                <element signature="e#1126#1127#0" expanded="true" />
+                <element signature="e#1147#1148#0" expanded="true" />
+                <element signature="e#1190#1191#0" expanded="true" />
+                <element signature="e#1211#1212#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/edu/san/math/PolarComplex.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="345">
+              <caret line="51" column="45" lean-forward="true" selection-start-line="51" selection-start-column="35" selection-end-line="51" selection-end-column="45" />
+              <folding>
+                <element signature="e#314#315#0" expanded="true" />
+                <element signature="e#350#351#0" expanded="true" />
+                <element signature="e#368#369#0" expanded="true" />
+                <element signature="e#386#387#0" expanded="true" />
+                <element signature="e#427#428#0" expanded="true" />
+                <element signature="e#445#446#0" expanded="true" />
+                <element signature="e#487#488#0" expanded="true" />
+                <element signature="e#505#506#0" expanded="true" />
+                <element signature="e#547#548#0" expanded="true" />
+                <element signature="e#568#569#0" expanded="true" />
+                <element signature="e#702#703#0" expanded="true" />
+                <element signature="e#723#724#0" expanded="true" />
+                <element signature="e#766#767#0" expanded="true" />
+                <element signature="e#787#788#0" expanded="true" />
+                <element signature="e#860#861#0" expanded="true" />
+                <element signature="e#887#888#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/edu/san/math/Complex.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="180">
+              <caret line="27" column="25" selection-start-line="27" selection-start-column="11" selection-end-line="27" selection-end-column="25" />
+              <folding>
+                <element signature="e#102#103#0" expanded="true" />
+                <element signature="e#136#137#0" expanded="true" />
+                <element signature="e#220#221#0" expanded="true" />
+                <element signature="e#272#273#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/edu/san/math/TestComplex.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="330">
+              <caret line="11" column="25" selection-start-line="11" selection-start-column="25" selection-end-line="11" selection-end-column="25" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+    </leaf>
   </component>
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
         <option value="Class" />
+        <option value="Interface" />
       </list>
     </option>
   </component>
@@ -28,8 +114,10 @@
         <option value="$PROJECT_DIR$/src/edu/san/wawa/lect20190319/Driver.java" />
         <option value="$PROJECT_DIR$/src/edu/san/wawa/lect20190319/Program.java" />
         <option value="$PROJECT_DIR$/src/edu/san/wawa/lect20190319/Car.java" />
+        <option value="$PROJECT_DIR$/src/edu/san/math/PlanarComplex.java" />
         <option value="$PROJECT_DIR$/src/edu/san/math/Complex.java" />
         <option value="$PROJECT_DIR$/src/edu/san/math/TestComplex.java" />
+        <option value="$PROJECT_DIR$/src/edu/san/math/PolarComplex.java" />
       </list>
     </option>
   </component>
@@ -45,7 +133,6 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="PackagesPane" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -76,9 +163,11 @@
         </subPane>
       </pane>
       <pane id="Scope" />
+      <pane id="PackagesPane" />
     </panes>
   </component>
   <component name="PropertiesComponent">
+    <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1554205812286" />
   </component>
   <component name="RunDashboard">
@@ -143,7 +232,7 @@
   <component name="ToolWindowManager">
     <frame x="0" y="-1" width="1600" height="870" extended-state="6" />
     <layout>
-      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.25933075" />
+      <window_info content_ui="combo" id="Project" order="0" weight="0.2117117" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Image Layers" order="2" />
       <window_info id="Designer" order="3" />
@@ -170,18 +259,6 @@
       <window_info anchor="right" id="Capture Analysis" order="6" />
       <window_info anchor="right" id="Palette&#9;" order="7" />
     </layout>
-  </component>
-  <component name="XDebuggerManager">
-    <breakpoint-manager>
-      <breakpoints>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/edu/san/math/TestComplex.java</url>
-          <line>5</line>
-          <properties />
-          <option name="timeStamp" value="1" />
-        </line-breakpoint>
-      </breakpoints>
-    </breakpoint-manager>
   </component>
   <component name="editorHistoryManager">
     <entry file="file://$PROJECT_DIR$/src/edu/san/wawa/lect20190319/Program.java">
@@ -237,21 +314,67 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/edu/san/math/Complex.java">
+    <entry file="file://$PROJECT_DIR$/src/edu/san/math/PlanarComplex.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1443">
-          <caret line="37" column="20" selection-start-line="37" selection-start-column="20" selection-end-line="37" selection-end-column="20" />
+        <state relative-caret-position="99">
+          <caret line="51" column="3" lean-forward="true" selection-start-line="51" selection-start-column="3" selection-end-line="51" selection-end-column="3" />
           <folding>
-            <element signature="e#298#299#0" expanded="true" />
-            <element signature="e#320#321#0" expanded="true" />
+            <element signature="e#840#841#0" expanded="true" />
+            <element signature="e#859#860#0" expanded="true" />
+            <element signature="e#942#943#0" expanded="true" />
+            <element signature="e#961#962#0" expanded="true" />
+            <element signature="e#1052#1053#0" expanded="true" />
+            <element signature="e#1070#1071#0" expanded="true" />
+            <element signature="e#1126#1127#0" expanded="true" />
+            <element signature="e#1147#1148#0" expanded="true" />
+            <element signature="e#1190#1191#0" expanded="true" />
+            <element signature="e#1211#1212#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/edu/san/math/TestComplex.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="304">
-          <caret line="8" column="36" lean-forward="true" selection-start-line="8" selection-start-column="36" selection-end-line="8" selection-end-column="36" />
+        <state relative-caret-position="330">
+          <caret line="11" column="25" selection-start-line="11" selection-start-column="25" selection-end-line="11" selection-end-column="25" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/edu/san/math/Complex.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="180">
+          <caret line="27" column="25" selection-start-line="27" selection-start-column="11" selection-end-line="27" selection-end-column="25" />
+          <folding>
+            <element signature="e#102#103#0" expanded="true" />
+            <element signature="e#136#137#0" expanded="true" />
+            <element signature="e#220#221#0" expanded="true" />
+            <element signature="e#272#273#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/edu/san/math/PolarComplex.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="345">
+          <caret line="51" column="45" lean-forward="true" selection-start-line="51" selection-start-column="35" selection-end-line="51" selection-end-column="45" />
+          <folding>
+            <element signature="e#314#315#0" expanded="true" />
+            <element signature="e#350#351#0" expanded="true" />
+            <element signature="e#368#369#0" expanded="true" />
+            <element signature="e#386#387#0" expanded="true" />
+            <element signature="e#427#428#0" expanded="true" />
+            <element signature="e#445#446#0" expanded="true" />
+            <element signature="e#487#488#0" expanded="true" />
+            <element signature="e#505#506#0" expanded="true" />
+            <element signature="e#547#548#0" expanded="true" />
+            <element signature="e#568#569#0" expanded="true" />
+            <element signature="e#702#703#0" expanded="true" />
+            <element signature="e#723#724#0" expanded="true" />
+            <element signature="e#766#767#0" expanded="true" />
+            <element signature="e#787#788#0" expanded="true" />
+            <element signature="e#860#861#0" expanded="true" />
+            <element signature="e#887#888#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>

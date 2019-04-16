@@ -13,3 +13,8 @@
 * Assignment 3
   - Implement -, *, / for Complex class
   - Implement conjugate operator for Complex class
+* Assignment 4
+  Use the new Complex interface (+ 2 classes implementing the interface) to provide:
+  - -, *, /
+  - conjugate
+  Use polar and planar reprezentations where needed

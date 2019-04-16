@@ -3,25 +3,13 @@ package edu.san.math;
 public class TestComplex {
 
   public static void main(String[] args) {
-    Complex c1 = new Complex(3, 4);
-    Complex c2 = new Complex(1, 2);
-    Complex r = c1.add(c2);
-    System.out.println(r.modulus());
+    Complex z1 = Complex.planar(2, 1);
+    System.out.println(z1.asString());
+    System.out.println(z1.asPolar().asString());
 
-    System.out.println(
-        new Complex(5,6)
-            .add(new Complex(7, 8))
-            .add(new Complex(2, 1))
-            .add(new Complex(4, 2)).asString());
-
-    System.out.println(new Complex(1, 2).asString());
-    System.out.println(new Complex(-1, 2).asString());
-    System.out.println(new Complex(1, -2).asString());
-    System.out.println(new Complex(-1, -2).asString());
-    System.out.println(new Complex(0, 2).asString());
-    System.out.println(new Complex(-1, 0).asString());
-    System.out.println(new Complex(0, -2).asString());
-    System.out.println(new Complex(0, 0).asString());
+    Complex z2 = Complex.polar(2, 3);
+    Complex z3 = z2.add(Complex.polar(4, 5));
+    System.out.println(z3.asString());
   }
 
 }

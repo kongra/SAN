@@ -1,47 +1,33 @@
 package edu.san.math;
 
-public class Complex {
+public interface Complex {
 
-  double re;
-
-  double im;
-
-  public Complex(double re, double im) {
-    this.re = re;
-    this.im = im;
+  static Complex polar(double modulus, double argument) {
+    return new PolarComplex(modulus, argument);
   }
 
-  public double modulus() {
-    return Math.sqrt(
-        square(this.re) +
-        square(this.im));
+  static Complex planar(double re, double im) {
+    return new PlanarComplex(re, im);
   }
 
-  public Complex add(Complex other) {
-    return new Complex(
-        this.re + other.re,
-        this.im + other.im);
-  }
+  double re();
 
-  public String asString() {
-    StringBuilder repr = new StringBuilder();
-    if (this.re == 0) {
-      repr.append(this.im).append("j");
-    } else {
-      repr.append("(");
-      repr.append(this.re);
-      if (this.im < 0) {
-        repr.append("-").append(Math.abs(this.im));
-      } else {
-        repr.append("+").append(this.im);
-      }
-      repr.append("j)");
-    }
-    return repr.toString();
-  }
+  double im();
 
-  private double square(double x) {
-    return x * x;
+  double modulus();
+
+  double argument();
+
+  String asString();
+
+  Complex asPolar();
+
+  Complex asPlanar();
+
+  default Complex add(Complex other) {
+    return Complex.planar(
+        this.re() + other.re(),
+        this.im() + other.im());
   }
 
 }
