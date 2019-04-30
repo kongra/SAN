@@ -8,13 +8,17 @@ public class Test {
 
   private static void login(Connection conn,
                             String email,
-                            long msecs) throws SQLException {
-    restartingSerial(Long.MAX_VALUE, () -> {
+                            long msecs,
+                            int id) throws SQLException {
+    restartingSerial(id, Long.MAX_VALUE, () -> {
       withTx(conn, Connection.TRANSACTION_SERIALIZABLE, () -> {
+        System.out.println(id  + " starting");
+
         iterQuery(conn,
             "select * from profiles where email='" + email + "'",
             rs -> {
-              System.out.println(rs.getString("email"));
+              System.out.println(id + " email " +
+                  rs.getString("email"));
               return null;
             });
 
@@ -22,12 +26,12 @@ public class Test {
             "update profiles set last_login = now() " +
                 "where email = '" + email + "'");
 
-        System.out.println("Changed " + n);
+        System.out.println(id  + " Changed " + n);
 
         try {
-          System.out.println("Goto sleep.");
+          System.out.println(id + " Goto sleep");
           Thread.sleep(msecs);
-          System.out.println("COMMIT");
+          System.out.println(id + " COMMIT");
         } catch (InterruptedException e) {
           e.printStackTrace();
         }
@@ -55,7 +59,7 @@ public class Test {
 
         Thread t1 = new Thread(() -> {
           try {
-            login(conn1, "pangeon@tlen.pl", 1000);
+            login(conn1, "pangeon@tlen.pl", 1000, 1);
           } catch (SQLException e) {
             e.printStackTrace();
           }
@@ -63,7 +67,7 @@ public class Test {
 
         Thread t2 = new Thread(() -> {
           try {
-            login(conn2, "pangeon@tlen.pl", 500);
+            login(conn2, "pangeon@tlen.pl", 50, 2);
           } catch (SQLException e) {
             e.printStackTrace();
           }

@@ -48,7 +48,7 @@ public final class JDBC {
     }
   }
 
-  public static <T> T restartingSerial(long count,
+  public static <T> T restartingSerial(int id, long count,
                                        Nullary<T> body) throws SQLException {
     for (int i = 1; i <= count; i++) {
       try {
@@ -58,7 +58,7 @@ public final class JDBC {
         if(!"40001".equals(e.getSQLState()))
           throw e;
 
-        System.out.println("Restarting SERIALIZABLE");
+        System.out.println(id + " Restarting SERIALIZABLE");
       }
     }
     return body.call();
