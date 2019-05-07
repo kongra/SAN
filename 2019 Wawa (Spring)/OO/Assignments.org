@@ -17,4 +17,11 @@
   Use the new Complex interface (+ 2 classes implementing the interface) to provide:
   - -, *, /
   - conjugate
-  Use polar and planar reprezentations where needed
+  Use polar and planar representations where needed
+* Assignment 5
+  Design and implement a class to represent vectors in 3D space. There should be
+  methods to represent vector addition, subtraction, scalar product.
+* Assignment 6
+  Design and implement a set of classes to represent various kinds of vehicles:
+  cars, motorbikes, mics. car types: SUV, compact, etc. Implement methods of
+  your own choice.
