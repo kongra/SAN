@@ -20,8 +20,7 @@ server <- function(input, output) {
 
     if (!is.null(inFile)) {
       png <- inFile[["datapath"]] %>%
-        readPNG %>%
-        EBImage::resize(w = 28, h = 28)
+        readPNG # %>% EBImage::resize(w = 28, h = 28)
 
       png <- array_reshape(1.0 - png, c(1, 28 * 28))
       cls <- network %>% predict_classes(png)
