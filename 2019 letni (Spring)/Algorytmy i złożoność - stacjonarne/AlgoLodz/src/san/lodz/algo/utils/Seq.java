@@ -80,4 +80,8 @@ public interface Seq<T> {
   default <S> Seq<S> fmap(Unary<T, S> f) {
     return LazySeq.fmap(f, this);
   }
+
+  default Seq<T> filter(Unary<T, Boolean> pred) {
+    return LazySeq.filter(pred, this);
+  }
 }

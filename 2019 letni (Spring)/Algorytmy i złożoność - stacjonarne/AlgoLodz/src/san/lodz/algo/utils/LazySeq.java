@@ -56,4 +56,15 @@ public class LazySeq<T> implements Seq<T> {
 
     return new LazySeq<>(s.first(), () -> take(n - 1, s.rest()));
   }
+
+  public static <T> Seq<T> filter(Unary<T, Boolean> pred, Seq<T> s) {
+    if (s.isEmpty())
+      return s;
+
+    T e = s.first();
+    if (pred.call(e))
+      return new LazySeq<>(e, () -> filter(pred, s.rest()));
+    else
+      return filter(pred, s.rest());
+  }
 }
