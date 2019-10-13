@@ -1,0 +1,28 @@
+| TEMAT                                                          | STUDENT | Ocena |
+|----------------------------------------------------------------+---------+-------|
+| Convolutional Neural Networks                                  |   93986 |       |
+| Sieci Kohonena (SOM - Self Organising Map)                     |   88938 |       |
+| Recurrent Neural Networks                                      |   90952 |       |
+| Collaborative Filtering (Netflix)                              |   88676 |       |
+| Algorytmy uczenia sieci wielowarstwowych                       |   92175 |       |
+| Stochastic Gradient Descent                                    |   88712 |       |
+| Problem Bias/Variance                                          |   88936 |       |
+| XGBoost                                                        |   88680 |       |
+| GBM                                                            |   91356 |       |
+| Regularyzacja w algorytmach machine-learning                   |   90959 |       |
+| LASSO                                                          |   88668 |       |
+| Sztuczna inteligencja w grach komputerowych                    |   88703 |       |
+| Ocena jakości modeli regresji liniowej                         |   90955 |       |
+| Sztuczna inteligencja w medycynie                              |         |       |
+| Sztuczna inteligencja na platformie Azure Microsoftu           |         |       |
+| Algorytmy uczenia maszynowego na platformie H2O.ai             |         |       |
+| Machine learning a prognozowanie przebiegów szeregów czasowych |         |       |
+| Regularyzacja w deep learning                                  |         |       |
+| Regresja liniowa                                               |         |       |
+| Sztuczna inteligencja we współczesnych samochodach             |         |       |
+| Metody balansowania biasu i wariancji                          |         |       |
+| Support Vector Machines                                        |         |       |
+| GBM                                                            |         |       |
+| Algorytmy uczenia sieci neuronowych                            |         |       |
+|                                                                |         |       |
+|                                                                |         |       |
