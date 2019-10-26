@@ -1,0 +1,5 @@
+* Zadanie 1.
+  Zrealizuj rozwiązanie problemu czytelników i pisarzy.
+
+* Zadanie 2.
+  Zrealizuj rozwiązanie problemu 5 ucztujących filozofów.
