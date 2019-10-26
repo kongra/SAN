@@ -1,1 +1,2 @@
 * Zadanie 1. https://projecteuler.net/problem=2
+  - Hint: Użyj typu long zamiast int
