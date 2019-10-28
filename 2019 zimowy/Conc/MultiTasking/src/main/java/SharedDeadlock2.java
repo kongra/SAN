@@ -6,16 +6,14 @@ public class SharedDeadlock2 {
 
   private static int count = 0;
 
-  private static Object monitor = new Object();
-
   static String myTrain;
 
   @NotNull
   @Contract("_ -> new")
   static Thread makeTrain(String s) {
     return new Thread(() -> {
-      synchronized (monitor) {
-        synchronized (monitor) {
+      synchronized (SharedDeadlock2.class) {
+        synchronized (SharedDeadlock2.class) {
           count += s.length();
           System.out.println("Obecnie count jest równy " + count);
         }
