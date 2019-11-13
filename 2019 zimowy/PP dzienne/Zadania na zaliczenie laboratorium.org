@@ -4,3 +4,6 @@
 * Zadanie 3. https://projecteuler.net/problem=9
 * Zadanie 4. https://projecteuler.net/problem=12
 * Zadanie 5. https://projecteuler.net/problem=14
+* Zadanie 6.
+  Zrealizuj procedurę, która liczy i zwraca wartość iloczynu skalarnego wektorów
+  w przestrzeni R(n).
