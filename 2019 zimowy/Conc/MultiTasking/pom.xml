@@ -124,6 +124,12 @@
       <scope>test</scope>
     </dependency>
 
+    <dependency>
+      <groupId>com.github.xmlet</groupId>
+      <artifactId>htmlflow</artifactId>
+      <version>3.3</version>
+    </dependency>
+
   </dependencies>
 
 </project>

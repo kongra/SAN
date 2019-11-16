@@ -11,7 +11,7 @@ import java.util.stream.Stream;
 
 @BenchmarkMode(Mode.AverageTime)
 @OutputTimeUnit(TimeUnit.NANOSECONDS)
-public class TestSeqGen {
+public class BenchSeqGen {
 
   @Benchmark
   public static void benchSeqGen(MyState state, Blackhole blackhole) {
