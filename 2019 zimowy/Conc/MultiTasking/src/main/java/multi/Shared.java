@@ -1,4 +1,4 @@
-// Copyright (c) Konrad Grzanek
+package multi;// Copyright (c) Konrad Grzanek
 // Created 13.10.2019
 
 import java.util.concurrent.Semaphore;

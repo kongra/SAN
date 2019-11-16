@@ -1,3 +1,4 @@
+import multi.SynchronizedDeadlock;
 import org.junit.jupiter.api.Test;
 
 class SynchronizedDeadlockTest {

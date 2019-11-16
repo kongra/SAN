@@ -1,4 +1,4 @@
-// Copyright (c) Konrad Grzanek
+package multi;// Copyright (c) Konrad Grzanek
 // Created 13.10.2019
 
 import java.util.concurrent.*;
@@ -14,6 +14,8 @@ public class Program {
       Thread.sleep(2000);
       return 5;
     });
+
+    // fooIO();
 
     Runnable r1 = () -> {
       System.out.println("Działa wątek " +

@@ -3,3 +3,10 @@
 
 * Zadanie 2.
   Zrealizuj rozwiązanie problemu 5 ucztujących filozofów.
+
+* Zadanie 3.
+  Wykonaj własną realizację wzorca Future pozwalającego na wykonywanie
+  asynchroniczne podanego kodu
+
+* Zadanie 4.
+  Wykonaj realizację własną wzorca Promise

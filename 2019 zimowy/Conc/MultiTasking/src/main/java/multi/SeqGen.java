@@ -1,3 +1,5 @@
+package multi;
+
 public class SeqGen {
 
   private long value;
