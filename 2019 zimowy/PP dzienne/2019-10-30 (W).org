@@ -1,0 +1,49 @@
+* TYPY PROSTE:
+
+* LICZBOWE:
+byte   8b                       -128 .. 0 ..                       127
+short 16b                    -32_768 .. 0 ..                    32_767
+int   32b             -2_147_483_648 .. 0 ..             2_147_483_647
+long  64b -9_223_372_036_854_775_808 .. 0 .. 9_223_372_036_854_775_807
+
+float  32b
+double 64b
+
+a IN A, A <: B
+--------------
+a IN B
+
+byte <: short <: int <: long <: float <: double
+         char <: int <: long <: float <: double
+
+byte  b = 127;
+short s = b; // coercion - konwersja niejawna
+
+int i = b;
+int j = s;
+
+float f = 100;
+
+b = s; // ERR
+
+char c = 'a';
+
+int i = 10;
+long n = 10;
+long m = 10L;
+
+double pi = 3.14159;
+float  pi = 3.14f;
+
+* CASTING (rzutowanie)
+int  i = 256;
+byte b = (byte) i;
+
+* TYP BOOLEAN
+boolean b = true | false;
+int i = 0;
+b = i; // ERR
+b = i != 0;
+
+* VOID
+void foo () { ... }
