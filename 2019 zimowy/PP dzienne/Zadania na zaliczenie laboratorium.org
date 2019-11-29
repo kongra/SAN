@@ -7,3 +7,5 @@
 * Zadanie 6.
   Zrealizuj procedurę, która liczy i zwraca wartość iloczynu skalarnego wektorów
   w przestrzeni R(n).
+* Zadanie 7
+  Zaimplementuj w postaci procedury mnożenie macierzy o wymiarze NxN
