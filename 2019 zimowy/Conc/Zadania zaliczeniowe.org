@@ -10,3 +10,6 @@
 
 * Zadanie 4.
   Wykonaj realizację własną wzorca Promise
+
+* Zadanie 5.
+  Napisz dowolny algorytm lub program wykorzystujący STM
