@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+  <style>
+    .signUpForm {
+      display: grid;
+      grid-template-columns: 40% 60%;
+      grid-template-rows: repeat(4, auto);
+      gap: 5px;
+      align-items: center;
+    }
+
+    .formText {
+      font-size: 3vw;
+    }
+  </style>
+
+</head>
+<body>
+
+  <div class="signUpForm">
+    <div class="formText">Email:</div>
+    <input class="formText" type="text" id="formEmail">
+
+    <div class="formText">Password:</div>
+    <input type="password" name="" id="">
+
+    <div class="formText">Passwd. Confirmation</div>
+    <input type="password" name="" id="">
+
+    <div></div>
+    <button type="submit">Sign-Up</button>
+  </div>
+
+  <script>
+
+    // function foo(x) {
+    //   return x + 2;
+    // }
+
+    // const foo = function(x) {
+    //   return x + 2;
+    // };
+
+    // const foo = (x) => {
+    //   return x + 2;
+    // };
+
+    const formEmail = document.getElementById('formEmail');
+
+    const EMAILS = ['kongra@gmail.com', 'kgrzanek@san.edu.pl'];
+
+    function onEmailChange(event) {
+      const beforeValue = formEmail.value;
+      setTimeout(() => {
+        const email = formEmail.value;
+        if (email == beforeValue) {
+          const i = EMAILS.findIndex(e => e == email);
+          if (i == -1) {
+            console.log('OK ' + email);
+          } else {
+            console.log('IN-USE ' + email);
+          }
+        }
+      }, 1000);
+    }
+
+    formEmail.addEventListener('input', onEmailChange);
+
+    // formEmail.addEventListener('input', (e) => {
+    //   console.log(formEmail.value);
+    // });
+
+  </script>
+
+</body>
+</html>
