@@ -10,3 +10,6 @@
 * Zadanie 7.
   - Zaimplementuj w postaci procedury mnożenie 2 macierzy o wymiarze NxN
   - Zrealizuj powyższy punkt przy założeniu, że macierze nie są kwadratowe (*)
+* Zadanie 8.
+  Napisz procedurę, która zwraca zbiór potęgowy podanego zbioru
+  wejściowego. Zbiory mogą być reprezentowane w postaci tablic.
