@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+
+  <style>
+    * {margin: 0;
+       padding: 0;
+       box-sizing: border-box;
+      }
+
+    .container {
+      display: grid;
+      grid-gap: 10px;
+      grid-template-columns: auto 200px;
+      grid-template-rows: 30px 30px;
+    }
+
+    #emailInput {
+      grid-column: 1 / 3;
+      grid-row: 1;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="container">
+    <input  id="emailInput" type="text" value="">
+    <span   id="emailMsg">OK</span>
+    <button id="goButton" value="Go">Go</button>
+  </div>
+
+  <script>
+    const emailInput = document.getElementById('emailInput');
+    const emailMsg   = document.getElementById('emailMsg');
+
+    emailInput.addEventListener('keyup', (e) => {
+      const val1 = emailInput.value;
+      setTimeout((e1) => {
+        const val2 = emailInput.value;
+        if (val1 == val2) {
+          console.log('val: ' + val1);
+        }
+      }, 2000);
+    });
+
+    // function foo(x) {
+    //   return x + 2;
+    // }
+
+    // const goo = function(x) {
+    //   return x + 2;
+    // };
+
+    // const moo = (x) => {
+    //   return x + 2;
+    // };
+
+    // const woo = x => x + 2;
+
+    // console.log('woo:' + woo);
+    // console.log('foo:' + foo(3));
+    // console.log('goo:' + goo(3));
+    // console.log('woo:' + woo(3));
+  </script>
+</body>
+</html>
