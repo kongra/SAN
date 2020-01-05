@@ -1,6 +1,7 @@
 package san.pp;
 
 public class Point {
+
   final double x;
   final double y;
 
@@ -13,7 +14,7 @@ public class Point {
     this.y = y;
   }
 
-  static String repr(Point p) {
-    return "(" + p.x + ", " + p.y + ")";
+  String repr() {
+    return "(" + this.x + ", " + this.y + ")";
   }
 }
