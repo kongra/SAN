@@ -70,12 +70,14 @@
       overlay.style.display = 'block';
     });
 
-    function sigmoid(t) {
-      return t; // 1 / (1 + Math.exp(8 * (t - 0.5)));
+    function sigmoid(alpha, t) {
+      return 1 / (1 + Math.exp(-alpha * (t - 0.5)));
     }
 
     function animOverlay(step, animSteps) {
-      const pos = step / animSteps; // sigmoid(step);
+      const startTime = performance.now();
+      // const pos = step / animSteps;
+      const pos = sigmoid(20, step / animSteps);
 
       // console.log(
       //   'step ' + step +
@@ -85,24 +87,26 @@
       overlay.style.top = pos * 100 + "vh";
       overlay.style.height = (100 - (pos * 100)) + "vh";
 
-      if (step + 1 == animSteps) {
+      if (step + 1 >= animSteps) {
         overlay.style.display = 'none';
         console.log('Ending.');
         return;
       }
+
+      const elapsedTime = performance.now() - startTime;
+      // console.log("elapsedTime is " + elapsedTime);
       setTimeout(() => {
         animOverlay(step + 1, animSteps);
-      }, 16);
+      }, 16 - elapsedTime);
     }
 
     overlay.addEventListener('click', (e) => {
-      const animTime  = 350;
+      const animTime  = 1200;
       const animSteps = animTime * 60.0 / 1000.0;
-      let step = 0;
 
       setTimeout(() => {
         animOverlay(0, animSteps);
-      }, 60);
+      }, 16);
     });
 
     // function foo(x) {
