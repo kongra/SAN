@@ -1,6 +1,6 @@
 package san.pp.biology;
 
-public class Mammal {
+public abstract class Mammal {
 
   boolean producesMilk;
 
