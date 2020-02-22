@@ -1,0 +1,5 @@
+* https://github.com/kongra/SAN/tree/master/2020%20letni%20(Spring)/Python%20Programming%20(Clark)
+* https://docs.python.org/2/tutorial/introduction.html
+* http://greenteapress.com/thinkpython/thinkpython.pdf
+* https://www.youtube.com/watch?v=JJmcL1N2KQs&list=PLillGF-RfqbbJYRaNqeUzAb7QY-IqBKRx
+* https://www.youtube.com/watch?v=Q_itdXI3YeE&list=PLRJdqdXieSHN0U9AdnmwD-9QcR9hmw04d
