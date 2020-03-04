@@ -23,8 +23,4 @@ public class Program1 {
     System.out.println(age);
   }
 
-  // Zadanie 1. Napisz własną polimorficzną
-  // procedurę i zademonstruj jej działanie
-  // na obiektach kilku różnych typów.
-
 }
