@@ -1,9 +1,18 @@
 package san.jipp.types;
 
-public class Animal {
+import java.time.LocalDate;
 
-  public void eat(Object food) { // jest polimorficzna
-    System.out.println("I'm happy eating " + food);
+public abstract class Animal {
+
+  private final LocalDate birthDate = LocalDate.now();
+
+  public abstract void eat(Object food);
+
+  public int ageInYears() {
+    var currentYear = LocalDate.now().getYear();
+    return currentYear - birthDate.getYear();
   }
+
+  //
 
 }

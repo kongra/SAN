@@ -1,6 +1,6 @@
 package san.jipp.types;
 
-public class Camel extends Animal {
+public class Camel extends Mammal {
 
   @Override
   public void eat(Object food) {

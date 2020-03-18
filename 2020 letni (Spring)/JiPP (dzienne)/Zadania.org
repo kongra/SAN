@@ -4,3 +4,5 @@
 * Zadanie 2.
   Napisz polimorficzne procedury wykorzystujące tablice oraz wariadyczną arność
   procedur. Skorzystaj z przykładu z Zoo.
+* Zadanie 3.
+  Proszę zaprojektować hierarchię klas wykorzystującą klasy abstrakcyjne.

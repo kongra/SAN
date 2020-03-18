@@ -28,6 +28,8 @@ public class Zoo {
   public static void main(String... args) {
     testFeed();
     testFeedArray();
+
+    Animal a1 = new Elephant();
   }
 
   private static void testFeedArray() {
