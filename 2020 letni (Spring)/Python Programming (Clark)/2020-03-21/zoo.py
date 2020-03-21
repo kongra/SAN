@@ -22,10 +22,3 @@ a2.sayHello()
 
 # print(a2.species)
 # print(a2.name)
-
-# Assignment 3.
-# * Create other methods for the Animal
-# * You can introduce other attributes for the Animal
-
-# Assignment 4.
-# * Model the world of Vehicles (cars, bikes, trucks) like in the Assignment 3.
