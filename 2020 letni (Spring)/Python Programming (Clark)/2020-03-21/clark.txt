@@ -1,0 +1,31 @@
+PARC:
+* Object programming style
+  - Smalltalk
+  - Alan Kay, Dan Ingalls
+* Ethernet
+* E-mail
+* Mouse
+* GUI - Graphical Users Interface
+* BitBlit
+
+https://www.youtube.com/watch?v=3QLuPg_UAKw&list=PLShIkfubwgee_-5b6OsMIp5dvp2xSkk5F
+
+Object programming style:
+- Simula 67
+- C++, AT&T (Bell Labs), Bjarne Stroustrup
+
+Object-oriented programming languages:
+- C++
+- Java
+- JavaScript
+- Python
+- Ruby
+- C#, VB.NET
+- Go
+- Rust
+TYPE:
+1. It is a set of rules and constraints that regulate what operations on data
+   can be performed and which can't.
+2. It is a set of objects that share the same behavior and structure.
+
+Dana Scott, Christopher Strachey
