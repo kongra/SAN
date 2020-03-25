@@ -6,3 +6,8 @@
   procedur. Skorzystaj z przykładu z Zoo.
 * Zadanie 3.
   Proszę zaprojektować hierarchię klas wykorzystującą klasy abstrakcyjne.
+* Zadanie 4.
+  Proszę napisać program, który tworzy kolekcję (ale nie tablicę) liczb typu Double i
+  wyznacza medianę i średnią na tej kolekcji. Kolekcja ma być generyczna. Proszę
+  wykorzystać klasy kolekcji z biblioteki standardowej języka Java.
+  Hint: java.util.Set oraz java.util.List powinny być obsługiwane przez Państwa procedury.
