@@ -46,6 +46,35 @@ public class DBI {
   }
 
   @Nullable
+  public static <T> T withNewTransaction(int isolationLevel
+      , @NotNull Function<Connection, T> body) {
+
+    try (var conn = getConnection()) {
+      final boolean autoCommit = conn.getAutoCommit();
+      try {
+        System.out.println("Start transakcji w wątku" + Thread.currentThread());
+        conn.setAutoCommit(false);
+        conn.setTransactionIsolation(isolationLevel);
+
+        var result = body.apply(conn);
+        System.out.println("Commit transakcji w wątku" + Thread.currentThread());
+        conn.commit();
+        return result;
+      } catch (Throwable e) {
+        conn.rollback();
+        e.printStackTrace(System.err);
+        return null;
+      } finally {
+        conn.setAutoCommit(autoCommit);
+      }
+      // return body.apply(conn);
+    } catch (SQLException e) {
+      e.printStackTrace(System.err);
+      return null;
+    }
+  }
+
+  @Nullable
   public static <T> T executingQuery(Connection conn
       , String query
       , @NotNull Function<ResultSet, T> body) {
@@ -57,6 +86,38 @@ public class DBI {
     } catch (SQLException e) {
       e.printStackTrace(System.err);
       return null;
+    }
+  }
+
+  @Nullable
+  public static <T> T execQuery1(Connection conn
+      , String query
+      , String columnLabel) {
+
+    try (var stmt = conn.createStatement()) {
+      try (var rs = stmt.executeQuery(query)) {
+        if (rs.next()) {
+          return (T) rs.getObject(columnLabel);
+        }
+        return null;
+      }
+    } catch (SQLException e) {
+      e.printStackTrace(System.err);
+      return null;
+    }
+  }
+
+  public static int execUpdate(Connection conn
+      , String query
+      , @NotNull Object... args) {
+    try (var stmt = conn.prepareStatement(query)) {
+      for (int i = 0; i < args.length; i++) {
+        stmt.setObject(i+1, args[i]);
+      }
+      return stmt.executeUpdate();
+    } catch (SQLException e) {
+      e.printStackTrace(System.err);
+      return 0;
     }
   }
 
