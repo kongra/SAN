@@ -1,0 +1,7 @@
+* Zadanie 1.
+  Zmień procedurę heron znajdującą się w pliku: https://github.com/kongra/SAN/blob/master/2020%20letni%20(Spring)/Clojure%20(PF)/fp/src/fp/heron.clj
+  uzależniając ilość kroków algorytmu od pewnej stałej wartości n oznaczającej tę ilość.
+
+* Zadanie 2.
+  Napisz procedurę obliczającą pierwiastek stopnia 3. Wzoruj się na metodzie Herona.
+  Hint: https://mitpress.mit.edu/sites/default/files/sicp/full-text/book/book-Z-H-10.html Exercise 1.8
