@@ -1,0 +1,8 @@
+* Zadanie 1.
+  Napisz własną polimorficzną procedurę i zademonstruj jej działanie
+  na obiektach kilku różnych typów.
+* Zadanie 2.
+  Napisz polimorficzne procedury wykorzystujące tablice oraz wariadyczną arność
+  procedur. Skorzystaj z przykładu z Zoo.
+* Zadanie 3.
+  Proszę zaprojektować hierarchię klas wykorzystującą klasy abstrakcyjne.
