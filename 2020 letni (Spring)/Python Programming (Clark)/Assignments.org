@@ -1,0 +1,15 @@
+* Assignment 1. Write a procedure that computes a root
+   of degree 3 (cube root) for the given number x.
+   Hint: Use improvement like: ((x / y^2) + 2y) / 3
+
+* Assignment 2. https://projecteuler.net/problem=2
+   Hint: even number n is n such that
+   n % 2 == 0
+
+* Assignment 3. https://projecteuler.net/problem=5
+   Use lists and/or generators
+
+* Assignment 4. https://projecteuler.net/problem=4
+   Palidrome: 12321
+
+* Assignment 5. https://projecteuler.net/problem=9

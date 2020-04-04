@@ -1,0 +1,9 @@
+* CONTAINERS:
+** LIST, SEQUENCES
+   - the ordering of elements matters
+     [1, 2, 3] is different than [3, 2, 1]
+
+   - the elements may be duplicated
+     [1, 2, 3, 2, 2, 1]
+
+** LAZY SEQUENCES (GENERATORS)
