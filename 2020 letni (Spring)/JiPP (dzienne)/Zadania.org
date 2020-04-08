@@ -11,3 +11,7 @@
   wyznacza medianę i średnią na tej kolekcji. Kolekcja ma być generyczna. Proszę
   wykorzystać klasy kolekcji z biblioteki standardowej języka Java.
   Hint: java.util.Set oraz java.util.List powinny być obsługiwane przez Państwa procedury.
+* Zadanie 5.
+  Proszę napisać dowolny interfejs generyczny w Javie wyposażony w domyślne metody.
+* Zadanie 6.
+  Proszę napisać dowolny typ wyliczeniowy wyposażony w nietrywialny konstruktor i jakieś metody.
