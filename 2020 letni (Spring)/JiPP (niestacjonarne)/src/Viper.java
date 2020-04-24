@@ -1,7 +1,7 @@
 public class Viper implements Animal {
 
   @Override
-  public void eat(Object food) {
+  public void eat(Food food) {
     System.out.println("Digesting:" + food);
   }
 

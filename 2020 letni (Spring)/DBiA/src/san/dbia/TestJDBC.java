@@ -18,77 +18,60 @@ public class TestJDBC {
   public static void main(String... args) {
     // test1();
     // test2();
-    new Thread(() -> test3()).start();
-    new Thread(() -> test4()).start();
+    new Thread(() -> {
+      try {
+        test3();
+      } catch (SQLException throwables) {
+        throwables.printStackTrace();
+      }
+    }).start();
+    new Thread(() -> {
+      try {
+        test4();
+      } catch (SQLException throwables) {
+        throwables.printStackTrace();
+      }
+    }).start();
   }
 
-  private static void test3() {
-    DBI.withNewTransaction(Connection.TRANSACTION_SERIALIZABLE
-        , conn -> {
+  private static void test3() throws SQLException {
+    DBI.withConn(() -> {
+      DBI.restartingTx(() -> {
+        DBI.withNewTransaction(Connection.TRANSACTION_SERIALIZABLE, () -> {
           for (int i = 0; i < 5; i++) {
-            try {
-              Thread.sleep(500);
-            } catch (InterruptedException e) {
-              e.printStackTrace();
-            }
-//            System.out.println("test3 -> insert");
-//            DBI.execUpdate(conn
-//                , "insert into profiles(first_name, last_name, amount) values(?, ?, ?) "
-//                , "Adam", "Nowak", 267);
-
+            threadSleep(500);
             System.out.println("test3 -> update");
-            DBI.execUpdate(conn
-                , "update profiles set amount = amount + 20 where id=50");
+            DBI.execUpdate("update profiles set amount = amount + 20 where id=50");
           }
-
           System.out.println("test3 -> Idziemy spać przed zatwierdzeniem");
-          try {
-            Thread.sleep(10000);
-          } catch (InterruptedException e) {
-            e.printStackTrace();
-          }
-
-          return null;
+          threadSleep(10000);
         });
+      });
+    });
   }
 
-  private static void test4() {
-    DBI.withNewTransaction(Connection.TRANSACTION_SERIALIZABLE
-        , conn -> {
+  private static void test4() throws SQLException {
+    DBI.withConn(() -> {
+      DBI.restartingTx(() -> {
+        DBI.withNewTransaction(Connection.TRANSACTION_SERIALIZABLE, () -> {
           for (int i = 0; i < 4; i++) {
-            try {
-              Thread.sleep(300);
-            } catch (InterruptedException e) {
-              e.printStackTrace();
-            }
-//            System.out.println("test4 -> insert");
-//            DBI.execUpdate(conn
-//                , "insert into profiles(first_name, last_name, amount) values(?, ?, ?) "
-//                , "Jan", "Nowacki", 256);
-
+            threadSleep(300);
             System.out.println("test4 -> update");
-            DBI.execUpdate(conn
-                , "update profiles set amount = amount + 30 where id=50");
+            DBI.execUpdate("update profiles set amount = amount + 30 where id=50");
           }
-
           System.out.println("test4 -> Idziemy spać przed zatwierdzeniem");
-          try {
-            Thread.sleep(10000);
-          } catch (InterruptedException e) {
-            e.printStackTrace();
-          }
-
-          return null;
+          threadSleep(10000);
         });
+      });
+    });
   }
 
-  private static void test2() {
-    Long amount = DBI.withNewTransaction(Connection.TRANSACTION_SERIALIZABLE
-        , conn -> DBI.execQuery1(conn
-        , "select amount from profiles where id=4"
-        , "amount"));
-
-    System.out.println("I have amount of " + amount);
+  private static void threadSleep(int msecs) {
+    try {
+      Thread.sleep(msecs);
+    } catch (InterruptedException e) {
+      e.printStackTrace();
+    }
   }
 
   private static void test1() {

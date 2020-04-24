@@ -15,6 +15,8 @@ public class DBI {
 
   private static final Properties props = new Properties();
 
+  private static final DynVar<Connection> conn = DynVar.create();
+
   static {
     try {
       Class.forName("org.postgresql.Driver");
@@ -35,89 +37,103 @@ public class DBI {
 
   // 2. Wykonywanie operacji z wykorzystaniem Connection
   @Nullable
-  public static <T> T withConn(@NotNull Function<Connection, T> body) {
-    try (var conn = getConnection()) {
-      return body.apply(conn);
-    } catch (SQLException e) {
-      e.printStackTrace(System.err);
-      return null;
-      // throw new RuntimeException(e);
+  public static void withConn(Runnable body)
+      throws SQLException {
+    try (var c = getConnection()) {
+      conn.binding(c, body);
     }
   }
 
-  @Nullable
-  public static <T> T withNewTransaction(int isolationLevel
-      , @NotNull Function<Connection, T> body) {
+  public static void restartingTx(Runnable body) {
+    while(true) {
+      try {
+        body.run();
+        return;
+      } catch (Throwable e) {
+        if (!isConcurrentUpdateException(e)) {
+          if (e instanceof SQLException) {
+            throw e;
+          }
+          throw new RuntimeException(e);
+        }
+      }
+    }
+  }
 
-    try (var conn = getConnection()) {
-      final boolean autoCommit = conn.getAutoCommit();
+  private static boolean isConcurrentUpdateException(Throwable e) {
+    if (e instanceof SQLException) {
+      var sqlState = ((SQLException) e).getSQLState();
+      System.out.println("SQL state=" + sqlState);
+      return "40001".equals(sqlState);
+    }
+    return false;
+  }
+
+  @Nullable
+  public static void withNewTransaction(int isolationLevel, Runnable body) {
+    Connection c = conn.value();
+    try {
+      final boolean autoCommit = c.getAutoCommit();
       try {
         System.out.println("Start transakcji w wątku" + Thread.currentThread());
-        conn.setAutoCommit(false);
-        conn.setTransactionIsolation(isolationLevel);
+        c.setAutoCommit(false);
+        c.setTransactionIsolation(isolationLevel);
 
-        var result = body.apply(conn);
+        body.run();
         System.out.println("Commit transakcji w wątku" + Thread.currentThread());
-        conn.commit();
-        return result;
+        c.commit();
       } catch (Throwable e) {
-        conn.rollback();
-        e.printStackTrace(System.err);
-        return null;
+        c.rollback();
+        throw e;
       } finally {
-        conn.setAutoCommit(autoCommit);
+        c.setAutoCommit(autoCommit);
       }
-      // return body.apply(conn);
-    } catch (SQLException e) {
-      e.printStackTrace(System.err);
-      return null;
+    }
+    catch(Throwable t) {
+      throw new RuntimeException(t);
     }
   }
 
   @Nullable
-  public static <T> T executingQuery(Connection conn
-      , String query
+  public static <T> T executingQuery(String query
       , @NotNull Function<ResultSet, T> body) {
-
-    try (var stmt = conn.createStatement()) {
+    Connection c = conn.value();
+    try (var stmt = c.createStatement()) {
       try (var rs = stmt.executeQuery(query)) {
         return body.apply(rs);
       }
-    } catch (SQLException e) {
-      e.printStackTrace(System.err);
-      return null;
+    }
+    catch (Throwable e) {
+      throw new RuntimeException(e);
     }
   }
 
   @Nullable
-  public static <T> T execQuery1(Connection conn
-      , String query
-      , String columnLabel) {
-
-    try (var stmt = conn.createStatement()) {
+  public static <T> T execQuery1(String query, String columnLabel) {
+    Connection c = conn.value();
+    try (var stmt = c.createStatement()) {
       try (var rs = stmt.executeQuery(query)) {
         if (rs.next()) {
           return (T) rs.getObject(columnLabel);
         }
         return null;
       }
-    } catch (SQLException e) {
-      e.printStackTrace(System.err);
-      return null;
+    }
+    catch (Throwable t) {
+      throw new RuntimeException(t);
     }
   }
 
-  public static int execUpdate(Connection conn
-      , String query
-      , @NotNull Object... args) {
-    try (var stmt = conn.prepareStatement(query)) {
+  public static int execUpdate(String query, @NotNull Object... args) {
+    Connection c = conn.value();
+    try (var stmt = c.prepareStatement(query)) {
       for (int i = 0; i < args.length; i++) {
         stmt.setObject(i+1, args[i]);
       }
       return stmt.executeUpdate();
-    } catch (SQLException e) {
-      e.printStackTrace(System.err);
-      return 0;
+    }
+    catch(Throwable e) {
+      throw new RuntimeException(e);
     }
   }
 

@@ -5,11 +5,11 @@ public class Zoo {
     Zebra z1    = new Zebra();
     Animal v1   = new Viper();
 
-    feed("Grass", e1);
-    feed("Grass", z1);
-    feed("Grass", e1, z1);
-    feed("Grass", e1, z1, e1, z1);
-    feed("Rat", v1);
+    feed(Food.GRASS, e1);
+    feed(Food.GRASS, z1);
+    feed(Food.GRASS, e1, z1);
+    feed(Food.GRASS, e1, z1, e1, z1);
+    feed(Food.MEAT, v1);
 
     v1.sleep();
 
@@ -22,7 +22,7 @@ public class Zoo {
   // * feed jest polimorficzna
   // * jest to polimorfizm uniwersalny
   // * rodzaj polimorfizmu: INKLUZYJNY
-  private static void feed(Object food
+  private static void feed(Food food
       , Animal... animals) {
 
     for (var animal : animals) {

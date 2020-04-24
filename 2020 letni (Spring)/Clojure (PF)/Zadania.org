@@ -5,3 +5,7 @@
 * Zadanie 2.
   Napisz procedurę obliczającą pierwiastek stopnia 3. Wzoruj się na metodzie Herona.
   Hint: https://mitpress.mit.edu/sites/default/files/sicp/full-text/book/book-Z-H-10.html Exercise 1.8
+
+* Zadanie 3.
+  Proszę zrealizować https://projecteuler.net/problem=5
+  posługując się operatorami map, reduce oraz filter w Clojure lub w Vavr.io

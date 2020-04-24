@@ -6,3 +6,10 @@
   procedur. Skorzystaj z przykładu z Zoo.
 * Zadanie 3.
   Proszę zaprojektować hierarchię klas wykorzystującą klasy abstrakcyjne.
+* Zadanie 4.
+  Proszę zrealizować interfejs opisujący dowolny fragment rzeczywistości.
+  Proszę zaproponować realizacje tego interfejsu w klasach implementujących go.
+  Proszę wyposażyć interfejs w domyślne metody.
+* Zadanie 5.
+  Proszę zamodelować dowolny fragment rzeczywistości z wykorzystaniem typów wyliczeniowych.
+  Proszę wyposażyć Państwa typy wyliczeniowe w mechanizmy reprezentowane w postaci metod.
