@@ -8,8 +8,7 @@ import java.util.List;
 
 public class StringTools {
 
-  public static @NotNull List<Integer> transform(
-        @NotNull StringWorker worker
+  public static @NotNull List<Integer> transform(@NotNull StringWorker worker
       , @NotNull Collection<String> strs) {
 
     List<Integer> results = new ArrayList<>(strs.size());
