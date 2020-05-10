@@ -2,16 +2,30 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="fdb9fd4a-762f-4677-a680-f45715f01a56" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/../../JiPP (niestacjonarne)/src/san/utils/ArraySeq.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../../JiPP (niestacjonarne)/src/san/utils/TestArraySeq.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../Clojure (PF)/Zadania.org" beforeDir="false" afterPath="$PROJECT_DIR$/../../Clojure (PF)/Zadania.org" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../JiPP (niestacjonarne)/JiPP (niestacjonarne).iml" beforeDir="false" afterPath="$PROJECT_DIR$/../../JiPP (niestacjonarne)/JiPP (niestacjonarne).iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../JiPP (niestacjonarne)/Zadania.org" beforeDir="false" afterPath="$PROJECT_DIR$/../../JiPP (niestacjonarne)/Zadania.org" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_jetbrains_annotations_19_0_0.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/uiDesigner.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/san/bdia/app/Currency.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/san/bdia/app/Money.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app.iml" beforeDir="false" afterPath="$PROJECT_DIR$/app.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/san/bdia/app/AppApplication.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/san/bdia/app/AppApplication.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/san/bdia/app/AppApplicationTests.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/san/bdia/app/AppApplicationTests.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="Class" />
+        <option value="Enum" />
+        <option value="Record" />
+      </list>
+    </option>
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/../../.." />
@@ -25,7 +39,35 @@
   <component name="PropertiesComponent">
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
+    <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
+    <property name="ignore.preview.features.used" value="true" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="project.structure.last.edited" value="Project" />
+    <property name="project.structure.proportion" value="0.15" />
+    <property name="project.structure.side.proportion" value="0.2" />
+  </component>
+  <component name="RunManager">
+    <configuration name="AppApplicationTests.moneyTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="app" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="san.bdia.app.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="san.bdia.app" />
+      <option name="MAIN_CLASS_NAME" value="san.bdia.app.AppApplicationTests" />
+      <option name="METHOD_NAME" value="moneyTest" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <recent_temporary>
+      <list>
+        <item itemvalue="JUnit.AppApplicationTests.moneyTest" />
+      </list>
+    </recent_temporary>
   </component>
   <component name="SvnConfiguration">
     <configuration />
@@ -39,5 +81,39 @@
       <updated>1589111116889</updated>
     </task>
     <servers />
+  </component>
+  <component name="WindowStateProjectService">
+    <state x="608" y="153" width="466" height="560" key="#com.intellij.ide.util.MemberChooser" timestamp="1589114119934">
+      <screen x="0" y="0" width="1600" height="870" />
+    </state>
+    <state x="608" y="153" width="466" height="560" key="#com.intellij.ide.util.MemberChooser/0.0.1600.870@0.0.1600.870" timestamp="1589114119934" />
+    <state x="533" y="183" width="524" height="499" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog" timestamp="1589114202071">
+      <screen x="0" y="0" width="1600" height="870" />
+    </state>
+    <state x="533" y="183" width="524" height="499" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog/0.0.1600.870@0.0.1600.870" timestamp="1589114202071" />
+    <state width="1554" height="205" key="GridCell.Tab.0.bottom" timestamp="1589113491113">
+      <screen x="0" y="0" width="1600" height="870" />
+    </state>
+    <state width="1554" height="205" key="GridCell.Tab.0.bottom/0.0.1600.870@0.0.1600.870" timestamp="1589113491113" />
+    <state width="1554" height="205" key="GridCell.Tab.0.center" timestamp="1589113491106">
+      <screen x="0" y="0" width="1600" height="870" />
+    </state>
+    <state width="1554" height="205" key="GridCell.Tab.0.center/0.0.1600.870@0.0.1600.870" timestamp="1589113491106" />
+    <state width="1554" height="205" key="GridCell.Tab.0.left" timestamp="1589113491105">
+      <screen x="0" y="0" width="1600" height="870" />
+    </state>
+    <state width="1554" height="205" key="GridCell.Tab.0.left/0.0.1600.870@0.0.1600.870" timestamp="1589113491105" />
+    <state width="1554" height="205" key="GridCell.Tab.0.right" timestamp="1589113491112">
+      <screen x="0" y="0" width="1600" height="870" />
+    </state>
+    <state width="1554" height="205" key="GridCell.Tab.0.right/0.0.1600.870@0.0.1600.870" timestamp="1589113491112" />
+    <state x="283" y="11" width="1024" height="843" key="SettingsEditor" timestamp="1589113476265">
+      <screen x="0" y="0" width="1600" height="870" />
+    </state>
+    <state x="283" y="11" width="1024" height="843" key="SettingsEditor/0.0.1600.870@0.0.1600.870" timestamp="1589113476265" />
+    <state x="591" y="183" width="407" height="500" key="refactoring.ChangeSignatureDialog" timestamp="1589112087627">
+      <screen x="0" y="0" width="1600" height="870" />
+    </state>
+    <state x="591" y="183" width="407" height="500" key="refactoring.ChangeSignatureDialog/0.0.1600.870@0.0.1600.870" timestamp="1589112087627" />
   </component>
 </project>

@@ -10,4 +10,10 @@ class AppApplicationTests {
 	void contextLoads() {
 	}
 
+	@Test
+	void moneyTest() {
+		Money m1 = new Money(100, Currency.PLN);
+		System.out.println(m1.in(Currency.EUR));
+	}
+
 }
