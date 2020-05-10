@@ -13,3 +13,10 @@
 * Zadanie 5.
   Proszę zamodelować dowolny fragment rzeczywistości z wykorzystaniem typów wyliczeniowych.
   Proszę wyposażyć Państwa typy wyliczeniowe w mechanizmy reprezentowane w postaci metod.
+* Zadanie 6.
+  Proszę napisać program, który tworzy kolekcję (ale nie tablicę) liczb typu Double i wyznacza
+  medianę i średnią na tej kolekcji. Kolekcja ma być generyczna. Proszę wykorzystać klasy \
+  kolekcji z biblioteki standardowej języka Java lub poznany właśnie ArraySeq.
+
+  Dla osób nie korzystających z Javy: Zrealizuj w swoim ulubionym języku klasę generyczną
+  ArraySeq.

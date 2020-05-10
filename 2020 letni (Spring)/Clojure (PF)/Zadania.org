@@ -9,3 +9,7 @@
 * Zadanie 3.
   Proszę zrealizować https://projecteuler.net/problem=5
   posługując się operatorami map, reduce oraz filter w Clojure lub w Vavr.io
+
+* Zadanie 4.
+  Proszę skorzystać z bazy danych osób w naszym projekcie i dodać możliwość określania
+  adresów osób. Adres powinien zawierać miasto, ulicę, numer i kod pocztowy.
