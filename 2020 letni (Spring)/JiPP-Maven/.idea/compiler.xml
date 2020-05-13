@@ -13,4 +13,9 @@
       <module name="JiPP" target="14" />
     </bytecodeTargetLevel>
   </component>
+  <component name="JavacSettings">
+    <option name="ADDITIONAL_OPTIONS_OVERRIDE">
+      <module name="JiPP" options="--add-exports java.base/jdk.internal.util=ALL-UNNAMED" />
+    </option>
+  </component>
 </project>

@@ -1,6 +1,27 @@
 package san.utils;
 
+import org.jetbrains.annotations.Contract;
+import org.jetbrains.annotations.NotNull;
+
+import jdk.internal.util.ArraysSupport;
+import java.util.Arrays;
+
 public final class IntArray {
+
+  @Contract(value = "_ -> new", pure = true)
+  public static @NotNull IntArray ofLenght(int length) {
+    return new IntArray(length);
+  }
+
+  @Contract("_, _ -> new")
+  public static @NotNull IntArray initWith(int length, int initialValue) {
+    return new IntArray(length, initialValue);
+  }
+
+  @Contract("_, _ -> new")
+  public static @NotNull IntArray ofValues(int length, int... values) {
+    return new IntArray(length, values);
+  }
 
   private final int[] data;
 
@@ -17,6 +38,13 @@ public final class IntArray {
     }
   }
 
+  private IntArray(int length, int @NotNull ... values) {
+    data = new int[length];
+    for (var e : values) {
+      push(e);
+    }
+  }
+
   public IntArray push(int e) {
     data[fillPointer++] = e;
     return this;
@@ -29,12 +57,103 @@ public final class IntArray {
     this.fillPointer = fillPointer;
   }
 
-  public void forEach(Worker w) {
-
+  public int count() {
+    return fillPointer;
   }
 
-  public IntArray map(Mapper m) {
-    return null;
+  public boolean isEmpty() {
+    return 0 == count();
+  }
+
+  public int get(int i) {
+    if (i >= fillPointer) throw new ArrayIndexOutOfBoundsException();
+    return data[i];
+  }
+
+  public IntArray set(int i, int e) {
+    if (i >= fillPointer) throw new ArrayIndexOutOfBoundsException();
+    data[i] = e;
+    return this;
+  }
+
+  @Override
+  public @NotNull String toString() {
+    StringBuilder s = new StringBuilder("#").append(data.length).append("(");
+    forEach((i, e) -> {
+      s.append(get(i));
+      if (i != count() - 1) {
+        s.append(", ");
+      }
+    });
+    return s.append(")").toString();
+  }
+
+  public void forEach(Worker w) {
+    for (int i = 0; i < count(); i++) {
+      w.work(data[i]);
+    }
+  }
+
+  public void forEach(IndexedWorker w) {
+    for (int i = 0; i < count(); i++) {
+      w.work(i, data[i]);
+    }
+  }
+
+  @Contract(pure = true)
+  public @NotNull IntArray map(Mapper m) {
+    IntArray result = new IntArray(data.length);
+    forEach(e -> {
+      result.push(m.map(e));
+    });
+    return result;
+  }
+
+  @Contract(pure = true)
+  public @NotNull IntArray map(IndexedMapper m) {
+    IntArray result = new IntArray(data.length);
+    forEach((i, e) -> {
+      result.push(m.map(i, e));
+    });
+    return result;
+  }
+
+  @Contract(pure = true)
+  public @NotNull IntArray filter(Pred pred) {
+    IntArray result = new IntArray(data.length);
+    forEach(e -> {
+      if (pred.call(e)) result.push(e);
+    });
+    return result;
+  }
+
+  @Contract(pure = true)
+  public @NotNull IntArray filter(IndexedPred pred) {
+    IntArray result = new IntArray(data.length);
+    forEach((i, e) -> {
+      if (pred.call(i, e)) result.push(e);
+    });
+    return result;
+  }
+
+  @Override
+  public boolean equals(Object o) {
+    if (this == o) return true;
+    if (o == null || getClass() != o.getClass()) return false;
+    IntArray other = (IntArray) o;
+    if (fillPointer != other.fillPointer) return false;
+    return ArraysSupport.mismatch(data, other.data, count()) < 0;
+  }
+
+  @Override
+  public int hashCode() {
+    if (count() == 0) return 0;
+    int result = 1;
+    for (int i = 0; i < count(); i++) {
+      result = 31 * result + data[i];
+    }
+    result = 31 * result + fillPointer;
+    return result;
   }
 
   @FunctionalInterface
@@ -45,10 +164,37 @@ public final class IntArray {
   }
 
   @FunctionalInterface
+  public interface IndexedWorker {
+
+    void work(int i, int e);
+
+  }
+
+  @FunctionalInterface
   public interface Mapper {
 
     int map(int e);
 
   }
 
+  @FunctionalInterface
+  public interface IndexedMapper {
+
+    int map(int i, int e);
+
+  }
+
+  @FunctionalInterface
+  public interface Pred {
+
+    boolean call(int e);
+
+  }
+
+  @FunctionalInterface
+  public interface IndexedPred {
+
+    boolean call(int i, int e);
+
+  }
 }
