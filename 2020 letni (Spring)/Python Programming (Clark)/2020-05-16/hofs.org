@@ -1,0 +1,11 @@
+* HIGHER-ORDER FUNCTIONS (PROCEDURES)
+  - a higher-order function is a function that can take a function as an argument
+    and also return a function as a result
+  - functions in a language that supports the notion of HOFs are first-class
+    objects in that language
+  - The first-class object in a language is an object that can be passed as an
+    argument to the procedure call and also can be returned from the procedure
+    call
+
+* SEARCHING
+* SORTING
