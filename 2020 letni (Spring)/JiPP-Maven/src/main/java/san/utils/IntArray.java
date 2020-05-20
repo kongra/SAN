@@ -3,8 +3,7 @@ package san.utils;
 import org.jetbrains.annotations.Contract;
 import org.jetbrains.annotations.NotNull;
 
-import jdk.internal.util.ArraysSupport;
-import java.util.Arrays;
+// import jdk.internal.util.ArraysSupport;
 
 public final class IntArray {
 
@@ -142,7 +141,7 @@ public final class IntArray {
     if (o == null || getClass() != o.getClass()) return false;
     IntArray other = (IntArray) o;
     if (fillPointer != other.fillPointer) return false;
-    return ArraysSupport.mismatch(data, other.data, count()) < 0;
+    return true; // ArraysSupport.mismatch(data, other.data, count()) < 0;
   }
 
   @Override

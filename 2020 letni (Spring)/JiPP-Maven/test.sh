@@ -1,2 +1,2 @@
 #!/bin/sh
-mvn clean test -Dtest=!koJ.JmhRunnerTest
+mvn clean test -Dtest=!san.jipp.JmhRunnerTest
