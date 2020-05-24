@@ -1,5 +1,3 @@
-// Copyright (c) Konrad Grzanek
-// Created 10.05.2020
 package san.bdia.app;
 
 public enum Currency {

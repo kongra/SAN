@@ -31,14 +31,14 @@ public final class IntArray {
   }
 
   private IntArray(int length, int initialValue) {
-    data = new int[length];
+    this(length);
     for (int i = 0; i < length; i++) {
       data[i] = initialValue;
     }
   }
 
   private IntArray(int length, int @NotNull ... values) {
-    data = new int[length];
+    this(length);
     for (var e : values) {
       push(e);
     }
@@ -56,12 +56,12 @@ public final class IntArray {
     this.fillPointer = fillPointer;
   }
 
-  public int count() {
+  public int fillPointer() {
     return fillPointer;
   }
 
   public boolean isEmpty() {
-    return 0 == count();
+    return 0 == fillPointer();
   }
 
   public int get(int i) {
@@ -80,7 +80,7 @@ public final class IntArray {
     StringBuilder s = new StringBuilder("#").append(data.length).append("(");
     forEach((i, e) -> {
       s.append(get(i));
-      if (i != count() - 1) {
+      if (i != fillPointer() - 1) {
         s.append(", ");
       }
     });
@@ -88,13 +88,13 @@ public final class IntArray {
   }
 
   public void forEach(Worker w) {
-    for (int i = 0; i < count(); i++) {
+    for (int i = 0; i < fillPointer(); i++) {
       w.work(data[i]);
     }
   }
 
   public void forEach(IndexedWorker w) {
-    for (int i = 0; i < count(); i++) {
+    for (int i = 0; i < fillPointer(); i++) {
       w.work(i, data[i]);
     }
   }
@@ -146,9 +146,9 @@ public final class IntArray {
 
   @Override
   public int hashCode() {
-    if (count() == 0) return 0;
+    if (fillPointer() == 0) return 0;
     int result = 1;
-    for (int i = 0; i < count(); i++) {
+    for (int i = 0; i < fillPointer(); i++) {
       result = 31 * result + data[i];
     }
     result = 31 * result + fillPointer;

@@ -30,3 +30,30 @@
 (defn fib-list
   [n]
   (map first (take n (iterate fib-gen (list 0 1)))))
+
+(defn foo-1
+  [n]
+  (when n
+    (+ 3 (* 4 n))))
+
+(defn foo-11 ^long
+  [^long n]
+  (+ 3 (* 4 n)))
+
+;; (use 'criterium.core)
+
+;; (quick-bench (foo-1 23))
+;; (quick-bench (foo-11 23))
+
+;; (def end-loop-atom (atom false))
+;; (defn make-thread
+;;   []
+;;   (future
+;;     (while (not @end-loop-atom)
+;;       (println "Działam" (foo-1 2))
+;;       (Thread/sleep 2000))))
+
+;; (make-thread)
+;; (reset! end-loop-atom true)
+
+;; (use 'no.disassemble)

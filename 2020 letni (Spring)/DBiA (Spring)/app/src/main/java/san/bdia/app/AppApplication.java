@@ -2,7 +2,6 @@ package san.bdia.app;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
-import org.springframework.boot.autoconfigure.jdbc.JdbcTemplateAutoConfiguration;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
@@ -23,8 +22,8 @@ public class AppApplication {
 
 	@GetMapping("/currency")
 	public Money currency(@RequestParam(value = "amount") long amount,
-												@RequestParam(value = "from")  String from,
-												@RequestParam(value = "to")  String to) {
+												@RequestParam(value =   "from") String from,
+												@RequestParam(value =     "to") String   to) {
 
 		Currency c1 = Currency.valueOf(from);
 		Currency c2 = Currency.valueOf(to);
