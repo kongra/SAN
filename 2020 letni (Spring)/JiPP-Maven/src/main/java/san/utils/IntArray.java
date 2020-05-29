@@ -3,7 +3,7 @@ package san.utils;
 import org.jetbrains.annotations.Contract;
 import org.jetbrains.annotations.NotNull;
 
-// import jdk.internal.util.ArraysSupport;
+import jdk.internal.util.ArraysSupport;
 
 public final class IntArray {
 
@@ -102,18 +102,14 @@ public final class IntArray {
   @Contract(pure = true)
   public @NotNull IntArray map(Mapper m) {
     IntArray result = new IntArray(data.length);
-    forEach(e -> {
-      result.push(m.map(e));
-    });
+    forEach(e -> result.push(m.map(e)));
     return result;
   }
 
   @Contract(pure = true)
   public @NotNull IntArray map(IndexedMapper m) {
     IntArray result = new IntArray(data.length);
-    forEach((i, e) -> {
-      result.push(m.map(i, e));
-    });
+    forEach((i, e) -> result.push(m.map(i, e)));
     return result;
   }
 
@@ -140,8 +136,8 @@ public final class IntArray {
     if (this == o) return true;
     if (o == null || getClass() != o.getClass()) return false;
     IntArray other = (IntArray) o;
-    if (fillPointer != other.fillPointer) return false;
-    return true; // ArraysSupport.mismatch(data, other.data, count()) < 0;
+    if (fillPointer() != other.fillPointer()) return false;
+    return ArraysSupport.mismatch(data, other.data, fillPointer()) < 0;
   }
 
   @Override
