@@ -15,7 +15,7 @@
   </component>
   <component name="JavacSettings">
     <option name="ADDITIONAL_OPTIONS_OVERRIDE">
-      <module name="JiPP" options="--add-exports java.base/jdk.internal.util=ALL-UNNAMED" />
+      <module name="JiPP" options="" />
     </option>
   </component>
 </project>
