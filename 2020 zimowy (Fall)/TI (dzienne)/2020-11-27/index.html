@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>My Form</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    .container {
+      width: 100vw;
+      display: flex;
+      justify-content: center;
+    }
+
+    .signin-form {
+      margin-top: 30px;
+      display: grid;
+      grid-template-rows: 30px 30px;
+      grid-template-columns: 300px;
+      gap: 10px;
+      width: 300px;
+    }
+
+    .signin-form input {
+      border: 1px solid #cacaca;
+      color: black;
+      background-color: white;
+      padding-left: 10px;
+      padding-right: 10px;
+    }
+
+    .signin-form .input-error {
+      color: rgb(255, 0, 0);
+      background-color: rgb(245, 212, 212);
+    }
+
+  </style>
+</head>
+<body>
+
+  <div class="container">
+    <div class="signin-form">
+      <input type="text" id="email-input">
+      <button id="runme" value="Sign In">Sign In</button>
+    </div>
+  </div>
+
+  <script src="js/program.js"></script>
+</body>
+</html>

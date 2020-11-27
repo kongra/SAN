@@ -105,18 +105,25 @@ function test4(n) {
 // Zadanie. Utwórz generator sekwencji liczb naturalnych.
 function makeSeq(start) {
   let state = start;
-  return function() {
-    const result = state;
-    state += 1;
-    return result;
+  return function(reset) {
+    if (reset) {
+      state = start;
+    } else {
+      const result = state;
+      state += 1;
+      return result;
+    }
   };
 }
+
+const RESET = true;
 
 const seq1 = makeSeq(1);
 // seq1() => 1
 // seq1() => 2
 // seq1() => 3
 // ...
+// seq1(RESET)
 
 const seq2 = makeSeq(100);
 // seq2() => 100
