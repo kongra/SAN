@@ -5,8 +5,6 @@ import java.security.SecureRandom;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
-import java.util.concurrent.ExecutorService;
-import java.util.concurrent.Executors;
 import java.util.concurrent.Semaphore;
 
 public class ThreadTalks {
@@ -17,21 +15,34 @@ public class ThreadTalks {
     private static final Semaphore s1 = new Semaphore(1, true);
 
     public void addSubtract(long delta) {
-      ThreadTools.run(s1::acquire);
-      try {
+      inCriticalSection(() -> {
         account1 = account1 - delta;
         account2 = account2 + delta;
-      } finally {
-        s1.release();
-      }
+        dump(false);
+      });
     }
 
     public void dump() {
-      ThreadTools.run(s1::acquire);
-      try {
+      dump(false);
+    }
+
+    private void dump(boolean inCriticalSection) {
+      Runnable body = () -> {
         System.out.println("Total " + (account1 + account2));
         System.out.println("account1 " + account1);
         System.out.println("account2 " + account2);
+      };
+      if (!inCriticalSection) {
+        inCriticalSection(body);
+      } else {
+        body.run();
+      }
+    }
+
+    private void inCriticalSection(Runnable body) {
+      ThreadTools.run(s1::acquire);
+      try {
+        body.run();
       } finally {
         s1.release();
       }
