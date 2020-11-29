@@ -78,12 +78,24 @@ function test2(n) {
   console.log('wartość v2 wynosi ' + v2);
 }
 
-function test3(n) {
-  let v1 = n;
+function test2(n) {
+  var v1 = n;
   console.log('wartość v1 wynosi ' + v1);
 
   {
-    let v1 = n + 1;
+    var v2 = n + 1;
+    console.log('wartość v2 wynosi ' + v2);
+  }
+
+  console.log('wartość v2 wynosi ' + v2);
+}
+
+function test3(n) {
+  var v1 = n;
+  console.log('wartość v1 wynosi ' + v1);
+
+  {
+    var v1 = n + 1;
     console.log('wartość v1 wynosi ' + v1);
   }
 
