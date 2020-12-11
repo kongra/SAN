@@ -37,12 +37,22 @@ addKeyupListener(emailInput, 1000, () => emailInput.value, email => {
 
 runmeButton.addEventListener('click', event => {
   glassOverlay.style.display = 'block';
+  glassOverlay.style.top     = 0;
+  glassOverlay.style.height  = '100vh';
 });
+
+function sigmoid (alpha, t) {
+  return 1 / (1 + Math.exp(-alpha * (t - 0.5)));
+}
 
 function animateOverlay(step, animSteps) {
   const startTime = performance.now();
-  console.log('Animujemy...');
-  // TODO: ...
+  const pos = sigmoid(20, step / animSteps);
+  const top = (100 * pos) + "vh";
+  const h   = (100 - (100 * pos)) + "vh";
+
+  glassOverlay.style.top    = top;
+  glassOverlay.style.height = h;
 
   if (step + 1 === animSteps) {
     // End of the animation
