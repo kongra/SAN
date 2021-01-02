@@ -5,7 +5,6 @@ import java.security.SecureRandom;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
-import java.util.concurrent.Semaphore;
 
 public class ThreadTalks1 {
 
@@ -16,11 +15,16 @@ public class ThreadTalks1 {
     private long account2 = 5000;
     // private static final Object monitor = new Object();
 
-    public synchronized void addSubtract(long delta) {
+    public synchronized void addSubtract(long delta //, Runnable foreignCode
+    ) {
       account1 = account1 - delta;
       account2 = account2 + delta;
+      // foreignCode();
+      // foreignCode.run();
       dump();
     }
+
+    // protected abstract void foreignCode();
 
     public synchronized void dump() {
       System.out.println("Total " + (account1 + account2));

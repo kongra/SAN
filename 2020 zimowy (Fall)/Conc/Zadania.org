@@ -1,2 +1,3 @@
 * Zadanie 1. Zrealizuj rozwiązanie problemu czytelników i pisarzy.
 * Zadanie 2. Zrealizuj rozwiązanie problemu pięciu filozofów.
+* Zadanie 3. Zrealizuj w wybranym języku programowania wzorzec Promise.
