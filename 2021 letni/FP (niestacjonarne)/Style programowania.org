@@ -1,0 +1,40 @@
+STYLE PROGRAMOWANIA
+
+* Programowanie imperatywne
+   int n = 5;
+   while (n <= 10) {
+     print(n);
+     n = n + 1;
+   }
+   5, 6, 7, 8, 9, 10
+
+** Programowanie obiektowe
+   Wariant programowania imperatywnego
+   - Co to jest obiekt? Obiekt to BYT posiadający TOŻSAMOŚĆ
+   - Obiekty mają pola (atrybuty, właściwości) i metody
+
+   let obj1 = {name: 'John', age: 24};
+   let obj2 = {name: 'Adam', age: 19};
+   let obj3 = {name: 'John', age: 24};
+
+
+* Programowanie deklaratywne
+<body>
+  <span style="color:red">
+    Hello World!
+  </span>
+</body>
+
+** Programowanie funkcyjne
+   - Brak zmiennych
+   - Brak pętli while, do-while, for
+   - Co zamiast tego???
+
+Pierwiastkowanie.
+sqrt(x), x >= 0.
+Deklaratywne: sqrt(x) = y takie, że y^2 = x
+Imperatywne:
+- Zgadnij G
+- Ulepsz G ← (avg G (/ X G))
+- Nadal usprawniaj G aż będzie WYSTARCZAJĄCO DOBRE
+Po zakończeniu tego procesu G jest przybliżeniem y

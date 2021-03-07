@@ -6,9 +6,9 @@ library(data.table)
 library(koR)
 
 set.seed(12345)
-keras::use_session_with_seed(12345)
+# keras::use_session_with_seed(12345)
 
-mnist <- dataset_mnist()
+mnist <- dataset_mnist() # $100, $1000, $45, $10_000
 str(mnist)
 
 trainX <- mnist[["train"]][["x"]]
