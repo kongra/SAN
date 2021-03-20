@@ -8,6 +8,16 @@ STYLE PROGRAMOWANIA
    }
    5, 6, 7, 8, 9, 10
 
+3 = 4 => F
+n <- n + 1
+n := n + 1
+
+1 + 2 => 3
+4 / 2 => 2
+
+n = 2
+n = n + 1 => 3
+
 ** Programowanie obiektowe
    Wariant programowania imperatywnego
    - Co to jest obiekt? Obiekt to BYT posiadający TOŻSAMOŚĆ

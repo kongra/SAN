@@ -1,0 +1,30 @@
+SYSTEMY TYPÓW
+
+* TYP DANYCH
+  W-g D. Scotta i Ch. Strachey'a
+  - Zbiór więzów i ograniczeń nakładanych na dane (obiekty) w celu
+    zagwarantowania ich prawidłowego użycia w programie (w procedurach)
+  - Zbiór danych (obiektów), które charakteryzują się tym, że spełniają
+    pewien zestaw więzów i ograniczeń
+
+W Javie mamy:
+byte <: short <: int <: long <: float <: double
+         char <: int <: long <: float <: double
+
+A <: B, A jest podtypem B
+A <= B
+A c B, A zawiera się w B, A jest podzbiorem B
+
+* KLASA
+class A {
+  int x;
+}
+  - Wzór/szablon/matryca/projekt obiektu
+
+<typ>  <symbol>;
+ int    n;
+ String s;
+
+java.lang.String - klasa w Javie
+
+** KLASA = TYP DANYCH
