@@ -1,0 +1,4 @@
+* Zadanie 1. Proszę zrealizować co najmniej 3 klasy
+  modelujące pewien wybrany przez Państwa fragment rzeczywistości.
+  - Klasy powinny być ze sobą znaczeniowo (semantycznie) powiązane.
+  - Proszę utworzyć kilka obiektów tych klas.
