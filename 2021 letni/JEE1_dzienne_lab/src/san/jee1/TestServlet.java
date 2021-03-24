@@ -13,7 +13,8 @@ public final class TestServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     public TestServlet() {
-        super();
+        super();        
+        System.out.println("TestServlet instance creation...");
     }
 
 	/**
@@ -23,6 +24,8 @@ public final class TestServlet extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 		response.getWriter().append("Served at: ").append(request.getContextPath());
+		
+		var firstName = request.getParameter("name");
 	}
 
 }
