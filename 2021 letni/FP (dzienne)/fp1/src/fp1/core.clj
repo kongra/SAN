@@ -186,3 +186,7 @@
 
 ;; W sensie pamięci powyższa procedura jest O[x].
 ;; TAKI PROCES NAZYWAMY REKURENCYJNYM.
+
+;; LIST/VECTOR
+;; Zadanie 6. Zrealizuj procedurę, która zwraca (w zależności od parametru) listę lub wektor
+;;            n pierwszych elementów ciągu Fibonacciego.
