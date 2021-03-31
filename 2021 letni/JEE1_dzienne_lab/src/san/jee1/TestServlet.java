@@ -23,9 +23,8 @@ public final class TestServlet extends HttpServlet {
    */
   @Override
   protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-    response.getWriter().append("Served at: ").append(request.getContextPath());
-
-    var firstName = request.getParameter("name");
+    // response.getWriter().append("Served at: ").append(request.getContextPath());
+    // var firstName = request.getParameter("name");
   }
 
 }

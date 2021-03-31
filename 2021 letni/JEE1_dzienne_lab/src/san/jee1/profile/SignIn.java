@@ -69,6 +69,7 @@ public final class SignIn extends HttpServlet {
 
   private void localErr(HttpServletRequest request, HttpServletResponse response, String message)
       throws ServletException, IOException {
+    request.setAttribute("localErrMessage", message);
     getServletContext().getRequestDispatcher("/signin.jsp").forward(request, response);
   }
 
