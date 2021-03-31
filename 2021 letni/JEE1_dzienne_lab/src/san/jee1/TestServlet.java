@@ -9,23 +9,23 @@ import javax.servlet.http.HttpServletResponse;
 
 @WebServlet("/TestServlet")
 public final class TestServlet extends HttpServlet {
-	
-	private static final long serialVersionUID = 1L;
-       
-    public TestServlet() {
-        super();        
-        System.out.println("TestServlet instance creation...");
-    }
 
-	/**
-	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
-	 */
-    @Override
-	protected void doGet(HttpServletRequest request, HttpServletResponse response)
-			throws ServletException, IOException {
-		response.getWriter().append("Served at: ").append(request.getContextPath());
-		
-		var firstName = request.getParameter("name");
-	}
+  private static final long serialVersionUID = 1L;
+
+  public TestServlet() {
+    super();
+    System.out.println("TestServlet instance creation...");
+  }
+
+  /**
+   * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse
+   *      response)
+   */
+  @Override
+  protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+    response.getWriter().append("Served at: ").append(request.getContextPath());
+
+    var firstName = request.getParameter("name");
+  }
 
 }
