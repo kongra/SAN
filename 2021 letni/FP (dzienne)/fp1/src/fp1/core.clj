@@ -190,3 +190,39 @@
 ;; LIST/VECTOR
 ;; Zadanie 6. Zrealizuj procedurę, która zwraca (w zależności od parametru) listę lub wektor
 ;;            n pierwszych elementów ciągu Fibonacciego.
+
+;; fp1.core=> (def s1 (hash-set 1 2 3 4 5))
+;; #'fp1.core/s1
+;; fp1.core=> s1
+;; #{1 4 3 2 5}
+;; fp1.core=> (def s1 #{1 2 3 4 5})
+;; #'fp1.core/s1
+;; fp1.core=> s1
+;; #{1 4 3 2 5}
+;; fp1.core=> (conj s1 6)
+;; #{1 4 6 3 2 5}
+;; fp1.core=> (conj s1 "abcd")
+;; #{"abcd" 1 4 3 2 5}
+;; fp1.core=> s1
+;; #{1 4 3 2 5}
+;; fp1.core=> (disj s1 2)
+;; #{1 4 3 5}
+;; fp1.core=> (contains? s1 4)
+;; true
+;; fp1.core=> (contains? s1 55)
+;; false
+;; fp1.core=> s1
+;; #{1 4 3 2 5}
+;; fp1.core=> (s1 4)
+;; 4
+;; fp1.core=> (s1 55)
+;; nil
+;; fp1.core=> (require '[clojure.set :as set])
+;; nil
+;; fp1.core=> (set/union s1 s1)
+;; #{1 4 3 2 5}
+;; fp1.core=>
+
+;; Zadanie 7.
+;; Proszę przejść iteracyjnie po elementach ciągu Fibonacciego mniejszych niż 1000
+;; oraz zwrócić zbiór elementów parzystych.
