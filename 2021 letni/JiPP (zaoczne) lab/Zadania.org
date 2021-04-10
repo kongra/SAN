@@ -2,3 +2,7 @@
   modelujące pewien wybrany przez Państwa fragment rzeczywistości.
   - Klasy powinny być ze sobą znaczeniowo (semantycznie) powiązane.
   - Proszę utworzyć kilka obiektów tych klas.
+
+* Zadanie 2. Proszę zrealizować w Javie polimorfizm ad-hoc
+   oparty o niejawną konwersję oraz oparty o przeciążanie. Na dowolnym
+   wybranym przez siebie przykładzie.

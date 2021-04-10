@@ -1,0 +1,55 @@
+POLIMORFIZM (z łaciny wielość/wielorakość form)
+Jest to zdolność procedury do pracy na danych o różnych typach.
+Mamy 2 rodzaje polimorfizmu:
+
+* Polimorfizm ad-hoc
+
+int foo(int n) {
+  return n + 2;
+}
+
+foo(1);
+
+byte b1 = 25;
+foo(b1); <=> foo((int) b1);
+
+short s1 = 1000;
+foo(s1); <=> foo((int) s1);
+
+int i1 = 7263576;
+foo(i1);
+
+Pytanie: czy powyższa procedura jest polimorficzna?
+TAK, jest to przykład polimorfizmu ad-hoc zrealizowanego
+w oparciu o niejawną konwersję (rzutowanie w górę
+hierarchii typów), przy założeniu hierarchii typów jak
+następuje:
+
+byte <: short <: int <: long <: float <: double
+         char <: int <: long <: float <: double
+
+Pytanie: Czy w poniższym fragmencie kodu mamy do czynienia
+z polimorficzną procedurą foo?
+
+int foo(int n) {
+  return n + 2;
+}
+
+long foo(long n) {
+  return n - 2;
+}
+
+double foo(double x) {
+  return 2*x + 3;
+}
+
+foo(2);
+foo(2L);
+foo(2.0);
+
+TAK, jest to również przykład polimorfizmu ad-hoc, który
+tutaj jest zrealizowany w oparciu o przeciążanie nazwy foo.
+
+* Polimorfizm uniwesalny
+** inkluzyjny
+** parametryczny
