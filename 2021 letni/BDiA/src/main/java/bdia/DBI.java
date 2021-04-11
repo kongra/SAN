@@ -1,5 +1,7 @@
 package bdia;
 
+import com.zaxxer.hikari.HikariConfig;
+import com.zaxxer.hikari.HikariDataSource;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
@@ -13,35 +15,31 @@ import java.util.function.Supplier;
 
 public class DBI {
 
-  private static final Properties props = new Properties();
-
   private static final DynVar<Connection> conn = DynVar.create();
 
+  private static final HikariConfig config = new HikariConfig();
+  private static final HikariDataSource ds;
+
   static {
-    try {
-      Class.forName("org.postgresql.Driver");
-    } catch (ClassNotFoundException e) {
-      e.printStackTrace();
-    }
-    props.setProperty("user","maas");
-    props.setProperty("password","maas12345");
-    props.setProperty("ssl","false");
+    config.setJdbcUrl( "jdbc:postgresql://localhost/MAAS" );
+    config.setUsername( "jee" );
+    config.setPassword( "jee" );
+    config.addDataSourceProperty( "cachePrepStmts" , "true" );
+    config.addDataSourceProperty( "prepStmtCacheSize" , "250" );
+    config.addDataSourceProperty( "prepStmtCacheSqlLimit" , "2048" );
+    ds = new HikariDataSource(config);
   }
 
-  // 1. Pule połączeń
-  private static Connection getConnection() throws SQLException {
-    return DriverManager.getConnection(
-        "jdbc:postgresql://localhost/MAAS"
-        , props);
-  }
-
-  // 2. Wykonywanie operacji z wykorzystaniem Connection
   @Nullable
   public static void withConn(Runnable body)
       throws SQLException {
-    try (var c = getConnection()) {
+    try (var c = ds.getConnection()) {
       conn.binding(c, body);
     }
+  }
+
+  public static Connection currentConn() {
+    return conn.value();
   }
 
   public static void restartingTx(Runnable body) {

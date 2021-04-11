@@ -1,39 +1,24 @@
 package bdia;
 
-import com.zaxxer.hikari.HikariConfig;
-import com.zaxxer.hikari.HikariDataSource;
-
-import java.sql.*;
+import java.sql.Connection;
+import java.sql.SQLException;
 
 public class Main {
 
-  private static final HikariConfig config = new HikariConfig();
-  private static final HikariDataSource ds;
-
-  static {
-    config.setJdbcUrl( "jdbc:postgresql://localhost/MAAS" );
-    config.setUsername( "jee" );
-    config.setPassword( "jee" );
-    config.addDataSourceProperty( "cachePrepStmts" , "true" );
-    config.addDataSourceProperty( "prepStmtCacheSize" , "250" );
-    config.addDataSourceProperty( "prepStmtCacheSqlLimit" , "2048" );
-    ds = new HikariDataSource(config);
-  }
-
   public static void main(String... args) throws SQLException {
-    try (Connection conn = ds.getConnection()) {
-      try (Statement stmt = conn.createStatement()) {
-        try (ResultSet rs = stmt.executeQuery("select email from profiles")) {
-          while (rs.next()) {
-            System.out.println(rs.getString("email"));
-          }
-        }
-      }
-    }
+    DBI.withConn(() -> {
+      DBI.restartingTx(() -> {
+        DBI.withNewTransaction(Connection.TRANSACTION_SERIALIZABLE, () -> {
+          int n = DBI.execUpdate("Update profiles set amount = amount - 100 " +
+              "where email = 'kongra@gmail.com'");
+          System.out.println("Modified " + n + " records");
 
-    // ZMIENNE DYNAMICZNE (DYNAMICZNY ZAKRES ZMIENNYCH)
+          // TODO:
+          // update("profiles").set("amount", to("amount-1")).where("email", is("kongra@gmail.com"));
 
-    System.out.println("It's ok.");
+        });
+      });
+    });
   }
 
 }
