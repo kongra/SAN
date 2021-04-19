@@ -226,3 +226,103 @@
 ;; Zadanie 7.
 ;; Proszę przejść iteracyjnie po elementach ciągu Fibonacciego mniejszych niż 1000
 ;; oraz zwrócić zbiór elementów parzystych.
+
+;; Przykład: silnia
+#_(defn factorial
+    ([n]
+     (assert (nat-int? n))
+     (factorial n 1))
+
+    ([n result]
+     (if (zero? n)
+       result
+
+       (recur (dec n) (*' result n)))))
+
+#_(defn- factorial-loop ;; ^:private
+    [n result]
+    (if (zero? n)
+      result
+
+      (recur (dec n) (*' result n))))
+
+#_(defn factorial
+  [n]
+  (assert (nat-int? n))
+  (factorial-loop n 1))
+
+(defn factorial
+  [n]
+  (assert (nat-int? n))
+  (loop [n n
+         result 1]
+    (if (zero? n)
+      result
+
+      (recur (dec n) (*' result n)))))
+
+;; Zadanie. 8. Proszę opracować realizację procedury zwracającej 1000 wyraz
+;;             ciągu Fibonacciego.
+(defn fib [n]
+  (if (< n 2)
+    n ;; For 0 => 0, 1 => 1
+
+    ;; Otherwise
+    (+
+      (fib (- n 1))
+      (fib (- n 2)))))
+
+;; fp1.core=> (time (fib 35))
+;; "Elapsed time: 2649.307176 msecs"
+
+;; PROCEDURY WYŻSZEGO RZĘDU
+(defn sum-ints
+  [a b]
+  (if (> a b)
+    0
+    (+ a (sum-ints (inc a) b))))
+
+(defn sum-squares
+  [a b]
+  (if (> a b)
+    0
+    (+ (square a) (sum-squares (inc a) b))))
+
+(defn pi-sum
+  [a b]
+  (if (> a b)
+    0
+    (+ (/ 1 (* a (+ a 2))) (pi-sum (+ a 4) b))))
+
+(defn sum
+  [a b term next]
+  (if (> a b)
+    0
+    (+
+      (term a)
+      (sum (next a) b term next))))
+
+(defn sum'
+  ([a b term next]
+   (sum' a b term next 0))
+
+  ([a b term next result]
+   (if (> a b)
+     result
+
+     (recur (next a) b term next
+       (+' result (term a))))))
+
+(defn sum-ints
+  [a b]
+  (sum' a b identity inc))
+
+(defn sum-squares
+  [a b]
+  (sum' a b square inc))
+
+(defn pi-sum
+  [a b]
+  (sum' a b
+    #_term (fn [i] (/ 1 (* i (+ i 2))))
+    #_next (fn [i] (+ i 4))))
