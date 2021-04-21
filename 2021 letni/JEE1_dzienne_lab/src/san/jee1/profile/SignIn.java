@@ -1,40 +1,26 @@
 package san.jee1.profile;
 
 import java.io.IOException;
-import java.sql.Connection;
-import java.sql.DriverManager;
-import java.sql.ResultSet;
-import java.sql.SQLException;
-import java.sql.Statement;
-import java.util.HashMap;
-import java.util.Map;
 
+import javax.inject.Inject;
+import javax.inject.Named;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.sql.DataSource;
+
+import san.jee1.DBI;
 
 @WebServlet("/profile/SignIn")
 public final class SignIn extends HttpServlet {
 
   private static final long serialVersionUID = 1L;
 
-  private static final Map<String, String> credentials;
-
-  static {
-    credentials = new HashMap<>();
-    credentials.put("kongra@gmail.com", "12345");
-    credentials.put("kgrzanek@san.edu.pl", "54321");
-
-    System.out.println("Initializing Postgres...");
-    try {
-      Class.forName("org.postgresql.Driver");
-    } catch (ClassNotFoundException e) {
-      e.printStackTrace();
-    }
-    System.out.println("Done.");
-  }
+  @Inject
+  @Named("java:comp/env/jdbc/MAAS")
+  private DataSource dataSource;
 
   public SignIn() {
     super();
@@ -42,6 +28,9 @@ public final class SignIn extends HttpServlet {
 
   @Override
   protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+
+    System.out.println("SignIn.doPost()");
+
     var email = request.getParameter("email");
     if (null == email) {
       localErr(request, response, "Email is not set");
@@ -66,10 +55,7 @@ public final class SignIn extends HttpServlet {
       return;
     }
 
-    testPostgresConnection1();
-
-    var passwd1 = credentials.get(email);
-    if (passwd.equals(passwd1)) {
+    if (passwd.equals(profilePasswordForEmail(email))) {
       var session = request.getSession();
       session.setAttribute("email", email);
       gotoIndex(response);
@@ -78,60 +64,8 @@ public final class SignIn extends HttpServlet {
     }
   }
 
-  private static void testPostgresConnection() {
-    Connection conn = null;
-    try {
-      conn = DriverManager.getConnection("jdbc:postgresql://localhost/MAAS", "jee", "jee");
-      System.out.println("Connection is " + conn);
-
-      Statement stmt = null;
-      ResultSet rs = null;
-      try {
-        stmt = conn.createStatement();
-        rs = stmt.executeQuery("select id, email from profiles");
-
-        while (rs.next()) {
-          System.out.println(rs.getLong("id"));
-          System.out.println(rs.getString("email"));
-        }
-
-      } catch (Exception e) {
-        e.printStackTrace();
-      } finally {
-        if (rs != null) {
-          rs.close();
-        }
-        if (stmt != null) {
-          stmt.close();
-        }
-      }
-
-    } catch (Exception e) {
-      e.printStackTrace();
-    } finally {
-      if (conn != null) {
-        try {
-          conn.close();
-        } catch (SQLException e) {
-          e.printStackTrace();
-        }
-      }
-    }
-  }
-
-  private static void testPostgresConnection1() {
-    try {
-      try (Connection conn = DriverManager.getConnection("jdbc:postgresql://localhost/MAAS", "jee", "jee");
-          Statement stmt = conn.createStatement();
-          ResultSet rs = stmt.executeQuery("select id, email from profiles")) {
-        while (rs.next()) {
-          System.out.println(rs.getLong("id"));
-          System.out.println(rs.getString("email"));
-        }
-      }
-    } catch (SQLException e) {
-      e.printStackTrace();
-    }
+  private String profilePasswordForEmail(String email) {
+    return DBI.selectOne(dataSource, "select passwd from profiles where email='" + email + "'", "passwd");
   }
 
   public static void gotoIndex(HttpServletResponse response) throws IOException {
