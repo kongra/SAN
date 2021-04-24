@@ -6,3 +6,8 @@
 * Zadanie 2. Proszę zrealizować w Javie polimorfizm ad-hoc
    oparty o niejawną konwersję oraz oparty o przeciążanie. Na dowolnym
    wybranym przez siebie przykładzie.
+* Zadanie 3. Dla wybranego urządzenia rzeczywistego:
+** Zaprojektuj interfejs opisujący działanie tego urządzenia i jego komunikację ze światem zewnętrznym
+** Zrealizuj ten interfejs w języku Java
+** Utwórz klasę stanowiącą implementację powyższego interfejsu
+** Zaprezentuj działanie tworząc obiekty powyższej klasy i aktywizując je wywołaniami metod należących do interfejsu

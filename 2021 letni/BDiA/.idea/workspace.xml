@@ -4,11 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="a60683b8-c4c8-4da6-aac1-1d447be54685" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/src/main/java/bdia/TestDBI.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/bdia/DBI.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/bdia/DBI.java" afterDir="false" />
-    </list>
+    <list default="true" id="a60683b8-c4c8-4da6-aac1-1d447be54685" name="Default Changelist" comment="" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -80,17 +76,6 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration default="true" type="ArquillianJUnit" factoryName="" nameIsGenerated="true">
-      <option name="arquillianRunConfiguration">
-        <value>
-          <option name="containerStateName" value="" />
-        </value>
-      </option>
-      <option name="TEST_OBJECT" value="class" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
     <recent_temporary>
       <list>
         <item itemvalue="Application.TestDBI" />
@@ -112,6 +97,7 @@
       <workItem from="1618133612170" duration="2710000" />
       <workItem from="1618232799567" duration="10000" />
       <workItem from="1619256968289" duration="4873000" />
+      <workItem from="1619276482473" duration="13000" />
     </task>
     <servers />
   </component>
