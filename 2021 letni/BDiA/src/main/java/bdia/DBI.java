@@ -48,19 +48,23 @@ public class DBI {
         body.run();
         return;
       } catch (Throwable e) {
-        if (!isConcurrentUpdateException(e)) {
-          if (e instanceof SQLException) {
-            throw e;
-          }
+        if (!isConcurrentUpdateException(discoverSQLException(e))) {
           throw new RuntimeException(e);
         }
+        System.out.println("Restarting TX");
       }
     }
   }
 
-  private static boolean isConcurrentUpdateException(Throwable e) {
-    if (e instanceof SQLException) {
-      var sqlState = ((SQLException) e).getSQLState();
+  public static SQLException discoverSQLException(Throwable t) {
+    if (t == null) return null;
+    if (t instanceof SQLException) return (SQLException) t;
+    return discoverSQLException(t.getCause());
+  }
+
+  private static boolean isConcurrentUpdateException(SQLException e) {
+    if (e != null) {
+      var sqlState = e.getSQLState();
       System.out.println("SQL state=" + sqlState);
       return "40001".equals(sqlState);
     }
@@ -90,6 +94,16 @@ public class DBI {
     catch(Throwable t) {
       throw new RuntimeException(t);
     }
+  }
+
+  public static void serializable(Runnable body) {
+    restartingTx(() -> {
+      withNewTransaction(Connection.TRANSACTION_SERIALIZABLE, body);
+    });
+  }
+
+  public static void serializableWithConn(Runnable body) throws SQLException {
+    withConn(() -> serializable(body));
   }
 
   @Nullable

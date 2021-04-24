@@ -8,6 +8,11 @@
 </head>
 <body>
 
+<%
+var hello = "Hello World!";
+%>
+<h1><%= hello %></h1>
+
 <form method="post" action="signin">
   Email:   <input type="text" name="email" value=""/><br>
   Password <input type="password" name="passwd" value=""/><br>

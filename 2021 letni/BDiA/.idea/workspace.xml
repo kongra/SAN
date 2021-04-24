@@ -5,7 +5,9 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="a60683b8-c4c8-4da6-aac1-1d447be54685" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/src/main/java/bdia/TestDBI.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/bdia/DBI.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/bdia/DBI.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -38,9 +40,22 @@
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
   </component>
-  <component name="RunManager" selected="Application.Main">
+  <component name="RunManager" selected="Application.TestDBI">
     <configuration name="Main" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="bdia.Main" />
+      <module name="BDiA" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="bdia.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="TestDBI" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="bdia.TestDBI" />
       <module name="BDiA" />
       <extension name="coverage">
         <pattern>
@@ -65,8 +80,20 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
+    <configuration default="true" type="ArquillianJUnit" factoryName="" nameIsGenerated="true">
+      <option name="arquillianRunConfiguration">
+        <value>
+          <option name="containerStateName" value="" />
+        </value>
+      </option>
+      <option name="TEST_OBJECT" value="class" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="Application.TestDBI" />
         <item itemvalue="Application.Main" />
         <item itemvalue="Application.TestDynVars" />
       </list>
@@ -84,6 +111,7 @@
       <workItem from="1618047085899" duration="5697000" />
       <workItem from="1618133612170" duration="2710000" />
       <workItem from="1618232799567" duration="10000" />
+      <workItem from="1619256968289" duration="4873000" />
     </task>
     <servers />
   </component>

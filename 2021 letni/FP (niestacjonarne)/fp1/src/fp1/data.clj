@@ -155,6 +155,8 @@
 ;; fp1.data=> (range 6)
 ;; (0 1 2 3 4 5)
 
+;; (iterate <f> <start>) <=> (<start> (<f> <start>) (<f> (<f> <start>)) ...)
+
 ;; (iterate inc 0) <==> (0 (inc 0) (inc (inc 0)) (inc (inc (inc 0))) ...)
 ;; fp1.data=> (first (iterate inc 0))
 ;; 0
@@ -171,6 +173,7 @@
 
 ;; b. W schemacie lazy (późna ewaluacja):
 ;; [0, -]--->(delay (iterate inc 1))
+;; [0, -]--->(delay [1, -]--->(delay (iterate inc 2)))
 ;; Nie ma pełnej materializacji danych
 
 (defn my-range [n]
