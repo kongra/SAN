@@ -2,6 +2,7 @@ package san.jee1.profile;
 
 import java.io.IOException;
 
+import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -21,8 +22,25 @@ public final class Signin extends HttpServlet {
 
   @Override
   protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-    System.out.println("/profile/signing got hit");
-    response.sendRedirect(Utils.url("/index.html"));
+    String email = request.getParameter("email");
+    email = email == null ? "" : email;
+    email = email.trim();
+    email = email.toLowerCase();
+
+    String passwd = request.getParameter("passwd");
+    passwd = passwd == null ? "" : passwd;
+
+    if (ProfileTools.isRegistered(email, passwd)) {
+      // Auth. OK
+      request.getSession().setAttribute("email", email);
+      response.sendRedirect(Utils.url("/index.jsp"));
+      return;
+    }
+
+    // Auth. ERR
+    request.setAttribute("error", "Illegal email and/or password");
+    RequestDispatcher dispatcher = getServletContext().getRequestDispatcher("/profile/signin.jsp");
+    dispatcher.forward(request, response);
   }
 
 }
