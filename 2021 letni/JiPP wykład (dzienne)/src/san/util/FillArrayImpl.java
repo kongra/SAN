@@ -1,27 +1,27 @@
 package san.util;
 
-public class FillArrayImpl implements FillArray {
+public class FillArrayImpl<T> implements FillArray<T> {
 
   private int fillPointer;
 
-  private final int[] data;
+  private final Object[] data;
 
   public FillArrayImpl(int maxLength) {
-    data = new int[maxLength];
+    data = new Object[maxLength];
   }
 
   @Override
-  public FillArray add(int x) {
+  public FillArray add(T x) {
     data[fillPointer++] = x;
     return this;
   }
 
   @Override
-  public int get(int i) {
+  public T get(int i) {
     if (i >= length()) {
       throw new ArrayIndexOutOfBoundsException(i);
     }
-    return data[i];
+    return (T) data[i];
   }
 
   @Override
