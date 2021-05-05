@@ -76,3 +76,41 @@
 ;; true
 ;; fp1.core=> (.get m1 "0")
 ;; "aaa"
+
+;; SETS IN CLOJURE
+;; fp1.core=> #{1 2 3 4 5}
+;; #{1 4 3 2 5}
+;; fp1.core=> (class #{1 2 3 4 5})
+;; clojure.lang.PersistentHashSet
+;; fp1.core=> (conj #{1 2 3 4 5} "abc")
+;; #{1 4 "abc" 3 2 5}
+;; fp1.core=> (contains? #{1 2 3 4 5} 4)
+;; true
+;; fp1.core=> (contains? #{1 2 3 4 5} 44)
+;; false
+;; fp1.core=> (#{1 2 3 4 5} 4)
+;; 4
+;; fp1.core=> (#{1 2 3 4 5} 44)
+;; nil
+;; fp1.core=> (disj #{1 2 3 4 5} 4)
+;; #{1 3 2 5}
+;; fp1.core=>
+
+;; fp1.core=> (set [1 2 3 4 5 5 5 5 6 6 6 7 8 8 8 9])
+;; #{7 1 4 6 3 2 9 5 8}
+;; fp1.core=> (distinct [1 2 3 4 5 5 5 5 6 6 6 7 8 8 8 9])
+;; (1 2 3 4 5 6 7 8 9)
+;; fp1.core=> (class (distinct [1 2 3 4 5 5 5 5 6 6 6 7 8 8 8 9]))
+;; clojure.lang.LazySeq
+
+;; Zadanie 9. Napisz procedurę zwracającą zbiór potęgowy danego zbioru wejściowego
+;;            (powerset #{1 2 3}) =>
+;;            #{#{}
+;;              #{1}
+;;              #{2}
+;;              #{3}
+;;              #{1 2}
+;;              #{1 3}
+;;              #{2 3}
+;;              #{1 2 3}}
+;;            Jeżeli s1 ma n elementów, to (powerset s1) ma 2^n elementów
