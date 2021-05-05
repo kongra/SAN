@@ -13,9 +13,6 @@ import javax.servlet.annotation.WebFilter;
 @WebFilter("/*")
 public final class TrafficFilter implements Filter {
 
-  public TrafficFilter() {
-  }
-
   @Override
   public void init(FilterConfig fConfig) throws ServletException {
     System.out.println("TrafficFilter.init()");
@@ -27,8 +24,8 @@ public final class TrafficFilter implements Filter {
   }
 
   @Override
-  public void doFilter(ServletRequest request, ServletResponse response, FilterChain chain)
-      throws IOException, ServletException {
+  public void doFilter(ServletRequest request, ServletResponse response,
+      FilterChain chain) throws IOException, ServletException {
 
     System.out.println("TrafficFilter.doFilter()");
 

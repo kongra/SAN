@@ -2,14 +2,11 @@ package san.jee1.profile;
 
 import java.io.IOException;
 
-import javax.inject.Inject;
-import javax.inject.Named;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import javax.sql.DataSource;
 
 import san.jee1.DBI;
 
@@ -18,16 +15,13 @@ public final class SignIn extends HttpServlet {
 
   private static final long serialVersionUID = 1L;
 
-  @Inject
-  @Named("java:comp/env/jdbc/MAAS")
-  private DataSource dataSource;
-
-  public SignIn() {
-    super();
-  }
+  // @Inject
+  // @Named("java:comp/env/jdbc/MAAS")
+  // private DataSource dataSource;
 
   @Override
-  protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+  protected void doPost(HttpServletRequest request,
+      HttpServletResponse response) throws ServletException, IOException {
 
     System.out.println("SignIn.doPost()");
 
@@ -64,18 +58,22 @@ public final class SignIn extends HttpServlet {
     }
   }
 
-  private String profilePasswordForEmail(String email) {
-    return DBI.selectOne(dataSource, "select passwd from profiles where email='" + email + "'", "passwd");
+  private static String profilePasswordForEmail(String email) {
+    return DBI.selectOne(
+        "select passwd from profiles where email='" + email + "'", "passwd");
   }
 
-  public static void gotoIndex(HttpServletResponse response) throws IOException {
+  public static void gotoIndex(HttpServletResponse response)
+      throws IOException {
     response.sendRedirect("/JEE1_dzienne_lab/index.jsp");
   }
 
-  private void localErr(HttpServletRequest request, HttpServletResponse response, String message)
-      throws ServletException, IOException {
+  private void localErr(HttpServletRequest request,
+      HttpServletResponse response, String message)
+          throws ServletException, IOException {
     request.setAttribute("localErrMessage", message);
-    getServletContext().getRequestDispatcher("/signin.jsp").forward(request, response);
+    getServletContext().getRequestDispatcher("/signin.jsp").forward(request,
+        response);
   }
 
 }
