@@ -11,3 +11,6 @@
 ** Zrealizuj ten interfejs w języku Java
 ** Utwórz klasę stanowiącą implementację powyższego interfejsu
 ** Zaprezentuj działanie tworząc obiekty powyższej klasy i aktywizując je wywołaniami metod należących do interfejsu
+
+* Zadanie 4. Zaprojektuj klasy i metody w tych klasach, które reprezentują działanie systemu dziekanatowego
+   Hint: Student, Przedmiot, Wykładowca, Ocena, ...
