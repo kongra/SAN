@@ -180,3 +180,118 @@
   (take n (iterate inc 0)))
 
 ;; SĄ ONE NIEZMIENNE (IMMUTABLE/PERSISTENT)
+
+;; ZBIÓR
+;; * Służy do określenia przynależności elementu(ów) do pewnej grupy.
+;; * Dany element w zbiorze występuje dokładnie 1 raz. Jest więc gwarantem unikalności.
+;; * Odpytywanie zbioru o przynależność elementu do niego zazwyczaj ma złożoność O(1) lub O(log(n)).
+;; * Kolejność elementów nie gra roli(**)
+
+;; ** Chyba, że mamy do czynienia z pojemnikiem typu sorted-set
+;; fp1.core=> (hash-set "a" "b" "c" "d")
+;; #{"d" "a" "b" "c"}
+;; fp1.core=> (hash-set "a" "b" "c" "d" "a" "a" "c")
+;; #{"d" "a" "b" "c"}
+;; fp1.core=> (def s1 (hash-set "a" "b" "c" "d"))
+;; #'fp1.core/s1
+;; fp1.core=> (contains? s1 "a")
+;; true
+;; fp1.core=> (contains? s1 "x")
+;; false
+;; fp1.core=> (s1 "a")
+;; "a"
+;; fp1.core=> (s1 "x")
+;; nil
+
+;; fp1.core=> (class s1)
+;; clojure.lang.PersistentHashSet
+;; fp1.core=> (conj s1 "x")
+;; #{"d" "x" "a" "b" "c"}
+;; fp1.core=> (def s2 (conj s1 "x"))
+;; #'fp1.core/s2
+;; fp1.core=> s2
+;; #{"d" "x" "a" "b" "c"}
+;; fp1.core=> s1
+;; #{"d" "a" "b" "c"}
+;; fp1.core=> (def s3 (disj s1 "a"))
+;; #'fp1.core/s3
+;; fp1.core=> s3
+;; #{"d" "b" "c"}
+;; fp1.core=> s1
+;; #{"d" "a" "b" "c"}
+;; fp1.core=> s2
+;; #{"d" "x" "a" "b" "c"}
+;; fp1.core=> s3
+;; #{"d" "b" "c"}
+;; fp1.core=> (clojure.set/difference s2 s1)
+;; #{"x"}
+;; fp1.core=> (clojure.set/union s1 s3)
+;; #{"d" "a" "b" "c"}
+;; fp1.core=> (clojure.set/intersection s2 s1)
+;; #{"d" "a" "b" "c"}
+;; fp1.core=> (clojure.set/intersection s2 s3)
+;; #{"d" "b" "c"}
+;; fp1.core=>
+
+;; Zadanie 5. Zrealizuj procedurę unique-seq, która działa, jak poniżej:
+;; (unique-seq [1 2 3 4 1 1 4 4 2 3 7]) => (1 2 3 4 7)
+;; czyli zwraca sekwencję pozbawioną duplikatów, kolejność jest zachowana.
+;; Hint: wykorzystaj zbiór.
+
+;; MAPA (POJEMNIK ASOCJACYJNY)
+;; Jest to pojemnik, który łączy ze sobą klucze i odpowiadające im wartości.
+;; W przypadku tablicy mamy klucze będące kolejnymi liczbami naturalnymi.
+;; String[] tab = {"a", "b", "c"}
+;; 0 -> "a"
+;; 1 -> "b"
+;; 2 -> "c"
+
+;; Załóżmy, że chcemy zbudować pojemnik będący odwrotnością powyższego
+;; "a" -> 0
+;; "b" -> 1
+;; "c" -> 2
+
+;; fp1.core=> (hash-map "a" 0 "b" 1 "c" 2)
+;; {"a" 0, "b" 1, "c" 2}
+;; fp1.core=> (def m1 (hash-map "a" 0 "b" 1 "c" 2))
+;; #'fp1.core/m1
+;; fp1.core=> m1
+;; {"a" 0, "b" 1, "c" 2}
+;; fp1.core=> (get m1 "b")
+;; 1
+;; fp1.core=> (get m1 "x")
+;; nil
+;; fp1.core=> (get m1 "x" "wartość domyślna")
+;; "wartość domyślna"
+;; fp1.core=> (m1 "b")
+;; 1
+;; fp1.core=> (m1 "x")
+;; nil
+;; fp1.core=> (def v1 ["a" "b" "c" "d"])
+;; #'fp1.core/v1
+;; fp1.core=> (v1 0)
+;; "a"
+;; fp1.core=> (v1 1)
+;; "b"
+;; fp1.core=> (v1 2)
+;; "c"
+;; fp1.core=> (v1 3)
+;; "d"
+;; fp1.core=> (v1 5)
+;; Execution error (IndexOutOfBoundsException) at fp1.core/eval2067 (form-init16399973377660957740.clj:1).
+;; null
+
+;; fp1.core=> (class m1)
+;; clojure.lang.PersistentHashMap
+;; fp1.core=> (def m2 (assoc m1 "x" 10))
+;; #'fp1.core/m2
+;; fp1.core=> m2
+;; {"x" 10, "a" 0, "b" 1, "c" 2}
+;; fp1.core=> m1
+;; {"a" 0, "b" 1, "c" 2}
+;; fp1.core=> (def m3 (dissoc m1 "a"))
+;; #'fp1.core/m3
+;; fp1.core=> m3
+;; {"b" 1, "c" 2}
+;; fp1.core=> m1
+;; {"a" 0, "b" 1, "c" 2}
