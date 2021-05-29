@@ -14,3 +14,8 @@
 
 * Zadanie 4. Zaprojektuj klasy i metody w tych klasach, które reprezentują działanie systemu dziekanatowego
    Hint: Student, Przedmiot, Wykładowca, Ocena, ...
+* Zadanie 5. Zaprojektuj klasę, której obiekty reprezentują zbiory elementów typu String
+   - Do zbioru można element dodać
+   - Ze zbioru można element usunąć
+   - Dany element może w zbiorze wystąpić tylko jeden raz
+   - Można sprawdzić, czy dany element w zbiorze występuje czy nie
