@@ -1,0 +1,10 @@
+* Multitasking (wielozadaniowość)
+  - Zdolność systemu operacyjnego do wykonywania wielu zadań
+    "w tym samym czasie"
+
+* Zadanie (task)
+* Wątek (thread)
+* Proces (process)
+
+* Concurrency (współbieżność)
+* Parallelism (równoległość, zrównoleglanie)

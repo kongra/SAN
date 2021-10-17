@@ -1,0 +1,19 @@
+* Wielozadaniowość (multi-tasking)
+* Zadanie (task)
+
+* Proces - URUCHOMIONY program komputerowy
+* Wątek (thread)
+* Wywłaszczanie (pre-emption)
+
+int foo(int n) {
+  int[] tab = new int[n];
+  for (...) { tab[i] = ...; }
+
+  return ...;
+}
+
+int foo(int n) {
+  int tab[n];
+
+  ...
+}
