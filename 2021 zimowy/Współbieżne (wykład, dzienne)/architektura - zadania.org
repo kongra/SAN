@@ -1,0 +1,1 @@
+* Zadanie 1. Zaimplementować operatory +, -, *, / dla klasy Money
