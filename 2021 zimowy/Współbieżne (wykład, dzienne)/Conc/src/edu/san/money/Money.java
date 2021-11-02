@@ -45,6 +45,4 @@ public final class Money {
     return true;
   }
 
-  // Zadanie 1. Zaimplementować operatory +, -, *, / dla klasy Money
-
 }
