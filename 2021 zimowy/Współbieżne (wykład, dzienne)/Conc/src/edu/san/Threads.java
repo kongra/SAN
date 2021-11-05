@@ -30,12 +30,6 @@ public final class Threads {
     }
   }
 
-  public static void notify(Object obj) {
-    synchronized (obj) {
-      obj.notify();
-    }
-  }
-
   private Threads() {
     ;
   }
