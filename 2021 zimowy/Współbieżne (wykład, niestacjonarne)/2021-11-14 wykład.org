@@ -1,0 +1,9 @@
+* Problemy programów współbieżnych
+  - Programem współbieżnym jest program składający się z więcej niż 1 wątku
+  - Lub system, składający się z więcej niż 1 procesu
+
+** Race condition
+
+** Deadlock (zakleszczenie)
+
+** Starvation (zagłodzenie)
