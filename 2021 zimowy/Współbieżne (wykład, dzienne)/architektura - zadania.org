@@ -1,1 +1,4 @@
 * Zadanie 1. Zaimplementować operatory +, -, *, / dla klasy Money
+* Zadanie 2. Zrealizować wzorzec singleton z odroczeniem
+  - bezpieczny z punktu widzenia współbieżności
+  - wykorzystujący semafory do realizacji sekcji krytycznej

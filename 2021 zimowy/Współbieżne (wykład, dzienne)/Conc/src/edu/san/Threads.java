@@ -1,5 +1,7 @@
 package edu.san;
 
+import java.util.concurrent.Semaphore;
+
 public final class Threads {
 
   public static void sleep(long millis) {
@@ -27,6 +29,21 @@ public final class Threads {
       }
     } catch (InterruptedException e) {
       throw new RuntimeException(e);
+    }
+  }
+
+  public static void withSemaphore(Semaphore s, Runnable body) {
+    boolean acquired = false;
+    try {
+      s.acquire();
+      acquired = true;
+      body.run();
+    } catch (Exception e) {
+      throw new RuntimeException(e);
+    } finally {
+      if (acquired) {
+        s.release();
+      }
     }
   }
 

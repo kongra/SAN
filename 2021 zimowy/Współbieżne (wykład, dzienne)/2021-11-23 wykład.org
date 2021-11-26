@@ -1,0 +1,11 @@
+* SEKCJA KRYTYCZNA
+  - Występuje tam, gdzie wątki mają dostęp do współdzielonych
+    zasobów.
+  - Składają się na nią te instrukcje, które modyfikują zasób
+    lub zasoby współdzielone lub też czytają dane ze
+    współdzielonych zasobów.
+  - Powstaje wówczas (potencjalnie) zjawisko race-condition(s).
+  - Aby to zjawisko nie mogło powstać, oczekujemy, że będzie
+    istniał mechanizm gwarantujący wykonywanie instrukcji
+    składających się na sekcję krytyczną przez WYŁĄCZNIE jeden
+    wątek (jedno zadanie).
