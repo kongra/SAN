@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Formularz</title>
+
+  <style>
+    * { margin: 0;
+        padding: 0;
+        box-sizing: border-box; }
+
+    .signUpForm {
+      display: grid;
+      grid-template-columns: 35% 65%;
+      grid-template-rows: repeat(3, auto);
+      gap: 5px;
+
+      width: 300px;
+
+      margin: 20px;
+    }
+
+    #submitButton {
+      grid-column: 2 / 3;
+    }
+
+    #overlay {
+      position: absolute;
+      top: 0;
+      left: 0;
+      display: none;
+
+      width: 100vw; /* viewport-width */
+      height: 100vh; /* viewport-height */
+
+      background: rgba(0, 0, 0, 0.5);
+    }
+
+  </style>
+
+</head>
+<body>
+
+  <div class="signUpForm">
+    Email: <input type="text" name="formEmail" id="formEmail">
+    Password: <input type="password" name="formPasswd" id="formPasswd">
+
+    <button id="submitButton">Sign-Up</button>
+  </div>
+
+  <div id="overlay"></div>
+
+  <script>
+    const EMAILS = ['kongra@gmail.com', 'kgrzanek@san.edu.pl'];
+    const formEmail = document.getElementById('formEmail');
+
+    formEmail.addEventListener('input', (event) => {
+      const email = formEmail.value;
+      setTimeout(() => {
+        if (email != formEmail.value) return;
+
+        // console.log('formEmail has changed to ' + formEmail.value);
+        const i = EMAILS.findIndex(e => e == email);
+        if (i == -1) {
+          console.log('Email OK ' + email); 
+        } else {
+          console.log('Email is in use');
+        }
+      }, 1000);
+
+    });
+
+    const submitButton = document.getElementById('submitButton');
+    const overlay = document.getElementById('overlay');
+
+    submitButton.addEventListener('click', (e) => {
+      overlay.style.height = '100vh';
+      overlay.style.top = 0;
+      overlay.style.display = 'block';
+    });
+
+    function sigmoid(alpha, t) {
+      return 1 / (1 + Math.exp(-alpha * (t - 0.5)));
+    }
+
+    function animOverlay(step, animSteps) {
+      const startTime = performance.now();
+      const pos = sigmoid(15, step / animSteps);
+
+      overlay.style.top = pos * 100 + 'vh';
+      overlay.style.height = (100 - pos * 100) + 'vh';
+
+      if (step == animSteps) {
+        overlay.style.display = 'none';
+        return;
+      }
+
+      const elapsedTime = performance.now() - startTime;
+      setTimeout(() => {
+        animOverlay(step + 1, animSteps);
+      }, 8 - elapsedTime);
+    }
+
+    overlay.addEventListener('click', (e) => {
+      const animMsecs = 5000;
+
+      // W ciągu 1s mamy 60 klatek
+      // W ciągu Ns mamy X  klatek
+      // 1s * X klatek = 60 klatek * Ns
+      // X klatek = 60 klatek * Ns / 1s
+      // X klatek = 60 klatek * N msecs / 1000 msecs
+
+      const animSteps = 120 * animMsecs / 1000;
+
+      setTimeout(() => {
+        animOverlay(0, animSteps);
+      }, 8);
+    });
+
+  </script>
+
+</body>
+</html>
