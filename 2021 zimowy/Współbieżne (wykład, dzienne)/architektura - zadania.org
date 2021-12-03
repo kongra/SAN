@@ -2,3 +2,7 @@
 * Zadanie 2. Zrealizować wzorzec singleton z odroczeniem
   - bezpieczny z punktu widzenia współbieżności
   - wykorzystujący semafory do realizacji sekcji krytycznej
+* Zadanie 3. Opracuj factory method dla klasy realizującej
+  funkcjonalność dowolnie przez Państwa wybraną.
+* Zadanie 4. Stwórz hierarchię klas oraz odpowiadającą tej hierarchii
+  strukturę klas realizujących wzorzec abstract factory.
