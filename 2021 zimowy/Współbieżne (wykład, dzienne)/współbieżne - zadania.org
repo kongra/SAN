@@ -1,1 +1,2 @@
 * Zadanie 1. Zrealizuj wzorzec PROMISE (zgodnie z diagramem)
+* Zadanie 2. Rozwiąż problem czytelników i pisarzy
