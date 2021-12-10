@@ -1,2 +1,3 @@
 * Zadanie 1. Zrealizuj wzorzec PROMISE (zgodnie z diagramem)
 * Zadanie 2. Rozwiąż problem czytelników i pisarzy
+* Zadanie 3. Rozwiąż problem 5 filozofów
