@@ -14,12 +14,11 @@ public class Railways {
     executorService.execute(() -> {
       Threads.withSemaphore(sem1, () -> {
         System.out.println("Train 1: JESTEM W SEKCJI KRYTYCZNEJ");
-        // try {
-        // sem1.acquire();
-        // } catch (InterruptedException e) {
-        // // TODO Auto-generated catch block
-        // e.printStackTrace();
-        // }
+
+        // Threads.withSemaphore(sem1, () -> {
+        // System.out.println("This will never happen");
+        // });
+
         Threads.sleep(2000);
         // throw new RuntimeException("Train 1: ERR");
         System.out.println("Train 1: OPUSZCZAM SEKCJĘ KRYTYCZNĄ");

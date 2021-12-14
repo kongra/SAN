@@ -35,14 +35,14 @@ public final class Threads {
   public static void withSemaphore(Semaphore s, Runnable body) {
     boolean acquired = false;
     try {
-      s.acquire();
+      s.acquire(); // s.wait();
       acquired = true;
       body.run();
     } catch (Exception e) {
       throw new RuntimeException(e);
     } finally {
       if (acquired) {
-        s.release();
+        s.release(); // s.signal();
       }
     }
   }

@@ -1,40 +1,22 @@
 class Point {
 
-  double x;
+  final double x; // const
 
-  double y;
+  final double y; // const
 
-  Point(double initX, double initY) {
-    x = initX;
-    y = initY;
+  Point(/* Point this, */ double initX, double initY) {
+    this.x = initX;
+    this.y = initY;
   }
 
-  Point add(Point p2) {
-    return new Point(x + p2.x, y + p2.y);
+  Point add(/* Point this, */ Point p2) {
+    return new Point(this.x + p2.x, this.y + p2.y);
   }
 
-  String asString() {
-    return "(" + x + ", " + y + ")";
+  String asString(/* Point this, */) {
+    return "(" + this.x + ", " + this.y + ")";
   }
-
-  // static Point make(double x, double y) {
-  //   // Point p = new Point();
-  //   // p.x = x;
-  //   // p.y = y;
-  //   // return p;
-
-  //   // Point p = new Point(x, y);
-  //   // return p;
-
-  //   return new Point(x, y);
-  // }
-
-  // static Point add(Point p1, Point p2) {
-  //   return make(p1.x + p2.x, p1.y + p2.y);
-  // }
-
-  // static String asString(Point p) {
-  //   return "(" + p.x + ", " + p.y + ")";
-  // }
 
 }
+
+// this
