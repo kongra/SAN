@@ -6,3 +6,4 @@
   funkcjonalność dowolnie przez Państwa wybraną.
 * Zadanie 4. Stwórz hierarchię klas oraz odpowiadającą tej hierarchii
   strukturę klas realizujących wzorzec abstract factory.
+* Zadanie 5. Wykorzystaj wzorzec Builder do realizacji dowolnie wybranego celu.
