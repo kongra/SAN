@@ -1,1 +1,3 @@
 * Zadanie 1. W wybranym języku programowania rozwiąż problem CZYTELNIKÓW I PISARZY
+* Zadanie 2. W wybranym języku programowania rozwiąż problem 5 FILOZOFÓW
+* Zadanie 3. W wybranym języku programowania zrealizuj wzorzec PROMISE
