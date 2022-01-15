@@ -1,0 +1,14 @@
+* PAGES
+
+| URL                               | Title | Special Page Type                    |
+|-----------------------------------+-------+--------------------------------------|
+| https://en.wikipedia.org/wiki/Car | Car   | NA (Disambiguation/Category/NULL/NA) |
+|                                   |       |                                      |
+
+* HYPERLINKS
+
+| Page URL                          | URL                                                | Type           |
+|-----------------------------------+----------------------------------------------------+----------------|
+| https://en.wikipedia.org/wiki/Car | https://en.wikipedia.org/wiki/Car_(disambiguation) | Disambiguation |
+| https://en.wikipedia.org/wiki/Car | https://en.wikipedia.org/wiki/CARS                 | Disambiguation |
+|                                   |                                                    |                |
