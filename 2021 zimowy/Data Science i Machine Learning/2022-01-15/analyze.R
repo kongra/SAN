@@ -39,9 +39,18 @@ addPage <- function(pagesDT, url, title, specialPageType = NA_character_) {
   rbindlist(list(pagesDT, recordDT))
 }
 
+addLink <- function(linksDT, url, linkURL, type) {
+  recordDT <- data.table(URL = url, `Link URL` = linkURL, Type = type)
+  rbindlist(list(linksDT, recordDT))
+}
+
 pagesDT <- data.table(URL = character(),
                       Title = character(),
                       `Special Page Type` = character())
+
+linksDT <- data.table(URL = character(),
+                      `Link URL` = character(),
+                      Type = character())
 
 analyzePage <- function(url) {
   page  <- read_html(url)
@@ -61,11 +70,24 @@ analyzePage <- function(url) {
 
   pagesDT <<- addPage(pagesDT, url, title, specialPageType)
 
-  # TODO: Analyze links (hrefs)
+  # Analyze links (hrefs) in page content
+  links <- page %>%
+    html_element("#bodyContent") %>%
+    html_elements("a") %>%
+    map_chr(~ xml_attr(.x, "href"))
 
+  # keep(links, ~ str_starts(.x, "wiki"))
+
+  links <- links[str_starts(links, "/wiki/")]
+  links <- links[!(str_starts(links, "/wiki/File:"))]
+  links <- links[!is.na(links)]
+
+  for (i in seq_along(links)) {
+    linksDT <<- addLink(linksDT, url, links[i], NA_character_)
+  }
 }
 
-analyzePage("https://en.wikipedia.org/wiki/Car")
+analyzePage("https://en.wikipedia.org/wiki/SOAP")
 analyzePage("https://en.wikipedia.org/wiki/Car_(disambiguation)")
 
 # | Page URL                          | URL                                                | Type           |
@@ -73,3 +95,6 @@ analyzePage("https://en.wikipedia.org/wiki/Car_(disambiguation)")
 # | https://en.wikipedia.org/wiki/Car | https://en.wikipedia.org/wiki/Car_(disambiguation) | Disambiguation |
 # | https://en.wikipedia.org/wiki/Car | https://en.wikipedia.org/wiki/CARS                 | Disambiguation |
 # |                                   |                                                    |                |
+
+read_html("https://www.otomoto.pl/osobowe") %>%
+  html_elements(xpath = "/html/body/div[1]/div/div/div/div[2]/div[2]/div[2]/div[1]/div[3]/main/article[28]/div[1]/h2")
