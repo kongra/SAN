@@ -1,0 +1,6 @@
+* Wybrać sobie temat projektu
+   - Musi być wykorzystana baza danych poprzez JDBC albo inne API właściwe platformie (.NET, Golang, etc.)
+   - Warstwa aplikacji powinna być wykonana z wykorzystaniem frameworku, np. JEE (Jakarta), Springframework, Laravel, .NET
+
+* Zainstalować sobie bazę danych, najlepiej Postgresql
+  - oraz narzędzia deweloperskie, np. DBeaver, TOAD, Oracle JDeveloper
