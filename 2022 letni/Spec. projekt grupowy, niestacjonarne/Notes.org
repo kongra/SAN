@@ -1,0 +1,9 @@
+* Sklep internetowy
+** Zarządzanie profilami użytkowników
+** Katalog produktów
+** Ceny i cenniki
+** Promocje, bonusy, zniżki
+** Marketing, kampanie reklamowe
+** Koszyk i zamówienia
+
+MICROSERVICES
