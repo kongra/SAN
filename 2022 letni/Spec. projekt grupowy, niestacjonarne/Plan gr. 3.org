@@ -1,0 +1,16 @@
+* DONE 5 III Wprowadzenie
+
+* TODO zj. 2
+ - Podział na zespoły 2-5 osób w zespole
+ - Tematyka projektu
+ - Podział projektu na moduły funkcjonalne i podział ról w projekcie
+ - Zespoły opowiadają o powyższych punktach
+ - Przydział tasków na kolejny sprint (autorami tasków są członkowie zespołu)
+
+* TODO zj. 4
+
+* TODO zj. 5
+
+* TODO zj. 6
+
+* TODO zj. 8 Ocena
