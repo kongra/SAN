@@ -1,0 +1,16 @@
+-- su postgres
+-- $ createdb <DATABASE-NAME> -e -E utf-8
+-- SELECT pg_catalog.set_config('search_path', '', false)
+-- CREATE DATABASE "<DATABASE-NAME>" ENCODING 'utf-8';
+-- psql <DATABASE-NAME>
+
+BEGIN;
+CREATE ROLE <username> WITH LOGIN;
+CREATE SCHEMA <username> AUTHORIZATION <username>;
+COMMIT;
+
+-- psql <DATABASE-NAME>
+-- SET SESSION password_encryption='scram-sha-256';
+-- \password <username>
+
+CREATE EXTENSION pgcrypto;
