@@ -1,0 +1,45 @@
+* System typów
+  Jest to cecha(cechy) języka programowania determinujące sposób
+  weryfikacji programów ze względu na typy danych.
+
+** Statyczne systemy typów
+  - Analiza statyczna programu - analiza odbywająca się przed
+    uruchomieniem programu, polegająca na czytaniu kodów źródłowych.
+    Analizatorami statycznymi są: kompilatory, lintery.
+  - Statyczny system typów to taki, w którym typy wszystkich symboli oraz
+    wyrażeń składających się na program są znane na etapie kompilacji
+    (szerzej - na etapie analizy statycznej).
+
+    int x; // Java - posiada statyczną kontrolę typów
+
+    let x; // JavaScript - nie ma statycznej kontroli typów
+
+  - Type Inference - wnioskowanie o typach wyrażeń
+    var i = 34; // W języku Java i ma typ int
+
+** Dynamiczne systemy typów
+  - Systemy typów, w których typ symbolu (dokładniej - wartości reprezentowanej przez symbol)
+    znany jest dopiero w trakcie działania programu.
+
+    def foo(x):
+      print x # Nie da się określić, jaki jest typ x ...
+
+    # ... rzecz ta jest znana dopiero przy wykonaniu, np. poniższych wyrażeń
+    foo(5)
+    foo("abcd")
+
+
+** Silne systemy typów
+  Systemy typów, które nie są słabe (w których nie występują niejawne konwersje)
+
+** Słabe systemy typów
+  Słaby system typów to taki, w którym występują niejawne konwersje
+  W JS: 3 + 'a' ==> '3a'
+
+|            | Silnył                                | Słaby                 |
+|------------+---------------------------------------+-----------------------|
+| Statczny   | Java, Haskell, Ada, C#, F#            | C, C++                |
+| Dynamiczny | Common Lisp, Clojure, Python, Ruby, R | JavaScript, Perl, PHP |
+|            |                                       |                       |
+
+var s1 = "www" + 1234;

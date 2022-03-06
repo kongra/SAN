@@ -1,0 +1,15 @@
+* Zainstalowanie środowiska do programowania w Clojure
+** TODO Instalacja lein
+  - Instalacja JDK w wersji >= 1.8
+  - Korzystamy z leiningen.org
+** TODO Utworzenie projektu
+  - lein new <nazwa-projektu>, np. lein new fp1
+  - cd fp1
+  - lein repl
+** TODO Instalacja edytora lub IDE wspierającego Clojure
+  - Cursive IDE dla IntelliJ Idea (https://cursive-ide.com/)
+  - Calva dla VSCode
+  - Emacs z systemami paredit oraz Cider
+  - Sublime Text
+  - Atom
+  - http://lighttable.com/
