@@ -4,3 +4,16 @@
 
 * Zainstalować sobie bazę danych, najlepiej Postgresql
   - oraz narzędzia deweloperskie, np. DBeaver, TOAD, Oracle JDeveloper
+
+* Zadanie 1 (Bazy danych i aplikacje)
+  Zaprezentować działanie zapytań realizujących następujące operacje:
+  - Złączenie wewnętrzne (inner join)
+  - Złączenie naturalne
+  - Złączenie (zewnętrzne) lewe
+  - Złączenie (zewnętrzne) prawe
+  - Złączenie (zewnętrzne) pełne/obustronne
+
+  Zaprojektować tabele i umieścić w nich odpowiednie dane tak, aby było
+  możliwe napisanie i wykonanie odpowiedniek zapytań.
+
+  Posługujemy się wybranym środowiskiem bazodanowym (preferaby Postgresql).
