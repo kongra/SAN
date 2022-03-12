@@ -1,3 +1,5 @@
+# devtools::install_github("kongra/koR")
+# install.packages("data.table")
 # install.packages("keras")
 # keras::install_keras()
 
