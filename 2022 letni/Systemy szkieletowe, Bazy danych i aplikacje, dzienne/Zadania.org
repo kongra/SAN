@@ -14,9 +14,17 @@
   - Złączenie (zewnętrzne) pełne/obustronne
 
   Zaprojektować tabele i umieścić w nich odpowiednie dane tak, aby było
-  możliwe napisanie i wykonanie odpowiedniek zapytań.
+  możliwe napisanie i wykonanie odpowiednich zapytań.
 
   Posługujemy się wybranym środowiskiem bazodanowym (preferaby Postgresql).
 
 * Zadanie 2 (Bazy danych i aplikacje)
   Napisać program, który realizuje analogiczne do zaprezentowanych na wykładzie operacje z wykorzystaniem JDBC
+
+* Zadanie 3 (Bazy danych i aplikacje)
+  Na struktury bazy danych zaprojektowane w ramach rozwiązania Zadania 1 proszę nałożyć indeksy:
+  - posługując się samodzielnie przeprowadzoną analizą zapytań i ich planów
+  - proszę również porównać plany zapytań sprzed wprowadzenia indeksów oraz po ich wprowadzeniu
+  - na podstawie powyższego porównania ocenić, na ile indeksacja jest skuteczna
+  - Hint: EXPLAIN ... oraz EXPLAIN ANALYZE ... (w Postgresql), w innych bazach danych - proszę
+    znaleźć odpowiedniki
