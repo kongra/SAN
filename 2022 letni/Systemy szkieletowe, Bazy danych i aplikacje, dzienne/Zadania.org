@@ -17,3 +17,6 @@
   możliwe napisanie i wykonanie odpowiedniek zapytań.
 
   Posługujemy się wybranym środowiskiem bazodanowym (preferaby Postgresql).
+
+* Zadanie 2 (Bazy danych i aplikacje)
+  Napisać program, który realizuje analogiczne do zaprezentowanych na wykładzie operacje z wykorzystaniem JDBC
