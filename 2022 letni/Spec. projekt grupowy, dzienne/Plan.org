@@ -1,13 +1,95 @@
 * DONE 4 III Wprowadzenie
 
-* TODO 18 III
+* DONE 18 III
  - Podział na zespoły 2-5 osób w zespole
  - Tematyka projektu
  - Podział projektu na moduły funkcjonalne i podział ról w projekcie
  - Zespoły opowiadają o powyższych punktach
  - Przydział tasków na kolejny sprint (autorami tasków są członkowie zespołu)
 
+** Zespół 1
+ - Piotr Katolik
+ - Marek Stańczyk
+ - Arkadiusz Szewczyk
+
+*** Temat: Portal społecznościowy
+  z elementami dystrybucji treści tworzonych przez userów
+*** Moduły funkcjonalne:
+  - Zarządzanie użytkownikami (logowanie, rejestracja) - M. Stańczyk
+  - Manipulacje profilem: edycja, podgląd innych profili, ich historii
+    - P. Katolik
+  - Zarządzanie elementami treści (content): tworzenie, wiązanie
+    elementu z profilem użytkownika, komentarze i drzewo wątku dyskusji
+    A. Szewczyk zaprojektuje bazę danych w kolejnym "sprincie"
+
+** Zespół 2
+ - Anita Głuszek
+ - Mateusz Olczak
+ - Seweryn Słoma
+ - Konrad Bernacki
+
+*** Temat: Sklep/aukcje a'la Allegro
+*** Dokumentacja
+  - https://docs.google.com/document/d/16LT7SQ5rPBgnWgYzTl9oij7cypqN526NF5Jz6XeLecA/edit
+*** Moduły funkcjonalne:
+  - Logowanie - K
+  - Rejestracja - K
+  - Katalog produktów - A
+  - Widok szczegółów produktu - A
+  - Wyszukiwarka produktów - A
+  - Górny pasek menu i boczne menu - S
+  - Profil użytkownika i jego ustawienia - hasło, adres, email, zamówienia - K
+  - Koszyk - M
+  - Zamawianie - M
+  - Konto właściciela sklepu, w którym będzie widok zamówień i danych zamawiającego, dodawanie produktów - S
+  - Sortowanie - M
+  - Filtrowanie - M
+
+** Zespół 3
+  - Ihor Bielyk
+  - Serhii Nazarov
+  - Ivan Yashin
+
+*** Temat: Sklep internetowy z produktami do hodowli roślin
+*** Moduły funkcjonalne:
+  - Promocje - ???
+  - Panel administracyjny - ???
+  - Koszyk - ???
+  - Zamówienia - Ihor
+  - Autoryzacja/uwierzytelnienie - Ivan
+  - Płatności - Serhii
+  - Chat pomiędzy użytkownikami a obsługą sklepu - Serhii
+  - Baza produktów - Ihor
+*** Technologie:
+  - PHP, Laravel, JS, Bootstrap, MySQL
+
+
 * 1 IV
+** TODO Zespół 1
+  - Must-have:   Przygotowanie dokumentu projektowego
+  - Must-have:   Wybór środowiska do hostowania aplikacji - P. Katolik
+  - Must-have:   Przynajmniej wstępne określenie kosztów hostingu
+  - Must-have:   Wybór technologii bazodanowej - A. Szewczyk
+  - Could-have:  Projekt schematu bazy danych - A. Szewczyk
+  - Must-have:   Wybór technologii programistycznych - M. Stańczyk
+  - Sprint Goal: Wybór technologii do realizacji projektu
+  - Confidence voting: 1-5, [5, 5, 4]
+
+** TODO Zespół 2
+  - Must-have:   Stworzenie obrazów prezentujących szatę graficzną systemu - A
+  - Must-have:   Opracowanie dokumentacji opisującej funkcjonalność przynajmniej 3 modułów - K, M, S
+  - Could-have:  Opracowanie dokumentacji dla pozostałych modułów - A, K, M, S
+  - Sprint Goal: Podstawowy koncept witryny i dostarczenie dokumentacji modułów
+  - Confidence voting: [5, 5, 5, 5]
+
+** TODO Zespół 3
+  - Must-have:   Przygotowanie dokumentu projektowego - Ihor, Serhii
+  - Must-have:   Projekt bazy danych - Ihor
+  - Must-have:   Opracowanie szaty graficznej sklepu - Ivan
+  - Could-have:  Projekt i dokumentacja modułu autoryzacji - Ivan
+  - Could-have:  Projekt i dokumentacja modułu czatu - Serhii
+  - Sprint Goal: Baza danych i koncepcja UI/UX
+  - Confidence voting: [5, 4, 5]
 
 * 22 IV
 
