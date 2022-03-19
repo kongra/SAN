@@ -1,0 +1,29 @@
+Współczesne algorytmy GC (Garbage Collector/Collecting) opierają się na założeniu:
+* Przytłaczająca większość obiektów "umiera" młodo
+   tzn. związana z nimi pamięć może zostać ponownie użyta
+
+   - Jest to postulat efemeryczności obiektów
+   - GC jest tym bardziej "zapracowany", im więcej obiektów przeżywa
+
+** Wnioski:
+*** Nie powinniśmy się obawiać, że operator new działa wolno
+    Jest dokładnie odwrotnie: new w Javie działa ~tak szybko, jak alokacja na stosie
+*** Nie powinniśmy się obawiać, że nasz program tworzy dużą ilość obiektów
+    Jest dokładnie odwrotnie: duża ilość obiektów nie jest szkodliwa
+*** NIE WOLNO: keszować obiektów
+    stosując kesz jako "optymalizator" alokacji
+*** POWINNIŚMY: dbać o to, aby obiekty żyły jak najkrócej
+
+* Działanie GC
+** Istnieje próg, pozwalający na określenie, że pamięci jest na tyle mało
+    że musi nastąpić "przejście/zadziałanie" GC
+** GC rozpoczynając działanie, musi "zamrozić" nasz program
+    musi zatrzymać/wywłaszczyć (co najmniej) wszystkie jego wątki
+
+    - Zwykle mówi się, że mamy do czynienia ze zjawiskiem "Stop-the-world"
+
+** Faza 1. Określenie/znakowanie obiektów, które żyją
+   (nie nadają się do sprzątnięcia)
+
+** Faza 2. Kompresowanie obiektów, które żyją i aktualizacja
+   wskazujących na nie referencji tak, aby odnosiły się do nowych adresów w pamięci
