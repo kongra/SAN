@@ -7,7 +7,112 @@
  - Zespoły opowiadają o powyższych punktach
  - Przydział tasków na kolejny sprint (autorami tasków są członkowie zespołu)
 
+** Zespół 1
+   - Kamil Maćkowski
+   - Jakub Stodulski
+*** Temat: Księgarnia on-line
+*** Moduły funkcjonalne:
+   - Katalog produktów - JS
+   - Profile użytkowników (admin, norm. user, premium user) - KM
+   - Bestsellery - JS
+   - Nowości i sprzedaż przedpremierowa - KM
+   - Promocje - KM
+   - Koszyk - JS
+   - Kampanie reklamowe, marketing - KM
+
+** Zespół 2
+   - Konrad Lewiński
+   - Jakub Michalak
+*** Temat: Serwis ogłoszeniowy
+*** Moduły funkcjonalne:
+   - Profile użytkownika - JM
+   - Free i Premium - KL
+   - Ogłoszenie - JM
+   - Odpowiedź na ogłoszenie - JM
+   - Newsletter - KL
+   - Praca - KL
+
+** Zespół 3
+  - Jan Szmagaj
+  - Honorata Owczarek
+  - Damian Jóźwiak
+  - Piotr Instunajd
+  - Adrian Dąbrowski
+*** Temat: Serwis społecznościowy (a'la Facebook)
+*** Moduły:
+  - Profile - JS, PI
+  - Czat - HO
+  - Tablica (dashboard) - JS, AD
+  - Szata graficzna aplikacji i front-end - DJ, AD
+
+** Zespół 4
+   - Krzysztof Błaszczyk
+   - Adrian Szymański
+   - Paweł Kozub
+   - Michał Kaluga
+*** Temat: Sklep internetowy
+*** Moduły funkcjonalne:
+   - Katalog - AS
+   - Ceny i cenniki - AS
+   - Profile - KB
+   - Koszyk i zamówienie - MK
+   - Promocje, bonusy, zniżki - MK
+   - Marketing, kampanie reklamowe - PK
+
+** Zespół 5
+   - Adam Lisik
+   - Jonasz Łapiński
+   - Mateusz Pieczątka
+*** Temat: Sklep internetowy z meblami
+*** Podział:
+   - Warstwa biznesowa - JŁ
+   - Baza danych - AL
+   - Front-end   - MP
+
 * TODO zj. 4
+** TODO Zespół 1
+   - Must-have:   Przygotowanie dokumentu projektowego
+   - Must-have:   Opracowanie studium technologii i środowisk hostingowych
+   - Must-have:   Katalog produktów - projekt
+   - Must-have:   Profile użytkowników - projekt
+   - Could-have:  Do powyższych 2 modułów zrealizować projekt struktur bazy danych
+   - Sprint-goal: Opracowanie technologii i realizacja 2 pierwszych modułów
+   - Confidence-voting (1-5): [4.5, 4.5]
+
+** TODO Zespół 2
+   - Must-have:   Przygotowanie dokumentu projektowego
+   - Must-have:   Opracowanie studium technologii i środowisk hostingowych
+   - Must-have:   Opis funkcjonalności i diagramy przypadków użycia
+   - Could-have:  Do powyższych 2 modułów zrealizować projekt struktur bazy danych
+   - Sprint-goal: Opracowanie technologii i opis funkcjonalności z diagramami
+   - Confidence-voting (1-5): [4.5, 4.5]
+
+** TODO Zespół 3
+   - Must-have:   Przygotowanie dokumentu projektowego
+   - Must-have:   Opracowanie studium technologii i środowisk hostingowych
+   - Must-have:   Opracowanie wstępne szaty graficznej w wybranych widokach
+   - Sprint-goal: Przygotowanie technologii, hostingu i wybór szaty graficznej
+   - Confidence-voting (1-5): [4.5, 4.5, 4.5, 4.5]
+
+** TODO Zespół 4
+   - Must-have:   Przygotowanie dokumentu projektowego
+   - Must-have:   Opracowanie studium technologii i środowisk hostingowych
+   - Must-have:   Katalog produktów - projekt
+   - Must-have:   Profile użytkowników - projekt
+   - Could-have:  Do powyższych 2 modułów zrealizować projekt struktur bazy danych
+   - Sprint-goal: Opracowanie technologii i realizacja 2 pierwszych modułów
+   - Confidence-voting (1-5): [5, 4.5, 5, 4.5]
+
+** TODO Zespół 5
+   - Must Have : Projekt warstwy prezentacji (front) - M
+   - Must Have:  Projekt struktury BD - A
+   - Must Have:  Opracowanie studium technologii i środowisk hostingowych - J
+   - Could Have: Implementacja modeli - J
+   - Could Have: Postawienie bazy danych (postgre) - A
+   - Could Have: Podstawowy szablon (z routingiem) frontu - M
+   - Sprint-goal: Opracowanie projektów wstępnych wybranych elementów systemu
+   - Confidence-voting (1-5): [5, 4.5, 4.5]
+
 
 * TODO zj. 5
 
