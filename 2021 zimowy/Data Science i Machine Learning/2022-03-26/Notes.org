@@ -1,0 +1,11 @@
+* Problemy ML
+** Predykcja
+  - Klasyczny przykład: regresja (np. liniowa)
+  - Istota predykcji polega na tym, że nasz model realizuje funkcję
+    f(x) : Rp -> R (wyjściem/wartością modelu jest liczba - "wyjście" jest ciągłe)
+    p - liczba zmiennych niezależnych (predyktorów)
+
+** Klasyfikacja
+  - Istota tego pojęcia polega na tym, że mamy do czynienia z funkcją
+    f(x) : Rp -> C (C jest zbiorem klas - "wyjście" jest dyskretne)
+  - k-NN (k Nearest Neighbours)
