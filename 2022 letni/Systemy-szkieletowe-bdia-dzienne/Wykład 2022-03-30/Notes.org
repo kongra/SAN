@@ -1,0 +1,11 @@
+* Hipoteza generacyjna
+  - ~1984 rok
+  - Zdecydowana większość obiektów, które powstają w trakcie działania
+    systemu, ginie młodo.
+  - Bez tej hipotezy jesteśmy "skazani" na użycie "naiwnego" Mark-and-Sweep
+
+* Wszystkie!!! garbage-collectory zawierają w sobie element
+   Stop-The-World
+
+** Strojenie w kierunku latency - minimalizacja czasu potrzebnego
+   na fazę Stop-The-World
