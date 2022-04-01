@@ -11,9 +11,12 @@
  - Piotr Katolik
  - Marek Stańczyk
  - Arkadiusz Szewczyk
+ - Filip Staśkiewicz
 
 *** Temat: Portal społecznościowy
   z elementami dystrybucji treści tworzonych przez userów
+*** Dokumentacja
+    https://sanedupl-my.sharepoint.com/:w:/g/personal/103290_student_san_edu_pl/EYzYuCZBR2hDlXyPXI6Py88Bmyn8-QT60ztIjn-nAztSuA?rtime=jPdwxuYT2kg
 *** Moduły funkcjonalne:
   - Zarządzanie użytkownikami (logowanie, rejestracja) - M. Stańczyk
   - Manipulacje profilem: edycja, podgląd innych profili, ich historii
@@ -49,6 +52,7 @@
   - Ihor Bielyk
   - Serhii Nazarov
   - Ivan Yashin
+  - Michał Socha
 
 *** Temat: Sklep internetowy z produktami do hodowli roślin
 *** Moduły funkcjonalne:
@@ -63,26 +67,25 @@
 *** Technologie:
   - PHP, Laravel, JS, Bootstrap, MySQL
 
-
 * 1 IV
-** TODO Zespół 1
-  - Must-have:   Przygotowanie dokumentu projektowego
-  - Must-have:   Wybór środowiska do hostowania aplikacji - P. Katolik
-  - Must-have:   Przynajmniej wstępne określenie kosztów hostingu
-  - Must-have:   Wybór technologii bazodanowej - A. Szewczyk
-  - Could-have:  Projekt schematu bazy danych - A. Szewczyk
-  - Must-have:   Wybór technologii programistycznych - M. Stańczyk
+** DONE Zespół 1
+  - Must-have:   Przygotowanie dokumentu projektowego (DONE)
+  - Must-have:   Wybór środowiska do hostowania aplikacji - P. Katolik (DONE)
+  - Must-have:   Przynajmniej wstępne określenie kosztów hostingu (DONE)
+  - Must-have:   Wybór technologii bazodanowej - A. Szewczyk (DONE)
+  - Must-have:   Wybór technologii programistycznych - M. Stańczyk (DONE)
+  - Could-have:  Projekt schematu bazy danych - A. Szewczyk (DONE)
   - Sprint Goal: Wybór technologii do realizacji projektu
   - Confidence voting: 1-5, [5, 5, 4]
 
-** TODO Zespół 2
-  - Must-have:   Stworzenie obrazów prezentujących szatę graficzną systemu - A
-  - Must-have:   Opracowanie dokumentacji opisującej funkcjonalność przynajmniej 3 modułów - K, M, S
-  - Could-have:  Opracowanie dokumentacji dla pozostałych modułów - A, K, M, S
-  - Sprint Goal: Podstawowy koncept witryny i dostarczenie dokumentacji modułów
+** DONE Zespół 2
+  - Must-have:   Stworzenie obrazów prezentujących szatę graficzną systemu - A (DONE)
+  - Must-have:   Opracowanie dokumentacji opisującej funkcjonalność przynajmniej 3 modułów - K, M, S (DONE)
+  - Could-have:  Opracowanie dokumentacji dla pozostałych modułów - A, K, M, S (DONE)
+  - Sprint Goal: Podstawowy koncept witryny i dostarczenie dokumentacji modułów (DONE)
   - Confidence voting: [5, 5, 5, 5]
 
-** TODO Zespół 3
+** DONE Zespół 3
   - Must-have:   Przygotowanie dokumentu projektowego - Ihor, Serhii
   - Must-have:   Projekt bazy danych - Ihor
   - Must-have:   Opracowanie szaty graficznej sklepu - Ivan
@@ -92,6 +95,28 @@
   - Confidence voting: [5, 4, 5]
 
 * 22 IV
+** TODO Zespół 1
+  - Must-have:   Opracowanie szaty graficznej dla przynajmniej 4 modułów
+  - Should-have: Klasy encji w ujęciu obiektowym (diagram klas UML)
+  - Could-have:  Opracowanie szaty graficznej dla pozostałych modułów
+  - Sprint Goal: Szata graficzna
+  - Confidence voting: [4, 4, 3] - warunkowo przyjmujemy, ale Should-have jest wątpliwy
+
+** TODO Zespół 2
+  - Must-have:   Przygotowanie struktur bazy danych w postaci diagramów encji dla przynajmniej 4 modułów
+  - Could-have:  Przygotowanie struktur bazy danych w postaci diagramów encji dla pozostałych modułów
+  - Sprint Goal: Przygotowanie struktur bazy danych od strony projektowej (diagramów)
+  - Confidence voting: [4x4]
+
+** TODO Zespół 3
+  - Must-have:  Przygotowanie dokumentu projektowego - Ihor, Serhii
+  - Must-have:  Projekt bazy danych - Ihor
+  - Must-have:  Opracowanie szaty graficznej sklepu - Ivan, Serhii
+  - Must-have:  Projekt i dokumentacja modułu autoryzacji - Ivan
+  - Must-have:  Projekt i dokumentacja modułu czatu - Michał
+  - Should-have: Przygotowanie hosting - Michał
+  - Sprint goal: Baza danych i szata graficzna
+  - Confidence voting: [5, 4, 4, 4]
 
 * 6 V
 
