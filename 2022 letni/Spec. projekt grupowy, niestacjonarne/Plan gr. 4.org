@@ -40,6 +40,7 @@
    Sklep internetowy (implementacja)
 *** Dokumentacja:
    Repozytorium https://github.com/KrzysztofAdam97/shop-react-.net
+   https://sanedupl-my.sharepoint.com/personal/104382_student_san_edu_pl/_layouts/15/onedrive.aspx?id=%2Fpersonal%2F104382%5Fstudent%5Fsan%5Fedu%5Fpl%2FDocuments%2Fsklep%2Dreact%2D%2Enet&ct=1648896543622&or=Teams%2DHL&ga=1
 
 ** Zespół 5
    - Jan Węgrowski

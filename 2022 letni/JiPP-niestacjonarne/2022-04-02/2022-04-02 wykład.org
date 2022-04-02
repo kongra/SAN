@@ -1,0 +1,27 @@
+* Polimorfizm = wielość/różnorodność form
+  - poli - wielość, większa ilość
+  - morphos - forma
+
+  Jest to właściwość procedur polegająca na tym, że dana polimorficzna procedura
+  uzdolniona jest do pracy z argumentami różnych typów, tj. że dany parametr
+  formalny procedury może być reprezentantem argumentów (operandów) różniących się
+  co do typu.
+
+  void foo(int n) { ... }
+  foo(10);
+
+  n  - parametr formalny procedury foo
+  10 - operand, argument, parametr aktualny wywołania procedury foo
+
+* Rodzaje polimorfizmu
+** Polimorfizm ad-hoc
+   Polimorfizm "udawany", oparty na "sztuczkach" kompilatora:
+   - Niejawnej konwersji
+   - Przeciążaniu nazw procedur
+
+** Polimorfizm uniwersalny
+   "Prawdziwy", faktyczny polimorfizm
+*** Polimorfizm inkluzyjny
+   Opiera się na inkluzji, tj. zawieraniu się w sobie zbiorów (typów)
+
+*** Polimorfizm parametryczny
