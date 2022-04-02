@@ -1,13 +1,95 @@
 * DONE 5 III Wprowadzenie
 
-* TODO zj. 3
+* DONE zj. 3
  - Podział na zespoły 2-5 osób w zespole
  - Tematyka projektu
  - Podział projektu na moduły funkcjonalne i podział ról w projekcie
  - Zespoły opowiadają o powyższych punktach
  - Przydział tasków na kolejny sprint (autorami tasków są członkowie zespołu)
+** Zespół 1
+   - Katarzyna Sopińska
+   - Łukasz Szulc
+   - Maciej Strączek
+*** Temat: System sprzedażowy biletów kinowych z poglądem historii seansów
+*** Dokument:
+   https://docs.google.com/document/d/1IX0idlkmOtjT_JzRAlPUtThueXCRnvXTp3OFC5clUQU/edit?fbclid=IwAR3iNjunO1WB93Y3HkLasR8y5YT0gTdbfba8TTGf56wgzLQ-SfHzas6exRU#
+
+** Zespół 2
+   - Radosław Zamojski
+   - Krystian Góra
+   - Mateusz Moqbil
+   - Bartłomiej Piłat
+*** Temat:
+   Aplikacja a'la pracuj.pl dla Juniorów
+*** Dokumentacja:
+   https://app.clickup.com/2625178/v/l/li/180942563
+
+** Zespół 3
+   - Małgorzata Pietruszka
+   - Bartłomiej Chejmanowski
+*** Temat: Kalkulator wycieczkowy
+*** Dokumentacja:
+   - https://trello.com/b/I0zHHpFA/specjalizacyjny-projekt
+
+** Zespół 4
+   - Krzysztof Guzenda (.NET)
+   - Sebastian Smela (React.js)
+   - Michał Pujdak (Szata graficzna, prezentacja multimedialna)
+   - Dawid Powichrowski (SQL Server)
+*** Temat:
+   Sklep internetowy (implementacja)
+*** Dokumentacja:
+   Repozytorium https://github.com/KrzysztofAdam97/shop-react-.net
+
+** Zespół 5
+   - Jan Węgrowski
+   - Sławomir Lech
+   - Gabriel Żybort
+   - Dominik Pietrzyk
+*** Temat:
+   Sklep internetowy
+*** Dokumentacja:
+   https://docs.google.com/document/d/13CpyKnglbRjhSRLdmvRnA9c8UyxLmOkRFgqASemOzEY/edit
+
+** Zespół 6
+   - Remigiusz Cyron
+   - Mateusz Cierplikowski
+   - Przemysław Szymański
+*** Temat:
+   Aplikacja do obsługi biblioteki
+*** Dokumentacja:
+   https://docs.google.com/document/d/1a-RolsoDaqQg3L-D3Q4G6ctH-80l0sEZaa0LLwQ8Iic/edit
 
 * TODO zj. 4
+** Zespół 1
+   - Utworzenie Encji(DTO) w JAVA na podstawie których zostanie utworzona baza danych dla seansów, użytkowników, raportów finansowych - Łukasz
+   - Autentykacja - Maciej
+   - Tworzenie planu testowego + Unit Testy Autentykacji - Kasia
+   - Confidence voting: [5,5,5]
+
+** Zespół 2
+   - Must-have: Projekt szaty graficznej wybranych formatek
+   - Must-have: Opis technologii oraz hostingu
+   - Sprint Goal: Rozpoczęcie prac związanych z dokumentowaniem funkcjonalności systemu
+   - Confidence voting: [3,4,4,4]
+** Zespół 3
+   - Must-have: Uruchomienie serwera WWW
+   - Must-have: Instalacja serwera FacilMap
+   - Confidence voting: [5,4]
+
+** Zespół 4
+   - Must-have: Logowanie i rejestracja
+   - Must-have: Opracowanie szaty graficznej
+   - Must-have: Baza 20-30 produktów z ceną, opisem, stanem mag.
+   - Confidence voting: [4,4,5,4]
+** Zespół 5
+   - Must-have: Szczegółowy opis zakładek w menu, zagnieżdżeń menu
+   - Must-have: Szata graficzna
+   - Must-have: Model encji bazy danych katalogu produktów
+   - Confidence voting: [5,5,5,5]
+** Zespół 6
+   - Must-have: Opracowanie struktur bazy danych w postaci diagramów związków encji
+   - Confidence voting: [4,5,4.5]
 
 * TODO zj. 6
 
