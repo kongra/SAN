@@ -1,0 +1,19 @@
+* Serwery aplikacyjne
+** TODO Java LTS 17
+** Java EE
+** Jakarta EE (9.1) javax. -> jakarta., (v.10)
+** TODO Eclipse Microprofile
+    - "Odchudzona" Java EE/Jakarta EE
+** TODO Openliberty.io
+
+* Systemy serverless
+** Springframework
+** Micronaut.io
+** TODO Quarkus.io
+    - Czas startu < 1s
+    - Bardzo efektywne zarządzanie pamięcią
+    - Zgodność z Java EE / Jakarta EE
+
+* Microservices
+   - Szybkie deploymenty
+   - Niska (relatywnie) szkodliwość w warunkach awarii któregoś z microservices
