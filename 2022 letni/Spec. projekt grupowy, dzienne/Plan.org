@@ -31,7 +31,7 @@
  - Seweryn Słoma
  - Konrad Bernacki
 
-*** Temat: Sklep/aukcje a'la Allegro
+*** Temat: Sklep typu x-kom
 *** Dokumentacja
   - https://docs.google.com/document/d/16LT7SQ5rPBgnWgYzTl9oij7cypqN526NF5Jz6XeLecA/edit
 *** Moduły funkcjonalne:
@@ -66,6 +66,8 @@
   - Baza produktów - Ihor
 *** Technologie:
   - PHP, Laravel, JS, Bootstrap, MySQL
+*** Dokumentacja:
+   https://sanedupl.sharepoint.com/:w:/s/2122SpecjalizacyjnyprojektgrupowyInformatykain.DzVIsem.LABgr/EVLfCBB-nVBIkSMbmpoX1ikBJO6jSM1afKa4hwN66Eu-EQ?e=nupKI8
 
 * 1 IV
 ** DONE Zespół 1
@@ -95,20 +97,20 @@
   - Confidence voting: [5, 4, 5]
 
 * 22 IV
-** TODO Zespół 1
+** DONE Zespół 1
   - Must-have:   Opracowanie szaty graficznej dla przynajmniej 4 modułów
   - Should-have: Klasy encji w ujęciu obiektowym (diagram klas UML)
   - Could-have:  Opracowanie szaty graficznej dla pozostałych modułów
   - Sprint Goal: Szata graficzna
   - Confidence voting: [4, 4, 3] - warunkowo przyjmujemy, ale Should-have jest wątpliwy
 
-** TODO Zespół 2
+** DONE Zespół 2
   - Must-have:   Przygotowanie struktur bazy danych w postaci diagramów encji dla przynajmniej 4 modułów
   - Could-have:  Przygotowanie struktur bazy danych w postaci diagramów encji dla pozostałych modułów
   - Sprint Goal: Przygotowanie struktur bazy danych od strony projektowej (diagramów)
   - Confidence voting: [4x4]
 
-** TODO Zespół 3
+** DONE Zespół 3
   - Must-have:  Przygotowanie dokumentu projektowego - Ihor, Serhii
   - Must-have:  Projekt bazy danych - Ihor
   - Must-have:  Opracowanie szaty graficznej sklepu - Ivan, Serhii
@@ -119,6 +121,24 @@
   - Confidence voting: [5, 4, 4, 4]
 
 * 6 V
+** TODO Zespół 1
+  - Must-have: Klasy encji w ujęciu obiektowym (diagram klas UML)
+  - Should-have: Opracowanie szaty graficznej dla pozostałych modułów
+  - Could-have: Diagramy komponentów oprogramowania (szkielet)
+  - Could-have: Inne rodzaje diagramów UML dokumentujących funkcjonalność systemu
+  - Confidence: [4,4,5,5]
+
+** TODO Zespół 2
+  - Must-have: Rozbudowa modelu encji o ceny i cenniki - KB
+  - Should-have: Projekt systemu administrowania sklepem - SS
+  - Should-have: Rozbudowa modelu encji o promocje i zniżki - MO
+  - Confidence: [4,4,5]
+
+** TODO Zespół 3
+  - Must-have: Projekt bazy danych rozbudować o kolejne tabele (ceny i cenniki) - praca wspólna
+  - Must-have: Koszyk i moduł zamówień (baza danych oraz widoki UI/UX)
+  - Should-have: Projekt systemu administrowania sklepem
+  - Confidence: [4,4,4,5]
 
 * 20 V
 
