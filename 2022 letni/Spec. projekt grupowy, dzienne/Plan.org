@@ -121,25 +121,40 @@
   - Confidence voting: [5, 4, 4, 4]
 
 * 6 V
-** TODO Zespół 1
+** DONE Zespół 1
   - Must-have: Klasy encji w ujęciu obiektowym (diagram klas UML)
   - Should-have: Opracowanie szaty graficznej dla pozostałych modułów
   - Could-have: Diagramy komponentów oprogramowania (szkielet)
   - Could-have: Inne rodzaje diagramów UML dokumentujących funkcjonalność systemu
   - Confidence: [4,4,5,5]
 
-** TODO Zespół 2
+** DONE Zespół 2
   - Must-have: Rozbudowa modelu encji o ceny i cenniki - KB
   - Should-have: Projekt systemu administrowania sklepem - SS
   - Should-have: Rozbudowa modelu encji o promocje i zniżki - MO
   - Confidence: [4,4,5]
 
-** TODO Zespół 3
+** DONE Zespół 3
   - Must-have: Projekt bazy danych rozbudować o kolejne tabele (ceny i cenniki) - praca wspólna
   - Must-have: Koszyk i moduł zamówień (baza danych oraz widoki UI/UX)
   - Should-have: Projekt systemu administrowania sklepem
   - Confidence: [4,4,4,5]
 
 * 20 V
+** TODO Zespół 1
+  - Must-have: Diagramy komponentów
+  - Must-have: Diagramy rozmieszczenia (deployment diagrams)
+  - Confidence: [4,4,5]
+
+** TODO Zespół 2
+  - Must-have: Diagramy komponentów
+  - Must-have: Diagramy rozmieszczenia (deployment diagrams)
+  - Should-have: Implementacja wybranych elementów (React, UI/UX)
+  - Confidence: [5,4,5]
+
+** TODO Zespół 3
+  - Must-have: Projekt systemu administrowania sklepem
+  - Should-have: Implementacja wybranych elementów
+  - Confidence: [3,4,5]
 
 * 3 VI Ocena i podsumowanie
