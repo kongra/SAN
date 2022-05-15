@@ -94,3 +94,7 @@
 (p+ 0 7)
 (if (= 0 0) 7 (p+ (dec 0) (inc 7)))
 7
+
+;; Zadanie 3.
+;; Zmodyfikuj procedurę Herona tak, aby liczyła ona pierwiastek 3-go stopnia
+;; Hint: SICP Exercise 1.8, page 33
