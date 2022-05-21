@@ -141,12 +141,12 @@
   - Confidence: [4,4,4,5]
 
 * 20 V
-** TODO Zespół 1
+** DONE Zespół 1
   - Must-have: Diagramy komponentów
   - Must-have: Diagramy rozmieszczenia (deployment diagrams)
   - Confidence: [4,4,5]
 
-** TODO Zespół 2
+** DONE Zespół 2
   - Must-have: Diagramy komponentów
   - Must-have: Diagramy rozmieszczenia (deployment diagrams)
   - Should-have: Implementacja wybranych elementów (React, UI/UX)
