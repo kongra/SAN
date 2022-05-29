@@ -61,7 +61,7 @@
 *** Dokumentacja:
    https://docs.google.com/document/d/1a-RolsoDaqQg3L-D3Q4G6ctH-80l0sEZaa0LLwQ8Iic/edit
 
-* TODO zj. 4
+* zj. 4
 ** DONE Zespół 1
    - Utworzenie Encji(DTO) w JAVA na podstawie których zostanie utworzona baza danych dla seansów, użytkowników, raportów finansowych - Łukasz
    - Autentykacja - Maciej
@@ -90,41 +90,46 @@
    - Must-have: Opracowanie struktur bazy danych w postaci diagramów związków encji
    - Confidence voting: [4,5,4.5]
 
-* TODO zj. 6
+* zj. 6
 
-** Zespół 1
+** DONE Zespół 1
    - Must-have: Implementacja front-endu
    - Must-have: Implementacja backendu
    - Tworzenie planu testowego + Unit Testy Autentykacji - Kasia
    - Confidence: [4.5]
 
-** Zespół 2
+** DONE Zespół 2
    - Must-have: Projekt szaty graficznej wybranych formatek
    - Must-have: Opis technologii oraz hostingu
    - Should-have: Projekt szaty graficznej wybranych formatek - implementacja
    - Confidence: [4]
 
-** Zespół 3
+** DONE Zespół 3
    - Must-have: Dopracowanie szaty graficznej
    - Should-have: Wykonanie pobierania ceny paliwa z zewnętrznego serwisu
    - Confidence: [5]
 
-** Zespół 4
+** DONE Zespół 4
    - Must-have: Przygotowanie grafiki do produktów sprzedawanych w sklepie
    - Must-have: Kontroler produktów
    - Should-have: Implementacja koszyka
    - Confidence: [5,5,5,5]
 
-** Zespół 5
+** DONE Zespół 5
    - Must-have: Integracja z systemem magazynowym: projekt bazy danych
    - Must-have: Integracja z systemem magazynowym: projekt API i generalnie - komunikacji
    - Could-have: Implementacja szaty graficznej
    - Confidence: [4,4,4,4]
 
-** Zespół 6
+** DONE Zespół 6
    - Must-have: Opis end-pointów z wyszczególnieniem elementów logiki biznesowej, które te end-pointy realizują
    - Confidence: [4, 4.5]
 
-* TODO zj. 7
+* zj. 7
+** TODO Zespół 4
+   - Must-have: Implementacja koszyka + kontroler produktów
+
+** TODO Zespół 5
+   - Must-have: Implementacja szaty graficznej
 
 * TODO zj. 7 Ocena
