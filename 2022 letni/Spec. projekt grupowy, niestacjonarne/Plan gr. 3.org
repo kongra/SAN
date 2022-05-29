@@ -119,44 +119,60 @@
 ** Zespół 6
    - Must-have: Stworzenie front-endu w React.js
 
-* TODO zj. 5
+* zj. 6
 
-** Zespół 1
+** DONE Zespół 1
    - Must-have:  Projekt szaty graficznej i widoków (formatek)
    - Could-have: Szablon z routingiem po stronie serwera
    - Confidence-voting (1-5): [4,4]
 
-** Zespół 2
+** DONE Zespół 2
    - Must-have: Rozbudowa bazy danych, uspójnienie, 2 kolejne moduły - rozpisanie z przypadkami użycia (newsletter, ogłoszenia)
    - Confidence-voting (1-5): [4,4]
 
-** Zespół 3
+** DONE Zespół 3
    - Must-have: Opracowanie studium technologii i środowisk hostingowych - dopracować
    - Must-have: Opracowanie szaty graficznej w wybranych widokach - rozbudowa
    - Must-have: Przygotowanie diagramów przypadków użycia systemu
    - Could-have: Przygotowanie dokładnego projektu klas encji
    - Confidence: [4,4,4]
 
-** Zespół 4
+** DONE Zespół 4
    - Must-have: Ceny i cenniki - projekt + baza danych
    - Must-have: Opracowanie szaty graficznej systemu
    - Confidence-voting (1-5): [4.5, 4.5, 4]
 
-** Zespół 5
+** DONE Zespół 5
    - Must-have: Panel użytkownika -> dane konta, koszyk, zamówienia
-   - Must-have: Strona produktu -> zjęcia cena, wymiary, opis
-   - Must-have: Lista produktów w katologu Produkty
+   - Must-have: Strona produktu -> zdjęcia cena, wymiary, opis
+   - Must-have: Lista produktów w katalogu Produkty
    - Must-have: Uzupełnienie strony O nas
-   - Must-have: Formularz kontaktowy w katalogu kontakt
    - Must-have: Stworzenie diagramów przypadków użycia, aktywności, sekwencji
    - Could-have: Wstępna implementacja
    - Confidence-voting (1-5): [5, 4.5, 4.5]
 
-** Zespół 6
+** DONE Zespół 6
    - Must-have: Realizacja panelu z informacją, kto jest on-line
    - Should-have: Dodanie komentarzy do postów
    - Confidence: [5]
 
-* TODO zj. 6
+* zj. 8 Ocena
 
-* TODO zj. 8 Ocena
+** TODO Zespół 1
+   - Could-have: Kampania reklamowa
+
+** TODO Zespół 2
+   - Must-have: Odpowiedź na ogłoszenie, system premium (wykupienie i korzyści)
+
+** Zespół 3
+   - Could-have: Marketplace
+
+** TODO Zespół 4
+   - Could-have: Diagram use-case UML
+
+** TODO Zespół 5
+   - Must-have: Panel zamówień
+   - Must-have: Formularz reklamacyjny
+
+** TODO Zespół 6
+   - Could-have: Panel aktywnych osób
