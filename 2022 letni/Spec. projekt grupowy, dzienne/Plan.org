@@ -7,7 +7,7 @@
  - Zespoły opowiadają o powyższych punktach
  - Przydział tasków na kolejny sprint (autorami tasków są członkowie zespołu)
 
-** Zespół 1
+** Zespół 1 ocena 5
  - Piotr Katolik
  - Marek Stańczyk
  - Arkadiusz Szewczyk
@@ -25,7 +25,7 @@
     elementu z profilem użytkownika, komentarze i drzewo wątku dyskusji
     A. Szewczyk zaprojektuje bazę danych w kolejnym "sprincie"
 
-** Zespół 2
+** Zespół 2 ocena 5
  - Anita Głuszek
  - Mateusz Olczak
  - Seweryn Słoma
