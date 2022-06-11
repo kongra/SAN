@@ -48,7 +48,7 @@
   - Sortowanie - M
   - Filtrowanie - M
 
-** Zespół 3
+** Zespół 3 ocena 5
   - Ihor Bielyk
   - Serhii Nazarov
   - Ivan Yashin
@@ -152,7 +152,7 @@
   - Should-have: Implementacja wybranych elementów (React, UI/UX)
   - Confidence: [5,4,5]
 
-** TODO Zespół 3
+** DONE Zespół 3
   - Must-have: Projekt systemu administrowania sklepem
   - Should-have: Implementacja wybranych elementów
   - Confidence: [3,4,5]

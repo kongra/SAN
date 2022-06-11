@@ -156,3 +156,38 @@
 
 ;; Zadanie 4.
 ;; https://projecteuler.net/problem=12
+
+;; SILNIA
+#_(defn silnia [n]
+    (if (= n 0)
+      1
+      (*' n (silnia (dec n)))))
+
+(defn silnia [n wartość]
+  (if (= n 0)
+    wartość
+    (recur (dec n) (*' wartość n))))
+
+;; FIBONACCI
+(defn fib ^long
+  [^long n]
+  (if (< n 2)
+    n
+    (+ (fib (- n 1))
+       (fib (- n 2)))))
+
+(defn fib-gen [[a b]]
+  [b (+' a b)])
+
+(defn fib-opt-1
+  []
+  (->> [0 1]
+    (iterate fib-gen)
+    (map first)))
+
+(defn fib-opt-2
+  [n a b]
+  (if (zero? n)
+    a
+
+    (recur (dec n) b (+' a b))))

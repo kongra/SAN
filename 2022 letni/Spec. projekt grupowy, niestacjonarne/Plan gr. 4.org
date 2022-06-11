@@ -126,10 +126,10 @@
    - Confidence: [4, 4.5]
 
 * zj. 7
-** TODO Zespół 4
+** DONE Zespół 4
    - Must-have: Implementacja koszyka + kontroler produktów
 
-** TODO Zespół 5
+** DONE Zespół 5
    - Must-have: Implementacja szaty graficznej
 
 * TODO zj. 7 Ocena
