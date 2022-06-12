@@ -191,3 +191,42 @@
     a
 
     (recur (dec n) b (+' a b))))
+
+;; https://projecteuler.net/problem=9
+
+(set! *warn-on-reflection*       true)
+(set! *unchecked-math* :warn-on-boxed)
+
+(defn square ^long
+  [^long n]
+  (* n n))
+
+(defn Euler-9
+  []
+  (doseq [^long a (range 1 1001)]
+    (doseq [^long b (range a 1001)]
+      (doseq [^long c (range b 1001)]
+        (when (and
+                (= 1000 (+ a b c))
+                (= (+ (square a) (square b)) (square c)))
+
+          (println a b c))))))
+
+#_(time (Euler-9))
+
+(defn Euler-9-a
+  []
+  (dotimes [a 1000]
+    (let [a (inc a)]
+      (dotimes [b (- 1000 a)]
+        (let [b (+ b a)]
+          (dotimes [c (- 1000 b)]
+            (let [c (+ c b)]
+              (when (and
+                      (= 1000 (+ a b c))
+                      (= (+ (square a) (square b)) (square c)))
+                (println a b c)))))))))
+
+#_(time (Euler-9-a))
+
+;; https://projecteuler.net/problem=11 - dla chętnych
