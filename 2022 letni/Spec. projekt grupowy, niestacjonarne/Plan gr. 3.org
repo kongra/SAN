@@ -158,21 +158,21 @@
 
 * zj. 8 Ocena
 
-** TODO Zespół 1
+** DONE Zespół ocena 5
    - Could-have: Kampania reklamowa
 
-** TODO Zespół 2
+** DONE Zespół 2 ocena 5
    - Must-have: Odpowiedź na ogłoszenie, system premium (wykupienie i korzyści)
 
-** Zespół 3
+** DONE Zespół 3 ocena 5
    - Could-have: Marketplace
 
-** TODO Zespół 4
+** DONE Zespół 4 ocena 5
    - Could-have: Diagram use-case UML
 
-** TODO Zespół 5
+** DONE Zespół 5 ocena 5 (warunkowo, czekamy na opracowanie p. Pieczątki)
    - Must-have: Panel zamówień
    - Must-have: Formularz reklamacyjny
 
-** TODO Zespół 6
+** DONE Zespół 6 ocena 5
    - Could-have: Panel aktywnych osób
