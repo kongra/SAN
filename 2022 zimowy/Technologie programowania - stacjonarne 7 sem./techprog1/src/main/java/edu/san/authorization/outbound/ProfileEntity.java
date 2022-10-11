@@ -13,11 +13,11 @@ class ProfileEntity {
   @Id
   @GeneratedValue(strategy = GenerationType.AUTO)
   Long id;
-  
+
   String email;
-  
+
   String firstName;
-  
+
   String lastName;
-  
+
 }
