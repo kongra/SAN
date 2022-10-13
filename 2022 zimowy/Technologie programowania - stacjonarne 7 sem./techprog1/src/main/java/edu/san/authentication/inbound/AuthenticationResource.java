@@ -1,4 +1,4 @@
-package edu.san.authorization.inbound;
+package edu.san.authentication.inbound;
 
 import java.util.Objects;
 
@@ -11,24 +11,24 @@ import javax.ws.rs.Produces;
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
 
-import edu.san.authorization.AuthorizationManager;
-import edu.san.authorization.SignUpData;
+import edu.san.authentication.AuthenticationManager;
+import edu.san.authentication.SignUpData;
 
-@Path("/authorization")
+@Path("/authentication")
 @Consumes(MediaType.APPLICATION_JSON)
 @Produces(MediaType.APPLICATION_JSON)
-class AuthorizationResource {
+class AuthenticationResource {
 
-  private final AuthorizationManager authorizationManager;
+  private final AuthenticationManager authorizationManager;
 
-  AuthorizationResource(AuthorizationManager authorizationManager) {
+  AuthenticationResource(AuthenticationManager authorizationManager) {
     Objects.requireNonNull(authorizationManager);
     this.authorizationManager = authorizationManager;
   }
 
   @POST
   @Path("/sign-up")
-  Response signUp(@Valid SignUpData signUpData) {
+  public Response signUp(@Valid SignUpData signUpData) {
     final var profileId = authorizationManager.signUp(signUpData);
     final var result = Json.createObjectBuilder()
         .add("profileId", profileId.value())

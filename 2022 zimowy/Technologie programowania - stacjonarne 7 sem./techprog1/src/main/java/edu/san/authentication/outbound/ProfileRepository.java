@@ -1,10 +1,10 @@
-package edu.san.authorization.outbound;
+package edu.san.authentication.outbound;
 
 import javax.enterprise.context.ApplicationScoped;
 import javax.transaction.Transactional;
 
-import edu.san.authorization.ProfileId;
-import edu.san.authorization.SignUpData;
+import edu.san.authentication.ProfileId;
+import edu.san.authentication.SignUpData;
 import io.quarkus.hibernate.orm.panache.PanacheRepository;
 
 @ApplicationScoped

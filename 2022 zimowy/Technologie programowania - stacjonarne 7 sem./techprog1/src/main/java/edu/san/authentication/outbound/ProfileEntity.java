@@ -1,4 +1,4 @@
-package edu.san.authorization.outbound;
+package edu.san.authentication.outbound;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;

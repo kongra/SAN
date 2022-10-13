@@ -1,19 +1,19 @@
-package edu.san.authorization;
+package edu.san.authentication;
 
 import java.util.Objects;
 
 import javax.enterprise.context.ApplicationScoped;
 import javax.inject.Inject;
 
-import edu.san.authorization.outbound.IProfileRepository;
+import edu.san.authentication.outbound.IProfileRepository;
 
 @ApplicationScoped
-public class AuthorizationManager {
+public class AuthenticationManager {
 
   private final IProfileRepository profileRepository;
 
   @Inject
-  AuthorizationManager(IProfileRepository profileRepository) {
+  AuthenticationManager(IProfileRepository profileRepository) {
     Objects.requireNonNull(profileRepository);
     this.profileRepository = profileRepository;
   }

@@ -1,25 +1,25 @@
-package edu.san.authorization;
+package edu.san.authentication;
 
 import javax.validation.constraints.Email;
 import javax.validation.constraints.NotNull;
 
 import lombok.AllArgsConstructor;
-import lombok.Getter;
+import lombok.Data;
 import lombok.NoArgsConstructor;
 
+@Data
 @NoArgsConstructor
 @AllArgsConstructor
-@Getter
 public class SignUpData {
 
   @Email
   @NotNull
-  String email;
+  private String email;
 
   @NotNull
-  String firstName;
+  private String firstName;
 
   @NotNull
-  String lastName;
+  private String lastName;
 
 }
