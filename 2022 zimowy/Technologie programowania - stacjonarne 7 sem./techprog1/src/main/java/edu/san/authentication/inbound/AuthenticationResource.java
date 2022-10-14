@@ -11,7 +11,7 @@ import javax.ws.rs.Produces;
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
 
-import edu.san.authentication.AuthenticationManager;
+import edu.san.authentication.AuthenticationService;
 import edu.san.authentication.SignUpData;
 
 @Path("/authentication")
@@ -19,17 +19,17 @@ import edu.san.authentication.SignUpData;
 @Produces(MediaType.APPLICATION_JSON)
 class AuthenticationResource {
 
-  private final AuthenticationManager authorizationManager;
+  private final AuthenticationService authorizationService;
 
-  AuthenticationResource(AuthenticationManager authorizationManager) {
-    Objects.requireNonNull(authorizationManager);
-    this.authorizationManager = authorizationManager;
+  AuthenticationResource(AuthenticationService authorizationService) {
+    Objects.requireNonNull(authorizationService);
+    this.authorizationService = authorizationService;
   }
 
   @POST
   @Path("/sign-up")
   public Response signUp(@Valid SignUpData signUpData) {
-    final var profileId = authorizationManager.signUp(signUpData);
+    final var profileId = authorizationService.signUp(signUpData);
     final var result = Json.createObjectBuilder()
         .add("profileId", profileId.value())
         .build();

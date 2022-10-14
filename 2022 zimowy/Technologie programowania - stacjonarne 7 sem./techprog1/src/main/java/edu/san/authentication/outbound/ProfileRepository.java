@@ -10,7 +10,7 @@ import io.quarkus.hibernate.orm.panache.PanacheRepository;
 @ApplicationScoped
 @Transactional
 public class ProfileRepository
-    implements PanacheRepository<ProfileEntity>, IProfileRepository {
+    implements PanacheRepository<ProfileEntity>, ProfileRepositoryInterface {
 
   @Override
   public ProfileId signUp(SignUpData signUpData) {
