@@ -1,5 +1,7 @@
 package edu.san.authentication.outbound;
 
+import java.util.Optional;
+
 import javax.enterprise.context.ApplicationScoped;
 import javax.transaction.Transactional;
 
@@ -13,14 +15,16 @@ public class ProfileRepository
     implements PanacheRepository<ProfileEntity>, ProfileRepositoryInterface {
 
   @Override
-  public ProfileId signUp(SignUpData signUpData) {
+  public Optional<ProfileId> signUp(SignUpData signUpData) {
+ // TODO: Consider occupied emails!!!
+    
     final var profileEntity = new ProfileEntity(/* id */ null,
         signUpData.getEmail(),
         signUpData.getFirstName(),
-        signUpData.getLastName());
+        signUpData.getLastName()); 
 
     persist(profileEntity);
-    return new ProfileId(profileEntity.id);
+    return Optional.of(new ProfileId(profileEntity.id));
   }
 
 }

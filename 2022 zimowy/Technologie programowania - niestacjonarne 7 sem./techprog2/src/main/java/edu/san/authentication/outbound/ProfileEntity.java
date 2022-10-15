@@ -1,5 +1,6 @@
 package edu.san.authentication.outbound;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -23,6 +24,7 @@ class ProfileEntity {
 
   @Email
   @NotNull
+  @Column(unique = true)
   String email;
 
   @NotNull
