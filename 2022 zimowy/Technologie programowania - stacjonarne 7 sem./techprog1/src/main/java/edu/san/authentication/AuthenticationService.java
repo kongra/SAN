@@ -5,15 +5,15 @@ import java.util.Objects;
 import javax.enterprise.context.ApplicationScoped;
 import javax.inject.Inject;
 
-import edu.san.authentication.outbound.ProfileRepositoryInterface;
+import edu.san.authentication.outbound.ProfileRepository;
 
 @ApplicationScoped
 public class AuthenticationService {
 
-  private final ProfileRepositoryInterface profileRepository;
+  private final ProfileRepository profileRepository;
 
   @Inject
-  AuthenticationService(ProfileRepositoryInterface profileRepository) {
+  AuthenticationService(ProfileRepository profileRepository) {
     Objects.requireNonNull(profileRepository);
     this.profileRepository = profileRepository;
   }

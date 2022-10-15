@@ -2,6 +2,7 @@ package edu.san.authentication.inbound;
 
 import java.util.Objects;
 
+import javax.inject.Inject;
 import javax.json.Json;
 import javax.validation.Valid;
 import javax.ws.rs.Consumes;
@@ -21,6 +22,7 @@ class AuthenticationResource {
 
   private final AuthenticationService authorizationService;
 
+  @Inject
   AuthenticationResource(AuthenticationService authorizationService) {
     Objects.requireNonNull(authorizationService);
     this.authorizationService = authorizationService;
