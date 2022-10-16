@@ -1,0 +1,3 @@
+* Zadanie 1.
+   Utwórz program komputerowy, który tworzy i wykonuje przynajmniej 3 różne wątki.
+   Mogą one działać w nieskończoność lub kończyć się po wykonaniu N kroków.
