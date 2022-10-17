@@ -5,6 +5,7 @@ import java.util.Optional;
 
 import javax.enterprise.context.ApplicationScoped;
 import javax.inject.Inject;
+import javax.validation.Valid;
 
 import edu.san.authentication.outbound.ProfileRepositoryInterface;
 
@@ -19,7 +20,7 @@ public class AuthenticationService {
     this.profileRepository = profileRepository;
   }
 
-  public Optional<ProfileId> signUp(SignUpData signUpData) {
+  public Optional<ProfileId> signUp(@Valid SignUpData signUpData) {
     return profileRepository.signUp(signUpData);
   }
 

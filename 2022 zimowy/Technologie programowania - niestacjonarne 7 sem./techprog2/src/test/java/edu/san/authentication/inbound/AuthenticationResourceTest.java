@@ -36,7 +36,8 @@ class AuthenticationResourceTest {
         .build();
 
     try (final var response = authenticationResourceClient.signUp(signUpData)) {
-      assertThat(response.getStatus()).isEqualTo(Status.CREATED.getStatusCode());
+      assertThat(response.getStatus())
+          .isEqualTo(Status.CREATED.getStatusCode());
     }
   }
 

@@ -2,6 +2,7 @@ package edu.san.authentication.outbound;
 
 import javax.enterprise.context.ApplicationScoped;
 import javax.transaction.Transactional;
+import javax.validation.Valid;
 
 import edu.san.authentication.ProfileId;
 import edu.san.authentication.SignUpData;
@@ -13,7 +14,7 @@ public class ProfileRepositoryImpl
     implements PanacheRepository<ProfileEntity>, ProfileRepository {
 
   @Override
-  public ProfileId signUp(SignUpData signUpData) {
+  public ProfileId signUp(@Valid SignUpData signUpData) {
     final var profileEntity = new ProfileEntity(/* id */ null,
         signUpData.getEmail(),
         signUpData.getFirstName(),

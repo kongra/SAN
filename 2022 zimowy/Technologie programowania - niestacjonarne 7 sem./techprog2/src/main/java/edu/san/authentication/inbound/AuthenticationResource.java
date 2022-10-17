@@ -34,22 +34,22 @@ class AuthenticationResource {
     final var result = Json.createObjectBuilder()
         .add("profileId", profileId.value())
         .build();
-    
+
     return Response.ok(result)
         .status(Status.CREATED)
         .build();
   }
-  
+
   private static Response alreadyExisting() {
     final var result = Json.createObjectBuilder()
         .add("emailError", "already exists")
         .build();
-    
+
     return Response.ok(result)
         .status(Status.BAD_REQUEST)
         .build();
   }
-  
+
   @POST
   @Path("/sign-up")
   public Response signUp(@Valid SignUpData signUpData) {
