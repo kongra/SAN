@@ -11,8 +11,10 @@ import javax.ws.rs.Path;
 import javax.ws.rs.Produces;
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
+import javax.ws.rs.core.Response.Status;
 
 import edu.san.authentication.AuthenticationService;
+import edu.san.authentication.ProfileId;
 import edu.san.authentication.SignUpData;
 
 @Path("/authentication")
@@ -32,11 +34,29 @@ class AuthenticationResource {
   @Path("/sign-up")
   public Response signUp(@Valid SignUpData signUpData) {
     final var profileId = authorizationService.signUp(signUpData);
+    return profileId
+        .map(AuthenticationResource::signUpSuccess)
+        .orElseGet(AuthenticationResource::signUpFailure);
+  }
+
+  private static Response signUpSuccess(ProfileId profileId) {
     final var result = Json.createObjectBuilder()
         .add("profileId", profileId.value())
         .build();
 
-    return Response.ok(result).build();
+    return Response.ok(result)
+        .status(Status.CREATED)
+        .build();
+  }
+
+  private static Response signUpFailure() {
+    final var result = Json.createObjectBuilder()
+        .add("errorMessage", "email in use")
+        .build();
+
+    return Response.ok(result)
+        .status(Status.BAD_REQUEST)
+        .build();
   }
 
 }

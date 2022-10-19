@@ -1,6 +1,7 @@
 package edu.san.authentication;
 
 import java.util.Objects;
+import java.util.Optional;
 
 import javax.enterprise.context.ApplicationScoped;
 import javax.inject.Inject;
@@ -19,7 +20,7 @@ public class AuthenticationService {
     this.profileRepository = profileRepository;
   }
 
-  public ProfileId signUp(@Valid SignUpData signUpData) {
+  public Optional<ProfileId> signUp(@Valid SignUpData signUpData) {
     return profileRepository.signUp(signUpData);
   }
 
