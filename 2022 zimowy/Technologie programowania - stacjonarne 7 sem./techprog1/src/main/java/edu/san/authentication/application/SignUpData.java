@@ -1,4 +1,4 @@
-package edu.san.authentication;
+package edu.san.authentication.application;
 
 import javax.validation.constraints.Email;
 import javax.validation.constraints.NotNull;

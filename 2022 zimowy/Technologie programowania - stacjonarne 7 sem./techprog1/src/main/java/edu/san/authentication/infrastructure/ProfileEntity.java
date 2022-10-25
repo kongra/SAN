@@ -1,4 +1,4 @@
-package edu.san.authentication.outbound;
+package edu.san.authentication.infrastructure;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;

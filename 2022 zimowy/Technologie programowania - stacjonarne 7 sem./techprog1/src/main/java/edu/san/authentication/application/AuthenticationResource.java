@@ -1,4 +1,4 @@
-package edu.san.authentication.inbound;
+package edu.san.authentication.application;
 
 import java.util.Objects;
 
@@ -13,27 +13,32 @@ import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
 import javax.ws.rs.core.Response.Status;
 
-import edu.san.authentication.AuthenticationService;
-import edu.san.authentication.ProfileId;
-import edu.san.authentication.SignUpData;
+import edu.san.authentication.core.ProfileId;
+import edu.san.authentication.ports.in.AuthenticationService;
+import telsos.string.Email;
+import telsos.string.NonBlank;
 
 @Path("/authentication")
 @Consumes(MediaType.APPLICATION_JSON)
 @Produces(MediaType.APPLICATION_JSON)
 class AuthenticationResource {
 
-  private final AuthenticationService authorizationService;
+  private final AuthenticationService autenticationService;
 
   @Inject
-  AuthenticationResource(AuthenticationService authorizationService) {
-    Objects.requireNonNull(authorizationService);
-    this.authorizationService = authorizationService;
+  AuthenticationResource(AuthenticationService authenticationService) {
+    Objects.requireNonNull(authenticationService);
+    autenticationService = authenticationService;
   }
 
   @POST
   @Path("/sign-up")
   public Response signUp(@Valid SignUpData signUpData) {
-    final var profileId = authorizationService.signUp(signUpData);
+    final var email = Email.of(signUpData.getEmail()).orElseThrow();
+    final var firstName = NonBlank.of(signUpData.getFirstName()).orElseThrow();
+    final var lastName = NonBlank.of(signUpData.getLastName()).orElseThrow();
+
+    final var profileId = autenticationService.signUp(email, firstName, lastName);
     return profileId
         .map(AuthenticationResource::signUpSuccess)
         .orElseGet(AuthenticationResource::signUpFailure);
