@@ -33,4 +33,19 @@ class ProfileEntity {
   @NotNull
   String lastName;
 
+  @Override
+  public final int hashCode() {
+    return id.hashCode();
+  }
+
+  @Override
+  public final boolean equals(Object obj) {
+    if (this == obj)
+      return true;
+    if (obj instanceof ProfileEntity other) {
+      return this.id.longValue() == other.id.longValue();
+    }
+    return false;
+  }
+
 }
