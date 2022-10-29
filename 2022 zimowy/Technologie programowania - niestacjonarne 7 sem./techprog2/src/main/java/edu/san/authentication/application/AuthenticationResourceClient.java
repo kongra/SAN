@@ -1,4 +1,4 @@
-package edu.san.authentication.inbound;
+package edu.san.authentication.application;
 
 import javax.json.JsonObject;
 import javax.ws.rs.Consumes;

@@ -1,6 +1,7 @@
-package edu.san.authentication;
+package edu.san.authentication.application;
 
 import javax.validation.constraints.Email;
+import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
 
 import lombok.AllArgsConstructor;
@@ -17,9 +18,11 @@ public class SignUpData {
   private String email;
 
   @NotNull
+  @NotBlank
   private String firstName;
 
   @NotNull
+  @NotBlank
   private String lastName;
 
 }

@@ -1,4 +1,4 @@
-package edu.san.authentication.outbound;
+package edu.san.authentication.infrastructure;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -7,6 +7,7 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
 import javax.validation.constraints.Email;
+import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
 
 import lombok.AllArgsConstructor;
@@ -28,9 +29,26 @@ class ProfileEntity {
   String email;
 
   @NotNull
+  @NotBlank
   String firstName;
 
   @NotNull
+  @NotBlank
   String lastName;
+
+  @Override
+  public final int hashCode() {
+    return id.hashCode();
+  }
+
+  @Override
+  public final boolean equals(Object obj) {
+    if (this == obj)
+      return true;
+    if (obj instanceof ProfileEntity other) {
+      return this.id.longValue() == other.id.longValue();
+    }
+    return false;
+  }
 
 }
