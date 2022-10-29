@@ -1,0 +1,16 @@
+# Zadanie: Stworzyć wyszukiwarkę osób o podanym imieniu i nazwisku
+
+* Wymaganie ilościowe
+   Liczność zbioru danych osób na poziomie średniej wielkości państwa (ok. 40 mln)
+
+** Skąd wziąć dane?
+   - Generator
+   - Dane realne(?)
+
+** Generowanie danych
+   - Pobranie listy (unikalnej) nazwisk w Polsce
+   - Pobranie listy imion w Polsce wraz z informacją o tym, czy jest to imię żeńskie czy męskie
+   - Łączenie nazwisk z imionami (losowo) z zastosowaniem odmiany przez rodzaj, np.
+     nazwisko: Kowalski, imię: Anna, imię+nazwisko: Anna Kowalska
+
+*** TODO Realizacja algorytmu
