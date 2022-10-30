@@ -2,7 +2,9 @@
   '[clojure.string   :as         str]
   '[clojure.pprint   :refer [pprint]]
   '[clojure.data.csv :as         csv]
-  '[clojure.java.io  :as          io])
+  '[clojure.java.io  :as          io]
+  '[clucy.core       :as       clucy]
+  '[cljc.telsos.core :refer    [flag]])
 
 (set! *warn-on-reflection*       true)
 (set! *unchecked-math* :warn-on-boxed)
@@ -34,7 +36,86 @@
     (reverse)
     (vec)))
 
+(def LAST-NAMES-M-CSV (str PATH "NAZWISKA_MĘSKIE-OSOBY_ŻYJĄCE_oAcmDus.csv"))
+(def LAST-NAMES-F-CSV (str PATH "nazwiska_żeńskie-osoby_żyjące_soxLKbB.csv"))
+
+(defn csv->last-name [[last-name n]]
+  {:last-name (str/capitalize last-name)
+   :count     (Long/parseLong n)})
+
+(defn csv->last-names [csv]
+  (->> csv
+    (read-csv)
+
+    ;; We skip the heading row
+    (next)
+
+    (map csv->last-name)
+    (sort-by :count)
+    (reverse)
+    (vec)))
+
+(def LAST-NAMES-M
+  (csv->last-names LAST-NAMES-M-CSV))
+
+(def LAST-NAMES-F
+  (csv->last-names LAST-NAMES-F-CSV))
+
 (def FIRST-NAMES-M (get (group-by :gender FIRST-NAMES) "M"))
 (def FIRST-NAMES-F (get (group-by :gender FIRST-NAMES) "K"))
 
-;; SELECT id FROM PROFILES WHERE email LIKE '%gmail.com%'
+(defn random-first-name
+  [first-names]
+  (assert (vector? first-names))
+  (nth first-names (rand-int (count first-names))))
+
+(defn full-names
+  [last-name first-names n]
+  (map #(str (:first-name %) " " last-name)
+    (repeatedly n #(random-first-name first-names))))
+
+;; (full-names "Grzanek" FIRST-NAMES-M 10)
+
+(def FULL-NAMES-F
+  (->> LAST-NAMES-F
+    (map :last-name)
+    (map #(full-names % FIRST-NAMES-F 60))
+    (apply concat)
+    (take 1000000)
+    (doall)))
+
+(def FULL-NAMES-M
+  (->> LAST-NAMES-M
+    (map :last-name)
+    (map #(full-names % FIRST-NAMES-M 60))
+    (apply concat)
+    (take 1000000)
+    (doall)))
+
+;; LUCENE INDEX
+(def LUCY-PATH (str PATH "lucy/"))
+(def lucy-index (clucy/disk-index LUCY-PATH))
+
+#_(defn full-name->lucy!
+    [id full-name]
+    (assert (nat-int?       id))
+    (assert (string? full-name))
+
+    (io! (clucy/add lucy-index
+           {:full-name full-name
+            :id id})))
+
+#_(time
+    (doseq [[id full-name] (map vector (iterate inc 1) FULL-NAMES-F)]
+      (full-name->lucy! id full-name)))
+
+(defn full-names->lucy!
+  [full-names]
+  (io!
+    (->> full-names
+      (map vector (iterate inc 1))
+      (map (fn [[id full-name]] {:full-name full-name :id id}))
+      (apply clucy/add lucy-index))))
+
+(time (full-names->lucy! FULL-NAMES-F))
+(time (full-names->lucy! FULL-NAMES-M))
