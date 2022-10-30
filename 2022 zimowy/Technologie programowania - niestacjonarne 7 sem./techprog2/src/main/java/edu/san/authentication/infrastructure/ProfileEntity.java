@@ -1,5 +1,8 @@
 package edu.san.authentication.infrastructure;
 
+import java.util.Objects;
+import java.util.UUID;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -10,18 +13,21 @@ import javax.validation.constraints.Email;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
 
-import lombok.AllArgsConstructor;
 import lombok.NoArgsConstructor;
 
 @Entity
 @Table(name = "profile")
 @NoArgsConstructor
-@AllArgsConstructor
 class ProfileEntity {
 
   @Id
   @GeneratedValue(strategy = GenerationType.AUTO)
   Long id;
+
+  @NotNull
+  @NotBlank
+  @Column(unique = true)
+  String uuid = UUID.randomUUID().toString();
 
   @Email
   @NotNull
@@ -36,9 +42,20 @@ class ProfileEntity {
   @NotBlank
   String lastName;
 
+  public ProfileEntity(
+      @Email @NotNull String email,
+      @NotNull @NotBlank String firstName, 
+      @NotNull @NotBlank String lastName) {
+    
+    super();
+    this.email = email;
+    this.firstName = firstName;
+    this.lastName = lastName;
+  }
+
   @Override
   public final int hashCode() {
-    return id.hashCode();
+    return uuid.hashCode();
   }
 
   @Override
@@ -46,9 +63,17 @@ class ProfileEntity {
     if (this == obj)
       return true;
     if (obj instanceof ProfileEntity other) {
-      return this.id.longValue() == other.id.longValue();
+      return this.uuid.equals(other.uuid);
     }
     return false;
+  }
+
+  public final void setUuid(String uuid) {
+    Objects.requireNonNull(uuid);
+    if (uuid.isBlank()) {
+      throw new IllegalArgumentException();
+    }
+    this.uuid = uuid;
   }
 
 }
