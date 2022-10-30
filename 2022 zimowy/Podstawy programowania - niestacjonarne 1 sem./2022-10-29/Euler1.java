@@ -5,16 +5,17 @@ class Euler1 {
   }
 
   public static void main(String[] args) {
-    long count = 0;
+    long sum = 0;
 
     for (int i = 0; i < 1000; i++) {
       if (isMultipleOf(i, 3) || isMultipleOf(i, 5)) {
         // System.out.println(i);
-        count += i;
+        // sum += i;
+        sum = sum + i;
       }
     }
 
-    System.out.println(count);
+    System.out.println(sum);
   }
 
 }

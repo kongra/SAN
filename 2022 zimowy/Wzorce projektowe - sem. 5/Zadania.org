@@ -1,0 +1,6 @@
+# W dowolnym języku programowania:
+
+* Zadanie 1.
+   - Zaimplementuj wzorzec projektowy o nazwie Singleton
+   - Zapewnij odroczoną inicjalizację obiektu
+   - Zagwarantuj poprawność powyższych punktów w warunkach współbieżności
