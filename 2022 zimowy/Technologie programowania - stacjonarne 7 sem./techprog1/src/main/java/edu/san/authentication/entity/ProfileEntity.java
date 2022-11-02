@@ -1,4 +1,4 @@
-package edu.san.authentication.infrastructure;
+package edu.san.authentication.entity;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;

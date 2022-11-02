@@ -1,4 +1,4 @@
-package edu.san.authentication.application;
+package edu.san.authentication.boundary;
 
 import java.util.Objects;
 
@@ -13,8 +13,8 @@ import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
 import javax.ws.rs.core.Response.Status;
 
-import edu.san.authentication.core.ProfileId;
-import edu.san.authentication.ports.in.AuthenticationService;
+import edu.san.authentication.control.AuthenticationService;
+import edu.san.authentication.control.ProfileId;
 import telsos.string.Email;
 import telsos.string.NonBlank;
 

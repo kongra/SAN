@@ -1,8 +1,7 @@
-package edu.san.authentication.ports.out;
+package edu.san.authentication.control;
 
 import java.util.Optional;
 
-import edu.san.authentication.core.ProfileId;
 import telsos.string.Email;
 import telsos.string.NonBlank;
 

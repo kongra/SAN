@@ -1,12 +1,10 @@
-package edu.san.authentication.ports.in;
+package edu.san.authentication.control;
 
 import java.util.Objects;
 import java.util.Optional;
 
 import javax.enterprise.context.ApplicationScoped;
 
-import edu.san.authentication.core.ProfileId;
-import edu.san.authentication.ports.out.ProfileRepository;
 import telsos.string.Email;
 import telsos.string.NonBlank;
 

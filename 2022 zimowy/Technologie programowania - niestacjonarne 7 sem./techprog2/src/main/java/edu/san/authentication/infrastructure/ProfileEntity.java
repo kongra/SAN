@@ -44,10 +44,9 @@ class ProfileEntity {
 
   public ProfileEntity(
       @Email @NotNull String email,
-      @NotNull @NotBlank String firstName, 
+      @NotNull @NotBlank String firstName,
       @NotNull @NotBlank String lastName) {
-    
-    super();
+
     this.email = email;
     this.firstName = firstName;
     this.lastName = lastName;
@@ -62,17 +61,15 @@ class ProfileEntity {
   public final boolean equals(Object obj) {
     if (this == obj)
       return true;
-    if (obj instanceof ProfileEntity other) {
-      return this.uuid.equals(other.uuid);
-    }
+    if (obj instanceof final ProfileEntity other)
+      return uuid.equals(other.uuid);
     return false;
   }
 
   public final void setUuid(String uuid) {
     Objects.requireNonNull(uuid);
-    if (uuid.isBlank()) {
+    if (uuid.isBlank())
       throw new IllegalArgumentException();
-    }
     this.uuid = uuid;
   }
 

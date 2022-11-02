@@ -1,12 +1,12 @@
-package edu.san.authentication.infrastructure;
+package edu.san.authentication.entity;
 
 import java.util.Optional;
 
 import javax.enterprise.context.ApplicationScoped;
 import javax.transaction.Transactional;
 
-import edu.san.authentication.core.ProfileId;
-import edu.san.authentication.ports.out.ProfileRepository;
+import edu.san.authentication.control.ProfileId;
+import edu.san.authentication.control.ProfileRepository;
 import io.quarkus.hibernate.orm.panache.PanacheRepository;
 import telsos.string.Email;
 import telsos.string.NonBlank;

@@ -38,7 +38,8 @@ class AuthenticationResource {
     final var firstName = NonBlank.of(signUpData.getFirstName()).orElseThrow();
     final var lastName = NonBlank.of(signUpData.getLastName()).orElseThrow();
 
-    final var profileId = autenticationService.signUp(email, firstName, lastName);
+    final var profileId = autenticationService.signUp(email, firstName,
+        lastName);
     return profileId
         .map(AuthenticationResource::signUpSuccess)
         .orElseGet(AuthenticationResource::signUpFailure);

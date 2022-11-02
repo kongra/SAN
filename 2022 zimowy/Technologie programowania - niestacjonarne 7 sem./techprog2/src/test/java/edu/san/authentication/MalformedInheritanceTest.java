@@ -114,13 +114,13 @@ class MalformedInheritanceTest {
     // Symmetric:
     assertThat(a).isEqualTo(b);
     assertThat(b).isEqualTo(a);
-    
+
     final var c = new ColoredPoint(1, 2, Color.RED);
     assertThat(a).isEqualTo(c);
     assertThat(b).isEqualTo(c);
 
   }
-  
+
   @Test
   void testMixedPoints() {
     final var a = new Point(1, 2);

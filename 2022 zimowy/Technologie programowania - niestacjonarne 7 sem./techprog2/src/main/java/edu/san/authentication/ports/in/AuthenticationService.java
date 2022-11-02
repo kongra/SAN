@@ -20,7 +20,8 @@ public class AuthenticationService {
     this.profileRepository = profileRepository;
   }
 
-  public Optional<ProfileId> signUp(Email email, NonBlank firstName, NonBlank lastName) {
+  public Optional<ProfileId> signUp(Email email, NonBlank firstName,
+      NonBlank lastName) {
     return profileRepository.signUp(email, firstName, lastName);
   }
 

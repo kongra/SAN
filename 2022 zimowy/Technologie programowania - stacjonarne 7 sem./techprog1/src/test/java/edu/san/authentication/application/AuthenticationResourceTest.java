@@ -13,7 +13,8 @@ import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
-import edu.san.authentication.ports.out.ProfileRepository;
+import edu.san.authentication.boundary.AuthenticationResourceClient;
+import edu.san.authentication.control.ProfileRepository;
 import io.quarkus.test.junit.QuarkusTest;
 import telsos.string.Email;
 

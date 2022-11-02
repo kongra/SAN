@@ -17,7 +17,8 @@ public class ProfileRepositoryImpl
     implements PanacheRepository<ProfileEntity>, ProfileRepository {
 
   @Override
-  public Optional<ProfileId> signUp(Email email, NonBlank firstName, NonBlank lastName) {
+  public Optional<ProfileId> signUp(Email email, NonBlank firstName,
+      NonBlank lastName) {
     final var existingProfile = findByEmail(email);
     final Optional<ProfileId> nothing = Optional.empty();
     return existingProfile.map(profile -> nothing).orElseGet(() -> {

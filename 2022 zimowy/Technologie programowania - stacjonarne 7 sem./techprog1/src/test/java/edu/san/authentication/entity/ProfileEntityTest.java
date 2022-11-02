@@ -1,4 +1,4 @@
-package edu.san.authentication.infrastructure;
+package edu.san.authentication.entity;
 
 import static org.assertj.core.api.Assertions.assertThat;
 import org.junit.jupiter.api.Test;
