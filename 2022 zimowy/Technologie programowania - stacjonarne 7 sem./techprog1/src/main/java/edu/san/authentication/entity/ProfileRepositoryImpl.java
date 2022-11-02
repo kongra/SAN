@@ -21,7 +21,7 @@ public class ProfileRepositoryImpl
     final var existingProfile = findByEmail(email);
     final Optional<ProfileId> nothing = Optional.empty();
     return existingProfile.map(profile -> nothing).orElseGet(() -> {
-      final var profileEntity = new ProfileEntity(/* id */ null,
+      final var profileEntity = new ProfileEntity(
           email.value(),
           firstName.value(),
           lastName.value());

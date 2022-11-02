@@ -1,4 +1,4 @@
-package edu.san.authentication.application;
+package edu.san.authentication.boundary;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
@@ -13,7 +13,6 @@ import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
-import edu.san.authentication.boundary.AuthenticationResourceClient;
 import edu.san.authentication.control.ProfileRepository;
 import io.quarkus.test.junit.QuarkusTest;
 import telsos.string.Email;
