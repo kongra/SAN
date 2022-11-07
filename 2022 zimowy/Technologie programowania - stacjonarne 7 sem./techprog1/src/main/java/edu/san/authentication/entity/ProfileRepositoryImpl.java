@@ -13,7 +13,7 @@ import telsos.string.NonBlank;
 
 @ApplicationScoped
 @Transactional
-public class ProfileRepositoryImpl
+class ProfileRepositoryImpl
     implements PanacheRepository<ProfileEntity>, ProfileRepository {
 
   @Override

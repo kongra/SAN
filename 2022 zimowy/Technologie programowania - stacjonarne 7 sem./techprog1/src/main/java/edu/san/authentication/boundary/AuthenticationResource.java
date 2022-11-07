@@ -33,10 +33,10 @@ class AuthenticationResource {
 
   @POST
   @Path("/sign-up")
-  public Response signUp(@Valid SignUpData signUpData) {
-    final var email = Email.of(signUpData.getEmail()).orElseThrow();
-    final var firstName = NonBlank.of(signUpData.getFirstName()).orElseThrow();
-    final var lastName = NonBlank.of(signUpData.getLastName()).orElseThrow();
+  public Response signUp(@Valid SignUpDto signUpDto) {
+    final var email = Email.of(signUpDto.getEmail()).orElseThrow();
+    final var firstName = NonBlank.of(signUpDto.getFirstName()).orElseThrow();
+    final var lastName = NonBlank.of(signUpDto.getLastName()).orElseThrow();
 
     final var profileId = autenticationService.signUp(email, firstName, lastName);
     return profileId
