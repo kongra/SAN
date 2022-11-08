@@ -5,6 +5,7 @@ import java.util.Optional;
 import javax.enterprise.context.ApplicationScoped;
 import javax.transaction.Transactional;
 
+import edu.san.authentication.control.ProfileDto;
 import edu.san.authentication.control.ProfileId;
 import edu.san.authentication.control.ProfileRepository;
 import io.quarkus.hibernate.orm.panache.PanacheRepository;
@@ -18,9 +19,8 @@ class ProfileRepositoryImpl
 
   @Override
   public Optional<ProfileId> signUp(Email email, NonBlank firstName, NonBlank lastName) {
-    final var existingProfile = findByEmail(email);
     final Optional<ProfileId> nothing = Optional.empty();
-    return existingProfile.map(profile -> nothing).orElseGet(() -> {
+    return findByEmail(email).map(profile -> nothing).orElseGet(() -> {
       final var profileEntity = new ProfileEntity(
           email.value(),
           firstName.value(),
@@ -36,9 +36,18 @@ class ProfileRepositoryImpl
   }
 
   @Override
-  public Optional<ProfileId> profileIdByEmail(Email email) {
-    final var profileEntity = findByEmail(email);
-    return profileEntity.map(ProfileRepositoryImpl::createProfileId);
+  public Optional<ProfileId> findProfileIdByEmail(Email email) {
+    return findByEmail(email).map(ProfileRepositoryImpl::createProfileId);
+  }
+
+  @Override
+  public Optional<ProfileDto> findProfileDtoByEmail(Email email) {
+    return findByEmail(email).map(profileEntity -> new ProfileDto(
+        profileEntity.id,
+        profileEntity.version,
+        profileEntity.email,
+        profileEntity.firstName,
+        profileEntity.lastName));
   }
 
   Optional<ProfileEntity> findByEmail(Email email) {

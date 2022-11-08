@@ -9,6 +9,7 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
+import javax.persistence.Version;
 import javax.validation.constraints.Email;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
@@ -26,22 +27,29 @@ class ProfileEntity {
   @GeneratedValue(strategy = GenerationType.AUTO)
   Long id;
 
+  @Version
+  @NotNull
+  @Column(nullable = false)
+  Long version;
+
   @NotNull
   @NotBlank
-  @Column(unique = true)
+  @Column(unique = true, nullable = false)
   String uuid = UUID.randomUUID().toString();
 
   @Email
   @NotNull
-  @Column(unique = true)
+  @Column(unique = true, nullable = false)
   String email;
 
   @NotNull
   @NotBlank
+  @Column(nullable = false)
   String firstName;
 
   @NotNull
   @NotBlank
+  @Column(nullable = false)
   String lastName;
 
   public ProfileEntity(

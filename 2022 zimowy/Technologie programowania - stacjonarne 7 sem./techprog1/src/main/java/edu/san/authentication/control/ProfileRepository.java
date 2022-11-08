@@ -9,7 +9,9 @@ public interface ProfileRepository {
 
   Optional<ProfileId> signUp(Email email, NonBlank firstName, NonBlank lastName);
 
-  Optional<ProfileId> profileIdByEmail(Email email);
+  Optional<ProfileId> findProfileIdByEmail(Email email);
+
+  Optional<ProfileDto> findProfileDtoByEmail(Email email);
 
   Optional<ProfileId> deleteByEmail(Email email);
 

@@ -1,4 +1,4 @@
-package edu.san.authentication.boundary;
+package edu.san.authentication.control;
 
 import javax.validation.constraints.Email;
 import javax.validation.constraints.NotBlank;
@@ -11,7 +11,13 @@ import lombok.NoArgsConstructor;
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
-public class SignUpDto { // Data-Transfer-Object
+public class ProfileDto {
+
+  @NotNull
+  private Long id;
+
+  @NotNull
+  private Long version;
 
   @Email
   @NotNull
