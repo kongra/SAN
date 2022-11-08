@@ -39,13 +39,12 @@ class AuthenticationResource {
     final var theEmail = Email.of(email).orElseThrow(BadRequestException::new);
     final var optionalProfileDto = autenticationFacade
         .findProfileByEmail(theEmail);
-    
-    if (optionalProfileDto.isEmpty()) {
+
+    if (optionalProfileDto.isEmpty())
       return Response.ok().build();
-    }
     return Response.ok(optionalProfileDto.get()).build();
   }
-  
+
   @POST
   @Path("sign-up")
   public Response signUp(@Valid SignUpDto signUpDto) {

@@ -16,7 +16,7 @@ public interface AuthenticationResourceClient {
   @GET
   @Path("profile-by-email/{email}")
   Response findProfileByEmail(@PathParam("email") String email);
-  
+
   @POST
   @Path("sign-up")
   Response signUp(JsonObject signUpData);

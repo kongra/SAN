@@ -54,7 +54,7 @@ class AuthenticationResourceTest {
           .isEqualTo(Status.CREATED.getStatusCode());
     }
   }
-  
+
   @Test
   void testFindProfileByEmailPositive() {
     final var signUpData = Json.createObjectBuilder()
@@ -66,23 +66,23 @@ class AuthenticationResourceTest {
       assertThat(response.getStatus())
           .isEqualTo(Status.CREATED.getStatusCode());
     }
-    
+
     try (final var response = authenticationResourceClient
         .findProfileByEmail("kongra@gmail.com")) {
       assertThat(response.getStatus())
           .isEqualTo(Status.OK.getStatusCode());
-      
+
       assertThat(response.readEntity(ProfileDto.class)).isNotNull();
     }
   }
-  
+
   @Test
   void testFindProfileByEmailNegative() {
     try (final var response = authenticationResourceClient
         .findProfileByEmail("kgrzanek@san.edu.pl")) {
       assertThat(response.getStatus())
           .isEqualTo(Status.OK.getStatusCode());
-      
+
       assertThat(response.readEntity(ProfileDto.class)).isNull();
     }
   }
