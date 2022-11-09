@@ -6,6 +6,7 @@ import java.util.Objects;
 
 import org.junit.jupiter.api.Test;
 
+@SuppressWarnings("static-method")
 class MalformedInheritanceTest {
 
   enum Color {

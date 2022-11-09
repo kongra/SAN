@@ -38,7 +38,7 @@ class AuthenticationResourceTest {
   @AfterEach
   void tearDown() {
     final var email = Email.of("kongra@gmail.com").orElseThrow();
-    profileRepository.deleteByEmail(email);
+    profileRepository.deleteProfileByEmail(email);
   }
 
   @Test

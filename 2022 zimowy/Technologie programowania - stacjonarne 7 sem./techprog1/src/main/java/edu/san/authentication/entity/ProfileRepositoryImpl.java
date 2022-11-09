@@ -13,22 +13,23 @@ import telsos.string.Email;
 import telsos.string.NonBlank;
 
 @ApplicationScoped
-@Transactional
 class ProfileRepositoryImpl
     implements PanacheRepository<ProfileEntity>, ProfileRepository {
 
   @Override
-  public Optional<ProfileId> signUp(Email email, NonBlank firstName, NonBlank lastName) {
-    final Optional<ProfileId> nothing = Optional.empty();
-    return findByEmail(email).map(profile -> nothing).orElseGet(() -> {
-      final var profileEntity = new ProfileEntity(
-          email.value(),
-          firstName.value(),
-          lastName.value());
+  @Transactional
+  public ProfileId createProfile(
+      Email email,
+      NonBlank firstName,
+      NonBlank lastName) {
 
-      persist(profileEntity);
-      return Optional.of(new ProfileId(profileEntity.id));
-    });
+    final var profileEntity = new ProfileEntity(
+        email.value(),
+        firstName.value(),
+        lastName.value());
+
+    persist(profileEntity);
+    return new ProfileId(profileEntity.id);
   }
 
   private static ProfileId createProfileId(ProfileEntity profile) {
@@ -36,27 +37,33 @@ class ProfileRepositoryImpl
   }
 
   @Override
+  @Transactional
   public Optional<ProfileId> findProfileIdByEmail(Email email) {
-    return findByEmail(email).map(ProfileRepositoryImpl::createProfileId);
+    return findProfileEntityByEmail(email)
+        .map(ProfileRepositoryImpl::createProfileId);
   }
 
   @Override
+  @Transactional
   public Optional<ProfileDto> findProfileDtoByEmail(Email email) {
-    return findByEmail(email).map(profileEntity -> new ProfileDto(
-        profileEntity.id,
-        profileEntity.version,
-        profileEntity.email,
-        profileEntity.firstName,
-        profileEntity.lastName));
+    return findProfileEntityByEmail(email)
+        .map(profileEntity -> new ProfileDto(
+            profileEntity.id,
+            profileEntity.version,
+            profileEntity.email,
+            profileEntity.firstName,
+            profileEntity.lastName));
   }
 
-  Optional<ProfileEntity> findByEmail(Email email) {
+  @Transactional
+  Optional<ProfileEntity> findProfileEntityByEmail(Email email) {
     return find("email = ?1", email.value()).firstResultOptional();
   }
 
   @Override
-  public Optional<ProfileId> deleteByEmail(Email email) {
-    final var optionalProfile = findByEmail(email);
+  @Transactional
+  public Optional<ProfileId> deleteProfileByEmail(Email email) {
+    final var optionalProfile = findProfileEntityByEmail(email);
     if (optionalProfile.isEmpty())
       return Optional.empty();
 

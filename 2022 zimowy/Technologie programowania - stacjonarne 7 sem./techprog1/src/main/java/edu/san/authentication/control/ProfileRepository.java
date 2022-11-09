@@ -7,12 +7,12 @@ import telsos.string.NonBlank;
 
 public interface ProfileRepository {
 
-  Optional<ProfileId> signUp(Email email, NonBlank firstName, NonBlank lastName);
+  ProfileId createProfile(Email email, NonBlank firstName, NonBlank lastName);
 
   Optional<ProfileId> findProfileIdByEmail(Email email);
 
   Optional<ProfileDto> findProfileDtoByEmail(Email email);
 
-  Optional<ProfileId> deleteByEmail(Email email);
+  Optional<ProfileId> deleteProfileByEmail(Email email);
 
 }

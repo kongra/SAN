@@ -18,8 +18,16 @@ public class AuthenticationFacade {
     this.profileRepository = profileRepository;
   }
 
-  public Optional<ProfileId> signUp(Email email, NonBlank firstName, NonBlank lastName) {
-    return profileRepository.signUp(email, firstName, lastName);
+  public Optional<ProfileId> signUp(
+      Email email, NonBlank firstName, NonBlank lastName) {
+
+    final var optionalProfileId = profileRepository
+        .findProfileIdByEmail(email);
+
+    if (optionalProfileId.isEmpty())
+      return Optional.of(profileRepository
+          .createProfile(email, firstName, lastName));
+    return Optional.empty();
   }
 
   public Optional<ProfileDto> findProfileByEmail(Email email) {
