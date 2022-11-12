@@ -1,32 +1,28 @@
 package edu.san.conc;
 
-import java.util.concurrent.Semaphore;
+import java.util.concurrent.locks.ReentrantLock;
 
-public class App {
+public class ReentrantLockExample {
 
   static long opsCounter;
-  static Semaphore sem1 = new Semaphore(1, true);
-
+  static ReentrantLock lock1 = new ReentrantLock(true);
+  
   static void updateCounter(int delta) throws InterruptedException {
-    sem1.acquire();
+    lock1.lock();
     try {
       opsCounter += delta;
-      
-      // WARNING: uncommenting any of the lines below causes deadlock
-      // counterValue();
-      // sem1.acquire();
-      // updateCounter(delta);
+      counterValue();
     } finally {
-      sem1.release();
+      lock1.unlock();
     }
   }
 
   static long counterValue() throws InterruptedException {
-    sem1.acquire();
+    lock1.lock();
     try {
       return opsCounter;
     } finally {
-      sem1.release();
+      lock1.unlock();
     }
   }
 
