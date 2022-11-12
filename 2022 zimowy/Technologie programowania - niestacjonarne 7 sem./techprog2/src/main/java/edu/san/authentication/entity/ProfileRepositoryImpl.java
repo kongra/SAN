@@ -8,11 +8,14 @@ import javax.transaction.Transactional;
 import edu.san.authentication.control.ProfileDto;
 import edu.san.authentication.control.ProfileId;
 import edu.san.authentication.control.ProfileRepository;
+import edu.san.hexagonal.Adapter;
+import edu.san.hexagonal.PortOrAdapterType;
 import io.quarkus.hibernate.orm.panache.PanacheRepository;
 import telsos.string.Email;
 import telsos.string.NonBlank;
 
 @ApplicationScoped
+@Adapter(PortOrAdapterType.OUTBOUND)
 class ProfileRepositoryImpl
     implements PanacheRepository<ProfileEntity>, ProfileRepository {
 

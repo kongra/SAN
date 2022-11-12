@@ -4,11 +4,13 @@ import java.util.Objects;
 import java.util.Optional;
 
 import javax.enterprise.context.ApplicationScoped;
-
+import edu.san.hexagonal.Port;
+import edu.san.hexagonal.PortOrAdapterType;
 import telsos.string.Email;
 import telsos.string.NonBlank;
 
 @ApplicationScoped
+@Port(PortOrAdapterType.INBOUND)
 public class AuthenticationFacade {
 
   private final ProfileRepository profileRepository;

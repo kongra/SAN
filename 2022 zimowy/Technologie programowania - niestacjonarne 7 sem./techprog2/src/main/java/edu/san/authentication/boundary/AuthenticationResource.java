@@ -2,7 +2,6 @@ package edu.san.authentication.boundary;
 
 import java.util.Objects;
 
-import javax.inject.Inject;
 import javax.json.Json;
 import javax.validation.Valid;
 import javax.ws.rs.Consumes;
@@ -17,32 +16,42 @@ import javax.ws.rs.core.Response.Status;
 
 import edu.san.authentication.control.AuthenticationFacade;
 import edu.san.authentication.control.ProfileId;
+import edu.san.authentication.control.Transactor;
+import edu.san.hexagonal.Adapter;
+import edu.san.hexagonal.PortOrAdapterType;
 import telsos.string.Email;
 import telsos.string.NonBlank;
 
 @Path("authentication")
 @Consumes(MediaType.APPLICATION_JSON)
 @Produces(MediaType.APPLICATION_JSON)
+@Adapter(PortOrAdapterType.INBOUND)
 class AuthenticationResource {
 
   private final AuthenticationFacade autenticationFacade;
 
-  @Inject
-  AuthenticationResource(AuthenticationFacade authenticationFacade) {
-    Objects.requireNonNull(authenticationFacade);
-    autenticationFacade = authenticationFacade;
+  private final Transactor transactor;
+
+  AuthenticationResource(
+      AuthenticationFacade authenticationFacade,
+      Transactor transactor) {
+    this.autenticationFacade = Objects.requireNonNull(authenticationFacade);
+    this.transactor = Objects.requireNonNull(transactor);
   }
 
   @GET
   @Path("profile-by-email/{email}")
   public Response findProfileByEmail(@PathParam("email") String email) {
     final var theEmail = Email.of(email).orElseThrow(BadRequestException::new);
-    final var optionalProfileDto = autenticationFacade
-        .findProfileByEmail(theEmail);
 
-    if (optionalProfileDto.isEmpty())
-      return Response.ok().build();
-    return Response.ok(optionalProfileDto.get()).build();
+    return transactor.invoke(() -> {
+      final var optionalProfileDto = autenticationFacade
+          .findProfileByEmail(theEmail);
+
+      if (optionalProfileDto.isEmpty())
+        return Response.ok().build();
+      return Response.ok(optionalProfileDto.get()).build();
+    });
   }
 
   @POST
@@ -52,10 +61,13 @@ class AuthenticationResource {
     final var firstName = NonBlank.of(signUpDto.getFirstName()).orElseThrow();
     final var lastName = NonBlank.of(signUpDto.getLastName()).orElseThrow();
 
-    final var profileId = autenticationFacade.signUp(email, firstName, lastName);
-    return profileId
-        .map(AuthenticationResource::signUpSuccess)
-        .orElseGet(AuthenticationResource::signUpFailure);
+    return transactor.invoke(() -> {
+      final var profileId = autenticationFacade.signUp(email, firstName,
+          lastName);
+      return profileId
+          .map(AuthenticationResource::signUpSuccess)
+          .orElseGet(AuthenticationResource::signUpFailure);
+    });
   }
 
   private static Response signUpSuccess(ProfileId profileId) {
