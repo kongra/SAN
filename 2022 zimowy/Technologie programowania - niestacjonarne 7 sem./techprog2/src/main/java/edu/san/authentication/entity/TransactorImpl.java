@@ -8,11 +8,12 @@ import javax.transaction.Transactional;
 import edu.san.authentication.control.Transactor;
 import edu.san.hexagonal.Adapter;
 import edu.san.hexagonal.PortOrAdapterType;
+import io.quarkus.narayana.jta.runtime.context.TransactionContext;
 import telsos.Exceptions;
 
 @ApplicationScoped
 @Adapter(PortOrAdapterType.OUTBOUND)
-public class TransactorImpl implements Transactor {
+class TransactorImpl implements Transactor {
 
   @Transactional
   @Override
@@ -30,4 +31,9 @@ public class TransactorImpl implements Transactor {
     }
   }
 
+  @Override
+  public boolean isActiveTransaction() {
+    return new TransactionContext().isActive();
+  }
+  
 }

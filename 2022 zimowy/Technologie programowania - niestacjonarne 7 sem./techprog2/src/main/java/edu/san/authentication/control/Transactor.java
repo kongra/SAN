@@ -12,4 +12,5 @@ public interface Transactor {
   
   <T> T invoke(Callable<T> callable);
   
+  boolean isActiveTransaction();
 }
