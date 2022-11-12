@@ -24,9 +24,11 @@ public class AuthenticationFacade {
     final var optionalProfileId = profileRepository
         .findProfileIdByEmail(email);
 
-    if (optionalProfileId.isEmpty())
-      return Optional.of(profileRepository
-          .createProfile(email, firstName, lastName));
+    if (optionalProfileId.isEmpty()) {
+      final var profileEntity = profileRepository
+          .createProfile(email, firstName, lastName);
+      return Optional.of(profileEntity);
+    }      
     return Optional.empty();
   }
 

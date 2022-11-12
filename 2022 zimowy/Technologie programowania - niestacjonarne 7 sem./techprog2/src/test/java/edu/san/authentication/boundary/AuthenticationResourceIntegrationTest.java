@@ -19,7 +19,7 @@ import io.quarkus.test.junit.QuarkusTest;
 import telsos.string.Email;
 
 @QuarkusTest
-class AuthenticationResourceTest {
+class AuthenticationResourceIntegrationTest {
 
   private AuthenticationResourceClient authenticationResourceClient;
 
