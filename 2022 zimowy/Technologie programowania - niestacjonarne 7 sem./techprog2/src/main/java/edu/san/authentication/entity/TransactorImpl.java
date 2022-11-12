@@ -26,7 +26,7 @@ class TransactorImpl implements Transactor {
   public <T> T invoke(Callable<T> callable) {
     try {
       return callable.call();
-    } catch (Exception e) {
+    } catch (final Exception e) {
       return Exceptions.fail(e);
     }
   }
@@ -35,5 +35,5 @@ class TransactorImpl implements Transactor {
   public boolean isActiveTransaction() {
     return new TransactionContext().isActive();
   }
-  
+
 }

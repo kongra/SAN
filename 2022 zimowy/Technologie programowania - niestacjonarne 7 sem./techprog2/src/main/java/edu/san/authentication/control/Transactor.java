@@ -9,8 +9,8 @@ import edu.san.hexagonal.PortOrAdapterType;
 public interface Transactor {
 
   void invoke(Runnable runnable);
-  
+
   <T> T invoke(Callable<T> callable);
-  
+
   boolean isActiveTransaction();
 }

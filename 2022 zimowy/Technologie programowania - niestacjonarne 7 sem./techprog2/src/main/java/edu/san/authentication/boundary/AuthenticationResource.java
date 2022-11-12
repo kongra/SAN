@@ -35,7 +35,7 @@ class AuthenticationResource {
   AuthenticationResource(
       AuthenticationFacade authenticationFacade,
       Transactor transactor) {
-    this.autenticationFacade = Objects.requireNonNull(authenticationFacade);
+    autenticationFacade = Objects.requireNonNull(authenticationFacade);
     this.transactor = Objects.requireNonNull(transactor);
   }
 
