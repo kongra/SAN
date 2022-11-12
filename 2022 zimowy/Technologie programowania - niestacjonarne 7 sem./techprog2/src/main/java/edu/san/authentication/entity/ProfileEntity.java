@@ -1,4 +1,4 @@
-package edu.san.authentication.infrastructure;
+package edu.san.authentication.entity;
 
 import java.util.Objects;
 import java.util.UUID;
@@ -9,37 +9,47 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
+import javax.persistence.Version;
 import javax.validation.constraints.Email;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
 
+import lombok.AllArgsConstructor;
 import lombok.NoArgsConstructor;
 
 @Entity
 @Table(name = "profile")
 @NoArgsConstructor
+@AllArgsConstructor
 class ProfileEntity {
 
   @Id
   @GeneratedValue(strategy = GenerationType.AUTO)
   Long id;
 
+  @Version
+  @NotNull
+  @Column(nullable = false)
+  Long version;
+
   @NotNull
   @NotBlank
-  @Column(unique = true)
+  @Column(unique = true, nullable = false)
   String uuid = UUID.randomUUID().toString();
 
   @Email
   @NotNull
-  @Column(unique = true)
+  @Column(unique = true, nullable = false)
   String email;
 
   @NotNull
   @NotBlank
+  @Column(nullable = false)
   String firstName;
 
   @NotNull
   @NotBlank
+  @Column(nullable = false)
   String lastName;
 
   public ProfileEntity(
@@ -66,7 +76,7 @@ class ProfileEntity {
     return false;
   }
 
-  public final void setUuid(String uuid) {
+  public void setUuid(String uuid) {
     Objects.requireNonNull(uuid);
     if (uuid.isBlank())
       throw new IllegalArgumentException();

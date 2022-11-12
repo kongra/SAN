@@ -1,4 +1,4 @@
-package edu.san.authentication.core;
+package edu.san.authentication.control;
 
 import java.util.Objects;
 
