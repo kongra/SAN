@@ -1,3 +1,42 @@
 * Zadanie 1.
    Utwórz program komputerowy, który tworzy i wykonuje przynajmniej 3 różne wątki.
    Mogą one działać w nieskończoność lub kończyć się po wykonaniu N kroków.
+
+* Zadanie 2.
+   Zrealizuj rozwiązanie problemu czytelników i pisarzy.
+
+var semaphore = new Semaphore(fair, 1);
+
+task 1 {
+  while (true) {
+     semaphore.acquire();
+     ... trwa przebywanie na rampie (w sekcji krytycznej)
+     semaphore.release();
+  }
+}
+
+task Reader {
+  while true {
+    sleep ... random number of msecs
+    enter()
+    read() ... takes a random number of msecs
+    exit()
+  }
+}
+
+task Writer {
+  while true {
+    sleep ... random number of msecs
+    enter()
+    write() ... takes a random number of msecs
+    exit()
+  }
+}
+
+ r r r r r w w w
+ r r r r r w|w|w
+|r|r|r|r r w w w
+
+
+* Zadanie 3.
+   Zrealizuj rozwiązanie problemu 5 ucztujących filozofów.
