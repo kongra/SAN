@@ -17,5 +17,6 @@ function goo(a, b) {
     }
     return 2 * (a / b);
 }
+const www = goo(3, 4);
 console.log(`Wywołanie goo(0, 0) ${goo(0, 0)}`);
-export { foo, goo };
+export { foo, goo, www };
