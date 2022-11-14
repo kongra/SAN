@@ -4,6 +4,8 @@ import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Path;
 
+import javax.enterprise.context.ApplicationScoped;
+
 import org.eclipse.collections.api.factory.Lists;
 import org.eclipse.collections.api.list.ImmutableList;
 import org.eclipse.collections.api.list.MutableList;
@@ -21,6 +23,7 @@ import telsos.math.newtype.NatLong;
 import telsos.string.NonBlank;
 
 @Adapter(AdapterType.SECONDARY)
+@ApplicationScoped
 class DataReaderImpl implements DataReader {
 
   @Override
