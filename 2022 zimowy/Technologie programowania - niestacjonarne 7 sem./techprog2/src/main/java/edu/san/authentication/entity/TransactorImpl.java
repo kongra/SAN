@@ -6,13 +6,13 @@ import javax.enterprise.context.ApplicationScoped;
 import javax.transaction.Transactional;
 
 import edu.san.authentication.control.Transactor;
-import edu.san.hexagonal.Adapter;
-import edu.san.hexagonal.PortOrAdapterType;
 import io.quarkus.narayana.jta.runtime.context.TransactionContext;
 import telsos.Exceptions;
+import telsos.architecture.hexagonal.annotations.Adapter;
+import telsos.architecture.hexagonal.annotations.AdapterType;
 
 @ApplicationScoped
-@Adapter(PortOrAdapterType.OUTBOUND)
+@Adapter(AdapterType.SECONDARY)
 class TransactorImpl implements Transactor {
 
   @Transactional

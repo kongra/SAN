@@ -4,17 +4,17 @@ import java.util.Objects;
 
 import javax.enterprise.context.ApplicationScoped;
 
-import edu.san.hexagonal.Port;
-import edu.san.hexagonal.PortOrAdapterType;
+import telsos.architecture.hexagonal.annotations.Port;
+import telsos.architecture.hexagonal.annotations.PortType;
 
+@Port(PortType.INPUT)
 @ApplicationScoped
-@Port(PortOrAdapterType.INBOUND)
 public class IndexerFacade {
 
-  private final DataReader csvReader;
+  private final DataReader dataReader;
 
-  public IndexerFacade(DataReader csvReader) {
-    this.csvReader = Objects.requireNonNull(csvReader);
+  public IndexerFacade(DataReader dataReader) {
+    this.dataReader = Objects.requireNonNull(dataReader);
   }
-  
+
 }

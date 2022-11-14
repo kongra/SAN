@@ -12,15 +12,15 @@ import com.opencsv.CSVParserBuilder;
 import com.opencsv.CSVReaderBuilder;
 import com.opencsv.exceptions.CsvValidationException;
 
-import edu.san.hexagonal.Adapter;
-import edu.san.hexagonal.PortOrAdapterType;
 import edu.san.indexer.control.DataReader;
 import edu.san.indexer.control.FirstName;
 import edu.san.indexer.control.Gender;
+import telsos.architecture.hexagonal.annotations.Adapter;
+import telsos.architecture.hexagonal.annotations.AdapterType;
 import telsos.math.newtype.NatLong;
 import telsos.string.NonBlank;
 
-@Adapter(PortOrAdapterType.OUTBOUND)
+@Adapter(AdapterType.SECONDARY)
 class DataReaderImpl implements DataReader {
 
   @Override

@@ -17,15 +17,15 @@ import javax.ws.rs.core.Response.Status;
 import edu.san.authentication.control.AuthenticationFacade;
 import edu.san.authentication.control.ProfileId;
 import edu.san.authentication.control.Transactor;
-import edu.san.hexagonal.Adapter;
-import edu.san.hexagonal.PortOrAdapterType;
+import telsos.architecture.hexagonal.annotations.Adapter;
+import telsos.architecture.hexagonal.annotations.AdapterType;
 import telsos.string.Email;
 import telsos.string.NonBlank;
 
+@Adapter(AdapterType.PRIMARY)
 @Path("authentication")
 @Consumes(MediaType.APPLICATION_JSON)
 @Produces(MediaType.APPLICATION_JSON)
-@Adapter(PortOrAdapterType.INBOUND)
 class AuthenticationResource {
 
   private final AuthenticationFacade autenticationFacade;

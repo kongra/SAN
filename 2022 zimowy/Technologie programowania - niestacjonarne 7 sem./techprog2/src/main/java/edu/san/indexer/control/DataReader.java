@@ -2,14 +2,15 @@ package edu.san.indexer.control;
 
 import java.io.IOException;
 import java.nio.file.Path;
+
 import org.eclipse.collections.api.list.ImmutableList;
 
-import edu.san.hexagonal.Port;
-import edu.san.hexagonal.PortOrAdapterType;
+import telsos.architecture.hexagonal.annotations.Port;
+import telsos.architecture.hexagonal.annotations.PortType;
 
-@Port(PortOrAdapterType.OUTBOUND)
+@Port(PortType.OUTPUT)
 public interface DataReader {
 
   ImmutableList<FirstName> readFirstNames(Path file) throws IOException;
-  
+
 }

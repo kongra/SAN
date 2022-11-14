@@ -5,14 +5,14 @@ import java.util.Optional;
 
 import javax.enterprise.context.ApplicationScoped;
 
-import edu.san.hexagonal.Port;
-import edu.san.hexagonal.PortOrAdapterType;
 import lombok.extern.slf4j.Slf4j;
+import telsos.architecture.hexagonal.annotations.Port;
+import telsos.architecture.hexagonal.annotations.PortType;
 import telsos.string.Email;
 import telsos.string.NonBlank;
 
+@Port(PortType.INPUT)
 @ApplicationScoped
-@Port(PortOrAdapterType.INBOUND)
 @Slf4j
 public class AuthenticationFacade {
 

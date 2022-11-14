@@ -1,9 +1,11 @@
 package edu.san.indexer.boundary;
 
-import edu.san.hexagonal.Adapter;
-import edu.san.hexagonal.PortOrAdapterType;
+import telsos.architecture.hexagonal.annotations.Adapter;
+import telsos.architecture.hexagonal.annotations.AdapterType;
 
-@Adapter(PortOrAdapterType.INBOUND)
+@Adapter(AdapterType.PRIMARY)
 public class IndexerResource {
+
+  // This will be completed in the future
 
 }
