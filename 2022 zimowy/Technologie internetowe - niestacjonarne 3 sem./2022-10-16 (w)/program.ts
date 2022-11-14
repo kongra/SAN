@@ -65,12 +65,6 @@ tab1.forEach((y) => {
 
 type Color = 'red' | 'blue' | 'green';
 
-// enum EnumeratedColor {
-//   Red,
-//   Blue,
-//   Green,
-// }
-
 type ColoredPoint = {
   x: number,
   y: number,

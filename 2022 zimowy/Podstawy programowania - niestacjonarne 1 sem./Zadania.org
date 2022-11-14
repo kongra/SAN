@@ -3,5 +3,5 @@
    trwać poniżej 1s.
 
 * Zadanie 2.
-   W języku Java zrealizuj rozwiązanie problemu Eulera nr 2
+   Zrealizuj rozwiązanie problemu Eulera nr 2
    https://projecteuler.net/problem=2

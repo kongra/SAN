@@ -81,4 +81,13 @@ function printUserArray(arr) {
     arr.forEach((u) => console.log('--3', u.getRepr()));
 }
 printUserArray([u1, b2c]);
+const s3 = { value: undefined };
+s3.value = s3;
+console.log(s3);
+var EColor;
+(function (EColor) {
+    EColor[EColor["Red"] = 0] = "Red";
+    EColor[EColor["Green"] = 1] = "Green";
+    EColor[EColor["Blue"] = 2] = "Blue";
+})(EColor || (EColor = {}));
 export { foo, goo, www, moo, quadraticRoots, B2C, printUserArray, };
