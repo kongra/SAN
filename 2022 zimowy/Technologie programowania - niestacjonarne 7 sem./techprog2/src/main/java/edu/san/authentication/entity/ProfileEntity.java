@@ -28,9 +28,8 @@ class ProfileEntity {
   Long id;
 
   @Version
-  @NotNull
   @Column(nullable = false)
-  Long version;
+  short version;
 
   @NotNull
   @NotBlank

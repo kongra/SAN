@@ -16,8 +16,7 @@ public class ProfileDto {
   @NotNull
   private Long id;
 
-  @NotNull
-  private Long version;
+  private short version;
 
   @Email
   @NotNull
