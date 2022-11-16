@@ -16,7 +16,7 @@ import javax.ws.rs.core.Response.Status;
 
 import edu.san.authentication.control.AuthenticationFacade;
 import edu.san.authentication.control.ProfileId;
-import edu.san.authentication.control.Transactor;
+import edu.san.commons.control.Transactor;
 import telsos.architecture.hexagonal.annotations.Adapter;
 import telsos.architecture.hexagonal.annotations.AdapterType;
 import telsos.string.Email;

@@ -5,6 +5,7 @@ import java.util.Optional;
 
 import javax.enterprise.context.ApplicationScoped;
 
+import edu.san.commons.control.Transactor;
 import lombok.extern.slf4j.Slf4j;
 import telsos.architecture.hexagonal.annotations.Port;
 import telsos.architecture.hexagonal.annotations.PortType;
