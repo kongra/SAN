@@ -16,7 +16,7 @@ import javax.ws.rs.core.Response.Status;
 
 import edu.san.authentication.control.AuthenticationFacade;
 import edu.san.authentication.control.ProfileId;
-import edu.san.commons.control.Transactor;
+import edu.san.transactions.control.Transactor;
 import telsos.architecture.hexagonal.annotations.Adapter;
 import telsos.architecture.hexagonal.annotations.AdapterType;
 import telsos.string.Email;
@@ -44,7 +44,7 @@ class AuthenticationResource {
   public Response findProfileByEmail(@PathParam("email") String email) {
     final var theEmail = Email.of(email).orElseThrow(BadRequestException::new);
 
-    return transactor.invoke(() -> {
+    return transactor.inTransaction(() -> {
       final var optionalProfileDto = autenticationFacade
           .findProfileByEmail(theEmail);
 
@@ -61,7 +61,7 @@ class AuthenticationResource {
     final var firstName = NonBlank.of(signUpDto.getFirstName()).orElseThrow();
     final var lastName = NonBlank.of(signUpDto.getLastName()).orElseThrow();
 
-    return transactor.invoke(() -> {
+    return transactor.inTransaction(() -> {
       final var profileId = autenticationFacade.signUp(email, firstName,
           lastName);
       return profileId

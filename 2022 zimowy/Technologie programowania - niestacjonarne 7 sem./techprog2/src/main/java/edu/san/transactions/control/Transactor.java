@@ -1,6 +1,6 @@
-package edu.san.commons.control;
+package edu.san.transactions.control;
 
-import java.util.concurrent.Callable;
+import java.util.function.Supplier;
 
 import telsos.architecture.hexagonal.annotations.Port;
 import telsos.architecture.hexagonal.annotations.PortType;
@@ -8,9 +8,9 @@ import telsos.architecture.hexagonal.annotations.PortType;
 @Port(PortType.OUTPUT)
 public interface Transactor {
 
-  void invoke(Runnable runnable);
+  void inTransaction(Runnable runnable);
 
-  <T> T invoke(Callable<T> callable);
+  <T> T inTransaction(Supplier<T> supplier);
 
   boolean isActiveTransaction();
 }

@@ -5,7 +5,7 @@ import java.util.Optional;
 
 import javax.enterprise.context.ApplicationScoped;
 
-import edu.san.commons.control.Transactor;
+import edu.san.transactions.control.Transactor;
 import lombok.extern.slf4j.Slf4j;
 import telsos.architecture.hexagonal.annotations.Port;
 import telsos.architecture.hexagonal.annotations.PortType;
@@ -32,7 +32,7 @@ public class AuthenticationFacade {
   public Optional<ProfileId> signUp(
       Email email, NonBlank firstName, NonBlank lastName) {
 
-    log.info("transactionContext is " + transactor.isActiveTransaction());
+    log.info("isActiveTransaction " + transactor.isActiveTransaction());
 
     final var optionalProfileId = profileRepository
         .findProfileIdByEmail(email);
