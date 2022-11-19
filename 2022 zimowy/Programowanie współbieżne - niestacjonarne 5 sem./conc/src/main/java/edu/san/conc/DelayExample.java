@@ -8,15 +8,17 @@ public class DelayExample {
     final var t1 = new AtomicReference<Thread>();
     final var t2 = new AtomicReference<Thread>();
     
+    final var dr2 = new AtomicReference<Delay<String>>();    
     Delay<String> d1 = Delay.of(() -> {
-      System.out.println("Evaluating d1");
-      Threads.join(t2.get());
+      System.out.println("Evaluating d1 with d2 value");
+      dr2.get().value();
       return "www";
     });
     
+    final var dr1 = new AtomicReference<Delay<String>>();
     Delay<String> d2 = Delay.of(() -> {
-      System.out.println("Evaluating d2");
-      Threads.join(t1.get());
+      System.out.println("Evaluating d2 with d1 value");
+      dr1.get().value();
       return "aaa";
     });
         
@@ -31,6 +33,9 @@ public class DelayExample {
       System.out.println(d2.value());
       System.out.println(d2.isMaterialized());
     }));
+    
+    dr1.set(d1);
+    dr2.set(d2);
     
     t1.get().start();
     t2.get().start();

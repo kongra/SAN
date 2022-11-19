@@ -27,34 +27,34 @@ public final class Delay<T> {
     return expression == null;
   }
 
-//  public synchronized T value() {
-//    if (isMaterialized()) {
-//      return value;
-//    }
-//
-//    // NACZELNA ZASADA SYNCHRONIZACJI:
-//    // W sekcjach krytycznych NIE WOLNO wywoływać CUDZEGO KODU!!!
-//    this.value = expression.get();
-//    this.expression = null;
-//
-//    return value;
-//  }
-
-  public T value() {
+  public synchronized T value() {
     if (isMaterialized()) {
-      return this.value;
+      return value;
     }
 
     // NACZELNA ZASADA SYNCHRONIZACJI:
     // W sekcjach krytycznych NIE WOLNO wywoływać CUDZEGO KODU!!!
-    final var expressionValue = expression.get();
-    synchronized (this) {
-      this.value = expressionValue;
-      this.expression = null;
+    this.value = expression.get();
+    this.expression = null;
 
-      return expressionValue;
-    }
+    return value;
   }
+
+//  public T value() {
+//    if (isMaterialized()) {
+//      return this.value;
+//    }
+//
+//    // NACZELNA ZASADA SYNCHRONIZACJI:
+//    // W sekcjach krytycznych NIE WOLNO wywoływać CUDZEGO KODU!!!
+//    final var expressionValue = expression.get();
+//    synchronized (this) {
+//      this.value = expressionValue;
+//      this.expression = null;
+//
+//      return expressionValue;
+//    }
+//  }
 
   @Override
   public int hashCode() {

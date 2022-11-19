@@ -1,15 +1,42 @@
 package edu.san.conc;
 
+import java.time.Duration;
+
+import telsos.Exceptions;
+
 public final class Threads {
 
-  public static void join(Thread t) {
+  public static <T> T interruptibly(InterruptibleSupplier<T> supplier) {
     try {
-      t.join();
+      return supplier.get();
     } catch (InterruptedException e) {
-      e.printStackTrace(System.err);
+      Thread.currentThread().interrupt();
+      return Exceptions.fail(e);
     }
   }
-  
-  private Threads() {}
+
+  public static void join(Thread t) {
+    interruptibly(() -> {
+      t.join();
+      return null;
+    });
+  }
+
+  public static void sleep(long millis) {
+    interruptibly(() -> {
+      Thread.sleep(millis);
+      return null;
+    });
+  }
+
+  public static void sleep(Duration duration) {
+    interruptibly(() -> {
+      Thread.sleep(duration);
+      return null;
+    });
+  }
+
+  private Threads() {
+  }
 
 }
