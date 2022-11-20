@@ -1,6 +1,7 @@
 package edu.san.conc;
 
 import java.time.Duration;
+import java.util.concurrent.TimeUnit;
 
 import telsos.Exceptions;
 
@@ -32,6 +33,13 @@ public final class Threads {
   public static void sleep(Duration duration) {
     interruptibly(() -> {
       Thread.sleep(duration);
+      return null;
+    });
+  }
+
+  public static void sleep(long timeout, TimeUnit timeUnit) {
+    interruptibly(() -> {
+      timeUnit.sleep(timeout);
       return null;
     });
   }
