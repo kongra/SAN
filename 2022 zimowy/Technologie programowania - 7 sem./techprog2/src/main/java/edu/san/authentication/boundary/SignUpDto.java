@@ -24,7 +24,7 @@ public class SignUpDto { // Data-Transfer-Object
   @NotNull
   @NotBlank
   private String lastName;
-  
+
   @NotNull
   @NotBlank
   private String profileKind;

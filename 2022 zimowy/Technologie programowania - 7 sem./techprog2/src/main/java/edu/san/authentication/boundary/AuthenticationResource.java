@@ -14,7 +14,7 @@ import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
 import javax.ws.rs.core.Response.Status;
 
-import edu.san.authentication.control.AuthenticationFacade;
+import edu.san.authentication.control.AbstractAuthenticationFacade;
 import edu.san.authentication.control.ProfileId;
 import edu.san.authentication.control.ProfileKind;
 import edu.san.transactions.control.Transactor;
@@ -29,14 +29,14 @@ import telsos.string.NonBlank;
 @Produces(MediaType.APPLICATION_JSON)
 class AuthenticationResource {
 
-  private final AuthenticationFacade autenticationFacade;
+  private final AbstractAuthenticationFacade autenticationFacade;
 
   private final Transactor transactor;
 
   AuthenticationResource(
-      AuthenticationFacade authenticationFacade,
+      AbstractAuthenticationFacade authenticationFacade,
       Transactor transactor) {
-    this.autenticationFacade = Objects.requireNonNull(authenticationFacade);
+    autenticationFacade = Objects.requireNonNull(authenticationFacade);
     this.transactor = Objects.requireNonNull(transactor);
   }
 
@@ -61,11 +61,11 @@ class AuthenticationResource {
     final var email = Email.of(signUpDto.getEmail()).orElseThrow();
     final var firstName = NonBlank.of(signUpDto.getFirstName()).orElseThrow();
     final var lastName = NonBlank.of(signUpDto.getLastName()).orElseThrow();
-    
+
     final var profileKindString = NonBlank.of(
         signUpDto.getProfileKind()).orElseThrow();
-    final var profileKind = 
-        ProfileKind.valueOf(profileKindString.value().toUpperCase());
+    final var profileKind = ProfileKind
+        .valueOf(profileKindString.value().toUpperCase());
 
     return transactor.inTransaction(() -> {
       final var profileId = autenticationFacade.signUp(email, firstName,
