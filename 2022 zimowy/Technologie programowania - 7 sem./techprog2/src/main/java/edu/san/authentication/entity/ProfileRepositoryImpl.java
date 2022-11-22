@@ -7,6 +7,7 @@ import javax.transaction.Transactional;
 
 import edu.san.authentication.control.ProfileDto;
 import edu.san.authentication.control.ProfileId;
+import edu.san.authentication.control.ProfileKind;
 import edu.san.authentication.control.ProfileRepository;
 import io.quarkus.hibernate.orm.panache.PanacheRepository;
 import telsos.architecture.hexagonal.annotations.Adapter;
@@ -24,12 +25,14 @@ class ProfileRepositoryImpl
   public ProfileId createProfile(
       Email email,
       NonBlank firstName,
-      NonBlank lastName) {
+      NonBlank lastName,
+      ProfileKind profileKind) {
 
     final var profileEntity = new ProfileEntity(
         email.value(),
         firstName.value(),
-        lastName.value());
+        lastName.value(),
+        profileKind);
 
     persist(profileEntity);
     return new ProfileId(profileEntity.id);

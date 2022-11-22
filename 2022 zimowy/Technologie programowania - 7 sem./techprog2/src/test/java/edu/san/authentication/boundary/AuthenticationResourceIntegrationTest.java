@@ -47,6 +47,7 @@ class AuthenticationResourceIntegrationTest {
         .add("email", "kongra@gmail.com")
         .add("firstName", "Konrad")
         .add("lastName", "Grzanek")
+        .add("profileKind", "standard")
         .build();
 
     try (final var response = authenticationResourceClient.signUp(signUpData)) {
@@ -61,6 +62,7 @@ class AuthenticationResourceIntegrationTest {
         .add("email", "kongra@gmail.com")
         .add("firstName", "Konrad")
         .add("lastName", "Grzanek")
+        .add("profileKind", "standard")
         .build();
     try (final var response = authenticationResourceClient.signUp(signUpData)) {
       assertThat(response.getStatus())

@@ -5,6 +5,8 @@ import java.util.UUID;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.EnumType;
+import javax.persistence.Enumerated;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -14,6 +16,7 @@ import javax.validation.constraints.Email;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
 
+import edu.san.authentication.control.ProfileKind;
 import lombok.AllArgsConstructor;
 import lombok.NoArgsConstructor;
 
@@ -28,7 +31,7 @@ class ProfileEntity {
   Long id;
 
   @Version
-  @Column(nullable = false)
+  @Column(nullable = false, columnDefinition = "int2")
   short version;
 
   @NotNull
@@ -51,14 +54,21 @@ class ProfileEntity {
   @Column(nullable = false)
   String lastName;
 
+  @NotNull
+  @Enumerated(EnumType.ORDINAL)
+  @Column(nullable = false, columnDefinition = "int2")
+  ProfileKind profileKind;
+
   public ProfileEntity(
       @Email @NotNull String email,
       @NotNull @NotBlank String firstName,
-      @NotNull @NotBlank String lastName) {
+      @NotNull @NotBlank String lastName,
+      @NotNull ProfileKind profileKind) {
 
     this.email = email;
     this.firstName = firstName;
     this.lastName = lastName;
+    this.profileKind = profileKind;
   }
 
   @Override

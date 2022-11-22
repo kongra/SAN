@@ -16,6 +16,7 @@ import javax.ws.rs.core.Response.Status;
 
 import edu.san.authentication.control.AuthenticationFacade;
 import edu.san.authentication.control.ProfileId;
+import edu.san.authentication.control.ProfileKind;
 import edu.san.transactions.control.Transactor;
 import telsos.architecture.hexagonal.annotations.Adapter;
 import telsos.architecture.hexagonal.annotations.AdapterType;
@@ -35,7 +36,7 @@ class AuthenticationResource {
   AuthenticationResource(
       AuthenticationFacade authenticationFacade,
       Transactor transactor) {
-    autenticationFacade = Objects.requireNonNull(authenticationFacade);
+    this.autenticationFacade = Objects.requireNonNull(authenticationFacade);
     this.transactor = Objects.requireNonNull(transactor);
   }
 
@@ -60,10 +61,15 @@ class AuthenticationResource {
     final var email = Email.of(signUpDto.getEmail()).orElseThrow();
     final var firstName = NonBlank.of(signUpDto.getFirstName()).orElseThrow();
     final var lastName = NonBlank.of(signUpDto.getLastName()).orElseThrow();
+    
+    final var profileKindString = NonBlank.of(
+        signUpDto.getProfileKind()).orElseThrow();
+    final var profileKind = 
+        ProfileKind.valueOf(profileKindString.value().toUpperCase());
 
     return transactor.inTransaction(() -> {
       final var profileId = autenticationFacade.signUp(email, firstName,
-          lastName);
+          lastName, profileKind);
       return profileId
           .map(AuthenticationResource::signUpSuccess)
           .orElseGet(AuthenticationResource::signUpFailure);

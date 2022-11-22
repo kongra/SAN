@@ -10,7 +10,11 @@ import telsos.string.NonBlank;
 @Port(PortType.OUTPUT)
 public interface ProfileRepository {
 
-  ProfileId createProfile(Email email, NonBlank firstName, NonBlank lastName);
+  ProfileId createProfile(
+      Email email, 
+      NonBlank firstName, 
+      NonBlank lastName, 
+      ProfileKind profileKind);
 
   Optional<ProfileId> findProfileIdByEmail(Email email);
 

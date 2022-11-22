@@ -24,13 +24,15 @@ public class AuthenticationFacade {
   AuthenticationFacade(
       ProfileRepository profileRepository,
       Transactor transactor) {
-
     this.profileRepository = Objects.requireNonNull(profileRepository);
     this.transactor = Objects.requireNonNull(transactor);
   }
 
   public Optional<ProfileId> signUp(
-      Email email, NonBlank firstName, NonBlank lastName) {
+      Email email, 
+      NonBlank firstName, 
+      NonBlank lastName, 
+      ProfileKind profileKind) {
 
     log.info("isActiveTransaction " + transactor.isActiveTransaction());
 
@@ -39,7 +41,7 @@ public class AuthenticationFacade {
 
     if (optionalProfileId.isEmpty()) {
       final var profileId = profileRepository
-          .createProfile(email, firstName, lastName);
+          .createProfile(email, firstName, lastName, profileKind);
       return Optional.of(profileId);
     }
     return Optional.empty();
