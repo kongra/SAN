@@ -58,7 +58,8 @@ class ProfileRepositoryImpl
             profileEntity.version,
             profileEntity.email,
             profileEntity.firstName,
-            profileEntity.lastName));
+            profileEntity.lastName,
+            profileEntity.profileKind.name()));
   }
 
   @Transactional

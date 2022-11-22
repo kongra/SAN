@@ -29,5 +29,9 @@ public class ProfileDto {
   @NotNull
   @NotBlank
   private String lastName;
+  
+  @NotNull
+  @NotBlank
+  private String profileKind;
 
 }
