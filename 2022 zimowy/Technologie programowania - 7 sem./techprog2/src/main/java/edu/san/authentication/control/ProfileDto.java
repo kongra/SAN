@@ -1,5 +1,7 @@
 package edu.san.authentication.control;
 
+import java.util.UUID;
+
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -9,7 +11,7 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 public class ProfileDto {
 
-  private Long id;
+  private UUID uuid;
 
   private short version;
 

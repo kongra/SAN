@@ -49,13 +49,7 @@ class ProfileRepositoryImpl
   @Transactional
   public Optional<ProfileDto> findProfileDtoByEmail(Email email) {
     return findProfileEntityByEmail(email)
-        .map(profileEntity -> new ProfileDto(
-            profileEntity.id,
-            profileEntity.version,
-            profileEntity.email,
-            profileEntity.firstName,
-            profileEntity.lastName,
-            profileEntity.profileKind.name()));
+        .map(ProfileRepositoryImpl::profileEntity2ProfileDto);
   }
 
   @Transactional
@@ -75,4 +69,14 @@ class ProfileRepositoryImpl
     return Optional.of(new ProfileId(profileEntity.uuid));
   }
 
+  private static ProfileDto profileEntity2ProfileDto(
+      ProfileEntity profileEntity) {
+    return new ProfileDto(
+        profileEntity.uuid,
+        profileEntity.version,
+        profileEntity.email,
+        profileEntity.firstName,
+        profileEntity.lastName,
+        profileEntity.profileKind.name());
+  }
 }

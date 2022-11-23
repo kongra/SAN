@@ -10,6 +10,7 @@ import javax.persistence.Enumerated;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 import javax.persistence.Version;
 import javax.validation.constraints.Email;
@@ -27,7 +28,8 @@ import lombok.NoArgsConstructor;
 class ProfileEntity {
 
   @Id
-  @GeneratedValue(strategy = GenerationType.AUTO)
+  @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = PROFILE_SEQUENCE)
+  @SequenceGenerator(name = PROFILE_SEQUENCE, sequenceName = PROFILE_SEQUENCE, allocationSize = 100)
   Long id;
 
   @Version
@@ -59,10 +61,10 @@ class ProfileEntity {
   ProfileKind profileKind;
 
   public ProfileEntity(
-      @Email @NotNull String email,
-      @NotNull @NotBlank String firstName,
-      @NotNull @NotBlank String lastName,
-      @NotNull ProfileKind profileKind) {
+      String email,
+      String firstName,
+      String lastName,
+      ProfileKind profileKind) {
 
     this.email = email;
     this.firstName = firstName;
@@ -87,5 +89,7 @@ class ProfileEntity {
   public void setUuid(UUID uuid) {
     this.uuid = Objects.requireNonNull(uuid);
   }
+
+  private static final String PROFILE_SEQUENCE = "profile_sequence";
 
 }
