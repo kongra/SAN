@@ -1,26 +1,33 @@
 package edu.san.authentication.control;
 
+import java.util.Objects;
 import java.util.UUID;
 
-import lombok.AllArgsConstructor;
 import lombok.Data;
-import lombok.NoArgsConstructor;
 
 @Data
-@NoArgsConstructor
-@AllArgsConstructor
-public class ProfileDto {
+public final class ProfileDto {
 
-  private UUID uuid;
+  private final UUID uuid;
 
-  private short version;
+  private final short version;
 
-  private String email;
+  private final String email;
 
-  private String firstName;
+  private final String firstName;
 
-  private String lastName;
+  private final String lastName;
 
-  private String profileKind;
+  private final ProfileKind profileKind;
+
+  public ProfileDto(UUID uuid, short version, String email, String firstName,
+      String lastName, ProfileKind profileKind) {
+    this.uuid = Objects.requireNonNull(uuid);
+    this.version = version;
+    this.email = Objects.requireNonNull(email);
+    this.firstName = Objects.requireNonNull(firstName);
+    this.lastName = Objects.requireNonNull(lastName);
+    this.profileKind = Objects.requireNonNull(profileKind);
+  }
 
 }

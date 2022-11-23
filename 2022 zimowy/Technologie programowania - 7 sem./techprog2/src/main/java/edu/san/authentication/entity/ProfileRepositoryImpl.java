@@ -77,6 +77,6 @@ class ProfileRepositoryImpl
         profileEntity.email,
         profileEntity.firstName,
         profileEntity.lastName,
-        profileEntity.profileKind.name());
+        profileEntity.profileKind);
   }
 }
