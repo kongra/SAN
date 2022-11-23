@@ -78,7 +78,7 @@ class AuthenticationResource {
 
   private static Response signUpSuccess(ProfileId profileId) {
     final var result = Json.createObjectBuilder()
-        .add("profileId", profileId.value())
+        .add("profileId", profileId.value().toString())
         .build();
 
     return Response.ok(result)

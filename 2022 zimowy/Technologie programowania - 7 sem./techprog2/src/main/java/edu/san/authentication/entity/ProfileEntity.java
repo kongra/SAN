@@ -35,9 +35,8 @@ class ProfileEntity {
   short version;
 
   @NotNull
-  @NotBlank
   @Column(unique = true, nullable = false)
-  String uuid = UUID.randomUUID().toString();
+  UUID uuid = UUID.randomUUID();
 
   @Email
   @NotNull
@@ -85,11 +84,8 @@ class ProfileEntity {
     return false;
   }
 
-  public void setUuid(String uuid) {
-    Objects.requireNonNull(uuid);
-    if (uuid.isBlank())
-      throw new IllegalArgumentException();
-    this.uuid = uuid;
+  public void setUuid(UUID uuid) {
+    this.uuid = Objects.requireNonNull(uuid);
   }
 
 }

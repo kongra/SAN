@@ -35,18 +35,14 @@ class ProfileRepositoryImpl
         profileKind);
 
     persist(profileEntity);
-    return new ProfileId(profileEntity.id);
-  }
-
-  private static ProfileId createProfileId(ProfileEntity profile) {
-    return new ProfileId(profile.id);
+    return new ProfileId(profileEntity.uuid);
   }
 
   @Override
   @Transactional
   public Optional<ProfileId> findProfileIdByEmail(Email email) {
     return findProfileEntityByEmail(email)
-        .map(ProfileRepositoryImpl::createProfileId);
+        .map(profileEntity -> new ProfileId(profileEntity.uuid));
   }
 
   @Override
@@ -70,13 +66,13 @@ class ProfileRepositoryImpl
   @Override
   @Transactional
   public Optional<ProfileId> deleteProfileByEmail(Email email) {
-    final var optionalProfile = findProfileEntityByEmail(email);
-    if (optionalProfile.isEmpty())
+    final var optionalProfileEntity = findProfileEntityByEmail(email);
+    if (optionalProfileEntity.isEmpty())
       return Optional.empty();
 
-    final var profile = optionalProfile.get();
-    delete(profile);
-    return Optional.of(createProfileId(profile));
+    final var profileEntity = optionalProfileEntity.get();
+    delete(profileEntity);
+    return Optional.of(new ProfileId(profileEntity.uuid));
   }
 
 }
