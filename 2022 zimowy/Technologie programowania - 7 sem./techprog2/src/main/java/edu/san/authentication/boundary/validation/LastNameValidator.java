@@ -9,7 +9,8 @@ public class LastNameValidator
 
   @Override
   public boolean isValid(String value, ConstraintValidatorContext context) {
-    return edu.san.authentication.control.LastName.isValid(value);
+    final var isNullValid = true;
+    return edu.san.authentication.control.LastName.isValid(value, isNullValid);
   }
 
 }

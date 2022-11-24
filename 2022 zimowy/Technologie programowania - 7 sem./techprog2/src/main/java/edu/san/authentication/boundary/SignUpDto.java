@@ -21,9 +21,11 @@ public class SignUpDto { // Data-Transfer-Object
   private String email;
 
   @FirstName
+  @NotNull
   private String firstName;
 
   @LastName
+  @NotNull
   private String lastName;
 
   @NotNull

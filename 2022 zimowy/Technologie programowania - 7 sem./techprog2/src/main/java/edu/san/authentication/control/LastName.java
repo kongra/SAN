@@ -9,11 +9,16 @@ import telsos.newtype.Newtype;
 public final class LastName extends Newtype<String> {
 
   public static Optional<LastName> of(String s) {
-    return of(s, FirstName::isValid, LastName::new);
+    return of(s, LastName::isValid, LastName::new);
   }
 
   public static boolean isValid(String s) {
-    return null != s && PATTERN.matcher(s).matches();
+    final var isNullValid = false;
+    return isValid(s, isNullValid);
+  }
+
+  public static boolean isValid(String s, boolean isNullValid) {
+    return null == s ? isNullValid : PATTERN.matcher(s).matches();
   }
 
   private LastName(String value) {

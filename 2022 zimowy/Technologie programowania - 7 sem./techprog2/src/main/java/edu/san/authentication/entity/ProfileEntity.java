@@ -44,15 +44,17 @@ class ProfileEntity {
 
   @Email
   @NotNull
-  @Column(unique = true, nullable = false)
+  @Column(unique = true, nullable = false, length = 128)
   String email;
 
   @FirstName
-  @Column(nullable = false, length = 128)
+  @NotNull
+  @Column(nullable = false, length = 64)
   String firstName;
 
   @LastName
-  @Column(nullable = false, length = 64)
+  @NotNull
+  @Column(nullable = false, length = 128)
   String lastName;
 
   @NotNull

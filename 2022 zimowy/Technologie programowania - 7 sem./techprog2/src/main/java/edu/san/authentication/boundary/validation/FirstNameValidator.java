@@ -9,7 +9,8 @@ public class FirstNameValidator
 
   @Override
   public boolean isValid(String value, ConstraintValidatorContext context) {
-    return edu.san.authentication.control.FirstName.isValid(value);
+    final var isNullValid = true;
+    return edu.san.authentication.control.FirstName.isValid(value, isNullValid);
   }
 
 }

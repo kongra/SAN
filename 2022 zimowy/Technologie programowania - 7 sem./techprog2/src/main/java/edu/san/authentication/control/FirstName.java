@@ -13,7 +13,12 @@ public final class FirstName extends Newtype<String> {
   }
 
   public static boolean isValid(String s) {
-    return null != s && PATTERN.matcher(s).matches();
+    final var isNullValid = false;
+    return isValid(s, isNullValid);
+  }
+
+  public static boolean isValid(String s, boolean isNullValid) {
+    return null == s ? isNullValid : PATTERN.matcher(s).matches();
   }
 
   private FirstName(String value) {
