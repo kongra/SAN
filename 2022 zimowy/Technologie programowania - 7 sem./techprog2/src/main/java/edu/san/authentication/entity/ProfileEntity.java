@@ -18,6 +18,7 @@ import javax.validation.constraints.Email;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
 
+import edu.san.authentication.boundary.validation.FirstName;
 import edu.san.authentication.control.ProfileKind;
 import lombok.AllArgsConstructor;
 import lombok.NoArgsConstructor;
@@ -46,8 +47,7 @@ class ProfileEntity {
   @Column(unique = true, nullable = false)
   String email;
 
-  @NotNull
-  @NotBlank
+  @FirstName
   @Column(nullable = false)
   String firstName;
 

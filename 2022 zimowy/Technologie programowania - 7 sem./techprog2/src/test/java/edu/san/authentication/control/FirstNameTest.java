@@ -23,6 +23,8 @@ class FirstNameTest {
         .isFalse();
 
     assertThat(FirstName.isValid("john")).isFalse();
+
+    assertThat(FirstName.isValid(null)).isFalse();
   }
 
 }
