@@ -8,7 +8,6 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 import telsos.string.Email;
-import telsos.string.NonBlank;
 
 @Data
 @NoArgsConstructor
@@ -21,9 +20,9 @@ public final class ProfileDto {
 
   private Email email;
 
-  private NonBlank firstName;
+  private FirstName firstName;
 
-  private NonBlank lastName;
+  private LastName lastName;
 
   private ProfileKind kind;
 
@@ -39,11 +38,11 @@ public final class ProfileDto {
     return Objects.requireNonNull(email);
   }
 
-  public NonBlank getFirstName() {
+  public FirstName getFirstName() {
     return Objects.requireNonNull(firstName);
   }
 
-  public NonBlank getLastName() {
+  public LastName getLastName() {
     return Objects.requireNonNull(lastName);
   }
 

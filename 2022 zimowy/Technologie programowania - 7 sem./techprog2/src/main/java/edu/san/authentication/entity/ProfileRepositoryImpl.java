@@ -6,6 +6,8 @@ import java.util.Optional;
 import javax.enterprise.context.ApplicationScoped;
 import javax.transaction.Transactional;
 
+import edu.san.authentication.control.FirstName;
+import edu.san.authentication.control.LastName;
 import edu.san.authentication.control.ProfileDto;
 import edu.san.authentication.control.ProfileId;
 import edu.san.authentication.control.ProfileKind;
@@ -76,8 +78,8 @@ class ProfileRepositoryImpl
         profileEntity.uuid,
         profileEntity.version,
         Email.of(profileEntity.email).orElseThrow(),
-        NonBlank.of(profileEntity.firstName).orElseThrow(),
-        NonBlank.of(profileEntity.lastName).orElseThrow(),
+        FirstName.of(profileEntity.firstName).orElseThrow(),
+        LastName.of(profileEntity.lastName).orElseThrow(),
         profileEntity.kind);
   }
 }
