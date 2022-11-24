@@ -15,10 +15,10 @@ import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 import javax.persistence.Version;
 import javax.validation.constraints.Email;
-import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
 
 import edu.san.authentication.boundary.validation.FirstName;
+import edu.san.authentication.boundary.validation.LastName;
 import edu.san.authentication.control.ProfileKind;
 import lombok.AllArgsConstructor;
 import lombok.NoArgsConstructor;
@@ -48,12 +48,11 @@ class ProfileEntity {
   String email;
 
   @FirstName
-  @Column(nullable = false)
+  @Column(nullable = false, length = 128)
   String firstName;
 
-  @NotNull
-  @NotBlank
-  @Column(nullable = false)
+  @LastName
+  @Column(nullable = false, length = 64)
   String lastName;
 
   @NotNull

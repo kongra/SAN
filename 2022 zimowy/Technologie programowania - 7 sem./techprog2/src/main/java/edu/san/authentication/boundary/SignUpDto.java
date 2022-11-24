@@ -5,6 +5,8 @@ import javax.validation.constraints.Email;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
 
+import edu.san.authentication.boundary.validation.FirstName;
+import edu.san.authentication.boundary.validation.LastName;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -18,12 +20,10 @@ public class SignUpDto { // Data-Transfer-Object
   @NotNull
   private String email;
 
-  @NotNull
-  @NotBlank
+  @FirstName
   private String firstName;
 
-  @NotNull
-  @NotBlank
+  @LastName
   private String lastName;
 
   @NotNull

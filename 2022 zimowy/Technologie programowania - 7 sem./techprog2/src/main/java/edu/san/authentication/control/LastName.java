@@ -13,7 +13,7 @@ public final class LastName extends Newtype<String> {
   }
 
   public static boolean isValid(String s) {
-    return PATTERN.matcher(s).matches();
+    return null != s && PATTERN.matcher(s).matches();
   }
 
   private LastName(String value) {
