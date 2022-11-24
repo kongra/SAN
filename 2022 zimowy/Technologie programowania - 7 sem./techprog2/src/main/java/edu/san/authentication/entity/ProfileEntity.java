@@ -1,3 +1,4 @@
+// © 2022 Konrad Grzanek <kongra@gmail.com>
 package edu.san.authentication.entity;
 
 import java.util.Objects;

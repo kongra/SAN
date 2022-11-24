@@ -1,3 +1,4 @@
+// © 2022 Konrad Grzanek <kongra@gmail.com>
 package edu.san.authentication.boundary;
 
 import java.util.Objects;
@@ -7,10 +8,7 @@ import javax.enterprise.context.ApplicationScoped;
 import edu.san.authentication.control.AbstractAuthenticationFacade;
 import edu.san.authentication.control.ProfileRepository;
 import edu.san.transactions.control.Transactor;
-import telsos.architecture.hexagonal.annotations.Adapter;
-import telsos.architecture.hexagonal.annotations.AdapterType;
 
-@Adapter(AdapterType.PRIMARY)
 @ApplicationScoped
 class AuthenticationFacadeImpl extends AbstractAuthenticationFacade {
 

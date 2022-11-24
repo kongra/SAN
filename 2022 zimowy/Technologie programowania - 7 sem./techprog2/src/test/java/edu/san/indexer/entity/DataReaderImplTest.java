@@ -1,3 +1,4 @@
+// © 2022 Konrad Grzanek <kongra@gmail.com>
 package edu.san.indexer.entity;
 
 import static org.assertj.core.api.Assertions.assertThat;

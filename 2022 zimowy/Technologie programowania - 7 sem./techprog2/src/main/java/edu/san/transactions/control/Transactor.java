@@ -1,3 +1,4 @@
+// © 2022 Konrad Grzanek <kongra@gmail.com>
 package edu.san.transactions.control;
 
 import java.util.function.Supplier;
