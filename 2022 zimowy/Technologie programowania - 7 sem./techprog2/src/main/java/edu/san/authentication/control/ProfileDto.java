@@ -3,31 +3,51 @@ package edu.san.authentication.control;
 import java.util.Objects;
 import java.util.UUID;
 
+import lombok.AllArgsConstructor;
 import lombok.Data;
+import lombok.NoArgsConstructor;
+import telsos.string.Email;
+import telsos.string.NonBlank;
 
 @Data
+@NoArgsConstructor
+@AllArgsConstructor
 public final class ProfileDto {
 
-  private final UUID uuid;
+  private UUID uuid;
 
-  private final short version;
+  private short version;
 
-  private final String email;
+  private Email email;
 
-  private final String firstName;
+  private NonBlank firstName;
 
-  private final String lastName;
+  private NonBlank lastName;
 
-  private final ProfileKind profileKind;
+  private ProfileKind kind;
 
-  public ProfileDto(UUID uuid, short version, String email, String firstName,
-      String lastName, ProfileKind profileKind) {
-    this.uuid = Objects.requireNonNull(uuid);
-    this.version = version;
-    this.email = Objects.requireNonNull(email);
-    this.firstName = Objects.requireNonNull(firstName);
-    this.lastName = Objects.requireNonNull(lastName);
-    this.profileKind = Objects.requireNonNull(profileKind);
+  public UUID getUuid() {
+    return Objects.requireNonNull(uuid);
+  }
+
+  public short getVersion() {
+    return version;
+  }
+
+  public Email getEmail() {
+    return Objects.requireNonNull(email);
+  }
+
+  public NonBlank getFirstName() {
+    return Objects.requireNonNull(firstName);
+  }
+
+  public NonBlank getLastName() {
+    return Objects.requireNonNull(lastName);
+  }
+
+  public ProfileKind getProfileKind() {
+    return Objects.requireNonNull(kind);
   }
 
 }

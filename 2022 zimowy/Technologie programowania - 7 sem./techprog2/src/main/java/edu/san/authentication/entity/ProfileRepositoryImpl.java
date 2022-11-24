@@ -74,9 +74,9 @@ class ProfileRepositoryImpl
     return new ProfileDto(
         profileEntity.uuid,
         profileEntity.version,
-        profileEntity.email,
-        profileEntity.firstName,
-        profileEntity.lastName,
-        profileEntity.profileKind);
+        Email.of(profileEntity.email).orElseThrow(),
+        NonBlank.of(profileEntity.firstName).orElseThrow(),
+        NonBlank.of(profileEntity.lastName).orElseThrow(),
+        profileEntity.kind);
   }
 }

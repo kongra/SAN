@@ -58,18 +58,18 @@ class ProfileEntity {
   @NotNull
   @Enumerated(EnumType.ORDINAL)
   @Column(nullable = false, columnDefinition = "int2")
-  ProfileKind profileKind;
+  ProfileKind kind;
 
-  public ProfileEntity(
+  ProfileEntity(
       String email,
       String firstName,
       String lastName,
-      ProfileKind profileKind) {
+      ProfileKind kind) {
 
     this.email = email;
     this.firstName = firstName;
     this.lastName = lastName;
-    this.profileKind = profileKind;
+    this.kind = kind;
   }
 
   @Override
@@ -86,7 +86,7 @@ class ProfileEntity {
     return false;
   }
 
-  public void setUuid(UUID uuid) {
+  void setUuid(UUID uuid) {
     this.uuid = Objects.requireNonNull(uuid);
   }
 
