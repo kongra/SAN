@@ -28,8 +28,8 @@ public class SignUpDto { // Data-Transfer-Object
   @NotNull
   private String lastName;
 
-  @NotNull
   @NotBlank
+  @NotNull
   private String profileKind;
 
 }
