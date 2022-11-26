@@ -2,7 +2,7 @@
 * Przetwarzanie tekstu, indeksowanie, wyszukiwanie informacji, itd.
 * Projekt zaliczeniowy może być powiązany z funkcjonalnością ORM
 
-* Moduły systemu powinny mieć klarownie zdefiniowane fasady (Must-have)
+* Moduły systemu powinny mieć klarownie zdefiniowane fasady (Should-have)
 * Logika biznesowa jest racjonalnie pokryta testami jednostkowymi (Should-have)
    W praktyce oznacza to pokrycie testami fasady danego modułu (o ile fasada jest określona).
 * Funkcjonalność systemu pokryta jest testami integracyjnymi (Should-have)
