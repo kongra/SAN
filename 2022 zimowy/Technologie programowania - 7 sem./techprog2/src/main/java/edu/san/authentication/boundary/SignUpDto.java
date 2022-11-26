@@ -14,7 +14,7 @@ import lombok.NoArgsConstructor;
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
-public class SignUpDto { // Data-Transfer-Object
+public class SignUpDto {
 
   @Email
   @NotNull
