@@ -8,7 +8,6 @@ import lombok.extern.slf4j.Slf4j;
 import telsos.architecture.hexagonal.annotations.Port;
 import telsos.architecture.hexagonal.annotations.PortType;
 import telsos.string.Email;
-import telsos.string.NonBlank;
 
 @Port(PortType.INPUT)
 @Slf4j
@@ -20,8 +19,8 @@ public abstract class AbstractAuthenticationFacade {
 
   public Optional<ProfileId> signUp(
       Email email,
-      NonBlank firstName,
-      NonBlank lastName,
+      FirstName firstName,
+      LastName lastName,
       ProfileKind profileKind) {
 
     log.info("isActiveTransaction " + transactor().isActiveTransaction());

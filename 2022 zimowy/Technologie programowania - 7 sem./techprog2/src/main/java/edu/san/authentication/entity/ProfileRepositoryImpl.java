@@ -16,7 +16,6 @@ import io.quarkus.hibernate.orm.panache.PanacheRepository;
 import telsos.architecture.hexagonal.annotations.Adapter;
 import telsos.architecture.hexagonal.annotations.AdapterType;
 import telsos.string.Email;
-import telsos.string.NonBlank;
 
 @Adapter(AdapterType.SECONDARY)
 @ApplicationScoped
@@ -27,8 +26,8 @@ class ProfileRepositoryImpl
   @Transactional
   public ProfileId createProfile(
       Email email,
-      NonBlank firstName,
-      NonBlank lastName,
+      FirstName firstName,
+      LastName lastName,
       ProfileKind profileKind) {
 
     final var profileEntity = new ProfileEntity(

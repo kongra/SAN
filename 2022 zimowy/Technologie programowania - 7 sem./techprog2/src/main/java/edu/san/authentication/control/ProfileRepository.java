@@ -6,15 +6,14 @@ import java.util.Optional;
 import telsos.architecture.hexagonal.annotations.Port;
 import telsos.architecture.hexagonal.annotations.PortType;
 import telsos.string.Email;
-import telsos.string.NonBlank;
 
 @Port(PortType.OUTPUT)
 public interface ProfileRepository {
 
   ProfileId createProfile(
       Email email,
-      NonBlank firstName,
-      NonBlank lastName,
+      FirstName firstName,
+      LastName lastName,
       ProfileKind profileKind);
 
   Optional<ProfileId> findProfileIdByEmail(Email email);

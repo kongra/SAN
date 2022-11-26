@@ -16,6 +16,8 @@ import javax.ws.rs.core.Response;
 import javax.ws.rs.core.Response.Status;
 
 import edu.san.authentication.control.AbstractAuthenticationFacade;
+import edu.san.authentication.control.FirstName;
+import edu.san.authentication.control.LastName;
 import edu.san.authentication.control.ProfileId;
 import edu.san.authentication.control.ProfileKind;
 import edu.san.transactions.control.Transactor;
@@ -60,8 +62,8 @@ class AuthenticationResource {
   @Path("sign-up")
   public Response signUp(@Valid SignUpDto signUpDto) {
     final var email = Email.of(signUpDto.getEmail()).orElseThrow();
-    final var firstName = NonBlank.of(signUpDto.getFirstName()).orElseThrow();
-    final var lastName = NonBlank.of(signUpDto.getLastName()).orElseThrow();
+    final var firstName = FirstName.of(signUpDto.getFirstName()).orElseThrow();
+    final var lastName = LastName.of(signUpDto.getLastName()).orElseThrow();
 
     final var profileKindString = NonBlank.of(
         signUpDto.getProfileKind()).orElseThrow();
