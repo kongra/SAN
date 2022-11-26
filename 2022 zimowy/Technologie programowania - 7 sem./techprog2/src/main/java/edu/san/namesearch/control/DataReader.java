@@ -1,5 +1,5 @@
 // © 2022 Konrad Grzanek <kongra@gmail.com>
-package edu.san.indexer.control;
+package edu.san.namesearch.control;
 
 import java.io.IOException;
 import java.nio.file.Path;
@@ -12,6 +12,6 @@ import telsos.architecture.hexagonal.annotations.PortType;
 @Port(PortType.OUTPUT)
 public interface DataReader {
 
-  ImmutableList<FirstName> readFirstNames(Path file) throws IOException;
+  ImmutableList<FirstNameData> readFirstNames(Path file) throws IOException;
 
 }

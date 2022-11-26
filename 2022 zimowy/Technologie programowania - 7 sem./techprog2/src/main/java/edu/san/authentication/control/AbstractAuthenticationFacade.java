@@ -1,6 +1,7 @@
 // © 2022 Konrad Grzanek <kongra@gmail.com>
 package edu.san.authentication.control;
 
+import java.util.Objects;
 import java.util.Optional;
 
 import edu.san.transactions.control.Transactor;
@@ -22,6 +23,11 @@ public abstract class AbstractAuthenticationFacade {
       FirstName firstName,
       LastName lastName,
       ProfileKind profileKind) {
+    
+    Objects.requireNonNull(email);
+    Objects.requireNonNull(firstName);
+    Objects.requireNonNull(lastName);
+    Objects.requireNonNull(profileKind);
 
     log.info("isActiveTransaction " + transactor().isActiveTransaction());
 

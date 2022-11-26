@@ -1,5 +1,5 @@
 // © 2022 Konrad Grzanek <kongra@gmail.com>
-package edu.san.indexer.entity;
+package edu.san.namesearch.boundary;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
@@ -9,11 +9,12 @@ import java.nio.file.Paths;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
+import edu.san.namesearch.control.DataReader;
 import telsos.Stopwatch;
 
 class DataReaderImplTest {
 
-  DataReaderImpl dataReader;
+  DataReader dataReader;
 
   @BeforeEach
   void setUp() {

@@ -1,13 +1,13 @@
 // © 2022 Konrad Grzanek <kongra@gmail.com>
-package edu.san.indexer.control;
+package edu.san.namesearch.control;
 
 import java.util.Objects;
 
+import edu.san.authentication.control.FirstName;
 import telsos.math.newtype.NatLong;
-import telsos.string.NonBlank;
 
-public record FirstName(NonBlank firstName, NatLong count, Gender gender) {
-  public FirstName {
+public record FirstNameData(FirstName firstName, NatLong count, Gender gender) {
+  public FirstNameData {
     Objects.requireNonNull(firstName);
     Objects.requireNonNull(count);
     Objects.requireNonNull(gender);

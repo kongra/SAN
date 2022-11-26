@@ -1,15 +1,12 @@
 // © 2022 Konrad Grzanek <kongra@gmail.com>
-package edu.san.indexer.control;
-
-import javax.enterprise.context.ApplicationScoped;
+package edu.san.namesearch.control;
 
 import telsos.architecture.hexagonal.annotations.Port;
 import telsos.architecture.hexagonal.annotations.PortType;
 
 @Port(PortType.INPUT)
-@ApplicationScoped
-public class IndexerFacade {
+public abstract class AbstractNamesearchFacade {
 
-  // To be filled later
+  protected abstract DataReader dataReader();
 
 }
