@@ -7,6 +7,7 @@ import java.nio.file.Path;
 import org.apache.commons.lang3.StringUtils;
 import org.eclipse.collections.api.list.ImmutableList;
 
+import edu.san.Numbers;
 import edu.san.authentication.control.FirstName;
 import telsos.architecture.hexagonal.annotations.Port;
 import telsos.architecture.hexagonal.annotations.PortType;
@@ -37,7 +38,9 @@ public interface DataReader {
           .orElseThrow(
               () -> new IOException("Illegal FirstName " + nameString3));
 
-      final var count = NatLong.of(Long.parseLong(row[1]))
+      final var count = NatLong.of(
+          Numbers.parseLong(row[1], 10)
+              .rightOrElseThrow(IOException::new))
           .orElseThrow(IOException::new);
 
       final var gender = "M".equals(row[2]) ? Gender.MALE : Gender.FEMALE;
