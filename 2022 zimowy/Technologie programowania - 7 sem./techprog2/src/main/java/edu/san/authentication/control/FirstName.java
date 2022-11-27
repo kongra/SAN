@@ -26,7 +26,7 @@ public final class FirstName extends Newtype<String> {
   }
 
   private static final Pattern PATTERN = Pattern
-      .compile("^\\p{IsUppercase}\\p{IsLowercase}{1,63}$",
+      .compile("^\\p{IsUppercase}[\\p{IsLowercase}\\s']{1,62}\\p{IsLowercase}$",
           Pattern.UNICODE_CHARACTER_CLASS);
 
 }

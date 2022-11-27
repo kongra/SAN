@@ -23,7 +23,7 @@ public abstract class AbstractAuthenticationFacade {
       FirstName firstName,
       LastName lastName,
       ProfileKind profileKind) {
-    
+
     Objects.requireNonNull(email);
     Objects.requireNonNull(firstName);
     Objects.requireNonNull(lastName);
