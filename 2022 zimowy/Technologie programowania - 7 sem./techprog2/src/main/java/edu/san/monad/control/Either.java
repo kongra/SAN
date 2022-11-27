@@ -30,7 +30,7 @@ public sealed interface Either<L, R> {
 
   default <X extends Throwable> R rightOrElseThrow(
       Supplier<? extends X> exceptionSupplier) throws X {
-
+    
     if (this instanceof Right<L, R> right)
       return right.right;
 
