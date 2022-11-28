@@ -1,5 +1,5 @@
 // © 2022 Konrad Grzanek <kongra@gmail.com>
-package edu.san.transactions.entity;
+package edu.san.transactions.boundary;
 
 import java.util.function.Supplier;
 
