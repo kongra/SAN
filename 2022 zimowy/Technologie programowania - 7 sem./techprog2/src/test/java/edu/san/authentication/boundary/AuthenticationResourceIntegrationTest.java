@@ -4,11 +4,13 @@ package edu.san.authentication.boundary;
 import static org.assertj.core.api.Assertions.assertThat;
 
 import java.net.URI;
+import java.util.Objects;
 
 import javax.inject.Inject;
 import javax.json.Json;
 import javax.ws.rs.core.Response.Status;
 
+import org.eclipse.microprofile.config.inject.ConfigProperty;
 import org.eclipse.microprofile.rest.client.RestClientBuilder;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
@@ -26,9 +28,14 @@ class AuthenticationResourceIntegrationTest {
   @Inject
   ProfileRepository profileRepository;
 
+  @ConfigProperty(name = "quarkus.http.port")
+  Long port;
+
   @BeforeEach
   void setUp() {
-    final var uri = URI.create("http://localhost:8080");
+    Objects.requireNonNull(port);
+
+    final var uri = URI.create("http://localhost:" + port);
     authenticationResourceClient = RestClientBuilder
         .newBuilder()
         .baseUri(uri)
