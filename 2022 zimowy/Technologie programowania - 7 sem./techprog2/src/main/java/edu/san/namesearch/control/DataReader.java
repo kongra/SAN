@@ -37,7 +37,7 @@ public interface DataReader {
       final var firstName = FirstName.of(nameString3)
           .orElseThrow(
               () -> new IOException("Illegal FirstName " + nameString3));
-      
+
       final var count = NatLong.of(
           Numbers.parseLong(row[1], 10)
               .rightOrElseThrow(IOException::new))

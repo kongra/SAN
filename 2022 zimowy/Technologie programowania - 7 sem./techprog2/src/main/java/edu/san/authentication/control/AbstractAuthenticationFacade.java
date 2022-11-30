@@ -31,15 +31,15 @@ public abstract class AbstractAuthenticationFacade {
 
     log.info("isActiveTransaction " + transactor().isActiveTransaction());
 
-    final var optionalProfileId = profileRepository()
+    final var existingProfileId = profileRepository()
         .findProfileIdByEmail(email);
 
-    if (optionalProfileId.isEmpty()) {
-      final var profileId = profileRepository()
-          .createProfile(email, firstName, lastName, profileKind);
-      return Optional.of(profileId);
-    }
-    return Optional.empty();
+    if (existingProfileId.isPresent())
+      return Optional.empty();
+
+    final var newProfileId = profileRepository()
+        .createProfile(email, firstName, lastName, profileKind);
+    return Optional.of(newProfileId);
   }
 
   public Optional<ProfileDto> findProfileByEmail(Email email) {

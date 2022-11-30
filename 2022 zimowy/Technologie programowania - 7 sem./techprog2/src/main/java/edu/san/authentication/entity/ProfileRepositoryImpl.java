@@ -30,14 +30,14 @@ class ProfileRepositoryImpl
       LastName lastName,
       ProfileKind profileKind) {
 
-    final var profileEntity = new ProfileEntity(
+    final var newProfileEntity = new ProfileEntity(
         email.value(),
         firstName.value(),
         lastName.value(),
         profileKind);
 
-    persist(profileEntity);
-    return new ProfileId(profileEntity.uuid);
+    persist(newProfileEntity);
+    return new ProfileId(newProfileEntity.uuid);
   }
 
   @Override
