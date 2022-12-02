@@ -4,7 +4,7 @@ package edu.san.monad.control;
 import java.util.Objects;
 import java.util.function.Supplier;
 
-public interface Either<L, R> {
+public sealed interface Either<L, R> {
   
   static <L, R> Either<L, R> left(L value) {
     return new Left<>(value);
