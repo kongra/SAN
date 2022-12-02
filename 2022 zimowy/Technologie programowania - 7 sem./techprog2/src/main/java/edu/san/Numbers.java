@@ -10,15 +10,16 @@ public final class Numbers {
         (radix == 10 ? "" : " under radix " + radix);
   }
 
+  @SuppressWarnings("java:S3776")
   public static Either<String, Long> parseLong(String s, int radix) {
     if (s == null)
-      return new Either.Left<>("Cannot parse null string");
+      return Either.left("Cannot parse null string");
 
     if (radix < Character.MIN_RADIX)
-      return new Either.Left<>("radix " + radix +
+      return Either.left("radix " + radix +
           " less than Character.MIN_RADIX");
     if (radix > Character.MAX_RADIX)
-      return new Either.Left<>("radix " + radix +
+      return Either.left("radix " + radix +
           " greater than Character.MAX_RADIX");
 
     var negative = false;
@@ -33,10 +34,10 @@ public final class Numbers {
           negative = true;
           limit = Long.MIN_VALUE;
         } else if (firstChar != '+')
-          return new Either.Left<>(forInputString(s, radix));
+          return Either.left(forInputString(s, radix));
 
         if (len == 1)
-          return new Either.Left<>(forInputString(s, radix));
+          return Either.left(forInputString(s, radix));
         i++;
       }
       final var multmin = limit / radix;
@@ -47,15 +48,15 @@ public final class Numbers {
         i++;
 
         if (digit < 0 || result < multmin)
-          return new Either.Left<>(forInputString(s, radix));
+          return Either.left(forInputString(s, radix));
         result *= radix;
         if (result < limit + digit)
-          return new Either.Left<>(forInputString(s, radix));
+          return Either.left(forInputString(s, radix));
         result -= digit;
       }
-      return new Either.Right<>(negative ? result : -result);
+      return Either.right(negative ? result : -result);
     }
-    return new Either.Left<>(forInputString(s, radix));
+    return Either.left(forInputString(s, radix));
   }
 
   private Numbers() {}
