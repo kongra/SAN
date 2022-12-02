@@ -3,7 +3,7 @@ package edu.san;
 
 import edu.san.monad.control.Either;
 
-public final class Numbers {
+public final class Longs {
 
   private static String forInputString(String s, int radix) {
     return "For input string: \"" + s + "\"" +
@@ -59,6 +59,6 @@ public final class Numbers {
     return Either.left(forInputString(s, radix));
   }
 
-  private Numbers() {}
+  private Longs() {}
 
 }
