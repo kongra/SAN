@@ -14,7 +14,7 @@ import lombok.NoArgsConstructor;
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
-public class SignUpDto {
+public class B2CSignUpDto {
 
   @Email
   @NotNull
@@ -31,5 +31,9 @@ public class SignUpDto {
   @NotBlank
   @NotNull
   private String profileKind;
+
+  @NotBlank
+  @NotNull
+  private String address;
 
 }

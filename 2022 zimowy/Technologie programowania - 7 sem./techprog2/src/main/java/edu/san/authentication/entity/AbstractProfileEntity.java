@@ -11,6 +11,8 @@ import javax.persistence.Enumerated;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.Inheritance;
+import javax.persistence.InheritanceType;
 import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 import javax.persistence.Version;
@@ -25,9 +27,12 @@ import lombok.NoArgsConstructor;
 
 @Entity
 @Table(name = "profile")
+@Inheritance(strategy = InheritanceType.JOINED)
+// @DiscriminatorColumn(name = "profile_DTYPE", discriminatorType = DiscriminatorType.INTEGER)
 @NoArgsConstructor
 @AllArgsConstructor
-class ProfileEntity {
+@SuppressWarnings("java:S1694")
+abstract class AbstractProfileEntity {
 
   @Id
   @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = PROFILE_SEQUENCE)
@@ -62,7 +67,7 @@ class ProfileEntity {
   @Column(nullable = false, columnDefinition = "int2")
   ProfileKind kind;
 
-  ProfileEntity(
+  AbstractProfileEntity(
       String email,
       String firstName,
       String lastName,
@@ -83,7 +88,7 @@ class ProfileEntity {
   public final boolean equals(Object obj) {
     if (this == obj)
       return true;
-    if (obj instanceof final ProfileEntity other)
+    if (obj instanceof final AbstractProfileEntity other)
       return uuid.equals(other.uuid);
     return false;
   }

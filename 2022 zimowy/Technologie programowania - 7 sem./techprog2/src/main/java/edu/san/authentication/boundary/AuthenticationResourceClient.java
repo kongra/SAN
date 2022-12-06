@@ -19,7 +19,11 @@ public interface AuthenticationResourceClient {
   Response findProfileByEmail(@PathParam("email") String email);
 
   @POST
-  @Path("sign-up")
-  Response signUp(JsonObject signUpData);
+  @Path("sign-up-b2c")
+  Response signUpB2C(JsonObject b2CSignUpData);
+  
+  @POST
+  @Path("sign-up-b2b")
+  Response signUpB2B(JsonObject b2BSignUpData);
 
 }

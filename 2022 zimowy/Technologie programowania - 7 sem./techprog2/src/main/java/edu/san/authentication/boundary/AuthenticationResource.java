@@ -59,8 +59,8 @@ class AuthenticationResource {
   }
 
   @POST
-  @Path("sign-up")
-  public Response signUp(@Valid SignUpDto signUpDto) {
+  @Path("sign-up-b2c")
+  public Response signUp(@Valid B2CSignUpDto signUpDto) {
     final var email = Email.of(signUpDto.getEmail()).orElseThrow();
     final var firstName = FirstName.of(signUpDto.getFirstName()).orElseThrow();
     final var lastName = LastName.of(signUpDto.getLastName()).orElseThrow();
@@ -70,9 +70,34 @@ class AuthenticationResource {
     final var profileKind = ProfileKind
         .valueOf(profileKindString.value().toUpperCase());
 
+    final var address = NonBlank.of(signUpDto.getAddress()).orElseThrow();
+
     return transactor.inTransaction(() -> {
-      final var profileId = autenticationFacade.signUp(email, firstName,
-          lastName, profileKind);
+      final var profileId = autenticationFacade.signUpB2C(email, firstName,
+          lastName, profileKind, address);
+      return profileId
+          .map(AuthenticationResource::signUpSuccess)
+          .orElseGet(AuthenticationResource::signUpFailure);
+    });
+  }
+  
+  @POST
+  @Path("sign-up-b2b")
+  public Response signUpB2B(@Valid B2BSignUpDto signUpDto) {
+    final var email = Email.of(signUpDto.getEmail()).orElseThrow();
+    final var firstName = FirstName.of(signUpDto.getFirstName()).orElseThrow();
+    final var lastName = LastName.of(signUpDto.getLastName()).orElseThrow();
+
+    final var profileKindString = NonBlank.of(
+        signUpDto.getProfileKind()).orElseThrow();
+    final var profileKind = ProfileKind
+        .valueOf(profileKindString.value().toUpperCase());
+
+    final var regon = NonBlank.of(signUpDto.getRegon()).orElseThrow();
+
+    return transactor.inTransaction(() -> {
+      final var profileId = autenticationFacade.signUpB2B(email, firstName,
+          lastName, profileKind, regon);
       return profileId
           .map(AuthenticationResource::signUpSuccess)
           .orElseGet(AuthenticationResource::signUpFailure);

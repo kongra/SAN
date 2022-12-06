@@ -5,11 +5,11 @@ import java.util.Objects;
 import java.util.function.Supplier;
 
 public sealed interface Either<L, R> {
-  
+
   static <L, R> Either<L, R> left(L value) {
     return new Left<>(value);
   }
-  
+
   static <L, R> Either<L, R> right(R value) {
     return new Right<>(value);
   }

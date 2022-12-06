@@ -16,28 +16,51 @@ import io.quarkus.hibernate.orm.panache.PanacheRepository;
 import telsos.architecture.hexagonal.annotations.Adapter;
 import telsos.architecture.hexagonal.annotations.AdapterType;
 import telsos.string.Email;
+import telsos.string.NonBlank;
 
 @Adapter(AdapterType.SECONDARY)
 @ApplicationScoped
 class ProfileRepositoryImpl
-    implements PanacheRepository<ProfileEntity>, ProfileRepository {
+    implements PanacheRepository<AbstractProfileEntity>, ProfileRepository {
 
   @Override
   @Transactional
-  public ProfileId createProfile(
+  public ProfileId createB2C(
       Email email,
       FirstName firstName,
       LastName lastName,
-      ProfileKind profileKind) {
+      ProfileKind profileKind,
+      NonBlank address) {
 
-    final var newProfileEntity = new ProfileEntity(
+    final var newB2CEntity = new B2C(
         email.value(),
         firstName.value(),
         lastName.value(),
-        profileKind);
+        profileKind,
+        address.value());
 
-    persist(newProfileEntity);
-    return new ProfileId(newProfileEntity.uuid);
+    persist(newB2CEntity);
+    return new ProfileId(newB2CEntity.uuid);
+  }
+  
+  @Override
+  @Transactional
+  public ProfileId createB2B(
+      Email email,
+      FirstName firstName,
+      LastName lastName,
+      ProfileKind profileKind,
+      NonBlank regon) {
+
+    final var newB2BEntity = new B2B(
+        email.value(),
+        firstName.value(),
+        lastName.value(),
+        profileKind,
+        regon.value());
+
+    persist(newB2BEntity);
+    return new ProfileId(newB2BEntity.uuid);
   }
 
   @Override
@@ -55,7 +78,7 @@ class ProfileRepositoryImpl
   }
 
   @Transactional
-  Optional<ProfileEntity> findProfileEntityByEmail(Email email) {
+  Optional<AbstractProfileEntity> findProfileEntityByEmail(Email email) {
     return find("email = ?1", email.value()).firstResultOptional();
   }
 
@@ -72,7 +95,7 @@ class ProfileRepositoryImpl
   }
 
   private static ProfileDto profileEntity2ProfileDto(
-      ProfileEntity profileEntity) {
+      AbstractProfileEntity profileEntity) {
     return new ProfileDto(
         profileEntity.uuid,
         profileEntity.version,

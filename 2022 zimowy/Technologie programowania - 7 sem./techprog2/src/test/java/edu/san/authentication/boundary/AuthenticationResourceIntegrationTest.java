@@ -49,15 +49,34 @@ class AuthenticationResourceIntegrationTest {
   }
 
   @Test
-  void testSignUp() {
+  void testSignUpB2C() {
     final var signUpData = Json.createObjectBuilder()
         .add("email", "kongra@gmail.com")
         .add("firstName", "Konrad")
         .add("lastName", "Grzanek")
         .add("profileKind", "standard")
+        .add("address", "Gdańsk, Rogaczewskiego 5")
         .build();
 
-    try (final var response = authenticationResourceClient.signUp(signUpData)) {
+    try (final var response = authenticationResourceClient
+        .signUpB2C(signUpData)) {
+      assertThat(response.getStatus())
+          .isEqualTo(Status.CREATED.getStatusCode());
+    }
+  }
+  
+  @Test
+  void testSignUpB2B() {
+    final var signUpData = Json.createObjectBuilder()
+        .add("email", "kongra@gmail.com")
+        .add("firstName", "Konrad")
+        .add("lastName", "Grzanek")
+        .add("profileKind", "standard")
+        .add("regon", "12345678512347")
+        .build();
+
+    try (final var response = authenticationResourceClient
+        .signUpB2B(signUpData)) {
       assertThat(response.getStatus())
           .isEqualTo(Status.CREATED.getStatusCode());
     }
@@ -70,8 +89,10 @@ class AuthenticationResourceIntegrationTest {
         .add("firstName", "Konrad")
         .add("lastName", "Grzanek")
         .add("profileKind", "standard")
+        .add("address", "Gdańsk, Rogaczewskiego 5")
         .build();
-    try (final var response = authenticationResourceClient.signUp(signUpData)) {
+    try (final var response = authenticationResourceClient
+        .signUpB2C(signUpData)) {
       assertThat(response.getStatus())
           .isEqualTo(Status.CREATED.getStatusCode());
     }
