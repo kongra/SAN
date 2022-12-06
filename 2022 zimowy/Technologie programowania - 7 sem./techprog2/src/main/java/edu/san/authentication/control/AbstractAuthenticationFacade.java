@@ -44,7 +44,7 @@ public abstract class AbstractAuthenticationFacade {
         .createB2C(email, firstName, lastName, profileKind, address);
     return Optional.of(newProfileId);
   }
-  
+
   public Optional<ProfileId> signUpB2B(
       Email email,
       FirstName firstName,

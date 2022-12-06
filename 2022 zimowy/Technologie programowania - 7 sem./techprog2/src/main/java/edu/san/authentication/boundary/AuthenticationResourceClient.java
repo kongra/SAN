@@ -21,7 +21,7 @@ public interface AuthenticationResourceClient {
   @POST
   @Path("sign-up-b2c")
   Response signUpB2C(JsonObject b2CSignUpData);
-  
+
   @POST
   @Path("sign-up-b2b")
   Response signUpB2B(JsonObject b2BSignUpData);

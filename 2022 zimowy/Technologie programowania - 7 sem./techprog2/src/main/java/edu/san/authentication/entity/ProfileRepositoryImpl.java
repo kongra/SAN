@@ -42,7 +42,7 @@ class ProfileRepositoryImpl
     persist(newB2CEntity);
     return new ProfileId(newB2CEntity.uuid);
   }
-  
+
   @Override
   @Transactional
   public ProfileId createB2B(

@@ -17,7 +17,7 @@ public class B2B extends AbstractProfileEntity {
   @NotBlank
   @Column(length = 64)
   String regon;
-  
+
   B2B(String email,
       String firstName,
       String lastName,
@@ -26,5 +26,5 @@ public class B2B extends AbstractProfileEntity {
     super(email, firstName, lastName, kind);
     this.regon = regon;
   }
-  
+
 }

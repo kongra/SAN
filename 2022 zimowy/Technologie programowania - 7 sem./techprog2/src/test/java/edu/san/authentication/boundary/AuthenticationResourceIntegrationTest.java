@@ -64,7 +64,7 @@ class AuthenticationResourceIntegrationTest {
           .isEqualTo(Status.CREATED.getStatusCode());
     }
   }
-  
+
   @Test
   void testSignUpB2B() {
     final var signUpData = Json.createObjectBuilder()

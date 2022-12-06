@@ -80,7 +80,7 @@ class AuthenticationResource {
           .orElseGet(AuthenticationResource::signUpFailure);
     });
   }
-  
+
   @POST
   @Path("sign-up-b2b")
   public Response signUpB2B(@Valid B2BSignUpDto signUpDto) {
