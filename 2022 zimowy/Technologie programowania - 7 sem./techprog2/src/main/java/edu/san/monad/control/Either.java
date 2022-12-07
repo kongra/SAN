@@ -14,13 +14,13 @@ public sealed interface Either<L, R> {
     return new Right<>(value);
   }
 
-  record Left<L, R> (L value) implements Either<L, R> {
+  record Left<L, R>(L value) implements Either<L, R> {
     public Left {
       Objects.requireNonNull(value);
     }
   }
 
-  record Right<L, R> (R value) implements Either<L, R> {
+  record Right<L, R>(R value) implements Either<L, R> {
     public Right {
       Objects.requireNonNull(value);
     }
@@ -28,11 +28,10 @@ public sealed interface Either<L, R> {
 
   default <X extends Throwable> R rightOrElseThrow(
       Supplier<? extends X> exceptionSupplier) throws X {
-
-    if (this instanceof final Right<L, R> right)
-      return right.value;
-
-    throw exceptionSupplier.get();
+    return switch (this) {
+      case Right<L, R> right -> right.value;
+      default -> throw exceptionSupplier.get();
+    };
   }
 
 }

@@ -46,7 +46,8 @@ class AuthenticationResource {
   @GET
   @Path("profile-by-email/{email}")
   public Response findProfileByEmail(@PathParam("email") String email) {
-    final var validEmail = Email.of(email).orElseThrow(BadRequestException::new);
+    final var validEmail = Email.of(email)
+        .orElseThrow(BadRequestException::new);
 
     return transactor.inTransaction(() -> {
       final var optionalProfileDto = autenticationFacade

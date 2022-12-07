@@ -65,7 +65,6 @@ abstract class AbstractProfileEntity {
       @Email @NotNull String email,
       @NotNull ProfileKind kind,
       @NotNull @NotBlank String address) {
-    super();
     this.email = email;
     this.kind = kind;
     this.address = address;
