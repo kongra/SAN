@@ -17,10 +17,9 @@ import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 import javax.persistence.Version;
 import javax.validation.constraints.Email;
+import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
 
-import edu.san.authentication.boundary.validation.FirstName;
-import edu.san.authentication.boundary.validation.LastName;
 import edu.san.authentication.control.ProfileKind;
 import lombok.AllArgsConstructor;
 import lombok.NoArgsConstructor;
@@ -52,31 +51,24 @@ abstract class AbstractProfileEntity {
   @Column(unique = true, nullable = false, length = 128)
   String email;
 
-  @FirstName
-  @NotNull
-  @Column(nullable = false, length = 64)
-  String firstName;
-
-  @LastName
-  @NotNull
-  @Column(nullable = false, length = 128)
-  String lastName;
-
   @NotNull
   @Enumerated(EnumType.ORDINAL)
   @Column(nullable = false, columnDefinition = "int2")
   ProfileKind kind;
 
-  AbstractProfileEntity(
-      String email,
-      String firstName,
-      String lastName,
-      ProfileKind kind) {
+  @NotNull
+  @NotBlank
+  @Column(length = 64)
+  String address;
 
+  AbstractProfileEntity(
+      @Email @NotNull String email,
+      @NotNull ProfileKind kind,
+      @NotNull @NotBlank String address) {
+    super();
     this.email = email;
-    this.firstName = firstName;
-    this.lastName = lastName;
     this.kind = kind;
+    this.address = address;
   }
 
   @Override

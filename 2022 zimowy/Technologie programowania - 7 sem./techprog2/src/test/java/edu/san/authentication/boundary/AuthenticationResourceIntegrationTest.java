@@ -17,6 +17,7 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
 import edu.san.authentication.control.ProfileRepository;
+import edu.san.transactions.control.Transactor;
 import io.quarkus.test.junit.QuarkusTest;
 import telsos.string.Email;
 
@@ -27,6 +28,9 @@ class AuthenticationResourceIntegrationTest {
 
   @Inject
   ProfileRepository profileRepository;
+
+  @Inject
+  Transactor transactor;
 
   @ConfigProperty(name = "quarkus.http.port")
   Long port;
@@ -45,7 +49,9 @@ class AuthenticationResourceIntegrationTest {
   @AfterEach
   void tearDown() {
     final var email = Email.of("kongra@gmail.com").orElseThrow();
-    profileRepository.deleteProfileByEmail(email);
+    transactor.inTransaction(
+        () -> profileRepository.deleteProfileByEmail(email));
+
   }
 
   @Test
@@ -69,9 +75,8 @@ class AuthenticationResourceIntegrationTest {
   void testSignUpB2B() {
     final var signUpData = Json.createObjectBuilder()
         .add("email", "kongra@gmail.com")
-        .add("firstName", "Konrad")
-        .add("lastName", "Grzanek")
         .add("profileKind", "standard")
+        .add("address", "Gdańsk, Rogaczewskiego 5")
         .add("regon", "12345678512347")
         .build();
 

@@ -11,19 +11,18 @@ import lombok.NoArgsConstructor;
 
 @Entity
 @NoArgsConstructor
-public class B2B extends AbstractProfileEntity {
+public class B2BEntity extends AbstractProfileEntity {
 
   @NotNull
   @NotBlank
   @Column(length = 64)
   String regon;
 
-  B2B(String email,
-      String firstName,
-      String lastName,
+  B2BEntity(String email,
       ProfileKind kind,
+      String address,
       String regon) {
-    super(email, firstName, lastName, kind);
+    super(email, kind, address);
     this.regon = regon;
   }
 

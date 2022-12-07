@@ -6,9 +6,9 @@ import java.util.Optional;
 import javax.enterprise.context.ApplicationScoped;
 import javax.transaction.Transactional;
 
+import edu.san.authentication.control.B2CDto;
 import edu.san.authentication.control.FirstName;
 import edu.san.authentication.control.LastName;
-import edu.san.authentication.control.ProfileDto;
 import edu.san.authentication.control.ProfileId;
 import edu.san.authentication.control.ProfileKind;
 import edu.san.authentication.control.ProfileRepository;
@@ -32,7 +32,7 @@ class ProfileRepositoryImpl
       ProfileKind profileKind,
       NonBlank address) {
 
-    final var newB2CEntity = new B2C(
+    final var newB2CEntity = new B2CEntity(
         email.value(),
         firstName.value(),
         lastName.value(),
@@ -47,16 +47,14 @@ class ProfileRepositoryImpl
   @Transactional
   public ProfileId createB2B(
       Email email,
-      FirstName firstName,
-      LastName lastName,
       ProfileKind profileKind,
+      NonBlank address,
       NonBlank regon) {
 
-    final var newB2BEntity = new B2B(
+    final var newB2BEntity = new B2BEntity(
         email.value(),
-        firstName.value(),
-        lastName.value(),
         profileKind,
+        address.value(),
         regon.value());
 
     persist(newB2BEntity);
@@ -64,26 +62,26 @@ class ProfileRepositoryImpl
   }
 
   @Override
-  @Transactional
   public Optional<ProfileId> findProfileIdByEmail(Email email) {
     return findProfileEntityByEmail(email)
         .map(profileEntity -> new ProfileId(profileEntity.uuid));
   }
 
   @Override
-  @Transactional
-  public Optional<ProfileDto> findProfileDtoByEmail(Email email) {
-    return findProfileEntityByEmail(email)
-        .map(ProfileRepositoryImpl::profileEntity2ProfileDto);
+  public Optional<B2CDto> findProfileDtoByEmail(Email email) {
+    return findB2CEntityByEmail(email)
+        .map(ProfileRepositoryImpl::b2CEntity2ProfileDto);
   }
 
-  @Transactional
   Optional<AbstractProfileEntity> findProfileEntityByEmail(Email email) {
     return find("email = ?1", email.value()).firstResultOptional();
   }
 
+  Optional<B2CEntity> findB2CEntityByEmail(Email email) {
+    return find("email = ?1", email.value()).firstResultOptional();
+  }
+
   @Override
-  @Transactional
   public Optional<ProfileId> deleteProfileByEmail(Email email) {
     final var optionalProfileEntity = findProfileEntityByEmail(email);
     if (optionalProfileEntity.isEmpty())
@@ -94,14 +92,14 @@ class ProfileRepositoryImpl
     return Optional.of(new ProfileId(profileEntity.uuid));
   }
 
-  private static ProfileDto profileEntity2ProfileDto(
-      AbstractProfileEntity profileEntity) {
-    return new ProfileDto(
-        profileEntity.uuid,
-        profileEntity.version,
-        Email.of(profileEntity.email).orElseThrow(),
-        FirstName.of(profileEntity.firstName).orElseThrow(),
-        LastName.of(profileEntity.lastName).orElseThrow(),
-        profileEntity.kind);
+  private static B2CDto b2CEntity2ProfileDto(
+      B2CEntity b2CEntity) {
+    return new B2CDto(
+        b2CEntity.uuid,
+        b2CEntity.version,
+        Email.of(b2CEntity.email).orElseThrow(),
+        FirstName.of(b2CEntity.firstName).orElseThrow(),
+        LastName.of(b2CEntity.lastName).orElseThrow(),
+        b2CEntity.kind);
   }
 }

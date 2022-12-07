@@ -46,11 +46,11 @@ class AuthenticationResource {
   @GET
   @Path("profile-by-email/{email}")
   public Response findProfileByEmail(@PathParam("email") String email) {
-    final var theEmail = Email.of(email).orElseThrow(BadRequestException::new);
+    final var validEmail = Email.of(email).orElseThrow(BadRequestException::new);
 
     return transactor.inTransaction(() -> {
       final var optionalProfileDto = autenticationFacade
-          .findProfileByEmail(theEmail);
+          .findProfileByEmail(validEmail);
 
       if (optionalProfileDto.isEmpty())
         return Response.ok().build();
@@ -85,19 +85,18 @@ class AuthenticationResource {
   @Path("sign-up-b2b")
   public Response signUpB2B(@Valid B2BSignUpDto signUpDto) {
     final var email = Email.of(signUpDto.getEmail()).orElseThrow();
-    final var firstName = FirstName.of(signUpDto.getFirstName()).orElseThrow();
-    final var lastName = LastName.of(signUpDto.getLastName()).orElseThrow();
 
     final var profileKindString = NonBlank.of(
         signUpDto.getProfileKind()).orElseThrow();
     final var profileKind = ProfileKind
         .valueOf(profileKindString.value().toUpperCase());
 
+    final var address = NonBlank.of(signUpDto.getAddress()).orElseThrow();
     final var regon = NonBlank.of(signUpDto.getRegon()).orElseThrow();
 
     return transactor.inTransaction(() -> {
-      final var profileId = autenticationFacade.signUpB2B(email, firstName,
-          lastName, profileKind, regon);
+      final var profileId = autenticationFacade.signUpB2B(
+          email, profileKind, address, regon);
       return profileId
           .map(AuthenticationResource::signUpSuccess)
           .orElseGet(AuthenticationResource::signUpFailure);

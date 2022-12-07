@@ -20,14 +20,13 @@ public interface ProfileRepository {
 
   ProfileId createB2B(
       Email email,
-      FirstName firstName,
-      LastName lastName,
       ProfileKind profileKind,
+      NonBlank address,
       NonBlank regon);
 
   Optional<ProfileId> findProfileIdByEmail(Email email);
 
-  Optional<ProfileDto> findProfileDtoByEmail(Email email);
+  Optional<B2CDto> findProfileDtoByEmail(Email email);
 
   Optional<ProfileId> deleteProfileByEmail(Email email);
 

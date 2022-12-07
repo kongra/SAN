@@ -12,7 +12,7 @@ import telsos.string.Email;
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
-public final class ProfileDto {
+public final class B2CDto {
 
   private UUID uuid;
 

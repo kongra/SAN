@@ -10,13 +10,13 @@ class ProfileEntityTest {
   @SuppressWarnings("static-method")
   @Test
   void testProfileEntitiesDetachedCreation() {
-    final var profileEntity1 = new B2C();
+    final var profileEntity1 = new B2CEntity();
     profileEntity1.id = 1L;
 
-    final var profileEntity2 = new B2C();
+    final var profileEntity2 = new B2CEntity();
     profileEntity2.id = 1L;
 
-    final var profileEntity3 = new B2C();
+    final var profileEntity3 = new B2CEntity();
 
     assertThat(profileEntity1)
         .isNotEqualTo(profileEntity2)

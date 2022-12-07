@@ -47,15 +47,13 @@ public abstract class AbstractAuthenticationFacade {
 
   public Optional<ProfileId> signUpB2B(
       Email email,
-      FirstName firstName,
-      LastName lastName,
       ProfileKind profileKind,
+      NonBlank address,
       NonBlank regon) {
 
     Objects.requireNonNull(email);
-    Objects.requireNonNull(firstName);
-    Objects.requireNonNull(lastName);
     Objects.requireNonNull(profileKind);
+    Objects.requireNonNull(address);
     Objects.requireNonNull(regon);
 
     log.info("isActiveTransaction " + transactor().isActiveTransaction());
@@ -67,11 +65,11 @@ public abstract class AbstractAuthenticationFacade {
       return Optional.empty();
 
     final var newProfileId = profileRepository()
-        .createB2B(email, firstName, lastName, profileKind, regon);
+        .createB2B(email, profileKind, address, regon);
     return Optional.of(newProfileId);
   }
 
-  public Optional<ProfileDto> findProfileByEmail(Email email) {
+  public Optional<B2CDto> findProfileByEmail(Email email) {
     return profileRepository().findProfileDtoByEmail(email);
   }
 
