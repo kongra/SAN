@@ -4,7 +4,6 @@ package edu.san.authentication.entity;
 import java.util.Optional;
 
 import javax.enterprise.context.ApplicationScoped;
-import javax.transaction.Transactional;
 
 import edu.san.authentication.control.B2CDto;
 import edu.san.authentication.control.FirstName;
@@ -24,7 +23,6 @@ class ProfileRepositoryImpl
     implements PanacheRepository<AbstractProfileEntity>, ProfileRepository {
 
   @Override
-  @Transactional
   public ProfileId createB2C(
       Email email,
       FirstName firstName,
@@ -44,7 +42,6 @@ class ProfileRepositoryImpl
   }
 
   @Override
-  @Transactional
   public ProfileId createB2B(
       Email email,
       ProfileKind profileKind,
