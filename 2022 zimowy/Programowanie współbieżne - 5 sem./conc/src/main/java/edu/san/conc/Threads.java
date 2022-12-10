@@ -3,8 +3,6 @@ package edu.san.conc;
 import java.time.Duration;
 import java.util.concurrent.TimeUnit;
 
-import telsos.Exceptions;
-
 public final class Threads {
 
   public static <T> T interruptibly(InterruptibleSupplier<T> supplier) {
@@ -12,7 +10,7 @@ public final class Threads {
       return supplier.get();
     } catch (InterruptedException e) {
       Thread.currentThread().interrupt();
-      return Exceptions.fail(e);
+      return null; // Exceptions.fail(e);
     }
   }
 
