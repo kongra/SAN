@@ -65,7 +65,7 @@ class ProfileRepositoryImpl
   }
 
   @Override
-  public Optional<B2CDto> findProfileDtoByEmail(Email email) {
+  public Optional<B2CDto> findB2CDtoByEmail(Email email) {
     return findB2CEntityByEmail(email)
         .map(ProfileRepositoryImpl::b2CEntity2ProfileDto);
   }

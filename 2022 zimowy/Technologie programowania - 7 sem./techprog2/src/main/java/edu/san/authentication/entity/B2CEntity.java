@@ -16,12 +16,12 @@ class B2CEntity extends AbstractProfileEntity {
 
   @FirstName
   @NotNull
-  @Column(nullable = false, length = 64)
+  @Column(length = 64)
   String firstName;
 
   @LastName
   @NotNull
-  @Column(nullable = false, length = 128)
+  @Column(length = 128)
   String lastName;
 
   B2CEntity(String email,

@@ -15,7 +15,7 @@ import javax.ws.rs.core.Response;
 public interface AuthenticationResourceClient {
 
   @GET
-  @Path("profile-by-email/{email}")
+  @Path("b2c-by-email/{email}")
   Response findProfileByEmail(@PathParam("email") String email);
 
   @POST

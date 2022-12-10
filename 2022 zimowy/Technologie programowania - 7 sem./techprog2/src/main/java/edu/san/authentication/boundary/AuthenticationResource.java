@@ -44,14 +44,14 @@ class AuthenticationResource {
   }
 
   @GET
-  @Path("profile-by-email/{email}")
-  public Response findProfileByEmail(@PathParam("email") String email) {
+  @Path("b2c-by-email/{email}")
+  public Response findB2CByEmail(@PathParam("email") String email) {
     final var validEmail = Email.of(email)
         .orElseThrow(BadRequestException::new);
 
     return transactor.inTransaction(() -> {
       final var optionalProfileDto = autenticationFacade
-          .findProfileByEmail(validEmail);
+          .findB2CByEmail(validEmail);
 
       if (optionalProfileDto.isEmpty())
         return Response.ok().build();

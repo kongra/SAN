@@ -26,7 +26,7 @@ public interface ProfileRepository {
 
   Optional<ProfileId> findProfileIdByEmail(Email email);
 
-  Optional<B2CDto> findProfileDtoByEmail(Email email);
+  Optional<B2CDto> findB2CDtoByEmail(Email email);
 
   Optional<ProfileId> deleteProfileByEmail(Email email);
 

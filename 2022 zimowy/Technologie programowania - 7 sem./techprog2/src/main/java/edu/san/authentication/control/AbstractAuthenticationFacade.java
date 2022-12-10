@@ -69,8 +69,8 @@ public abstract class AbstractAuthenticationFacade {
     return Optional.of(newProfileId);
   }
 
-  public Optional<B2CDto> findProfileByEmail(Email email) {
-    return profileRepository().findProfileDtoByEmail(email);
+  public Optional<B2CDto> findB2CByEmail(Email email) {
+    return profileRepository().findB2CDtoByEmail(email);
   }
 
 }
