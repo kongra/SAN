@@ -8,3 +8,15 @@
 
 * Zadanie 3.
    https://projecteuler.net/problem=4
+
+* Zadanie 4.
+   Zrealizuj program obliczający iloczyn macierzy.
+   - https://pl.wikipedia.org/wiki/Mno%C5%BCenie_macierzy
+   - Np. metodą standardowego mnożenia (Cauchy'ego).
+   - Do reprezentacji macierzy proszę wykorzystać tablice.
+
+* Zaliczenie lab.
+   Po zaprezentowaniu wykładowcy wykonanych programów przed wpisaniem oceny
+   końcowej (na ostatnich zajęciach) proszę:
+   - Spakować wszystkie programy do jednego wspólnego pliku <imię><nazwisko><index>.zip
+   - Przesłać archiwum na adres kgrzanek@san.edu.pl
