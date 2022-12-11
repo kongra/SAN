@@ -11,3 +11,10 @@
    - Factory Method
 
    Zrealizuj przykładowe programy wykorzystujące te wzorce.
+
+* Zadanie 3.
+   Znajdź definicję wzorców:
+   - Mediator
+   - Dekorator
+
+   Zrealizuj przykładowe programy wykorzystujące te wzorce.
