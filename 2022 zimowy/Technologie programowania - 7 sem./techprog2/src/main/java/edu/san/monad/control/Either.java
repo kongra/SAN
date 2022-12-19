@@ -29,7 +29,7 @@ public sealed interface Either<L, R> {
   default <X extends Throwable> R rightOrElseThrow(
       Supplier<? extends X> exceptionSupplier) throws X {
     return switch (this) {
-      case Right<L, R> right -> right.value;
+      case final Right<L, R> right -> right.value;
       default -> throw exceptionSupplier.get();
     };
   }
