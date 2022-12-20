@@ -5,6 +5,8 @@ import java.util.Objects;
 import java.util.UUID;
 
 import javax.persistence.Column;
+import javax.persistence.DiscriminatorColumn;
+import javax.persistence.DiscriminatorType;
 import javax.persistence.Entity;
 import javax.persistence.EnumType;
 import javax.persistence.Enumerated;
@@ -26,8 +28,8 @@ import lombok.NoArgsConstructor;
 
 @Entity
 @Table(name = "profile")
-@Inheritance(strategy = InheritanceType.JOINED)
-// @DiscriminatorColumn(name = "profile_DTYPE", discriminatorType = DiscriminatorType.INTEGER)
+@Inheritance(strategy = InheritanceType.SINGLE_TABLE)
+@DiscriminatorColumn(name = "profile_DTYPE", discriminatorType = DiscriminatorType.INTEGER)
 @NoArgsConstructor
 @AllArgsConstructor
 @SuppressWarnings("java:S1694")
