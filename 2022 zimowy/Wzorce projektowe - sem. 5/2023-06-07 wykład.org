@@ -1,0 +1,31 @@
+* Działanie w warunkach braku informacji
+** NULL
+   int foo(int n) {
+     ...
+     return ???;
+   }
+
+   Jak postąpić w warunkach, gdy powyższa procedura nie może wzrócić żadnej wartości?
+
+   Integer foo(int n) {
+     ...
+     return null;
+   }
+
+   ...
+   Integer result = foo(7);
+   if (result == null) {
+     // error("PANIC: Nie mogę dalej liczyć!!!");
+     throw new IllegalStateException("PANIC: Nie mogę dalej liczyć!!!");
+   } else {
+     int m = result.intValue() + 4;
+   }
+
+* Działanie w warunkach braku możliwości kontynuowania procesu obliczeniowego
+   Działanie w warunkach wyjątkowych
+** WYJĄTKI (Exceptions)
+
+* W powyższych punktach występuje wspólny wzorzec negatywnych zachowań/zdarzeń
+   Jest nim BRAK OBSŁUGI zaistniałej sytuacji. W pierwszym przypadku brak zestawienia wyniku procedury
+   foo z nullem (zaniechanie sprawdzenia result == null) skutkuje propagacją NullPointerException.
+   W drugim - rzucienie wyjątku może nie być skojarzone z jego chwyceniem i obsługą.

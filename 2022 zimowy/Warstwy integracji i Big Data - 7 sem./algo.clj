@@ -4,7 +4,7 @@
   '[clojure.data.csv :as         csv]
   '[clojure.java.io  :as          io]
   '[clucy.core       :as       clucy]
-  '[cljc.telsos.core :refer    [flag]])
+  '[cljc.telsos.core :refer     :all])
 
 (set! *warn-on-reflection*       true)
 (set! *unchecked-math* :warn-on-boxed)
@@ -110,12 +110,44 @@
       (full-name->lucy! id full-name)))
 
 (defn full-names->lucy!
-  [full-names]
+  [index full-names]
   (io!
     (->> full-names
       (map vector (iterate inc 1))
       (map (fn [[id full-name]] {:full-name full-name :id id}))
-      (apply clucy/add lucy-index))))
+      (apply clucy/add index))))
 
-(time (full-names->lucy! FULL-NAMES-F))
-(time (full-names->lucy! FULL-NAMES-M))
+#_(time (full-names->lucy! FULL-NAMES-F))
+#_(time (full-names->lucy! FULL-NAMES-M))
+
+;; (time (clucy/search lucy-index "kowalska" 10000))
+
+;; (def lucy-memindex (clucy/memory-index))
+;; (time (full-names->lucy! lucy-memindex FULL-NAMES-F))
+;; (time (full-names->lucy! lucy-memindex FULL-NAMES-M))
+
+(time (count (clucy/search lucy-index    "kowalska" 10000)))
+;; (time (clucy/search lucy-memindex "kowalska" 10000))
+
+;; (bench (clucy/search lucy-index    "kowalska" 10000))
+;; (bench (clucy/search lucy-memindex "kowalska" 10000))
+
+(defn test-1 [index max-results]
+  (->> FIRST-NAMES-F
+    (map :first-name)
+    (map #(count (clucy/search index (str %) max-results)))
+    (reduce +)))
+
+;; (time (test-1 lucy-index    50))
+;; (time (test-1 lucy-memindex 50))
+
+(defn- write-csv
+  [filename data]
+  (io! (with-open [writer (io/writer filename)]
+         (doall (csv/write-csv writer data)))))
+
+(write-csv "FULL-NAMES-F.csv"
+  (map vector FULL-NAMES-F (iterate inc 0)))
+
+(write-csv "FULL-NAMES-M.csv"
+  (map vector FULL-NAMES-M (iterate inc 0)))

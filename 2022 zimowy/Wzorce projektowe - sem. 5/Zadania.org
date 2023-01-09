@@ -18,3 +18,12 @@
    - Dekorator
 
    Zrealizuj przykładowe programy wykorzystujące te wzorce.
+
+* Zadanie 4.
+   Opracuj w wybranym języku programowania (np. Java) sposób na odroczenie
+   ewaluacji wyrażeń.
+
+   var n = 3 + 4;         // eagerly evaluated
+   var n = delay (3 + 4); // lazily evaluated
+
+   System.out.println(n.eval());
