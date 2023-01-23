@@ -1,6 +1,7 @@
 // © 2022 Konrad Grzanek <kongra@gmail.com>
 package edu.san.authentication.entity;
 
+import java.sql.Timestamp;
 import java.util.Objects;
 import java.util.UUID;
 
@@ -42,6 +43,10 @@ class CommentEntity {
   UUID uuid = UUID.randomUUID();
 
   @NotNull
+  @Column(nullable = false)
+  Timestamp stamp;
+
+  @NotNull
   @NotBlank
   @Column(length = 64)
   String title;
@@ -57,10 +62,12 @@ class CommentEntity {
   AbstractProfileEntity profile;
 
   CommentEntity(
+      @NotNull Timestamp stamp,
       @NotNull @NotBlank String title,
       @NotNull @NotBlank String content,
       @Valid AbstractProfileEntity profile) {
     super();
+    this.stamp = stamp;
     this.title = title;
     this.content = content;
     this.profile = profile;

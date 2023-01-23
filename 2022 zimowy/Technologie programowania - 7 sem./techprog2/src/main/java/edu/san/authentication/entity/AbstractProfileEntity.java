@@ -1,7 +1,9 @@
 // © 2022 Konrad Grzanek <kongra@gmail.com>
 package edu.san.authentication.entity;
 
+import java.util.HashSet;
 import java.util.Objects;
+import java.util.Set;
 import java.util.UUID;
 
 import javax.persistence.Column;
@@ -15,9 +17,11 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Inheritance;
 import javax.persistence.InheritanceType;
+import javax.persistence.OneToMany;
 import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 import javax.persistence.Version;
+import javax.validation.Valid;
 import javax.validation.constraints.Email;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
@@ -62,6 +66,10 @@ abstract class AbstractProfileEntity {
   @NotBlank
   @Column(length = 64)
   String address;
+
+  @OneToMany(mappedBy = "profile")
+  @Valid
+  Set<CommentEntity> comments = new HashSet<>();
 
   AbstractProfileEntity(
       @Email @NotNull String email,

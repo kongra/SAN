@@ -3,6 +3,9 @@ package edu.san.authentication.entity;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
+import java.sql.Timestamp;
+import java.time.Instant;
+
 import javax.inject.Inject;
 
 import org.junit.jupiter.api.AfterEach;
@@ -63,6 +66,7 @@ class CommentEntityTest {
           .orElseThrow();
 
       var comment = new CommentEntity(
+          Timestamp.from(Instant.now()),
           "Mój pierwszy komentarz",
           "Test, test, test, ąęśćółżźń",
           profile);
