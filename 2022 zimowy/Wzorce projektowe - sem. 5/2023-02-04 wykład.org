@@ -1,0 +1,14 @@
+* Najważniejsze budulce programów komputerowych
+** Definicja zmiennej w sensie matematycznym (stałej w sensie progr.)
+** Procedura (funkcja)
+** If - wyrażenie warunkowe
+** Iteracja i jej rekurencyjna postać
+** Domknięcie (ang. clozure)
+    \x -> x + y -- Haskell
+     x => x + y // JS
+
+* Budulce programów komputerowych, które nie są konieczne
+   ale są bardzo pomocne
+** Funktor
+** Funktor aplikatywny
+** Monada
