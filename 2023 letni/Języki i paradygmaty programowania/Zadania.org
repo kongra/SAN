@@ -1,6 +1,6 @@
-* Zadanie 1
+* Zadanie 0
    - Zainstalować sobie środowisko do programowania w Javie lub w innym języku
-     podobnym do Javy (C#, C++).
+     podobnym do Javy (C#, C++, TypeScript).
      np. https://docs.aws.amazon.com/corretto/latest/corretto-19-ug/what-is-corretto-19.html
      np. https://www.oracle.com/java/technologies/downloads/#jdk19-windows
      np. https://jdk.java.net/19/
@@ -10,7 +10,7 @@
      https://netbeans.apache.org/
      Visual Studio Code + https://marketplace.visualstudio.com/items?itemName=vscjava.vscode-java-pack
 
-* Zadanie 2
+* Zadanie 1
    https://projecteuler.net/problem=17
    Można to rozwiązać albo dla języka angielskiego albo polskiego.
    Przykład w pliku Euler17.clj (język Clojure).

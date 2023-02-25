@@ -113,4 +113,4 @@
                (thousand->polish d3) " "
                (number->polish (digits->long d2 d1 d0))))))))
 
-;; (number->polish 5117)
+#_(number->polish 5117)
