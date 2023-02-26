@@ -1,0 +1,18 @@
+* Czynności wstępne
+   - Instalacja Javy (JDK najlepiej w wersji 19).
+   - Instalacja Apache Maven.
+   - Instalacja wybranego IDE (najlepiej ze wsparciem dla JEE).
+   - Jeżeli jest to możliwe, korzystamy z SonarLint lub innego podobnego narzędzia.
+   - Osoby używające innych technologii konfigurują środowisko dla swoich potrzeb.
+
+* Projekt
+** Jest podstawą zaliczenia labu.
+** Oddajemy przed końcem semestru.
+** Temat projektu dowolny.
+** Składniki projektu - wykorzystanie technologii:
+   - Zarządzanie projektem przy użyciu Mavena lub Gradle'a
+   - CDI (Contexts and Dependency Injection)
+   - JAX-RS (np. https://www.baeldung.com/jax-rs-spec-and-implementations)
+   - JSON Processing (json-p) lub/i JSON Binding (json-b)
+** W miarę możliwości tworzymy przypadki testowe.
+** Nie robimy GUI (frontu), chyba że ktoś BARDZO chce.
