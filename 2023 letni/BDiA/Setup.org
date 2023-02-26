@@ -1,0 +1,20 @@
+Wykonanie poniższych czynności odbywa się po uprzednim zalogowaniu (w linuxsie)
+na konto postgres.
+
+* Tworzenie bazy danych
+$ createdb -e -E utf-8 JEE1
+SELECT pg_catalog.set_config('search_path', '', false);
+CREATE DATABASE "JEE1" ENCODING 'utf-8';
+
+* Tworzenie użytkownika
+$ createuser -e -P jee1 # h: jee12345
+SELECT pg_catalog.set_config('search_path', '', false);
+CREATE ROLE jee1 PASSWORD 'SCRAM-SHA-256$4096:X1zdwfw+V7doHRGgnhF7AQ==$jb2/InUW6H/gFRrrRHyr3oRhDOAkS+yN8BCj0kp3cUk=:J5NKCkhfqBU+0noipT6vwbj5rQNVQNs6ei4+eqQQKco=' NOSUPERUSER NOCREATEDB NOCREATEROLE INHERIT LOGIN;
+
+* Tworzenie schematu
+$ psql JEE1
+JEE1=# CREATE SCHEMA jee1 AUTHORIZATION jee1;
+
+* Łączenie się z b.d. jako jee1
+$ psql JEE1 -U jee1
+JEE1=>
