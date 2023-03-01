@@ -1,0 +1,11 @@
+* Wszystkie zadania wykonujemy w językach (do wyboru):
+- Clojure
+- ClojureScript
+- Common Lisp
+- Scheme (Racket)
+- Haskell
+- Ocaml
+- F#
+- Erlang
+
+* Zadanie 1. https://projecteuler.net/problem=6
