@@ -83,7 +83,7 @@
     (map digits->long)
     (vec)))
 
-(long->digits 13)
+(long->digits 137625375872634876238746827634782364876N)
 
 (defn number->polish
   [n]
@@ -115,29 +115,32 @@
                (thousand->polish d3) " "
                (number->polish (digits->long d2 d1 d0))))))))
 
-(number->polish 2001)
+(number->polish 9876)
 
 (defn fib-trans [[a b]]
   [b (+' a b)])
 
-;; (fib-trans [0 1])
-;; (fib-trans [1 1])
-;; (fib-trans [1 2])
-;; (fib-trans [2 3])
-;; (fib-trans [3 5])
+(fib-trans [0 1])
+(fib-trans [1 1])
+(fib-trans [1 2])
+(fib-trans [2 3])
+(fib-trans [3 5])
+;; ...
 
 (defn fibseq []
   (map first (iterate fib-trans [0 1])))
 
+(take 400 (fibseq))
+
 ;; (iterate f x) => (          x
 ;;                          (f x)
 ;;                    (   f (f x))
-;;                    (f (f (f x))))
+;;                    (f (f (f x)))
+;;                         ...
+;;                                )
 
-;; (map f coll)
 ;;        coll  := (   x1     x2     x3     x4     x5  ...)
 ;; (map f coll) := ((f x1) (f x2) (f x3) (f x4) (f x5) ...)
 
-;; (first [4 6])
-
+(first [4 6])
 (time (.length (str (last (take 100000 (fibseq))))))
