@@ -10,11 +10,11 @@
 #
 # Then, build the image with:
 #
-# docker build -f src/main/docker/Dockerfile.native-micro -t quarkus/techprog1 .
+# docker build -f src/main/docker/Dockerfile.native-micro -t quarkus/techprog3 .
 #
 # Then run the container using:
 #
-# docker run -i --rm -p 8080:8080 quarkus/techprog1
+# docker run -i --rm -p 8080:8080 quarkus/techprog3
 #
 ###
 FROM quay.io/quarkus/quarkus-micro-image:1.0

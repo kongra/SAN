@@ -1,5 +1,5 @@
 // © 2023 Konrad Grzanek <kongra@gmail.com>
-package techprog2;
+package techprog3;
 
 import static org.junit.jupiter.api.Assertions.*;
 
