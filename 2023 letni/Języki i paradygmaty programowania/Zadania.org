@@ -17,4 +17,4 @@
    Przykład w pliku Euler17.clj (język Clojure).
 
 * Zadanie 2
-   Napisać program, który rozwiązuje problem matematyczny przedstawiony na obrazku 20230304_104703.jpg
+   https://projecteuler.net/problem=14
