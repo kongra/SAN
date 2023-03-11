@@ -9,8 +9,12 @@
      https://www.jetbrains.com/idea/
      https://netbeans.apache.org/
      Visual Studio Code + https://marketplace.visualstudio.com/items?itemName=vscjava.vscode-java-pack
+   - Zainstalować Apache Maven i https://github.com/kongra/maven-archetypes
 
 * Zadanie 1
    https://projecteuler.net/problem=17
    Można to rozwiązać albo dla języka angielskiego albo polskiego.
    Przykład w pliku Euler17.clj (język Clojure).
+
+* Zadanie 2
+   Napisać program, który rozwiązuje problem matematyczny przedstawiony na obrazku 20230304_104703.jpg
