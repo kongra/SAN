@@ -1,0 +1,45 @@
+* System typów
+  Zbiór reguł i zasad, w-g których w danym języku programowania traktuje się
+  typy danych/klasy.
+
+| Dynamiczne           | Statyczne               |       |
+|----------------------+-------------------------+-------|
+| JS, PHP, Perl        | C, C++*                 | Słabe |
+|----------------------+-------------------------+-------|
+| Python, Common Lisp, | Java, C#, Haskell, Rust | Silne |
+| Clojure, Ruby        | TS*                     |       |
+|                      |                         |       |
+
+* System statyczny
+Nazwywany tak, ponieważ istnieje analiza statyczna (kodów źródłowych).
+Odbywa się ona przed uruchomieniem programu, najczęściej w trakcie
+jego kompilacji.
+
+W s. statycznym typy wszystkich symboli i wyrażeń w programie znane są przed
+uruchomieniem programu.
+
+int n = 5; // n : int, 5 : int
+double square(double d) { return d * d; } // square : double -> double
+
+Type inference - wnioskowanie o typach wyrażeń i symboli realizowane
+przez kompilator.
+
+var n = 5; // 5 : int => n : int
+auto &n = ...;
+
+* System dynamiczny
+Przeciwieństwo s. statycznego. Analizy programu
+mają miejsce w trakcie jego działania.
+
+function foo(x) {
+  return x + 3; => "abcd" + "3"
+}
+
+foo(5) => 8
+foo("abcd") => "abcd3"
+
+* Słaby system typów
+   Zezwala na SZKODLIWE niejawne konwersje
+
+* Silny system typów
+   Nie jest słaby

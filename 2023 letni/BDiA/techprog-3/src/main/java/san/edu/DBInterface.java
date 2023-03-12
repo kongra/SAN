@@ -19,7 +19,7 @@ public class DBInterface {
   }
 
   public long testDbConnection() {
-    var query = "select count(*) from test1";
+    final var query = "select count(*) from test1";
     try (
         var conn = dataSource.getConnection();
         var stmt = conn.createStatement();
@@ -37,4 +37,7 @@ public class DBInterface {
     }
   }
 
+//  private void execSomeLogic(TxContext ctx) {
+//    // if () { ... SELECT * ... }
+//  }
 }
