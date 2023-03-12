@@ -16,3 +16,4 @@
    - JSON Processing (json-p) lub/i JSON Binding (json-b)
 ** W miarę możliwości tworzymy przypadki testowe.
 ** Nie robimy GUI (frontu), chyba że ktoś BARDZO chce.
+** Nie robimy bazy danych, chyba że ktoś BARDZO chce.
