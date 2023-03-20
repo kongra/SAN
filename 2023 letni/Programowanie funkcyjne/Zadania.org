@@ -15,3 +15,13 @@
 a. Wzór na pierwiastek sześcienny - zaimplementować
 b. Przebieg procedury Herona uzależnić od Epsilon
 c. Przebieg procedury Herona uzależnić od N (ilości kroków)
+
+* Zadanie 3. Dany jest ciąg Fibonacciego
+(defn fib [n]
+  (if (< n 2)
+    n
+    (+ (fib (- n 1)) (fib (- n 2)))))
+
+a. Wyznaczyć dokładny wzór opisujący ilość kroków niezbędnych do obliczenia (fib n)
+b. Zaproponować procedurę rekurencyjną fib, która generuje proces iteracyjny
+c. Zastosować formę (recur ...) i policzyć Fib(10000)
