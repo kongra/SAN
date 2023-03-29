@@ -25,3 +25,10 @@ c. Przebieg procedury Herona uzależnić od N (ilości kroków)
 a. Wyznaczyć dokładny wzór opisujący ilość kroków niezbędnych do obliczenia (fib n)
 b. Zaproponować procedurę rekurencyjną fib, która generuje proces iteracyjny
 c. Zastosować formę (recur ...) i policzyć Fib(10000)
+
+* Zadanie 4. Zbiór potęgowy (ang. powerset)
+   Napisać procedurę, która przyjmuje kolekcję elementów (lista, wektor, zbiór) i
+   generuje zbiór potęgowy dla tej kolekcji. Zbiór potęgowy to zbiór wszystkich
+   podzbiorów danego zbioru łącznie ze zbiorem pustym.
+
+   (powerset [1 2 3]) => ([] [1] [2] [3] [1 2] [1 3] [2 3] [1 2 3])
