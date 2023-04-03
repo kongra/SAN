@@ -32,3 +32,18 @@ c. Zastosować formę (recur ...) i policzyć Fib(10000)
    podzbiorów danego zbioru łącznie ze zbiorem pustym.
 
    (powerset [1 2 3]) => ([] [1] [2] [3] [1 2] [1 3] [2 3] [1 2 3])
+   
+Zadanie 5.
+a. Zrealizuj pierwiastek sześcienny z wykorzystaniem average-damp oraz FIXED-POINT
+b. Zrealizuj pierwiastek sześcienny z wykorzystaniem Newtons-method
+c. Niech f i g będą dwoma funkcjami jednoargumentowymi. Złożenie f z g
+jest określone jako funkcja x -> f(g(x)). Zdefiniuj procedurę złóż
+implementującą złożenie funkcji. Przykładowo:
+((złóż kwadrat inc) 6) => 49
+d. Jeśli f jest funkcją jednoargumentową określoną na liczbach oraz n
+jest dowolną liczbą naturalną, to n-krotnym złożeniem funkcji f
+nazywamy funkcję, której wartością jest wynik n-krotnego zastosowania
+funkcji f:
+x -> f(f( ... (f(x)) ...))
+Napisz procedurę realizującą n-krotne złożenie funkcji f wykorzystując
+rozwiązanie z punktu c.
