@@ -1,0 +1,4 @@
+* Stwórz zestaw klas powiązanych relacjami "... jest rodzajem ..." (dziedziczeniem)
+   Tematyka dowolna. Klasy powinny stanowić hierarchię typów.
+   W oparciu o hierarchię opracuj zestaw metod (procedur) polimorficznych wykorzystujących
+   polimorfizm INKLUZYJNY.
