@@ -2,10 +2,15 @@
 package san.edu;
 
 import java.sql.SQLException;
+import java.util.Objects;
+import java.util.Optional;
 import java.util.concurrent.atomic.AtomicLong;
 
 import javax.enterprise.context.ApplicationScoped;
 import javax.sql.DataSource;
+
+import san.edu.db.IsolationLevel;
+import san.edu.db.TXContext;
 
 @ApplicationScoped
 public class DBInterface {
@@ -37,7 +42,18 @@ public class DBInterface {
     }
   }
 
-//  private void execSomeLogic(TxContext ctx) {
-//    // if () { ... SELECT * ... }
-//  }
+  private static Optional<Long> selectCountFromTest1(TXContext txContext) {
+    Objects.requireNonNull(txContext);
+    try (var stmt = txContext.getConnection().createStatement();
+        var rs = stmt.executeQuery("select count(*) from test1")) {
+      return rs.next() ? Optional.of(rs.getLong(1)) : Optional.empty();
+    } catch (final SQLException e) {
+      throw new RuntimeException(e);
+    }
+  }
+
+  public Optional<Long> testTxContext() throws SQLException {
+    return TXContext.eval(dataSource, IsolationLevel.READ_UNCOMMITTED,
+        DBInterface::selectCountFromTest1);
+  }
 }

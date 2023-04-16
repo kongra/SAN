@@ -1,5 +1,7 @@
 package san.edu;
 
+import java.sql.SQLException;
+
 import javax.ws.rs.GET;
 import javax.ws.rs.Path;
 import javax.ws.rs.Produces;
@@ -17,8 +19,8 @@ public class GreetingResource {
 
   @GET
   @Produces(MediaType.TEXT_PLAIN)
-  public Response hello() {
-    return Response.ok("The connection was established "
-        + db.testDbConnection() + " times").build();
+  public Response hello() throws SQLException {
+    return Response.ok("We have table1 with "
+        + db.testTxContext() + " elements").build();
   }
 }

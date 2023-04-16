@@ -1,0 +1,2 @@
+#!/bin/sh
+sudo pg_ctlcluster 14 main stop

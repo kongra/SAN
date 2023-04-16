@@ -16,5 +16,5 @@ $ psql JEE1
 JEE1=# CREATE SCHEMA jee1 AUTHORIZATION jee1;
 
 * Łączenie się z b.d. jako jee1
-$ psql JEE1 -U jee1
+$ psql JEE1 -U jee1 -h localhost
 JEE1=>
