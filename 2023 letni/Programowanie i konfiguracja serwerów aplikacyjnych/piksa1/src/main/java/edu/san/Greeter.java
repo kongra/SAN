@@ -17,6 +17,11 @@ public class Greeter {
     this.greetingText = Objects.requireNonNull(greetingText).strip();
   }
 
+  public String greetMe(String whoami) {
+    Objects.requireNonNull(whoami);
+    return getGreetingText() + " " + whoami;
+  }
+
   public String getGreetingText() {
     return this.greetingText;
   }
