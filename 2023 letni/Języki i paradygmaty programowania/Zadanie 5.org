@@ -1,0 +1,14 @@
+* Użyj technik programowania obiektowego
+   do zamodelowania elementów ruchu ulicznego w mieście.
+   W systemie powinny się znaleźć następujące elementy:
+   - Pojazdy
+   - Ulice
+   - Skrzyżowania
+   - Bieżące i modyfikowane w czasie rzeczywistym przez program położenia pojazdów na ulicach
+   - Dzielnice miasta
+   - Przynależności ulic do dzielnic miasta
+
+** System powinien posiadać zdolność udzielenia odpowiedzi na pytania
+   - Na jakiej ulicy i w jakiej dzielnicy znajduje się w danej chwili pojazd o podanym numerze rejestracyjnym
+   - Na jakiej ulicy i w jakiej dzielnicy znajduje się w danej chwili najwięcej i najmniej pojazdów
+   - [*] Gdzie znajdują się korki
