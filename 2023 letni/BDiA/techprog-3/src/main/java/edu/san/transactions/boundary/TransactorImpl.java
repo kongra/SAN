@@ -1,15 +1,14 @@
 // © 2022 Konrad Grzanek <kongra@gmail.com>
 package edu.san.transactions.boundary;
 
-import java.util.function.Supplier;
-
-import javax.enterprise.context.ApplicationScoped;
-import javax.transaction.Transactional;
-
 import edu.san.transactions.control.Transactor;
 import io.quarkus.narayana.jta.runtime.context.TransactionContext;
 import telsos.architecture.hexagonal.annotations.Adapter;
 import telsos.architecture.hexagonal.annotations.AdapterType;
+
+import javax.enterprise.context.ApplicationScoped;
+import javax.transaction.Transactional;
+import java.util.function.Supplier;
 
 @Adapter(AdapterType.SECONDARY)
 @ApplicationScoped

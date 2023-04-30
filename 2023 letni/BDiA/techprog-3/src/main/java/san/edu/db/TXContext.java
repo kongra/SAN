@@ -1,16 +1,23 @@
 // © 2023 Konrad Grzanek <kongra@gmail.com>
 package san.edu.db;
 
+import javax.sql.DataSource;
 import java.sql.Connection;
 import java.sql.SQLException;
 import java.util.function.Function;
 
-import javax.sql.DataSource;
-
 public final class TXContext {
 
+  private final Connection connection;
+  private final IsolationLevel isolationLevel;
+
+  private TXContext(Connection connection, IsolationLevel isolationLevel) {
+    this.connection = connection;
+    this.isolationLevel = isolationLevel;
+  }
+
   public static <T> T eval(Connection connection, IsolationLevel isolationLevel,
-      Function<TXContext, T> expression) throws SQLException {
+                           Function<TXContext, T> expression) throws SQLException {
 
     final var autoCommitOriginal = connection.getAutoCommit();
     final var transactionIsolationOriginal = connection
@@ -34,19 +41,10 @@ public final class TXContext {
   }
 
   public static <T> T eval(DataSource dataSource, IsolationLevel isolationLevel,
-      Function<TXContext, T> expression) throws SQLException {
+                           Function<TXContext, T> expression) throws SQLException {
     try (var connection = dataSource.getConnection()) {
       return eval(connection, isolationLevel, expression);
     }
-  }
-
-  private final Connection connection;
-
-  private final IsolationLevel isolationLevel;
-
-  private TXContext(Connection connection, IsolationLevel isolationLevel) {
-    this.connection = connection;
-    this.isolationLevel = isolationLevel;
   }
 
   public Connection getConnection() {
