@@ -13,13 +13,17 @@ public class GreetingResource {
 
   private final DBInterface db;
 
-  public GreetingResource(DBInterface db) {
+  private final TestComponent testComponent;
+
+  public GreetingResource(DBInterface db, TestComponent testComponent) {
     this.db = db;
+    this.testComponent = testComponent;
   }
 
   @GET
   @Produces(MediaType.TEXT_PLAIN)
   public Response hello() throws SQLException {
+    testComponent.greet();
     return Response.ok("We have table1 with "
         + db.testTxContext() + " elements").build();
   }
