@@ -1,8 +1,8 @@
 // © 2023 Konrad Grzanek <kongra@gmail.com>
 package san.edu;
 
-import javax.enterprise.context.ApplicationScoped;
-import javax.transaction.Transactional;
+import jakarta.enterprise.context.ApplicationScoped;
+import jakarta.transaction.Transactional;
 
 @ApplicationScoped
 public class TestComponent {

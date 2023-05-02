@@ -19,11 +19,11 @@
     <!-- QUARKUS -->
     <quarkus.platform.artifact-id>quarkus-bom</quarkus.platform.artifact-id>
     <quarkus.platform.group-id>io.quarkus.platform</quarkus.platform.group-id>
-    <quarkus.platform.version>2.16.4.Final</quarkus.platform.version>
+    <quarkus.platform.version>3.0.1.Final</quarkus.platform.version>
     <skipITs>true</skipITs>
 
     <!-- USER'S DEPS. -->
-    <assertj.version>3.23.1</assertj.version>
+    <assertj.version>3.24.2</assertj.version>
     <commons-validator.version>1.7</commons-validator.version>
     <eclipse-collections.version>11.1.0</eclipse-collections.version>
     <jmh.version>1.36</jmh.version>
@@ -114,11 +114,6 @@
       <groupId>org.eclipse.collections</groupId>
       <artifactId>eclipse-collections</artifactId>
       <version>${eclipse-collections.version}</version>
-    </dependency>
-    <dependency>
-      <groupId>kongra</groupId>
-      <artifactId>telsos-core</artifactId>
-      <version>1.0</version>
     </dependency>
   </dependencies>
   <build>

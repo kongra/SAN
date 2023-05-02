@@ -1,15 +1,16 @@
 // © 2023 Konrad Grzanek <kongra@gmail.com>
 package san.edu;
 
-import san.edu.db.IsolationLevel;
-import san.edu.db.TXContext;
-
-import javax.enterprise.context.ApplicationScoped;
-import javax.sql.DataSource;
 import java.sql.SQLException;
 import java.util.Objects;
 import java.util.Optional;
 import java.util.concurrent.atomic.AtomicLong;
+
+import javax.sql.DataSource;
+
+import jakarta.enterprise.context.ApplicationScoped;
+import san.edu.db.IsolationLevel;
+import san.edu.db.TXContext;
 
 @ApplicationScoped
 public class DBInterface {
@@ -25,7 +26,7 @@ public class DBInterface {
   private static Optional<Long> selectCountFromTest1(TXContext txContext) {
     Objects.requireNonNull(txContext);
     try (var stmt = txContext.getConnection().createStatement();
-         var rs = stmt.executeQuery("select count(*) from test1")) {
+        var rs = stmt.executeQuery("select count(*) from test1")) {
       return rs.next() ? Optional.of(rs.getLong(1)) : Optional.empty();
     } catch (final SQLException e) {
       throw new RuntimeException(e);
