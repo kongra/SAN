@@ -10,10 +10,8 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
 import edu.san.namesearch.control.DataReader;
-import lombok.extern.slf4j.Slf4j;
 import telsos.Stopwatch;
 
-@Slf4j
 class DataReaderImplTest {
 
   DataReader dataReader;
@@ -33,9 +31,6 @@ class DataReaderImplTest {
     final var timer = Stopwatch.start();
     final var firstNames = dataReader.readFirstNames(file);
     assertThat(firstNames).isNotEmpty();
-
-    log.info("testReadFirstNames took " + timer.toString());
-    // log.debug("" + firstNames.size());
   }
 
 }

@@ -7,8 +7,10 @@ import edu.san.transactions.control.Transactor;
 import io.quarkus.narayana.jta.runtime.context.TransactionContext;
 import jakarta.enterprise.context.ApplicationScoped;
 import jakarta.transaction.Transactional;
+import telsos.architecture.hexagonal.annotations.Adapter;
+import telsos.architecture.hexagonal.annotations.AdapterType;
 
-// @Adapter(AdapterType.SECONDARY)
+@Adapter(AdapterType.SECONDARY)
 @ApplicationScoped
 class TransactorImpl implements Transactor {
 

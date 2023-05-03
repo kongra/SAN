@@ -25,8 +25,8 @@ public class DBInterface {
 
   private static Optional<Long> selectCountFromTest1(TXContext txContext) {
     Objects.requireNonNull(txContext);
-    try (var stmt = txContext.getConnection().createStatement();
-        var rs = stmt.executeQuery("select count(*) from test1")) {
+    try (final var stmt = txContext.getConnection().createStatement();
+        final var rs = stmt.executeQuery("select count(*) from test1")) {
       return rs.next() ? Optional.of(rs.getLong(1)) : Optional.empty();
     } catch (final SQLException e) {
       throw new RuntimeException(e);
@@ -36,9 +36,9 @@ public class DBInterface {
   public long testDbConnection() {
     final var query = "select count(*) from test1";
     try (
-        var conn = dataSource.getConnection();
-        var stmt = conn.createStatement();
-        var rs = stmt.executeQuery(query)) {
+        final var conn = dataSource.getConnection();
+        final var stmt = conn.createStatement();
+        final var rs = stmt.executeQuery(query)) {
 
       if (rs.next()) {
         final var value = rs.getLong(1);
