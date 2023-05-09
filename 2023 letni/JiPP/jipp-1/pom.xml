@@ -9,20 +9,18 @@
 
   <properties>
     <!-- COMMONS -->
-    <maven.compiler.source>19</maven.compiler.source>
-    <maven.compiler.target>19</maven.compiler.target>
+    <maven.compiler.source>20</maven.compiler.source>
+    <maven.compiler.target>20</maven.compiler.target>
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 
     <!-- DEPS VERSIONS -->
-    <assertj.version>3.23.1</assertj.version>
+    <assertj.version>3.24.2</assertj.version>
     <commons-validator.version>1.7</commons-validator.version>
     <eclipse-collections.version>11.1.0</eclipse-collections.version>
     <jmh.version>1.36</jmh.version>
-    <junit-jupiter.version>5.9.1</junit-jupiter.version>
-    <lombok.version>1.18.26</lombok.version>
+    <junit-jupiter.version>5.9.3</junit-jupiter.version>
 
     <!-- PLUGINS VERSIONS -->
-    <jshell-maven-plugin.version>3.2.0</jshell-maven-plugin.version>
     <maven-clean-plugin.version>3.2.0</maven-clean-plugin.version>
     <maven-compiler-plugin.version>3.11.0</maven-compiler-plugin.version>
     <maven-deploy-plugin.version>3.1.0</maven-deploy-plugin.version>
@@ -87,12 +85,6 @@
       <artifactId>eclipse-collections</artifactId>
       <version>${eclipse-collections.version}</version>
     </dependency>
-    <dependency>
-      <groupId>org.projectlombok</groupId>
-      <artifactId>lombok</artifactId>
-      <version>${lombok.version}</version>
-      <scope>provided</scope>
-    </dependency>
   </dependencies>
   <build>
     <pluginManagement>
@@ -153,11 +145,6 @@
         <plugin>
           <artifactId>maven-project-info-reports-plugin</artifactId>
           <version>${maven-project-info-reports-plugin.version}</version>
-        </plugin>
-        <plugin>
-          <groupId>com.github.johnpoth</groupId>
-          <artifactId>jshell-maven-plugin</artifactId>
-          <version>${jshell-maven-plugin.version}</version>
         </plugin>
       </plugins>
     </pluginManagement>
