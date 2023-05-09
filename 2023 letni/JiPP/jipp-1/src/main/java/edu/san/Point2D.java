@@ -1,7 +1,7 @@
 package edu.san;
 
 public class Point2D {
-  
+
   private final double x;
 
   private final double y;
@@ -12,7 +12,7 @@ public class Point2D {
   }
 
   public double dist() {
-    return Math.sqrt(this.x * this.x + this.y * this.y);
+    return Math.sqrt(x * x + y * y);
   }
 
 }
