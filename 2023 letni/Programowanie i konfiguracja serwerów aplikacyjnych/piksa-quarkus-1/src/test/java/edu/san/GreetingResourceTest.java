@@ -1,13 +1,14 @@
 package edu.san;
 
-import io.quarkus.test.junit.QuarkusTest;
 import org.junit.jupiter.api.Test;
 
+import io.quarkus.test.junit.QuarkusTest;
+
 @QuarkusTest
-public class GreetingResourceTest {
+class GreetingResourceTest {
 
   @Test
-  public void testHelloEndpoint() {
+  void testHelloEndpoint() {
     //
   }
 
