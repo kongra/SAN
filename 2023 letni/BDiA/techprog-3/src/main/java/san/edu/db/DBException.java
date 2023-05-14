@@ -3,8 +3,7 @@ package san.edu.db;
 
 public class DBException extends RuntimeException {
 
-  public DBException() {
-  }
+  public DBException() {}
 
   public DBException(String message, Throwable cause, boolean enableSuppression,
       boolean writableStackTrace) {
