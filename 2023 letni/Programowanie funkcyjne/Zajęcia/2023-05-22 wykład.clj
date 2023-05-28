@@ -35,7 +35,7 @@
   (assert (vector?    head))
   (assert (= 1 (count head)))
   (assert (symbol?    conn))
-  `(let [~conn (create-jee1-connection!)]
+  `(let [~conn (jee1-connection!)]
      (try
        ~@body
        (finally (.close ~conn)))))
@@ -61,7 +61,7 @@
        ~@body
        (finally (autocloseable-close! ~s)))))
 
-(with-open [(create-jee1-connection!) :as conn1]
+(with-open [(jee1-connection!) :as conn1]
   (println conn1)
   :done)
 
@@ -80,52 +80,56 @@
 
 (symbol "it")
 
-;; PORTS AND ADAPTERS
+;; PORTS AND ADAPTERS (HEXAGONAL ARCHITECTURE)
 (defprotocol DeviceDataFinder
   (find-alarms-count-in-last-24-hours [ctx device-id]))
 
 (def ^:dynamic *ctx* nil)
-(defn ctx [] (let [ctx- *ctx*] (assert ctx- "*ctx* is nil") ctx-))
+(defn ctx
+  []
+  (let [ctx- *ctx*]
+    (assert ctx- "*ctx* is nil")
+    ctx-))
+
+(ctx)
 
 (defmacro with-ctx [ctx- & body]
   `(binding [*ctx* ~ctx-]
      ~@body))
+
+(with-ctx :myctx
+  (ctx))
+
 
 (defrecord TransientCtx [])
 
 (extend-protocol DeviceDataFinder
   TransientCtx
   (find-alarms-count-in-last-24-hours [_ device-id]
-    #_(println "Searching in-memory for the alarms for device id" device-id)
+    (println "Searching in-memory for the alarms for device id" device-id)
     15))
 
-(defn compute-status
+#_(defn device-status
+    [device find-alarms-count-in-last-24-hours]
+    (let [alarms-count (find-alarms-count-in-last-24-hours (:id device))]
+      (cond (<     alarms-count  10) :LOW
+            (<= 10 alarms-count 100) :MEDIUM
+            :else                    :HIGH)))
+
+;; Open-Closed Principle
+
+;; def device-status(device):
+;;     return ...
+
+;; def device-status(device: Device) -> Status:
+;;     return ...
+
+(defn device-status
   [device]
   (let [alarms-count (find-alarms-count-in-last-24-hours (ctx) (:id device))]
     (cond (<     alarms-count  10) :LOW
           (<= 10 alarms-count 100) :MEDIUM
           :else                    :HIGH)))
 
-(bench
- (with-ctx (->TransientCtx)
-   (compute-status {:id 145})))
-
-
-#_(def ^java.sql.Connection conn1
-    (create-jee1-connection!))
-
-#_(println conn1)
-
-;; (def stmt1 (.createStatement conn1))
-;; (def rs1   (.executeQuery stmt1 "select * from test1"))
-
-;; (class rs1)
-
-;; (loop []
-;;   (when (.next rs1)
-;;     (println (.getString rs1 "email"))
-;;     (recur)))
-
-;; (.close   rs1)
-;; (.close stmt1)
-;; (.close conn1)
+(with-ctx (->TransientCtx)
+  (device-status {:id 145}))
