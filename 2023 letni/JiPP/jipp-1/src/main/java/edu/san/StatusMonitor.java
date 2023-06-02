@@ -13,6 +13,4 @@ public class StatusMonitor {
     return n < 10 ? Either.right(n) : Either.left(ErrorSeverity.HIGH);
   }
 
-  // int | ErrorSeverity
-
 }
