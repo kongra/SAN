@@ -1,0 +1,33 @@
+* Powody istnienia ORM
+** Rzeczywiste
+*** ORM ułatwia działanie i przydaje się w następującym scenariuszu architektonicznym:
+    1. Rzeczywistość składa się z wielu typów danych trwałych.
+    2. Obiekty trwałe (rekordy) są ze sobą powiązane nietrywialnymi związkami
+       semantycznymi, zwykle mającymi postać referencji (kluczy obcych).
+    3. Logika (biznesowa) jest taka, że operacje wymagają jednoczesnego:
+       - odczytania grupy (grafu) obiektów (rekordów) różnych typów
+       - "pobrudzenia" tych obiektów operacjami o charakterze "UPDATE"
+       - zapisu wszystkich tych zaktualizowanych obiektów w jednej transakcji
+
+** Przypadkowe
+*** Próba eliminacji języka SQL z implementacji systemów
+    - Ponieważ ludzie są leniwi i nie chce im się uczyć programowania w SQL-u.
+*** Ludzie zauważyli, że logika biznesowa zapisana w SQL-u jest "nieładna"
+    - "Uroda" kodów źródłowych gra rolę
+    - Subiektywnie, mariaż Javy i SQL jest brzydki
+      var id = 10;
+      var query = "SELECT * FROM profiles WHERE id" + id + "...";
+    - Były próby jak poniżej:
+      var id = 10;
+      var query = SELECT * FROM profiles WHERE $id = id;
+    - Powyższe podejście podobne jest do jOOQ'ka:
+      var query = create.select(BOOK.TITLE)
+         .from(BOOK)
+         .where(BOOK.PUBLISHED_IN.eq(2011))
+         .orderBy(BOOK.TITLE)
+*** LOGIKA BIZNESOWA POWINNA NADE WSZYSTKO BYĆ ODERWANA OD IMPLEMENTACJI!!!
+    A język SQL jest szczegółem implementacyjnym
+    W takim razie używajmy wszędzie Javy, jako języka logiki biznesowej
+
+* KONSTATACJA
+   ORM jest szczegółem implementacyjnym

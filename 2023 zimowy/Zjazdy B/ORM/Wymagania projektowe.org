@@ -1,0 +1,9 @@
+* Tematyka projektu dowolna
+* Must-have: Musi to być "klasyczny" back-end z wykorzystaniem REST API
+   - BIG NO-NO: Nie piszemy aplikacji działających w wierszu poleceń, natomiast mile
+     widziany jest curl do testowania, które jak najbardziej odbywać się może w wierszu poleceń.
+* Konieczne użycie ORM-a
+** Dla chętnych: można użyć jOOQ zamiast ORM
+** Dla chętnych: można użyć Clojure + HugSQL zamiast ORM
+* Must-have: Świadoma transakcyjność
+* Should-have: Testy (jednostkowe i/lub integracyjne)

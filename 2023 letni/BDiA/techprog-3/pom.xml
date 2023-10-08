@@ -19,7 +19,7 @@
     <!-- QUARKUS -->
     <quarkus.platform.artifact-id>quarkus-bom</quarkus.platform.artifact-id>
     <quarkus.platform.group-id>io.quarkus.platform</quarkus.platform.group-id>
-    <quarkus.platform.version>3.0.1.Final</quarkus.platform.version>
+    <quarkus.platform.version>3.4.2.Final</quarkus.platform.version>
     <skipITs>true</skipITs>
 
     <!-- USER'S DEPS. -->
@@ -115,11 +115,11 @@
       <artifactId>eclipse-collections</artifactId>
       <version>${eclipse-collections.version}</version>
     </dependency>
-    <dependency>
-      <groupId>kongra</groupId>
-      <artifactId>telsos-core</artifactId>
-      <version>1.0</version>
-    </dependency>
+    <!-- <dependency> -->
+    <!--   <groupId>kongra</groupId> -->
+    <!--   <artifactId>telsos-core</artifactId> -->
+    <!--   <version>1.0</version> -->
+    <!-- </dependency> -->
   </dependencies>
   <build>
     <plugins>
