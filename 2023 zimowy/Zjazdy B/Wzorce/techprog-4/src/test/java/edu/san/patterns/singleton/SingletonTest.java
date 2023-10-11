@@ -1,7 +1,7 @@
 // © 2023 Konrad Grzanek <kongra@gmail.com>
 package edu.san.patterns.singleton;
 
-// import static org.assertj.core.api.Assertions.assertThat;
+import static org.assertj.core.api.Assertions.assertThat;
 
 import org.junit.jupiter.api.Test;
 
