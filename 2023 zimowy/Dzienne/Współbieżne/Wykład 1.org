@@ -1,0 +1,10 @@
+* Literatura
+** Podstawowe
+    - 2009 Ben-Ari, Podstawy programowania współbieżnego i rozproszonego
+    - 1999 Doug Lea, Concurrent Programming in Java - Design Principles and Pattern
+    - 2006 Brian Goetz et. al., Java Concurrency in Practice
+** Uzupełniające
+    - Stevens R. Programowanie w środowisku systemu UNIX
+    - Richard Stevens - Unix - Programowanie Usług Sieciowych Tom I i II
+    - 2007 Burns Wellings, Concurrent and Real Time Programming in Ada 2005
+    - Programming in Ada 2012 with a Preview of Ada 2022: With a View Towards Ada 2022
