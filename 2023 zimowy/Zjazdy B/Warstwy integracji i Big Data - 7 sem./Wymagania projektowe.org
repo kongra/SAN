@@ -6,7 +6,8 @@
    W praktyce oznacza to pokrycie testami fasady danego modułu (o ile fasada jest określona).
 * Funkcjonalność systemu pokryta jest testami integracyjnymi (Should-have)
 * Preferowane technologie:
-   - Java (Jakarta EE, Eclipse Microprofile), Springframework, .NET
-   - Clojure
+   - Hadoop, Apache Spark
    - R + Rstudio + data.tables, etc.
    - Python pandas
+   - Java (Jakarta EE, Eclipse Microprofile), Springframework, .NET
+   - Clojure
