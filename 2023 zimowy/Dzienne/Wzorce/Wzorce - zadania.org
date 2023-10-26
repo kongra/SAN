@@ -1,0 +1,9 @@
+* Zadanie 1
+   Zaimplementować wzorzec Singleton z odroczeniem tworzenia instancji obiektu.
+
+* Zadanie 2
+   Zaimplementować wzorce:
+   - Abstract Factory
+   - Factory Method
+
+   Do zaprezentowania użycia wzorców proszę wymyślić odpowiedni kontekst.
