@@ -1,4 +1,3 @@
 package ed.san.inventory.equipment;
 
-public interface SerialNumber {
-}
+public interface SerialNumber {}

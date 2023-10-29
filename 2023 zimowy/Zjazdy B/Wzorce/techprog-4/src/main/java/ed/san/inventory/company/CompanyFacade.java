@@ -6,6 +6,7 @@ import ed.san.inventory.employee.LastName;
 
 public interface CompanyFacade {
 
-  Email createEmail(EmployeeId employeeId, FirstName firstName, LastName lastName);
+  Email createEmail(EmployeeId employeeId, FirstName firstName,
+      LastName lastName);
 
 }

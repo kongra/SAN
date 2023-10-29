@@ -1,4 +1,3 @@
 package ed.san.inventory.equipment;
 
-public interface Monitor extends EquipmentWithSerialNumber {
-}
+public interface Monitor extends EquipmentWithSerialNumber {}

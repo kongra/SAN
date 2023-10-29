@@ -1,4 +1,3 @@
 package ed.san.inventory.equipment;
 
-public interface ThinClient extends EquipmentWithSerialNumber {
-}
+public interface ThinClient extends EquipmentWithSerialNumber {}

@@ -1,4 +1,3 @@
 package ed.san.inventory.equipment;
 
-public interface Laptop extends EquipmentWithSerialNumber {
-}
+public interface Laptop extends EquipmentWithSerialNumber {}

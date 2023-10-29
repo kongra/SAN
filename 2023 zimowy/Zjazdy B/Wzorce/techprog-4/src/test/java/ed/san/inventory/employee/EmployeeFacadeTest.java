@@ -1,15 +1,17 @@
 package ed.san.inventory.employee;
 
-import org.junit.jupiter.api.Test;
+import static org.assertj.core.api.Assertions.assertThat;
 
-import static org.junit.jupiter.api.Assertions.*;
+import org.junit.jupiter.api.Test;
 
 class EmployeeFacadeTest {
 
-  EmployeeFacade employeeFacade;
+  AbstractEmployeeFacade employeeFacade;
 
   @Test
   void testEnrolEmployee() {
+    assertThat(employeeFacade).isNotNull();
+    
     final var firstName = employeeFacade
         .asFirstName("Krystyna")
         .orElseThrow(IllegalArgumentException::new);

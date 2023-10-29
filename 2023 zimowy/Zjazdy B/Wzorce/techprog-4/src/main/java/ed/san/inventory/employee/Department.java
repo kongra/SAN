@@ -1,4 +1,3 @@
 package ed.san.inventory.employee;
 
-public interface Department {
-}
+public interface Department {}
