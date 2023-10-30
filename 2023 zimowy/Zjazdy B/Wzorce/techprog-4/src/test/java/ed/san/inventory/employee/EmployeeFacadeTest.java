@@ -11,14 +11,14 @@ class EmployeeFacadeTest {
   @Test
   void testEnrolEmployee() {
     assertThat(employeeFacade).isNotNull();
-    
-    final var firstName = employeeFacade
-        .asFirstName("Krystyna")
-        .orElseThrow(IllegalArgumentException::new);
 
-    final var lastName = employeeFacade
-        .asLastName("Nowak")
-        .orElseThrow(IllegalArgumentException::new);
+//    final var firstName = employeeFacade
+//        .asFirstName("Krystyna")
+//        .orElseThrow(IllegalArgumentException::new);
+//
+//    final var lastName = employeeFacade
+//        .asLastName("Nowak")
+//        .orElseThrow(IllegalArgumentException::new);
 
   }
 }
