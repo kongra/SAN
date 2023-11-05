@@ -1,0 +1,2 @@
+* Zadanie 0
+   Proszę zainstalować sobie wybrane środowisko do programowania w wybranym języku.
