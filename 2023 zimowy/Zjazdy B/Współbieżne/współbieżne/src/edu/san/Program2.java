@@ -2,7 +2,6 @@
 package edu.san;
 
 import java.util.ArrayList;
-import java.util.concurrent.Semaphore;
 
 public class Program2 {
 

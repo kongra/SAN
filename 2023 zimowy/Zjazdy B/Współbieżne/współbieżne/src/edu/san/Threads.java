@@ -2,7 +2,6 @@
 package edu.san;
 
 import java.time.Duration;
-import java.util.ArrayList;
 
 public final class Threads {
 
