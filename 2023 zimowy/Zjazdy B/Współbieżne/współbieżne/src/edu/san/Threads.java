@@ -2,6 +2,7 @@
 package edu.san;
 
 import java.time.Duration;
+import java.util.ArrayList;
 
 public final class Threads {
 
@@ -23,9 +24,15 @@ public final class Threads {
   public static void sleep(long millis) {
     run(() -> Thread.sleep(millis));
   }
-  
+
   public static void sleep(Duration duration) {
     run(() -> Thread.sleep(duration));
+  }
+
+  public static void joinAll(Iterable<Thread> threads) {
+    for (var thread : threads) {
+      run(thread::join);
+    }
   }
 
   private Threads() {}
