@@ -35,7 +35,6 @@ public class Program2 {
         (System.currentTimeMillis() - start) + " msecs.");
 
     // * RACE CONDITION(S)
-    // * RE-ENTRANT
 
   }
 }

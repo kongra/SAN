@@ -15,9 +15,11 @@
    Problem ucztujących filozofów
 
 * Zadanie 5
-   Proszę zaimplementować klasę BinaryFairSemaphore używając wyłącznie mechanizmów wait, notify, notifyAll.
+   Proszę zaimplementować klasę BinarySemaphore używając wyłącznie mechanizmów wait, notify, notifyAll.
 
-   class BinaryFairSemaphore {
+   class BinarySemaphore {
      void acquire() { ... }
      void release() { ... }
    }
+
+   Dla chęnych (*): Zaimplementować tak, żeby semafor był fair.
