@@ -5,6 +5,7 @@ import java.time.Duration;
 
 public final class Threads {
 
+  @FunctionalInterface
   public interface ThrowingRunnable {
 
     void run() throws InterruptedException;
