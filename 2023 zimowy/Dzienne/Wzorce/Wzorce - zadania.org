@@ -1,9 +1,29 @@
-* Zadanie 1
-   Zaimplementować wzorzec Singleton z odroczeniem tworzenia instancji obiektu.
+# W dowolnym języku programowania:
 
-* Zadanie 2
-   Zaimplementować wzorce:
+* Zadanie 1.
+   - Zaimplementuj wzorzec projektowy o nazwie Singleton
+   - Zapewnij odroczoną inicjalizację obiektu
+   - Zagwarantuj poprawność powyższych punktów w warunkach współbieżności
+
+* Zadanie 2.
+   Znajdź w Internecie definicję wzorców:
    - Abstract Factory
    - Factory Method
 
-   Do zaprezentowania użycia wzorców proszę wymyślić odpowiedni kontekst.
+   Zrealizuj przykładowe programy wykorzystujące te wzorce.
+
+* Zadanie 3.
+   Znajdź definicję wzorców:
+   - Mediator
+   - Dekorator
+
+   Zrealizuj przykładowe programy wykorzystujące te wzorce.
+
+* Zadanie 4.
+   Opracuj w wybranym języku programowania (np. Java) sposób na odroczenie
+   ewaluacji wyrażeń.
+
+   var n = 3 + 4;         // eagerly evaluated
+   var n = delay (3 + 4); // lazily evaluated
+
+   System.out.println(n.eval());
