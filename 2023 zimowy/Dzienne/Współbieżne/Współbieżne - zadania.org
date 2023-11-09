@@ -1,3 +1,25 @@
 * Zadanie 1
    Proszę napisać program, który tworzy pewną liczbę wątków (5-10) działających
    w nieskończoność. Wątki mogą wykonywać dowolne czynności.
+
+* Zadanie 2
+   Proszę napisać program, który w wątku głównym (main) tworzy pewną liczbę wątków (5-10).
+   Każdy z utworzonych wątków powinien wykonać pewne obliczenia i wynik przekazać do
+   wątku głównego. Wątek główny czeka na odebranie wyników od wszystkich wątków,
+   łączy lub sumuje te wyniki a następnie wynik tej agregacji wyświetla.
+
+* Zadanie 3
+   Problem czytelników i pisarzy
+
+* Zadanie 4
+   Problem ucztujących filozofów
+
+* Zadanie 5
+   Proszę zaimplementować klasę BinarySemaphore używając wyłącznie mechanizmów wait, notify, notifyAll.
+
+   class BinarySemaphore {
+     void acquire() { ... }
+     void release() { ... }
+   }
+
+   Dla chęnych (*): Zaimplementować tak, żeby semafor był fair.
