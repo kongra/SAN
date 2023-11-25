@@ -18,15 +18,22 @@ public class Program1 {
     for (var i = 0; i < 100; i++) {
       var thread = new Thread(() -> {
         for (var j = 0; j < 10_000; j++) {
-          Threads.run(s::acquire);
-          try {
-            // n++;
+//          Threads.run(s::acquire);
+//          try {
+//            // n++;
+//            long n1 = n;
+//            long n2 = n1 + 1;
+//            n = n2;
+//          } finally {
+//            s.release();
+//          }
+          
+          Threads.acquiring(s, () -> {
             long n1 = n;
             long n2 = n1 + 1;
             n = n2;
-          } finally {
-            s.release();
-          }
+          });
+          
         }
       });
 
@@ -39,7 +46,7 @@ public class Program1 {
         (System.currentTimeMillis() - start) + " msecs.");
 
     // * RACE CONDITION(S)
-    // * RE-ENTRANT
+    // * NOT RE-ENTRANT
 
   }
 

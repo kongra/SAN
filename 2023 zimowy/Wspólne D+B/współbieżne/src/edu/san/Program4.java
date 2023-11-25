@@ -6,15 +6,15 @@ import java.util.concurrent.atomic.AtomicLong;
 
 public class Program4 {
 
-  static AtomicLong n = new AtomicLong();
+  static final AtomicLong n = new AtomicLong();
 
   public static void main(String[] args) {
     n.set(0);
     final var threads = new ArrayList<Thread>();
 
-    long start = System.currentTimeMillis();
+    final var start = System.currentTimeMillis();
     for (var i = 0; i < 100; i++) {
-      var thread = new Thread(() -> {
+      final var thread = new Thread(() -> {
         for (var j = 0; j < 10_000; j++) {
           n.incrementAndGet();
         }

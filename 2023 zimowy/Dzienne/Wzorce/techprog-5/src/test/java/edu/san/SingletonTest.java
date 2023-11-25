@@ -6,8 +6,9 @@ import static org.assertj.core.api.Assertions.assertThat;
 
 class SingletonTest {
 
+  @SuppressWarnings("static-method")
   @Test
-  void test1() {
+  void testSingleton() {
     Singleton.foo();
 
     var instance1 = Singleton.getInstance();

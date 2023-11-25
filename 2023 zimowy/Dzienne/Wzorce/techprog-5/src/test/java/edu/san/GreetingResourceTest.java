@@ -9,6 +9,7 @@ import static org.hamcrest.CoreMatchers.is;
 @QuarkusTest
 class GreetingResourceTest {
 
+  @SuppressWarnings("static-method")
   @Test
   void testHelloEndpoint() {
     given()

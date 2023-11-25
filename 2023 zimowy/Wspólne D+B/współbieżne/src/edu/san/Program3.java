@@ -8,25 +8,32 @@ public class Program3 {
 
   static long n;
 
-  static ReentrantLock lock = new ReentrantLock(true);
+  static ReentrantLock lock = new ReentrantLock(false);
 
   public static void main(String[] args) {
     n = 0L;
     final var threads = new ArrayList<Thread>();
 
-    long start = System.currentTimeMillis();
+    final var start = System.currentTimeMillis();
     for (var i = 0; i < 100; i++) {
-      var thread = new Thread(() -> {
+      final var thread = new Thread(() -> {
         for (var j = 0; j < 10_000; j++) {
-          lock.lock();
-          try {
-            // n++
-            long n1 = n;
-            long n2 = n1 + 1;
+//          lock.lock();
+//          try {
+//            // n++
+//            long n1 = n;
+//            long n2 = n1 + 1;
+//            n = n2;
+//          } finally {
+//            lock.unlock();
+//          }
+
+          Threads.locking(lock, (Runnable) () -> {
+            final var n1 = n;
+            final var n2 = n1 + 1;
             n = n2;
-          } finally {
-            lock.unlock();
-          }
+          });
+
         }
       });
 
