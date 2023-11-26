@@ -5,15 +5,15 @@ import java.util.Optional;
 import edu.san.logic.inventory.company.CompanyFacade;
 import edu.san.logic.inventory.company.Email;
 
-public abstract class AbstractEmployeeFacade {
+public interface AbstractEmployeeFacade {
 
-  protected abstract Employee createEmployee(EmployeeId employeeId,
+  Employee createEmployee(EmployeeId employeeId,
       FirstName firstName,
       LastName lastName,
       Email email,
       Department department);
 
-  public Employee enrolEmployee(CompanyFacade companyFacade,
+  default Employee enrolEmployee(CompanyFacade companyFacade,
       FirstName firstName,
       LastName lastName,
       Department department) {
@@ -23,14 +23,14 @@ public abstract class AbstractEmployeeFacade {
         companyFacade.createEmail(employeeId, firstName, lastName), department);
   }
 
-  public abstract EmployeeId createEmployeeId();
+  EmployeeId createEmployeeId();
 
-  public abstract Optional<FirstName> asFirstName(String s);
+  Optional<FirstName> asFirstName(String s);
 
-  public abstract Optional<LastName> asLastName(String s);
+  Optional<LastName> asLastName(String s);
 
-  public abstract Optional<Email> asEmail(String s);
+  Optional<Email> asEmail(String s);
 
-  public abstract Optional<Department> asDepartment(String s);
+  Optional<Department> asDepartment(String s);
 
 }

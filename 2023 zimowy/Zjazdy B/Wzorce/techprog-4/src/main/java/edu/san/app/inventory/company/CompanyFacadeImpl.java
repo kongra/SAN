@@ -12,21 +12,22 @@ import jakarta.transaction.Transactional;
 @ApplicationScoped
 class CompanyFacadeImpl implements CompanyFacade {
 
-  private final EmailEntityRepositoryImpl emailRepository;
+  private final EmailEntityRepositoryImpl emailEntityRepositoryImpl;
 
   CompanyFacadeImpl(EmailEntityRepositoryImpl emailRepository) {
-    this.emailRepository = emailRepository;
+    this.emailEntityRepositoryImpl = emailRepository;
   }
 
   @Override
   @Transactional
   public Email createEmail(EmployeeId employeeId, FirstName firstName,
-      LastName lastName) {    
-    
-    final var emailValue = employeeId + "_" + firstName + "_" + lastName + "@inventory.com";
-    EmailEntity emailEntity = new EmailEntity();
+      LastName lastName) {
+
+    final var emailValue = employeeId.asEmailPrefix() + "_" + firstName + "_"
+        + lastName + "@inventory.com";
+    final var emailEntity = new EmailEntity();
     emailEntity.value = emailValue;
-    emailRepository.persist(emailEntity);
+    emailEntityRepositoryImpl.persist(emailEntity);
     return emailEntity;
   }
 
