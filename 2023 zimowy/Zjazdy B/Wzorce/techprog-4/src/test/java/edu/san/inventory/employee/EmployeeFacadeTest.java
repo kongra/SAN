@@ -4,11 +4,11 @@ import static org.assertj.core.api.Assertions.assertThat;
 
 import org.junit.jupiter.api.Test;
 
-import edu.san.logic.inventory.employee.AbstractEmployeeFacade;
+import edu.san.logic.inventory.employee.EmployeeFacade;
 
 class EmployeeFacadeTest {
 
-  AbstractEmployeeFacade employeeFacade;
+  EmployeeFacade employeeFacade;
 
   @Test
   void testEnrolEmployee() {

@@ -6,7 +6,13 @@ import edu.san.logic.inventory.employee.LastName;
 
 public interface CompanyFacade {
 
-  Email createEmail(EmployeeId employeeId, FirstName firstName,
-      LastName lastName);
+  default Email createEmail(EmployeeId employeeId, FirstName firstName,
+      LastName lastName) {
+    final var emailValue = employeeId.asEmailPrefix() + "_" + firstName + "_"
+        + lastName + "@inventory.com";
+    return persistEmail(emailValue);
+  }
+
+  Email persistEmail(String emailValue);
 
 }

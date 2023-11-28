@@ -18,4 +18,11 @@ class EmailEntity implements Email {
   short version;
 
   String value;
+  
+  EmailEntity() {}
+
+  EmailEntity(String value) {
+    this.value = value;
+  }
+
 }

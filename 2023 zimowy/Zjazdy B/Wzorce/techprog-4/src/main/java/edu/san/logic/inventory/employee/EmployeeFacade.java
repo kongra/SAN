@@ -3,9 +3,10 @@ package edu.san.logic.inventory.employee;
 import java.util.Optional;
 
 import edu.san.logic.inventory.company.CompanyFacade;
+import edu.san.logic.inventory.company.Department;
 import edu.san.logic.inventory.company.Email;
 
-public interface AbstractEmployeeFacade {
+public interface EmployeeFacade {
 
   Employee createEmployee(EmployeeId employeeId,
       FirstName firstName,
@@ -18,9 +19,9 @@ public interface AbstractEmployeeFacade {
       LastName lastName,
       Department department) {
     final var employeeId = createEmployeeId();
-    return createEmployee(employeeId,
-        firstName, lastName,
-        companyFacade.createEmail(employeeId, firstName, lastName), department);
+    final var email = companyFacade.createEmail(employeeId, firstName,
+        lastName);
+    return createEmployee(employeeId, firstName, lastName, email, department);
   }
 
   EmployeeId createEmployeeId();
@@ -30,7 +31,5 @@ public interface AbstractEmployeeFacade {
   Optional<LastName> asLastName(String s);
 
   Optional<Email> asEmail(String s);
-
-  Optional<Department> asDepartment(String s);
 
 }
