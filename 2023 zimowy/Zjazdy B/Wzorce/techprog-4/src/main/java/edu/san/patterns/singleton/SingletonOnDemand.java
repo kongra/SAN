@@ -15,7 +15,7 @@ public final class SingletonOnDemand {
   private SingletonOnDemand() {
     System.out.println("SingletonOnDemand::new()");
   }
-  
+
   public static void goo() {
     System.out.println("SingletonOnDemand::goo()");
   }

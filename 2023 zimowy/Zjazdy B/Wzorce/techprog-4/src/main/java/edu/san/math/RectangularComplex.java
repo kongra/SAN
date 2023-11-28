@@ -22,6 +22,5 @@ record RectangularComplex(double re, double im) implements Complex {
   public Complex asPolar() {
     return Complex.polar(mod(), arg());
   }
-  
-  
+
 }

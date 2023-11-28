@@ -13,9 +13,9 @@ class EmailEntity implements Email {
 
   @Id
   UUID id;
-  
+
   @Version
   short version;
-  
+
   String value;
 }

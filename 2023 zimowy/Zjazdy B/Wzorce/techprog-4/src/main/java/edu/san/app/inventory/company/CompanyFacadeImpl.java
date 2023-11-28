@@ -15,7 +15,7 @@ class CompanyFacadeImpl implements CompanyFacade {
   private final EmailEntityRepositoryImpl emailEntityRepositoryImpl;
 
   CompanyFacadeImpl(EmailEntityRepositoryImpl emailRepository) {
-    this.emailEntityRepositoryImpl = emailRepository;
+    emailEntityRepositoryImpl = emailRepository;
   }
 
   @Override
