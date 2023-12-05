@@ -69,6 +69,12 @@ public final class Threads {
     }
   }
 
+  public static Thread startNew(Runnable body) {
+    final var t = new Thread(body);
+    t.start();
+    return t;
+  }
+
   private Threads() {}
 
 }

@@ -13,7 +13,7 @@ public class Program6 {
 
     final var start = System.currentTimeMillis();
     
-    AtomicLong n = new AtomicLong(0L);
+    final var n = new AtomicLong(0L);
     
     final var thread1 = new Thread(() -> {
       while (isRunning) {
