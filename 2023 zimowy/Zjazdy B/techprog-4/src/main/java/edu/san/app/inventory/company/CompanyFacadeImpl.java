@@ -22,7 +22,7 @@ class CompanyFacadeImpl implements CompanyFacade {
   @Transactional
   public Email persistEmail(String emailValue) {
     final var emailEntity = new EmailEntity(emailValue);
-    emailEntityRepository.persist(emailEntity);    
+    emailEntityRepository.persist(emailEntity);
     return emailEntity;
   }
 

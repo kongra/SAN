@@ -1,3 +1,7 @@
 package edu.san.logic.inventory.employee;
 
-public interface FirstName {}
+public interface FirstName {
+
+  String asString();
+
+}

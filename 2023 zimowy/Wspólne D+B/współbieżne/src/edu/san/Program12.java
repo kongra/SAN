@@ -10,8 +10,8 @@ public class Program12 {
     private T value;
 
     void set(Supplier<T> supplier) {
-      final var v = supplier.get();
-      set(v);
+      final var val = supplier.get();
+      set(val);
     }
 
     synchronized void set(T value) {

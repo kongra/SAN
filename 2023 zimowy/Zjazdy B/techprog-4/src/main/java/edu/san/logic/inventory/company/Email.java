@@ -1,3 +1,7 @@
 package edu.san.logic.inventory.company;
 
-public interface Email {}
+public interface Email {
+
+  String asString();
+
+}

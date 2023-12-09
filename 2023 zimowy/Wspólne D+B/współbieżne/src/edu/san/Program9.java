@@ -33,7 +33,7 @@ public class Program9 {
     // 1. Błędem jest wywoływanie w sekcji krytycznej "obcego" kodu!!!
     // 2. Generalnie: blokady się nie komponują!
     // 3. Aby stworzyć program, który nie ma deadlocków, trzeba "zapomnieć" o
-    // zmiennych i o sekcjach krytycznych.
+    //    zmiennych i o sekcjach krytycznych.
     // 4. Q: Co w zamian? A: Programowanie funkcyjne
   }
 

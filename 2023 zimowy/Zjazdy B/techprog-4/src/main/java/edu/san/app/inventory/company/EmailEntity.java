@@ -4,13 +4,14 @@ package edu.san.app.inventory.company;
 import java.util.Objects;
 import java.util.UUID;
 
+import edu.san.app.jpa.IdBasedIdentity;
 import edu.san.logic.inventory.company.Email;
 import jakarta.persistence.Entity;
 import jakarta.persistence.Id;
 import jakarta.persistence.Version;
 
 @Entity
-class EmailEntity implements Email {
+class EmailEntity implements Email, IdBasedIdentity<EmailEntity, UUID> {
 
   @Id
   private UUID id = UUID.randomUUID();
@@ -26,7 +27,13 @@ class EmailEntity implements Email {
     this.value = value;
   }
 
-  UUID getId() {
+  @Override
+  public String asString() {
+    return getValue();
+  }
+
+  @Override
+  public UUID getId() {
     return Objects.requireNonNull(id);
   }
 
@@ -53,18 +60,12 @@ class EmailEntity implements Email {
 
   @Override
   public final int hashCode() {
-    return getId().hashCode();
+    return hash();
   }
 
   @Override
   public final boolean equals(Object obj) {
-    if (this == obj)
-      return true;
-
-    if (obj instanceof EmailEntity emailEntity)
-      return getId().equals(emailEntity.getId());
-
-    return false;
+    return isEqual(obj);
   }
 
 }

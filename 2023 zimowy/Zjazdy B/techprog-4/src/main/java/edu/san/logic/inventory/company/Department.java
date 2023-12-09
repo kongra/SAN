@@ -1,3 +1,7 @@
 package edu.san.logic.inventory.company;
 
-public interface Department {}
+public interface Department {
+
+  String asString();
+
+}
