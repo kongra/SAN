@@ -11,18 +11,18 @@ import jakarta.transaction.Transactional;
 @ApplicationScoped
 class CompanyFacadeImpl implements CompanyFacade {
 
-  private final EmailEntityRepositoryImpl emailEntityRepositoryImpl;
+  private final EmailEntityRepository emailEntityRepository;
 
-  CompanyFacadeImpl(EmailEntityRepositoryImpl emailEntityRepositoryImpl) {
-    this.emailEntityRepositoryImpl = Objects
-        .requireNonNull(emailEntityRepositoryImpl);
+  CompanyFacadeImpl(EmailEntityRepository emailEntityRepository) {
+    this.emailEntityRepository = Objects
+        .requireNonNull(emailEntityRepository);
   }
 
   @Override
   @Transactional
   public Email persistEmail(String emailValue) {
     final var emailEntity = new EmailEntity(emailValue);
-    emailEntityRepositoryImpl.persist(emailEntity);
+    emailEntityRepository.persist(emailEntity);    
     return emailEntity;
   }
 

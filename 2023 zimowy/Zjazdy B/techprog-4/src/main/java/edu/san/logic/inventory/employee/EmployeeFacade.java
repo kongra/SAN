@@ -26,10 +26,8 @@ public interface EmployeeFacade {
 
   EmployeeId createEmployeeId();
 
-  Optional<FirstName> asFirstName(String s);
+  Optional<FirstName> validateFirstName(String s);
 
-  Optional<LastName> asLastName(String s);
-
-  Optional<Email> asEmail(String s);
+  Optional<LastName> validateLastName(String s);
 
 }
