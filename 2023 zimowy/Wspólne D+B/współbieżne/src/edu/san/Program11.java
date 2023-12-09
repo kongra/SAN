@@ -10,7 +10,7 @@ public class Program11 {
     private T value;
 
     synchronized void set(Supplier<T> supplier) {
-      this.value = supplier.get();
+      value = supplier.get();
 
       // Wywołanie supplier.get() jest wywołaniem "obcego" kodu, tj. kodu,
       // którego działania nie możemy przewidzieć, ponieważ pozostaje on poza
@@ -18,7 +18,7 @@ public class Program11 {
     }
 
     synchronized T value() {
-      return this.value;
+      return value;
     }
 
     Holder(T value) {
@@ -30,16 +30,13 @@ public class Program11 {
   public static void main(String[] args) {
     final var holder1 = new Holder<String>(null);
 
-    final var t1 = Threads.startNew(() -> {
-      holder1.set(() -> {
-        final var t2 = Threads.startNew(() -> {
-          System.out.println(holder1.value());
-        });
-        Threads.run(t2::join);
-        return "bbb";
-      });
-    });
-   
+    final var t1 = Threads.startNew(() -> holder1.set(() -> {
+      final var t2 = Threads
+          .startNew(() -> System.out.println(holder1.value()));
+      Threads.run(t2::join);
+      return "bbb";
+    }));
+
     Threads.run(t1::join);
     System.out.println("Done");
   }

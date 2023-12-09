@@ -12,7 +12,7 @@ public class Program10 {
     }
 
     synchronized T value() {
-      return this.value;
+      return value;
     }
 
     Holder(T value) {
@@ -24,13 +24,9 @@ public class Program10 {
   public static void main(String[] args) {
     final var holder1 = new Holder<String>(null);
 
-    final var t1 = Threads.startNew(() -> {
-      holder1.set("aaa");
-    });
+    final var t1 = Threads.startNew(() -> holder1.set("aaa"));
 
-    final var t2 = Threads.startNew(() -> {
-      System.out.println(holder1.value());
-    });
+    final var t2 = Threads.startNew(() -> System.out.println(holder1.value()));
 
     Threads.run(t1::join);
     Threads.run(t2::join);

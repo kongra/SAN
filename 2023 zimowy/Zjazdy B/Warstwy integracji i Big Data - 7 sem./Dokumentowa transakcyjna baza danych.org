@@ -1,0 +1,6 @@
+| Version (big integer) Primary Key | Id (UUID) Indexed                    | Stamp: TIMESTAMP                    | Data: JSONB                                                                     | Data Type: TEXT Index |
+|-----------------------------------+--------------------------------------+-------------------------------------+---------------------------------------------------------------------------------+-----------------------|
+|                                 1 | a5f738f1-e813-425f-8a98-851e0da0444e | Sat, 9th December 2023 11:39:30 UTC | {pesel: ..., first-name: '...', last-name: '...', email: 'kongra@gmail.com'   } | 'student'             |
+|                                 2 | a5f738f1-e813-425f-8a98-851e0da0444e | Sat, 9th December 2023 11:40:59 UTC | {pesel: ..., first-name: '...', last-name: '...', email: 'kgrzanek@san.edu.pl'} | 'student'             |
+|                                 3 | 77f78bc7-0a28-483c-938c-f4b7612f1aca | Sat, 9th December 2023 11:52:35 UTC | {grade: 5, lecture-id: ..., student-id: ..., }                                  | 'grade'               |
+|                                   |                                      |                                     |                                                                                 |                       |

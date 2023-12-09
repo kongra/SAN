@@ -9,7 +9,7 @@ public class Program5 {
     final var obj = new Object();
 
     final var t1 = new Thread(() -> {
-      System.out.println("t1 starts");      
+      System.out.println("t1 starts");
       synchronized (obj) {
         System.out.println("t1 calls obj.wait()");
         Threads.run(obj::wait);
@@ -20,7 +20,7 @@ public class Program5 {
     t1.start();
 
     Threads.sleep(1000);
-    
+
     synchronized (obj) {
       System.out.println("main calls obj.notify()");
       obj.notify();

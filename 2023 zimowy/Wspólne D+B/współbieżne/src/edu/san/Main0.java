@@ -4,7 +4,7 @@ package edu.san;
 public class Main0 {
 
   public static void main(String[] args) {
-    Thread t1 = new Thread(() -> {
+    final var t1 = new Thread(() -> {
       System.out.println("work2 goes to sleep");
       Threads.sleep(5_000);
       System.out.println("work2 ended");

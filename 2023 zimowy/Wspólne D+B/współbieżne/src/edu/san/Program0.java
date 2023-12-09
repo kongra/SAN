@@ -11,13 +11,13 @@ public class Program0 {
     n = 0;
     final var threads = new ArrayList<Thread>();
 
-    long start = System.currentTimeMillis();
+    final var start = System.currentTimeMillis();
     for (var i = 0; i < 100; i++) {
-      var thread = new Thread(() -> {
+      final var thread = new Thread(() -> {
         for (var j = 0; j < 10_000; j++) {
           // n++;
-          long n1 = n;
-          long n2 = n1 + 1;
+          final var n1 = n;
+          final var n2 = n1 + 1;
           n = n2;
         }
       });
