@@ -4,9 +4,9 @@ package edu.san.app.jpa;
 import java.util.Objects;
 
 @SuppressWarnings("java:S119")
-public interface IdBasedIdentity<T extends IdBasedIdentity<T, ID>, ID> {
+public interface IdBasedIdentity<T extends IdBasedIdentity<T, Id>, Id> {
 
-  ID getId();
+  Id getId();
 
   default int hash() {
     return getId().hashCode();
@@ -18,7 +18,7 @@ public interface IdBasedIdentity<T extends IdBasedIdentity<T, ID>, ID> {
 
     if (getClass().isInstance(obj)) {
       @SuppressWarnings("unchecked")
-      final var other = (IdBasedIdentity<T, ID>) obj;
+      final var other = (IdBasedIdentity<T, Id>) obj;
       final var otherId = Objects.requireNonNull(other.getId());
       return getId().equals(otherId);
     }
