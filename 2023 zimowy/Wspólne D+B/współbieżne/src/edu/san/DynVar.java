@@ -15,7 +15,7 @@ public final class DynVar<T> implements AutoCloseable {
 
   public T value() {
     final var stack = localStacks.get();
-    return !stack.isEmpty() ? (T) stack.peek() : initialValue;
+    return !stack.isEmpty() ? stack.peek() : initialValue;
   }
 
   public void binding(T value, Runnable body) {
