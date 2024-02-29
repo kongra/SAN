@@ -15,12 +15,12 @@ public class Point2D {
   }
 
   @Override
-  public final int hashCode() {
+  public int hashCode() {
     return Objects.hash(x, y);
   }
 
   @Override
-  public final boolean equals(Object obj) {
+  public boolean equals(Object obj) {
     if (this == obj)
       return true;
     if (!(obj instanceof final Point2D other))
