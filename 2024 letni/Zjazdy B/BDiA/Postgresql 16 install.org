@@ -1,0 +1,32 @@
+* Linux Mint 21 or Ubuntu 22.04, PostgreSQL 16
+** Install required packages
+   $ sudo sh -c 'echo "deb https://apt.PostgreSQL.org/pub/repos/apt $(lsb_release -cs)-pgdg main" > /etc/apt/sources.list.d/pgdg.list'
+   $ wget --quiet -O - https://www.PostgreSQL.org/media/keys/ACCC4CF8.asc | sudo apt-key add -
+   $ sudo apt update
+   $ sudo apt install postgresql-16
+
+** sudo passwd postgres; su postgres; psql
+    this should give us postgres=# prompt
+
+** Disable automatic start
+    su postgres; vim vim /etc/postgresql/16/main/start.conf
+    change auto to manual
+
+** sudo pg_ctlcluster 16 main stop
+** sudo pg_ctlcluster 16 main start
+
+** su postgres; createdb -E utf-8 telsos -e
+    SELECT pg_catalog.set_config('search_path', '', false);
+    CREATE DATABASE telsos ENCODING 'utf-8';
+
+** su postgres; createuser -e telsos_user -P
+** su postgres; psql telsos
+    telsos=# create schema telsos authorization telsos_user;
+    telsos=# alter database telsos set search_path to telsos;
+
+** psql telsos -h localhost -U telsos_user
+    telsos=> create table test1(id bigint;
+    telsos=> insert into test1(id) values(0);
+    telsos=> insert into test1(id) values(1);
+    telsos=> insert into test1(id) values(2);
+    telsos=> select * from test1;
