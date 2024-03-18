@@ -1,0 +1,4 @@
+* Zadanie 1.
+a. Wzór na pierwiastek sześcienny - zaimplementować
+b. Przebieg procedury Herona uzależnić od parametru formalnego (epsilon) procedury sqrt
+c. Przebieg procedury Herona uzależnić od N (ilości kroków)
