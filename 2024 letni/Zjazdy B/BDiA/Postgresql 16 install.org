@@ -21,12 +21,12 @@
 
 ** su postgres; createuser -e telsos_user -P
 ** su postgres; psql telsos
-    telsos=# create schema telsos authorization telsos_user;
+    telsos=# create schema  telsos authorization telsos_user;
     telsos=# alter database telsos set search_path to telsos;
 
 ** psql telsos -h localhost -U telsos_user
-    telsos=> create table test1(id bigint;
-    telsos=> insert into test1(id) values(0);
-    telsos=> insert into test1(id) values(1);
-    telsos=> insert into test1(id) values(2);
+    telsos=> create table test1(id    bigint);
+    telsos=> insert into  test1(id) values(0);
+    telsos=> insert into  test1(id) values(1);
+    telsos=> insert into  test1(id) values(2);
     telsos=> select * from test1;
