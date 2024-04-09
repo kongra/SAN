@@ -1,0 +1,32 @@
+* typy proste (ang. primitive types)
+** mają charakter atomowy
+** z uwagi na swoją prostotę poddają się agresywnej optymalizacji
+
+** typy całkowitoliczbowe
+    byte [-128, ...,0 ,... 127], zajmują 8 bitów
+    short, 16 bitów
+    int,   32 bity *
+    long,  64 bity
+    char,  16 bitów
+
+** typy zmiennoprzecinkowe
+    1/3 = 0.333333333...
+
+    float,  32 bity
+    double, 64 bity *
+
+* typy złożone
+** typy tablicowe
+** klasy, interfejsy, typy wyliczeniowe, rekordy
+** (type variables)
+
+* hierarchia typów
+   a <: b - a jest podtypem b, ale można również powiedzieć, że a jest podzbiorem b
+
+   X : Real := 0.74625436;
+   1 < 3
+   a < b - jeżeli a i b są zbiorami, to znaczy, że a jest podzbiorem (właściwym) b
+
+** hierarchie typów prostych w Javie
+    byte <: short <: int <: long <: float <: double
+            char  <: int <: long <: float <: double
