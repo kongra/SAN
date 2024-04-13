@@ -1,13 +1,15 @@
 // © 2024 Konrad Grzanek <kongra@gmail.com>
 package edu.san;
 
-public class Program {
+import java.util.function.Function;
 
-  public static void main(String[] args) {
+interface Program {
+
+  static void main(String[] args) {
     System.out.println("Hello World!");
 
-    final T1 fun = String::length;    
-    final var n = fun.call("abcdef");
+    final Function<String, Integer> fun = String::length;
+    final var n = fun.apply("abcdef");
     System.out.println(n);
   }
 

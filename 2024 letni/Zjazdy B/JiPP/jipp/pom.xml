@@ -9,8 +9,8 @@
 
   <properties>
     <!-- COMMONS -->
-    <maven.compiler.source>21</maven.compiler.source>
-    <maven.compiler.target>21</maven.compiler.target>
+    <maven.compiler.source>22</maven.compiler.source>
+    <maven.compiler.target>22</maven.compiler.target>
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 
     <!-- DEPS VERSIONS -->
@@ -21,7 +21,6 @@
     <junit-jupiter.version>5.10.2</junit-jupiter.version>
 
     <!-- PLUGINS VERSIONS -->
-    <jshell-maven-plugin.version>3.2.0</jshell-maven-plugin.version>
     <maven-clean-plugin.version>3.2.0</maven-clean-plugin.version>
     <maven-compiler-plugin.version>3.11.0</maven-compiler-plugin.version>
     <maven-deploy-plugin.version>3.1.0</maven-deploy-plugin.version>
@@ -146,11 +145,6 @@
         <plugin>
           <artifactId>maven-project-info-reports-plugin</artifactId>
           <version>${maven-project-info-reports-plugin.version}</version>
-        </plugin>
-        <plugin>
-          <groupId>com.github.johnpoth</groupId>
-          <artifactId>jshell-maven-plugin</artifactId>
-          <version>${jshell-maven-plugin.version}</version>
         </plugin>
       </plugins>
     </pluginManagement>
