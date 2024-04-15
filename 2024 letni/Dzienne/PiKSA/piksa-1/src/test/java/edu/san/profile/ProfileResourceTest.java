@@ -10,9 +10,15 @@ class ProfileResourceTest {
 
   ProfileResource profileResource;
 
-  @BeforeEach 
+  ProfileManager profileManager;
+
+  ProfileRepository profileRepository;
+
+  @BeforeEach
   void beforeEach() {
-    profileResource = new ProfileResource();
+    profileRepository = new ProfileRepositoryFake();
+    profileManager = new ProfileManager(profileRepository);
+    profileResource = new ProfileResource(profileManager);
   }
 
   @Test

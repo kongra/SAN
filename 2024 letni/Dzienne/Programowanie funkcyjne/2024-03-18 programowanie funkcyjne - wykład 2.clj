@@ -65,7 +65,7 @@
 
 (defn good-enough?
   [g x]
-  (< (abs (- x (* g g))) 0.00001))
+  (< (abs' (- x (square g))) 0.00001))
 
 (defn improve
   [g x]

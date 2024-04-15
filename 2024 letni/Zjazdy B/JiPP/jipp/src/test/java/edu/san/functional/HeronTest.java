@@ -1,6 +1,8 @@
 // © 2024 Konrad Grzanek <kongra@gmail.com>
 package edu.san.functional;
 
+import static org.assertj.core.api.Assertions.assertThat;
+
 import java.math.BigDecimal;
 import java.math.MathContext;
 import java.math.RoundingMode;
@@ -10,27 +12,28 @@ import org.junit.jupiter.api.Test;
 
 class HeronTest {
 
-  Heron<BigDecimal> bigHeron;
+  static final MathContext mathContext = new MathContext(100,
+      RoundingMode.HALF_UP);
 
-  static final MathContext mc = new MathContext(100, RoundingMode.HALF_UP);
+  Heron<BigDecimal> bigHeron;
 
   Heron<Double> doubleHeron;
 
   @BeforeEach
   void setUp() {
-    bigHeron = new Heron<BigDecimal>(
+    bigHeron = new Heron<>(
         BigDecimal::add,
         BigDecimal::subtract,
-        (x, y) -> x.multiply(y, mc),
-        (x, y) -> x.divide(y, mc),
+        (x, y) -> x.multiply(y, mathContext),
+        (x, y) -> x.divide(y, mathContext),
         BigDecimal::negate,
         (x, y) -> x.compareTo(y) < 0,
         BigDecimal.ZERO,
         BigDecimal.ONE,
-        BigDecimal.valueOf(2),
-        BigDecimal.valueOf(0.0000000001));
+        BigDecimal.valueOf(2L),
+        BigDecimal.valueOf(0.0000000001d));
 
-    doubleHeron = new Heron<Double>(
+    doubleHeron = new Heron<>(
         (x, y) -> x + y,
         (x, y) -> x - y,
         (x, y) -> x * y,
@@ -50,6 +53,12 @@ class HeronTest {
 
     System.out.println(
         doubleHeron.sqrt(2d));
+
+    final var sqrt1 = bigHeron.sqrt(BigDecimal.valueOf(2L));
+    final var square1 = sqrt1.multiply(sqrt1, mathContext);
+    final var two = BigDecimal.valueOf(2L);
+
+    assertThat(square1).isEqualByComparingTo(two);
   }
 
 }

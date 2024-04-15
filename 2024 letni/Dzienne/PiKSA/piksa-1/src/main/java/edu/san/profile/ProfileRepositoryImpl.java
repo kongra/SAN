@@ -3,6 +3,9 @@ package edu.san.profile;
 
 import java.util.Optional;
 
+import jakarta.enterprise.context.ApplicationScoped;
+
+@ApplicationScoped
 public class ProfileRepositoryImpl implements ProfileRepository {
 
   @Override

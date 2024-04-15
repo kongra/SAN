@@ -2,16 +2,17 @@
 package edu.san.functional;
 
 import java.util.Objects;
+import java.util.function.BiPredicate;
 import java.util.function.BinaryOperator;
 import java.util.function.UnaryOperator;
 
-public record Heron<T extends Number>(
-    Add<T> add,
-    Subtract<T> subtract,
-    Multiply<T> multiply,
-    Divide<T> divide,
-    Negate<T> negate,
-    LowerThan<T> lowerThan,
+public record Heron<T>(
+    BinaryOperator<T> add,
+    BinaryOperator<T> subtract,
+    BinaryOperator<T> multiply,
+    BinaryOperator<T> divide,
+    UnaryOperator<T> negate,
+    BiPredicate<T, T> lowerThan,
     T zero,
     T one,
     T two,
@@ -28,26 +29,6 @@ public record Heron<T extends Number>(
     Objects.requireNonNull(one);
     Objects.requireNonNull(two);
     Objects.requireNonNull(epsilon);
-  }
-
-  @FunctionalInterface
-  interface Add<T extends Number> extends BinaryOperator<T> {}
-
-  @FunctionalInterface
-  interface Subtract<T extends Number> extends BinaryOperator<T> {}
-
-  @FunctionalInterface
-  interface Multiply<T extends Number> extends BinaryOperator<T> {}
-
-  @FunctionalInterface
-  interface Divide<T extends Number> extends BinaryOperator<T> {}
-
-  @FunctionalInterface
-  interface Negate<T extends Number> extends UnaryOperator<T> {}
-
-  @FunctionalInterface
-  interface LowerThan<T extends Number> {
-    boolean apply(T x, T y);
   }
 
   public T sqrt(T x) {
@@ -67,12 +48,12 @@ public record Heron<T extends Number>(
   }
 
   private boolean isGoodEnough(T g, T x) {
-    return lowerThan.apply(abs(subtract.apply(square(g), x)),
+    return lowerThan.test(abs(subtract.apply(square(g), x)),
         epsilon);
   }
 
   private T abs(T d) {
-    return lowerThan.apply(d, zero) ? negate.apply(d) : d;
+    return lowerThan.test(d, zero) ? negate.apply(d) : d;
   }
 
   private T square(T g) {
