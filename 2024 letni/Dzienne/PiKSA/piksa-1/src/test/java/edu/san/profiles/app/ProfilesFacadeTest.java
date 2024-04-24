@@ -2,21 +2,23 @@
 package edu.san.profiles.app;
 
 import static org.assertj.core.api.Assertions.assertThat;
-import static org.junit.jupiter.api.Assertions.*;
 
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
-import edu.san.profiles.ProfileValuesFactory;
+import edu.san.profiles.ProfilesFacade;
+import edu.san.profiles.ProfilesFactory;
+import edu.san.profiles.ProfilesRepository;
 
-class ProfileValuesFactoryImplTest {
+class ProfilesFacadeTest {
 
-  ProfileValuesFactory profileValuesFactory;
+  ProfilesFacade profilesFacade;
 
   @BeforeEach
   void setUp() throws Exception {
-    var profileRepository = new ProfileRepositoryImpl();
-    profileValuesFactory = profileRepository.newProfileValuesFactory();
+    final ProfilesRepository profilesRepository = new MutableProfilesRepositoryImpl();
+    final ProfilesFactory profilesFactory = new ProfilesFactoryImpl();
+    profilesFacade = new ProfilesFacade(profilesRepository, profilesFactory);
   }
 
   @Test
@@ -26,7 +28,7 @@ class ProfileValuesFactoryImplTest {
 
   @Test
   void testCreatePassword() {
-    var password = profileValuesFactory
+    final var password = profilesFacade
         .createPassword("^%$^%$DSS&D%^S^%D$KJBN876253576KJBD");
     assertThat(password).isNotEmpty();
   }

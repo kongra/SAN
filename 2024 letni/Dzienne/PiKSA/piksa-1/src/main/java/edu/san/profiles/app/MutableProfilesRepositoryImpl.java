@@ -4,16 +4,16 @@ package edu.san.profiles.app;
 import java.util.Optional;
 import java.util.stream.Stream;
 
-import edu.san.profiles.MutableProfileRepository;
+import edu.san.profiles.MutableProfilesRepository;
 import edu.san.profiles.Password;
 import edu.san.profiles.Profile;
 import edu.san.profiles.ProfileId;
-import edu.san.profiles.ProfileValuesFactory;
+import edu.san.profiles.ProfilesFactory;
 import edu.san.profiles.Username;
 import jakarta.enterprise.context.ApplicationScoped;
 
 @ApplicationScoped
-class ProfileRepositoryImpl implements MutableProfileRepository {
+class MutableProfilesRepositoryImpl implements MutableProfilesRepository {
 
   @Override
   public Stream<Profile> getAllProfiles() {
@@ -34,8 +34,8 @@ class ProfileRepositoryImpl implements MutableProfileRepository {
   }
 
   @Override
-  public ProfileValuesFactory newProfileValuesFactory() {
-    return new ProfileValuesFactoryImpl();
+  public ProfilesFactory newProfileValuesFactory() {
+    return new ProfilesFactoryImpl();
   }
 
 }

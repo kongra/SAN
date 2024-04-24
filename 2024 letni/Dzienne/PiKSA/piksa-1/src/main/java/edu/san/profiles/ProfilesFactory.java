@@ -3,7 +3,7 @@ package edu.san.profiles;
 
 import java.util.Optional;
 
-public interface ProfileValuesFactory {
+public interface ProfilesFactory {
 
   Optional<Username> createUsername(String username);
 
