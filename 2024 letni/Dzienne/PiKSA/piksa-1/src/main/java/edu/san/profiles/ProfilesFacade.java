@@ -1,22 +1,19 @@
 // © 2024 Konrad Grzanek <kongra@gmail.com>
-package edu.san.profile;
+package edu.san.profiles;
 
 import java.util.Objects;
 import java.util.Optional;
 import java.util.function.Function;
 
-import jakarta.enterprise.context.ApplicationScoped;
-
-@ApplicationScoped
-public class ProfileManager {
+public final class ProfilesFacade {
 
   private final ProfileRepository profileRepository;
 
-  public ProfileManager(ProfileRepository profileRepository) {
+  protected ProfilesFacade(ProfileRepository profileRepository) {
     this.profileRepository = Objects.requireNonNull(profileRepository);
   }
 
-  public boolean isCorrectUser(String username, String password) {
+  public boolean isCorrectUser(Username username, Password password) {
     return profileRepository
         .findProfileByUsername(username)
         .flatMap(onlyWithPassword(password))
@@ -24,12 +21,12 @@ public class ProfileManager {
   }
 
   private static Function<Profile, Optional<Profile>> onlyWithPassword(
-      String password) {
+      Password password) {
     return profile -> onlyWithPassword(profile, password);
   }
 
   private static Optional<Profile> onlyWithPassword(Profile profile,
-      String password) {
+      Password password) {
     return password.equals(profile.getPassword()) ? Optional.of(profile)
         : Optional.empty();
   }
