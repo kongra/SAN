@@ -58,6 +58,16 @@
       <version>3.25.3</version>
       <scope>test</scope>
     </dependency>
+    <dependency>
+    	<groupId>me.gosimple</groupId>
+    	<artifactId>nbvcxz</artifactId>
+    	<version>1.5.1</version>
+		</dependency>
+		<dependency>
+      <groupId>kongra</groupId>
+      <artifactId>telsos-core</artifactId>
+      <version>1.0</version>
+    </dependency>
   </dependencies>
   <build>
     <plugins>
