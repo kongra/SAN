@@ -8,10 +8,12 @@ import java.util.Optional;
 import java.util.regex.Pattern;
 
 import edu.san.profiles.Password;
-import edu.san.profiles.ProfilesFactory;
+import edu.san.profiles.ProfilesParser;
 import edu.san.profiles.Username;
+import jakarta.enterprise.context.ApplicationScoped;
 
-class ProfilesFactoryImpl implements ProfilesFactory {
+@ApplicationScoped
+class ProfilesParserImpl implements ProfilesParser {
 
   private static final String USERNAME_PATTERN = "^[a-zA-Z0-9_-]{3,20}$";
 
@@ -55,7 +57,7 @@ class ProfilesFactoryImpl implements ProfilesFactory {
   }
 
   @Override
-  public Optional<Username> createUsername(String username) {
+  public Optional<Username> parseUsername(String username) {
     Objects.requireNonNull(username);
     if (isValidUsername(username))
       return null; // Optional.of(new UsernameImpl(username));
@@ -64,7 +66,7 @@ class ProfilesFactoryImpl implements ProfilesFactory {
   }
 
   @Override
-  public Optional<Password> createPassword(String password) {
+  public Optional<Password> parsePassword(String password) {
     Objects.requireNonNull(password);
     if (isValidPassword(password))
       return null; // Optional.of(new PasswordImpl(hashPassword(password)));

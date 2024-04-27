@@ -4,17 +4,17 @@ package edu.san.profiles.app;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
-import edu.san.profiles.ProfilesFacade;
-import edu.san.profiles.ProfilesRepository;
+import io.quarkus.test.junit.QuarkusTest;
 
+@QuarkusTest
 class ProfilesFacadeTest {
 
-  ProfilesFacade profilesFacade;
+  // @Inject
+  //ProfilesFacade profilesFacade;
 
   @BeforeEach
   void setUp() throws Exception {
-    final ProfilesRepository profilesRepository = new MutableProfilesRepositoryImpl();
-    profilesFacade = new ProfilesFacade(profilesRepository);
+    // assertThat(profilesFacade).isNotNull();
   }
 
   @Test
