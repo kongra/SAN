@@ -8,7 +8,6 @@ import edu.san.profiles.MutableProfilesRepository;
 import edu.san.profiles.Password;
 import edu.san.profiles.Profile;
 import edu.san.profiles.ProfileId;
-import edu.san.profiles.ProfilesFactory;
 import edu.san.profiles.Username;
 import jakarta.enterprise.context.ApplicationScoped;
 
@@ -31,11 +30,6 @@ class MutableProfilesRepositoryImpl implements MutableProfilesRepository {
   public ProfileId createProfile(Username username, Password password) {
     // TODO Auto-generated method stub
     return null;
-  }
-
-  @Override
-  public ProfilesFactory newProfileValuesFactory() {
-    return new ProfilesFactoryImpl();
   }
 
 }

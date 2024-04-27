@@ -1,12 +1,14 @@
 // © 2024 Konrad Grzanek <kongra@gmail.com>
 package edu.san.passwords.app;
 
-import edu.san.passwords.PasswordStrengthSuggestion;
+import edu.san.passwords.PasswordStrengthAnalysisResult;
 import edu.san.passwords.PasswordsFacade;
+import jakarta.enterprise.context.ApplicationScoped;
 import me.gosimple.nbvcxz.Nbvcxz;
 import me.gosimple.nbvcxz.resources.ConfigurationBuilder;
 import telsos.string.NonBlank;
 
+@ApplicationScoped
 class PasswordsFacadeImpl implements PasswordsFacade {
 
   private final Nbvcxz passwordStrengthEstimator;
@@ -30,10 +32,10 @@ class PasswordsFacadeImpl implements PasswordsFacade {
   }
 
   @Override
-  public PasswordStrengthSuggestion getPasswordStrengthSuggestion(
+  public PasswordStrengthAnalysisResult analyzePasswordStrength(
       NonBlank password) {
-    // TODO Auto-generated method stub
-    return null;
+    // TODO: implement
+    throw new UnsupportedOperationException("Method not yet implemented");
   }
 
 }

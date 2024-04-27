@@ -9,13 +9,8 @@ public final class ProfilesFacade {
 
   private final ProfilesRepository profilesRepository;
 
-  private final ProfilesFactory profilesFactory;
-
-  public ProfilesFacade(
-      ProfilesRepository profilesRepository,
-      ProfilesFactory profilesFactory) {
+  public ProfilesFacade(ProfilesRepository profilesRepository) {
     this.profilesRepository = Objects.requireNonNull(profilesRepository);
-    this.profilesFactory    = Objects.requireNonNull(profilesFactory);
   }
 
   public boolean isCorrectUser(Username username, Password password) {
@@ -23,14 +18,6 @@ public final class ProfilesFacade {
         .findProfileByUsername(username)
         .flatMap(onlyWithPassword(password))
         .isPresent();
-  }
-
-  public Optional<Username> createUsername(String username) {
-    return profilesFactory.createUsername(username);
-  }
-
-  public Optional<Password> createPassword(String password) {
-    return profilesFactory.createPassword(password);
   }
 
   private static Function<Profile, Optional<Profile>> onlyWithPassword(

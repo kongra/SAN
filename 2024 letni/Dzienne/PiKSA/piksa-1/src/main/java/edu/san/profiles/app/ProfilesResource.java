@@ -10,7 +10,7 @@ import jakarta.ws.rs.Produces;
 import jakarta.ws.rs.core.MediaType;
 import jakarta.ws.rs.core.Response;
 
-@Path("/profiles")
+@Path("/profiles/v1")
 class ProfilesResource {
 
   private final ProfilesRepository profilesRepository;

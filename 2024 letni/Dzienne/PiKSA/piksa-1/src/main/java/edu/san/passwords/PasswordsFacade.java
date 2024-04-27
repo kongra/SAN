@@ -7,6 +7,6 @@ public interface PasswordsFacade {
 
   boolean isStrong(NonBlank password);
 
-  PasswordStrengthSuggestion getPasswordStrengthSuggestion(NonBlank password);
+  PasswordStrengthAnalysisResult analyzePasswordStrength(NonBlank password);
 
 }

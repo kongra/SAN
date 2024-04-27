@@ -10,6 +10,4 @@ public interface ProfilesRepository {
 
   Optional<Profile> findProfileByUsername(Username username);
 
-  ProfilesFactory newProfileValuesFactory();
-
 }

@@ -58,7 +58,7 @@ class ProfilesFactoryImpl implements ProfilesFactory {
   public Optional<Username> createUsername(String username) {
     Objects.requireNonNull(username);
     if (isValidUsername(username))
-      return Optional.of(new UsernameImpl(username));
+      return null; // Optional.of(new UsernameImpl(username));
 
     return Optional.empty();
   }
@@ -67,7 +67,7 @@ class ProfilesFactoryImpl implements ProfilesFactory {
   public Optional<Password> createPassword(String password) {
     Objects.requireNonNull(password);
     if (isValidPassword(password))
-      return Optional.of(new PasswordImpl(hashPassword(password)));
+      return null; // Optional.of(new PasswordImpl(hashPassword(password)));
 
     return Optional.empty();
   }
