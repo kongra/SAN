@@ -27,9 +27,6 @@ class PasswordsResourceTest {
         {"password": "abcd"}
         """;
 
-    final var response = passwordsResourceClient.isPasswordStrong(passwordJson);
-    assertThat(response.isStrong).isFalse();
-
     given()
         .when()
         .header("content-type", "application/json")
@@ -37,6 +34,11 @@ class PasswordsResourceTest {
         .post("/passwords/v1/isPasswordStrong")
         .then()
         .statusCode(200);
+
+    final var response = passwordsResourceClient
+        .isPasswordStrong(passwordJson);
+
+    assertThat(response.isStrong).isFalse();
   }
 
 }

@@ -1,0 +1,13 @@
+* Rola pakietów w implementacji agregatów w DDD
+   Implementacja agregatu powinna się zacząć od zdefiniowania odpowiedniego pakietu.
+   Encje, identyfikatory i value objects związane z agregatem umieszczane są w tym pakiecie.
+   Jednocześnie, pakiety mogą pełnić również role niezwiązane z agregatami.
+
+** Jeżeli nazwa naszego agregatu jest w liczbie pojedynczej, pakiet ma nazwę w liczbie mnogiej
+    np. agregat Profile, pakiet some.system.Profiles.
+
+** W pakiecie zazwyczaj wyróżniamy
+*** ProfilesFacade     - służy jako główny interfejs do logiki biznesowej zaimplementowanej w pakiecie.
+*** ProfilesParser     - służy do parsowania danych wejściowych dla fasady.
+*** ProfilesRepository - reprezentuje mechanizmy manipulacji encją (w tym wypadku Profile).
+*** (Profiles)Factory  - służy do tworzenia obiektów wykorzystywanych w logice.

@@ -2,9 +2,9 @@
 package edu.san.passwords.app;
 
 import java.io.StringReader;
-import java.util.Objects;
 
 import edu.san.passwords.PasswordsFacade;
+import edu.san.passwords.PasswordsStrengthAnalyzer;
 import jakarta.json.Json;
 import jakarta.ws.rs.Consumes;
 import jakarta.ws.rs.POST;
@@ -20,8 +20,8 @@ class PasswordsResource {
 
   private final PasswordsFacade passwordsFacade;
 
-  PasswordsResource(PasswordsFacade passwordsFacade) {
-    this.passwordsFacade = Objects.requireNonNull(passwordsFacade);
+  PasswordsResource(PasswordsStrengthAnalyzer passwordsStrengthAnalyzer) {
+    this.passwordsFacade = new PasswordsFacade(passwordsStrengthAnalyzer);
   }
 
   private static Response createBadRequest() {
