@@ -5,15 +5,13 @@ import java.util.Objects;
 import java.util.Optional;
 import java.util.function.Function;
 
-public abstract class ProfilesFacade {
+public final class ProfilesFacade {
 
   private final ProfilesRepository profilesRepository;
 
-  protected ProfilesFacade(ProfilesRepository profilesRepository) {
+  public ProfilesFacade(ProfilesRepository profilesRepository) {
     this.profilesRepository = Objects.requireNonNull(profilesRepository);
   }
-
-  public abstract ProfilesParser profilesParser();
 
   public boolean isCorrectUser(Username username, Password password) {
     return profilesRepository

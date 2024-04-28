@@ -3,12 +3,12 @@ package edu.san.profiles.app;
 
 import java.util.Objects;
 
-import edu.san.profiles.Password;
+import edu.san.profiles.Username;
 import telsos.string.NonBlank;
 
-record PasswordImpl(NonBlank value) implements Password {
+record UsernameRecord(NonBlank value) implements Username {
 
-  PasswordImpl {
+  UsernameRecord {
     Objects.requireNonNull(value);
   }
 

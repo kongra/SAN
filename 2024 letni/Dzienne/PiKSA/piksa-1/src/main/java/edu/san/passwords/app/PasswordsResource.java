@@ -5,7 +5,6 @@ import java.io.StringReader;
 import java.util.Objects;
 
 import edu.san.passwords.PasswordsFacade;
-import io.quarkus.logging.Log;
 import jakarta.json.Json;
 import jakarta.ws.rs.Consumes;
 import jakarta.ws.rs.POST;
@@ -51,7 +50,6 @@ class PasswordsResource {
   @Consumes(MediaType.APPLICATION_JSON)
   @Produces(MediaType.APPLICATION_JSON)
   public Response isPasswordStrong(String body) {
-    Log.info("body is " + body);
     return NonBlank
         .ofTrimmed(body)
         .map(this::isPasswordStrongImpl)
