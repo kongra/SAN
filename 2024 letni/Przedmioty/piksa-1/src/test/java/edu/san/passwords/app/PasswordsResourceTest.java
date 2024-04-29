@@ -22,21 +22,21 @@ class PasswordsResourceTest {
   }
 
   @Test
-  void testIsPasswordStrong() {
+  void testIsStrongPassword() {
     final var passwordJson = """
-        {"password": "abcd"}
+        {"nonBlankPassword": "abcd"}
         """;
 
     given()
         .when()
         .header("content-type", "application/json")
         .body(passwordJson)
-        .post("/passwords/v1/isPasswordStrong")
+        .post("/passwords/v1/isStrongPassword")
         .then()
         .statusCode(200);
 
-    final var input = new PasswordsResourceInput();
-    input.password = "abcd";
+    final var input = new NonBlankPasswordInput();
+    input.nonBlankPassword = "aaa";
     final var response = passwordsResourceClient.isPasswordStrong(input);
 
     assertThat(response.isStrong).isFalse();

@@ -1,15 +1,13 @@
 // © 2024 Konrad Grzanek <kongra@gmail.com>
 package edu.san.passwords.app;
 
-import java.util.Map;
+import org.jboss.resteasy.reactive.ResponseStatus;
 
 import edu.san.passwords.PasswordsFacade;
 import edu.san.passwords.PasswordsStrengthAnalyzer;
 import jakarta.validation.Valid;
 import jakarta.ws.rs.POST;
 import jakarta.ws.rs.Path;
-import jakarta.ws.rs.core.Response;
-import telsos.string.NonBlank;
 
 @Path("/passwords/v1")
 class PasswordsResource {
@@ -20,16 +18,15 @@ class PasswordsResource {
     passwordsFacade = new PasswordsFacade(passwordsStrengthAnalyzer);
   }
 
-  @Path("/isPasswordStrong")
+  private static final int STATUS_OK = 200;
+
+  @Path("/isStrongPassword")
   @POST
-  public Response isPasswordStrong(
-      @Valid PasswordsResourceInput passwordResourceInput) {
-
-    final var password = NonBlank.of(passwordResourceInput.password)
-        .orElseThrow(IllegalArgumentException::new);
-
-    final var isStrong = passwordsFacade.isStrong(password);
-    return Response.ok(Map.of("isStrong", isStrong)).build();
+  @ResponseStatus(value = STATUS_OK)
+  public IsStrongPasswordOutput isStrongPassword(
+      @Valid NonBlankPasswordInput input) {
+    final var isStrong = passwordsFacade.isStrong(input.asNonBlank());
+    return new IsStrongPasswordOutput(isStrong);
   }
 
 }

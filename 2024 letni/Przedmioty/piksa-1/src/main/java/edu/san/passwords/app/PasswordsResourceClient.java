@@ -10,9 +10,9 @@ import jakarta.ws.rs.Path;
 @RegisterRestClient
 interface PasswordsResourceClient {
 
-  @Path("/isPasswordStrong")
+  @Path("/isStrongPassword")
   @POST
-  IsPasswordStrongResponse isPasswordStrong(PasswordsResourceInput input);
+  IsPasswordStrongResponse isPasswordStrong(NonBlankPasswordInput input);
 
   static class IsPasswordStrongResponse {
     boolean isStrong;
