@@ -1,6 +1,8 @@
 // © 2024 Konrad Grzanek <kongra@gmail.com>
 package edu.san.passwords.app;
 
+import java.util.Optional;
+
 import edu.san.passwords.PasswordsStrengthAnalyzer;
 import jakarta.enterprise.context.ApplicationScoped;
 import me.gosimple.nbvcxz.Nbvcxz;
@@ -21,8 +23,21 @@ class NbvcxzPasswordStrengthAnalyzer
   }
 
   @Override
-  public boolean isMinimumEntropyMet(NonBlank password) {
-    return nbvcxz.estimate(password.value()).isMinimumEntropyMet();
+  public Output analyze(NonBlank password) {
+    final var estimate = nbvcxz.estimate(password.value());
+
+    record OutputImpl(Double strength, boolean isStrong)
+        implements PasswordsStrengthAnalyzer.Output {}
+
+    return new OutputImpl(estimate.getEntropy(),
+        estimate.isMinimumEntropyMet());
+  }
+
+  @Override
+  public Optional<ImprovementOutput> suggestImprovementIfNeeded(
+      NonBlank password) {
+    // TODO Auto-generated method stub
+    return Optional.empty();
   }
 
 }

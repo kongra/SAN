@@ -15,13 +15,7 @@ public final class PasswordsFacade {
   }
 
   public boolean isStrong(NonBlank password) {
-    return passwordStrengthAnalyzer.isMinimumEntropyMet(password);
+    return passwordStrengthAnalyzer.analyze(password).isStrong();
   }
-
-//  public PasswordStrengthAnalysisResult analyzePasswordStrength(
-//      NonBlank password) {
-//    // TODO: implement
-//    throw new UnsupportedOperationException("Method not yet implemented");
-//  }
 
 }

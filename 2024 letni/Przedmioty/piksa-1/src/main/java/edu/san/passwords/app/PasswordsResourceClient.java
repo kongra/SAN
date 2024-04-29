@@ -12,7 +12,7 @@ interface PasswordsResourceClient {
 
   @Path("/isPasswordStrong")
   @POST
-  IsPasswordStrongResponse isPasswordStrong(String body);
+  IsPasswordStrongResponse isPasswordStrong(PasswordsResourceInput input);
 
   static class IsPasswordStrongResponse {
     boolean isStrong;

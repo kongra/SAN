@@ -35,8 +35,9 @@ class PasswordsResourceTest {
         .then()
         .statusCode(200);
 
-    final var response = passwordsResourceClient
-        .isPasswordStrong(passwordJson);
+    final var input = new PasswordsResourceInput();
+    input.password = "abcd";
+    final var response = passwordsResourceClient.isPasswordStrong(input);
 
     assertThat(response.isStrong).isFalse();
   }
