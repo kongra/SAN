@@ -6,6 +6,7 @@ import java.util.Optional;
 public interface ProfilesParser {
 
   // validate: a -> a|null, Optional<a>
+
   // parse: a -> Optional<b>
 
   // data Either a b = Left a | Right b

@@ -12,10 +12,6 @@ interface PasswordsResourceClient {
 
   @Path("/isStrongPassword")
   @POST
-  IsPasswordStrongResponse isPasswordStrong(NonBlankPasswordInput input);
-
-  static class IsPasswordStrongResponse {
-    boolean isStrong;
-  }
+  IsStrongPasswordOutput isStrongPassword(NonBlankPasswordInput input);
 
 }

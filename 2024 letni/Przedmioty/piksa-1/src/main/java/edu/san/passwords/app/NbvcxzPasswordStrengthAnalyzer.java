@@ -7,6 +7,7 @@ import edu.san.passwords.PasswordsStrengthAnalyzer;
 import jakarta.enterprise.context.ApplicationScoped;
 import me.gosimple.nbvcxz.Nbvcxz;
 import me.gosimple.nbvcxz.resources.ConfigurationBuilder;
+import telsos.math.newtype.PosLong;
 import telsos.string.NonBlank;
 
 @ApplicationScoped
@@ -35,7 +36,7 @@ class NbvcxzPasswordStrengthAnalyzer
 
   @Override
   public Optional<ImprovementOutput> suggestImprovementIfNeeded(
-      NonBlank password) {
+      NonBlank password, PosLong timeoutMillis) {
     // TODO Auto-generated method stub
     return Optional.empty();
   }

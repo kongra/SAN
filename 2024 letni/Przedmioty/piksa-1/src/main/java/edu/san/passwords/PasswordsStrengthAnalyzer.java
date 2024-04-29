@@ -3,18 +3,10 @@ package edu.san.passwords;
 
 import java.util.Optional;
 
+import telsos.math.newtype.PosLong;
 import telsos.string.NonBlank;
 
 public interface PasswordsStrengthAnalyzer {
-
-  Output analyze(NonBlank password);
-
-  /**
-   * @param passwordStrengthAnalysisInput
-   * @return Optional.empty only when timed-out
-   */
-  Optional<ImprovementOutput> suggestImprovementIfNeeded(
-      NonBlank password);
 
   public interface Output {
 
@@ -24,14 +16,9 @@ public interface PasswordsStrengthAnalyzer {
 
   }
 
-  public interface ImprovementOutput
-      extends Output {
+  Output analyze(NonBlank password);
 
-    /**
-     * @return Optional.empty only when password is strong and no suggestion
-     *         needed
-     */
-    Optional<NonBlank> strongerPassword();
+  public interface ImprovementOutput extends Output {
 
     /**
      * @return Optional.empty only when password is strong and no suggestion
@@ -39,5 +26,13 @@ public interface PasswordsStrengthAnalyzer {
      */
     Optional<NonBlank> strongerPasswordMask();
   }
+
+  /**
+   * @param passwordStrengthAnalysisInput
+   * @param timeoutMillis
+   * @return Optional.empty only when timed-out
+   */
+  Optional<ImprovementOutput> suggestImprovementIfNeeded(
+      NonBlank password, PosLong timeoutMillis);
 
 }
