@@ -2,10 +2,14 @@
 package edu.san.passwords;
 
 import java.util.Objects;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 import telsos.string.NonBlank;
 
 public final class PasswordsFacade {
+
+  private static final Logger LOG = Logger.getLogger(PasswordsFacade.class.getName());
 
   private final PasswordsStrengthAnalyzer passwordStrengthAnalyzer;
 
@@ -15,6 +19,7 @@ public final class PasswordsFacade {
   }
 
   public boolean isStrong(NonBlank password) {
+    LOG.log(Level.INFO, "isStrong is called");
     return passwordStrengthAnalyzer.analyze(password).isStrong();
   }
 

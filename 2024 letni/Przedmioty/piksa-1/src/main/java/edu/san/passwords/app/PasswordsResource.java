@@ -5,6 +5,7 @@ import org.jboss.resteasy.reactive.ResponseStatus;
 
 import edu.san.passwords.PasswordsFacade;
 import edu.san.passwords.PasswordsStrengthAnalyzer;
+import io.quarkus.logging.Log;
 import jakarta.validation.Valid;
 import jakarta.ws.rs.POST;
 import jakarta.ws.rs.Path;
@@ -26,6 +27,8 @@ class PasswordsResource {
   public @Valid IsStrongPasswordOutput isStrongPassword(
       @Valid NonBlankPasswordInput input) {
     final var isStrong = passwordsFacade.isStrong(input.asNonBlank());
+
+    Log.info("isStrong: %b".formatted(isStrong));
     return new IsStrongPasswordOutput(isStrong);
   }
 
