@@ -5,7 +5,7 @@ import java.util.Objects;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
-import telsos.string.NonBlank;
+import telsos.strings.NonBlank;
 
 public final class PasswordsFacade {
 

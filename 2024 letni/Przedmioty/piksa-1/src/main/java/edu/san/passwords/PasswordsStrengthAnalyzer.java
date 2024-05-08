@@ -3,8 +3,8 @@ package edu.san.passwords;
 
 import java.util.Optional;
 
-import telsos.math.newtype.PosLong;
-import telsos.string.NonBlank;
+import telsos.math.newtypes.PosLong;
+import telsos.strings.NonBlank;
 
 public interface PasswordsStrengthAnalyzer {
 

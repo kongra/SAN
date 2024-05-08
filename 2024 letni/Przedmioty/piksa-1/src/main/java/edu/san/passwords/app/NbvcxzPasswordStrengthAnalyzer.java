@@ -7,8 +7,8 @@ import edu.san.passwords.PasswordsStrengthAnalyzer;
 import jakarta.enterprise.context.ApplicationScoped;
 import me.gosimple.nbvcxz.Nbvcxz;
 import me.gosimple.nbvcxz.resources.ConfigurationBuilder;
-import telsos.math.newtype.PosLong;
-import telsos.string.NonBlank;
+import telsos.math.newtypes.PosLong;
+import telsos.strings.NonBlank;
 
 @ApplicationScoped
 class NbvcxzPasswordStrengthAnalyzer

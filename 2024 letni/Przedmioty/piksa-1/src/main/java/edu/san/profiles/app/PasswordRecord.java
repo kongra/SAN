@@ -4,7 +4,7 @@ package edu.san.profiles.app;
 import java.util.Objects;
 
 import edu.san.profiles.Password;
-import telsos.string.NonBlank;
+import telsos.strings.NonBlank;
 
 record PasswordRecord(NonBlank value) implements Password {
 

@@ -3,7 +3,7 @@ package edu.san.passwords.app;
 
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotNull;
-import telsos.string.NonBlank;
+import telsos.strings.NonBlank;
 
 public class NonBlankPasswordInput {
 
