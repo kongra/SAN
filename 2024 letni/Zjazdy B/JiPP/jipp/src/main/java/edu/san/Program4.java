@@ -59,7 +59,7 @@ interface Program4 {
     foo(b);
     foo(a);
     // Procedura foo jest prawdziwie polimorficzna i występuje w niej
-    // polimorfizm inklucyjny.
+    // polimorfizm inkluzyjny.
   }
 
   class C {}

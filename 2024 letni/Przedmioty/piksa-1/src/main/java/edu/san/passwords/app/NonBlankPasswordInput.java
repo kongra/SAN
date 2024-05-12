@@ -20,7 +20,6 @@ public class NonBlankPasswordInput {
   public NonBlank asNonBlank() {
     return NonBlank.of(nonBlankPassword)
         .orElseThrow(IllegalArgumentException::new);
-
   }
 
 }
