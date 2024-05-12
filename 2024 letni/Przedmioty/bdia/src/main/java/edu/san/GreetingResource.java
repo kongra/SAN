@@ -1,21 +1,20 @@
 package edu.san;
 
-import java.sql.SQLException;
 import java.util.Objects;
 import java.util.UUID;
 
 import javax.sql.DataSource;
 
+import edu.san.dbi.DBI;
 import io.quarkus.logging.Log;
 import io.smallrye.common.annotation.RunOnVirtualThread;
-import jakarta.transaction.Transactional;
 import jakarta.ws.rs.GET;
 import jakarta.ws.rs.Path;
 import jakarta.ws.rs.Produces;
 import jakarta.ws.rs.core.MediaType;
 
 @Path("/hello")
-public class GreetingResource {
+class GreetingResource {
 
   private static final String SQL_SELECT_1 = "select first_name from persons where id=?";
 
@@ -23,16 +22,17 @@ public class GreetingResource {
 
   private final DataSource dataSource;
 
-  public GreetingResource(DataSource dataSource) {
+  GreetingResource(DataSource dataSource) {
     this.dataSource = Objects.requireNonNull(dataSource);
   }
 
   @GET
   @Produces(MediaType.TEXT_PLAIN)
-  @Transactional
   @RunOnVirtualThread
   public String hello() {
-    try (var conn = dataSource.getConnection()) {
+    return DBI.evalReadCommitted(dataSource, conn -> {
+      Log.info("isolation=" + conn.getTransactionIsolation());
+
       try (var stmt = conn
           .prepareStatement(SQL_INSERT_1)) {
 
@@ -44,14 +44,11 @@ public class GreetingResource {
 
         return "Hello from JJ-2";
       }
-    } catch (final SQLException e) {
-      Log.error(e);
-      return "";
-    }
+    });
   }
 
   public String query() {
-    try (var conn = dataSource.getConnection()) {
+    return DBI.evalReadCommitted(dataSource, conn -> {
       try (var stmt = conn
           .prepareStatement(SQL_SELECT_1)) {
         stmt.setInt(1, 1);
@@ -60,9 +57,6 @@ public class GreetingResource {
           return "Hello from " + rs.getString("first_name");
         }
       }
-    } catch (final SQLException e) {
-      Log.error(e);
-      return "";
-    }
+    });
   }
 }
