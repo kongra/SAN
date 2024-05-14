@@ -24,12 +24,12 @@ class PasswordsResource {
   @Path("/isStrongPassword")
   @POST
   @ResponseStatus(value = STATUS_OK)
-  public @Valid IsStrongPasswordOutput isStrongPassword(
-      @Valid NonBlankPasswordInput input) {
-    final var isStrong = passwordsFacade.isStrong(input.asNonBlank());
+  public @Valid IsStrongPasswordResult isStrongPassword(
+      @Valid NonBlankPasswordQuery query) {
+    final var isStrong = passwordsFacade.isStrong(query);
 
     Log.info("isStrong: %b".formatted(isStrong));
-    return new IsStrongPasswordOutput(isStrong);
+    return new IsStrongPasswordResult(isStrong);
   }
 
 }

@@ -12,12 +12,12 @@ class HigerOrderFunctionsTest {
   void setUp() throws Exception {}
 
   @FunctionalInterface
-  static interface Term {
+  interface Term {
     double call(double x);
   }
 
   @FunctionalInterface
-  static interface Next {
+  interface Next {
     int call(int n);
   }
 
@@ -34,12 +34,12 @@ class HigerOrderFunctionsTest {
   }
 
   static double sum2(int a, int b, double result, Term term, Next next) {
-    for(;;) {
+    for (;;) {
       if (a > b)
         return result;
 
       result += term.call(a);
-      a = next.call(a);
+      a       = next.call(a);
     }
   }
 
@@ -47,9 +47,10 @@ class HigerOrderFunctionsTest {
     return sum2(a, b, 0, x -> x, x -> x + 1);
   }
 
+  @SuppressWarnings("static-method")
   @Test
   void testSumInts() {
-    var x = sumInts(0, 10);
+    final var x = sumInts(0, 10);
     assertThat(x).isEqualTo(55.0);
   }
 

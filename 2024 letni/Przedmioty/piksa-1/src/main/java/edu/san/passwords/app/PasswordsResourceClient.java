@@ -3,6 +3,7 @@ package edu.san.passwords.app;
 
 import org.eclipse.microprofile.rest.client.inject.RegisterRestClient;
 
+import edu.san.passwords.IsStrongPasswordQuery;
 import jakarta.ws.rs.POST;
 import jakarta.ws.rs.Path;
 
@@ -12,6 +13,6 @@ interface PasswordsResourceClient {
 
   @Path("/isStrongPassword")
   @POST
-  IsStrongPasswordOutput isStrongPassword(NonBlankPasswordInput input);
+  IsStrongPasswordResult isStrongPassword(IsStrongPasswordQuery query);
 
 }

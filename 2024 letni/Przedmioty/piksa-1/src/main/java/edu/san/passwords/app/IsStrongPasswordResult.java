@@ -3,14 +3,14 @@ package edu.san.passwords.app;
 
 import jakarta.validation.constraints.NotNull;
 
-public class IsStrongPasswordOutput {
+public class IsStrongPasswordResult {
 
   @NotNull
   public Boolean isStrong;
 
-  public IsStrongPasswordOutput() {}
+  public IsStrongPasswordResult() {}
 
-  public IsStrongPasswordOutput(boolean isStrong) {
+  public IsStrongPasswordResult(boolean isStrong) {
     this.isStrong = isStrong;
   }
 

@@ -5,11 +5,10 @@ import java.util.Objects;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
-import telsos.strings.NonBlank;
-
 public final class PasswordsFacade {
 
-  private static final Logger LOG = Logger.getLogger(PasswordsFacade.class.getName());
+  private static final Logger LOG = Logger
+      .getLogger(PasswordsFacade.class.getName());
 
   private final PasswordsStrengthAnalyzer passwordStrengthAnalyzer;
 
@@ -18,9 +17,10 @@ public final class PasswordsFacade {
         .requireNonNull(passwordStrengthAnalyzer);
   }
 
-  public boolean isStrong(NonBlank password) {
+  public boolean isStrong(IsStrongPasswordQuery query) {
     LOG.log(Level.INFO, "isStrong is called");
-    return passwordStrengthAnalyzer.analyze(password).isStrong();
+    return passwordStrengthAnalyzer.analyze(query.nonBlankPassword())
+        .isStrong();
   }
 
 }

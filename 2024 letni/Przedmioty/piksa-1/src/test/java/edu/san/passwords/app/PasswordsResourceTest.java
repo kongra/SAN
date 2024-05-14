@@ -24,7 +24,7 @@ class PasswordsResourceTest {
   @Test
   void testIsStrongPassword() {
     final var passwordJson = """
-        {"nonBlankPassword": "abcd"}
+        {"password": "abcd"}
         """;
 
     given()
@@ -35,8 +35,8 @@ class PasswordsResourceTest {
         .then()
         .statusCode(200);
 
-    final var input = new NonBlankPasswordInput("abcd");
-    final var response = passwordsResourceClient.isStrongPassword(input);
+    final var query = new NonBlankPasswordQuery("abcd");
+    final var response = passwordsResourceClient.isStrongPassword(query);
 
     assertThat(response.isStrong).isFalse();
   }
