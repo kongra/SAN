@@ -25,7 +25,7 @@ class PasswordsFacadeTest {
 
   @Test
   void testIsStrong() {
-    var result = passwordsFacade
+    final var result = passwordsFacade
         .isStrong(new NonBlankPasswordQuery("abcdefgh"));
     assertThat(result).isFalse();
   }

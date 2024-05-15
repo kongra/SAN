@@ -7,8 +7,6 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
 import edu.san.profiles.ProfilesFacade;
-import edu.san.profiles.ProfilesParser;
-import edu.san.profiles.ProfilesRepository;
 import io.quarkus.test.junit.QuarkusTest;
 import jakarta.inject.Inject;
 

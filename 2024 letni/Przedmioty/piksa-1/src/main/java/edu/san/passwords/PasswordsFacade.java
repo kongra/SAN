@@ -1,19 +1,20 @@
 // © 2024 Konrad Grzanek <kongra@gmail.com>
 package edu.san.passwords;
 
-import java.util.logging.Level;
-import java.util.logging.Logger;
+import telsos.logging.Log;
 
 public abstract class PasswordsFacade {
 
-  private static final Logger LOG = Logger.getLogger(PasswordsFacade.class.getName());
-
   protected abstract PasswordsStrengthAnalyzer getPasswordStrengthAnalyzer();
 
+  protected abstract Log log();
+
   public boolean isStrong(IsStrongPasswordQuery query) {
-    LOG.log(Level.INFO, "isStrong is called");
+    final var nonBlankPassword = query.nonBlankPassword();
+
+    log().info("isStrong password=%s", nonBlankPassword);
     return getPasswordStrengthAnalyzer()
-        .analyze(query.nonBlankPassword())
+        .analyze(nonBlankPassword)
         .isStrong();
   }
 }
