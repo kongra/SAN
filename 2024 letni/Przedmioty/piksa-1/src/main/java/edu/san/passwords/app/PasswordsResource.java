@@ -1,10 +1,11 @@
 // © 2024 Konrad Grzanek <kongra@gmail.com>
 package edu.san.passwords.app;
 
+import java.util.Objects;
+
 import org.jboss.resteasy.reactive.ResponseStatus;
 
 import edu.san.passwords.PasswordsFacade;
-import edu.san.passwords.PasswordsStrengthAnalyzer;
 import io.quarkus.logging.Log;
 import jakarta.validation.Valid;
 import jakarta.ws.rs.POST;
@@ -15,8 +16,8 @@ class PasswordsResource {
 
   private final PasswordsFacade passwordsFacade;
 
-  PasswordsResource(PasswordsStrengthAnalyzer passwordsStrengthAnalyzer) {
-    passwordsFacade = new PasswordsFacade(passwordsStrengthAnalyzer);
+  PasswordsResource(PasswordsFacade passwordsFacade) {
+    this.passwordsFacade = Objects.requireNonNull(passwordsFacade);
   }
 
   private static final int STATUS_OK = 200;
