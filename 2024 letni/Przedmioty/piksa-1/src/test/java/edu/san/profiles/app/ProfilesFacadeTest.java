@@ -16,19 +16,10 @@ import jakarta.inject.Inject;
 class ProfilesFacadeTest {
 
   @Inject
-  ProfilesRepository profilesRepository;
-
-  @Inject
-  ProfilesParser profilesParser;
-
   ProfilesFacade profilesFacade;
 
   @BeforeEach
   void setUp() throws Exception {
-    assertThat(profilesRepository).isNotNull();
-    assertThat(profilesParser).isNotNull();
-
-    profilesFacade = new ProfilesFacade(profilesRepository);
     assertThat(profilesFacade).isNotNull();
   }
 

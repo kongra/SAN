@@ -18,7 +18,7 @@ class PasswordFacadeImpl extends PasswordsFacade {
   }
 
   @Override
-  protected final PasswordsStrengthAnalyzer passwordStrengthAnalyzer() {
+  protected final PasswordsStrengthAnalyzer getPasswordStrengthAnalyzer() {
     return passwordsStrengthAnalyzer;
   }
 

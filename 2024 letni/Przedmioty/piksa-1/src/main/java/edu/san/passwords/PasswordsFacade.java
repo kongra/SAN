@@ -8,12 +8,12 @@ public abstract class PasswordsFacade {
 
   private static final Logger LOG = Logger.getLogger(PasswordsFacade.class.getName());
 
-  protected abstract PasswordsStrengthAnalyzer passwordStrengthAnalyzer();
+  protected abstract PasswordsStrengthAnalyzer getPasswordStrengthAnalyzer();
 
   public boolean isStrong(IsStrongPasswordQuery query) {
     LOG.log(Level.INFO, "isStrong is called");
-    return passwordStrengthAnalyzer().analyze(query.nonBlankPassword())
+    return getPasswordStrengthAnalyzer()
+        .analyze(query.nonBlankPassword())
         .isStrong();
   }
-
 }

@@ -1,20 +1,15 @@
 // © 2024 Konrad Grzanek <kongra@gmail.com>
 package edu.san.profiles;
 
-import java.util.Objects;
 import java.util.Optional;
 import java.util.function.Function;
 
-public final class ProfilesFacade {
+public abstract class ProfilesFacade {
 
-  private final ProfilesRepository profilesRepository;
-
-  public ProfilesFacade(ProfilesRepository profilesRepository) {
-    this.profilesRepository = Objects.requireNonNull(profilesRepository);
-  }
+  protected abstract ProfilesRepository getProfilesRepository();
 
   public boolean isCorrectUser(Username username, Password password) {
-    return profilesRepository
+    return getProfilesRepository()
         .findProfileByUsername(username)
         .flatMap(onlyWithPassword(password))
         .isPresent();
