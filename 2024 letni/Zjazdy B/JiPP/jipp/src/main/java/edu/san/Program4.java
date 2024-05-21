@@ -53,8 +53,8 @@ interface Program4 {
   }
 
   static void main(String... args) {
-    var a = new A();
-    var b = new B();
+    final var a = new A();
+    final var b = new B();
 
     foo(b);
     foo(a);
@@ -63,6 +63,7 @@ interface Program4 {
   }
 
   class C {}
+
   record D(int x, int y) {}
 
   abstract class E {

@@ -8,7 +8,7 @@ interface Program3 {
   // * mnogość (wielość, wielorakość) form
   // * właściwość podprogramów - procedur, metod, funkcji
   // * polega na tym, że dana procedura polimorficzna może być wywoływana na
-  //   argumentach różnych typów.
+  // argumentach różnych typów.
 
   static double foo(double x) {
     return 2 * x + 3;
@@ -23,14 +23,11 @@ interface Program3 {
   }
 
   static void main(String... args) {
-    var y1 = foo(3.14159); // foo(double)
-    var y2 = foo(2L);      // foo(long -> double) - niejawna konwersja long na double
-    // Czy w związku z powyszym foo jest polimorficzna?
-    // W przypadku foo mamy do czynienia z tzw. polimorfizmem ad-hoc.
+    foo(3.14159);
+    foo(2L);
 
-    var y3 = moo(3.14);
-    var y4 = moo(2L);
-    // Przeciążanie (overloading) jest również rodzajem polimorfizmu ad-hoc.
+    moo(3.14);
+    moo(2L);
 
   }
 

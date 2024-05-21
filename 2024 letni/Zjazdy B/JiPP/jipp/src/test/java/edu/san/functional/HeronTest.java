@@ -21,7 +21,7 @@ class HeronTest {
 
   @BeforeEach
   void setUp() {
-    bigHeron = new Heron<>(
+    bigHeron    = new Heron<>(
         BigDecimal::add,
         BigDecimal::subtract,
         (x, y) -> x.multiply(y, mathContext),

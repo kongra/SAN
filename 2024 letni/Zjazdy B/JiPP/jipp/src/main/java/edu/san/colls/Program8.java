@@ -7,7 +7,7 @@ import java.util.Set;
 interface Program8 {
 
   static void main(String... args) {
-    Set<String> s1 = new HashSet<>();
+    final Set<String> s1 = new HashSet<>();
     // 1. Brak uporządkowania
     // 2. Gwarancja unikalności
 
