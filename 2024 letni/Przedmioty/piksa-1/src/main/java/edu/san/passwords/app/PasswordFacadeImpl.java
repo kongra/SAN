@@ -6,14 +6,9 @@ import java.util.Objects;
 import edu.san.passwords.PasswordsFacade;
 import edu.san.passwords.PasswordsStrengthAnalyzer;
 import jakarta.enterprise.context.ApplicationScoped;
-import telsos.logging.Log;
-import telsos.logging.Logs;
 
 @ApplicationScoped
 class PasswordFacadeImpl extends PasswordsFacade {
-
-  private static final Log LOG = Logs.forClass()
-      .create(PasswordFacadeImpl.class);
 
   private final PasswordsStrengthAnalyzer passwordsStrengthAnalyzer;
 
@@ -23,13 +18,8 @@ class PasswordFacadeImpl extends PasswordsFacade {
   }
 
   @Override
-  protected final PasswordsStrengthAnalyzer getPasswordStrengthAnalyzer() {
+  protected PasswordsStrengthAnalyzer getPasswordsStrengthAnalyzer() {
     return passwordsStrengthAnalyzer;
-  }
-
-  @Override
-  protected final Log log() {
-    return LOG;
   }
 
 }

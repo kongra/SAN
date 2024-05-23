@@ -2,18 +2,19 @@
 package edu.san.passwords;
 
 import telsos.logging.Log;
+import telsos.logging.Logs;
 
 public abstract class PasswordsFacade {
 
-  protected abstract PasswordsStrengthAnalyzer getPasswordStrengthAnalyzer();
+  private static final Log LOG = Logs.forClass().create(PasswordsFacade.class);
 
-  protected abstract Log log();
+  protected abstract PasswordsStrengthAnalyzer getPasswordsStrengthAnalyzer();
 
-  public boolean isStrong(IsStrongPasswordQuery query) {
+  public final boolean isStrong(IsStrongPasswordQuery query) {
     final var nonBlankPassword = query.nonBlankPassword();
 
-    log().info("isStrong password=%s", nonBlankPassword);
-    return getPasswordStrengthAnalyzer()
+    LOG.info("isStrong password=%s", nonBlankPassword);
+    return getPasswordsStrengthAnalyzer()
         .analyze(nonBlankPassword)
         .isStrong();
   }
