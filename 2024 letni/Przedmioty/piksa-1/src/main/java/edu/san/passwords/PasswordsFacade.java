@@ -4,16 +4,15 @@ package edu.san.passwords;
 import telsos.logging.Log;
 import telsos.logging.Logs;
 
-public abstract class PasswordsFacade {
+public interface PasswordsFacade {
 
-  private static final Log LOG = Logs.forClass().create(PasswordsFacade.class);
+  static final Log LOG = Logs.forClass().create(PasswordsFacade.class);
 
-  protected abstract PasswordsStrengthAnalyzer getPasswordsStrengthAnalyzer();
+  PasswordsStrengthAnalyzer getPasswordsStrengthAnalyzer();
 
-  public final boolean isStrong(IsStrongPasswordQuery query) {
+  default boolean isStrong(IsStrongPasswordQuery query) {
     final var nonBlankPassword = query.nonBlankPassword();
-
-    LOG.info("isStrong password=%s", nonBlankPassword);
+    // LOG.info(serviceProcessCtx, "isStrong password=%s", nonBlankPassword);
     return getPasswordsStrengthAnalyzer()
         .analyze(nonBlankPassword)
         .isStrong();

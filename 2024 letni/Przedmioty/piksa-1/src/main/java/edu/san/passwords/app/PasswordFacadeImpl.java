@@ -8,7 +8,7 @@ import edu.san.passwords.PasswordsStrengthAnalyzer;
 import jakarta.enterprise.context.ApplicationScoped;
 
 @ApplicationScoped
-class PasswordFacadeImpl extends PasswordsFacade {
+class PasswordFacadeImpl implements PasswordsFacade {
 
   private final PasswordsStrengthAnalyzer passwordsStrengthAnalyzer;
 
@@ -18,7 +18,7 @@ class PasswordFacadeImpl extends PasswordsFacade {
   }
 
   @Override
-  protected PasswordsStrengthAnalyzer getPasswordsStrengthAnalyzer() {
+  public PasswordsStrengthAnalyzer getPasswordsStrengthAnalyzer() {
     return passwordsStrengthAnalyzer;
   }
 
