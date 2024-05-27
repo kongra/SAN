@@ -27,7 +27,7 @@ class PasswordsResource {
   @ResponseStatus(value = STATUS_OK)
   public @Valid IsStrongPasswordResult isStrongPassword(
       @Valid NonBlankPasswordQuery query) {
-    final var isStrong = passwordsFacade.isStrong(query);
+    final var isStrong = passwordsFacade.isStrongPassword(query);
 
     Log.info("isStrong: %b".formatted(isStrong));
     return new IsStrongPasswordResult(isStrong);

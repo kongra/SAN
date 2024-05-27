@@ -17,7 +17,7 @@ class PasswordsResourceTest {
   PasswordsResourceClient passwordsResourceClient;
 
   @BeforeEach
-  void setUp() throws Exception {
+  void setUp() {
     assertThat(passwordsResourceClient).isNotNull();
   }
 

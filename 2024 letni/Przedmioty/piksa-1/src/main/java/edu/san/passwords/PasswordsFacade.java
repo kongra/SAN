@@ -6,13 +6,14 @@ import telsos.logging.Logs;
 
 public interface PasswordsFacade {
 
-  static final Log LOG = Logs.forClass().create(PasswordsFacade.class);
+  Log LOG = Logs.forClass().create(PasswordsFacade.class);
 
   PasswordsStrengthAnalyzer getPasswordsStrengthAnalyzer();
 
-  default boolean isStrong(IsStrongPasswordQuery query) {
+  default boolean isStrongPassword(IsStrongPasswordQuery query) {
     final var nonBlankPassword = query.nonBlankPassword();
-    // LOG.info(serviceProcessCtx, "isStrong password=%s", nonBlankPassword);
+    // LOG.info(serviceProcessCtx, "isStrongPassword password=%s",
+    // nonBlankPassword);
     return getPasswordsStrengthAnalyzer()
         .analyze(nonBlankPassword)
         .isStrong();

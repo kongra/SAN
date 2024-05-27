@@ -1,6 +1,7 @@
 // © 2024 Konrad Grzanek <kongra@gmail.com>
 package edu.san.passwords.app;
 
+import java.util.Objects;
 import java.util.Optional;
 
 import edu.san.passwords.PasswordsStrengthAnalyzer;
@@ -34,9 +35,32 @@ class NbvcxzPasswordStrengthAnalyzer
         estimate.isMinimumEntropyMet());
   }
 
+  private record ImprovementOutputImpl(Number strength, boolean isStrong,
+      NonBlank passwordMask)
+      implements PasswordsStrengthAnalyzer.ImprovementOutput {
+
+    ImprovementOutputImpl {
+      Objects.requireNonNull(strength);
+    }
+
+    @Override
+    public Optional<NonBlank> strongerPasswordMask() {
+      return Optional.ofNullable(passwordMask);
+    }
+  }
+
   @Override
   public Optional<ImprovementOutput> suggestImprovementIfNeeded(
       NonBlank password, PosLong timeoutMillis) {
+
+    final var output = analyze(password);
+
+    if (output.isStrong())
+      return Optional.of(new ImprovementOutputImpl(
+          output.strength(),
+          output.isStrong(),
+          null));
+
     // TODO Auto-generated method stub
     return Optional.empty();
   }

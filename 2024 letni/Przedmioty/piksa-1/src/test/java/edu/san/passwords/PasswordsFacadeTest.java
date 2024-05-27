@@ -18,16 +18,16 @@ class PasswordsFacadeTest {
   PasswordsFacade passwordsFacade;
 
   @BeforeEach
-  void setUp() throws Exception {
+  void setUp() {
     assertThat(passwordsFacade).isNotNull();
     Log.info(passwordsFacade.getClass());
   }
 
   @Test
   void testIsStrong() {
-    final var result = passwordsFacade
-        .isStrong(new NonBlankPasswordQuery("abcdefgh"));
-    assertThat(result).isFalse();
+    final var isStrong = passwordsFacade
+        .isStrongPassword(new NonBlankPasswordQuery("abcdefgh"));
+    assertThat(isStrong).isFalse();
   }
 
 }
