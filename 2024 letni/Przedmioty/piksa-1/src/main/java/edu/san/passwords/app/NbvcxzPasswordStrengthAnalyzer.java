@@ -8,12 +8,12 @@ import edu.san.passwords.PasswordsStrengthAnalyzer;
 import jakarta.enterprise.context.ApplicationScoped;
 import me.gosimple.nbvcxz.Nbvcxz;
 import me.gosimple.nbvcxz.resources.ConfigurationBuilder;
-import telsos.math.newtypes.PosLong;
 import telsos.strings.NonBlank;
 
 @ApplicationScoped
 class NbvcxzPasswordStrengthAnalyzer
-    implements PasswordsStrengthAnalyzer {
+    extends PasswordsStrengthAnalyzer
+    implements PasswordsStrengthAnalyzer.ImprovementOutputFactory {
 
   private final Nbvcxz nbvcxz;
 
@@ -25,44 +25,55 @@ class NbvcxzPasswordStrengthAnalyzer
   }
 
   @Override
-  public Output analyze(NonBlank password) {
+  public AnalysisOutput analyze(NonBlank password) {
     final var estimate = nbvcxz.estimate(password.value());
 
-    record OutputImpl(Double strength, boolean isStrong)
-        implements PasswordsStrengthAnalyzer.Output {}
+    record OutputImpl(Number strength, boolean isStrong)
+        implements AnalysisOutput {}
 
-    return new OutputImpl(estimate.getEntropy(),
+    return new OutputImpl(
+        estimate.getEntropy(),
         estimate.isMinimumEntropyMet());
   }
 
-  private record ImprovementOutputImpl(Number strength, boolean isStrong,
-      NonBlank passwordMask)
-      implements PasswordsStrengthAnalyzer.ImprovementOutput {
-
-    ImprovementOutputImpl {
-      Objects.requireNonNull(strength);
-    }
-
-    @Override
-    public Optional<NonBlank> strongerPasswordMask() {
-      return Optional.ofNullable(passwordMask);
-    }
+  @Override
+  protected ImprovementOutputFactory getImprovementOutputFactory() {
+    return this;
   }
 
   @Override
-  public Optional<ImprovementOutput> suggestImprovementIfNeeded(
-      NonBlank password, PosLong timeoutMillis) {
+  public ImprovementOutput create(Number strength, boolean isStrong,
+      NonBlank passwordMask) {
 
-    final var output = analyze(password);
+    Objects.requireNonNull(strength);
 
-    if (output.isStrong())
-      return Optional.of(new ImprovementOutputImpl(
-          output.strength(),
-          output.isStrong(),
-          null));
+    record ImprovementOutputImpl(
+        Number strength,
+        boolean isStrong,
+        Optional<NonBlank> strongerPasswordMask) implements ImprovementOutput {}
 
-    // TODO Auto-generated method stub
-    return Optional.empty();
+    return new ImprovementOutputImpl(
+        strength,
+        isStrong,
+        Optional.of(passwordMask));
+  }
+
+  @Override
+  public ImprovementOutput create(Number strength, boolean isStrong) {
+
+    Objects.requireNonNull(strength);
+
+    record NoImprovementOutputImpl(
+        Number strength,
+        boolean isStrong) implements ImprovementOutput {
+
+      @Override
+      public Optional<NonBlank> strongerPasswordMask() {
+        return Optional.empty();
+      }
+    }
+
+    return new NoImprovementOutputImpl(strength, isStrong);
   }
 
 }

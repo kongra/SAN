@@ -3,12 +3,11 @@ package edu.san.passwords;
 
 import java.util.Optional;
 
-import telsos.math.newtypes.PosLong;
 import telsos.strings.NonBlank;
 
-public interface PasswordsStrengthAnalyzer {
+public abstract class PasswordsStrengthAnalyzer {
 
-  public interface Output {
+  public interface AnalysisOutput {
 
     Number strength();
 
@@ -16,23 +15,37 @@ public interface PasswordsStrengthAnalyzer {
 
   }
 
-  Output analyze(NonBlank password);
+  public abstract AnalysisOutput analyze(NonBlank password);
 
-  public interface ImprovementOutput extends Output {
+  public interface ImprovementOutput extends AnalysisOutput {
 
     /**
-     * @return Optional.empty only when password is strong and no suggestion
+     * @return Optional.empty only when password is strong and no suggestion was
      *         needed
      */
     Optional<NonBlank> strongerPasswordMask();
   }
 
-  /**
-   * @param passwordStrengthAnalysisInput
-   * @param timeoutMillis
-   * @return Optional.empty only when timed-out
-   */
-  Optional<ImprovementOutput> suggestImprovementIfNeeded(
-      NonBlank password, PosLong timeoutMillis);
+  public interface ImprovementOutputFactory {
+
+    ImprovementOutput create(Number strength, boolean isStrong,
+        NonBlank passwordMask);
+
+    ImprovementOutput create(Number strength, boolean isStrong);
+
+  }
+
+  protected abstract ImprovementOutputFactory getImprovementOutputFactory();
+
+  public ImprovementOutput suggestImprovementIfNeeded(NonBlank password) {
+    final var output = analyze(password);
+
+    if (output.isStrong())
+      return getImprovementOutputFactory().create(output.strength(),
+          output.isStrong());
+
+    // TODO: implement password improvement suggestion
+    return null;
+  }
 
 }
