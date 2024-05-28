@@ -6,7 +6,7 @@ import telsos.logging.Logs;
 
 public interface PasswordsFacade {
 
-  Log LOG = Logs.forClass().create(PasswordsFacade.class);
+  Log LOG = Logs.forClass().getLog(PasswordsFacade.class);
 
   PasswordsStrengthAnalyzer getPasswordsStrengthAnalyzer();
 

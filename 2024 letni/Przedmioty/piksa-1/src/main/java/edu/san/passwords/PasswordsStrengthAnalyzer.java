@@ -1,51 +1,33 @@
 // © 2024 Konrad Grzanek <kongra@gmail.com>
 package edu.san.passwords;
 
-import java.util.Optional;
-
+import telsos.logging.Log;
+import telsos.logging.Logs;
 import telsos.strings.NonBlank;
 
 public abstract class PasswordsStrengthAnalyzer {
 
-  public interface AnalysisOutput {
+  public abstract PasswordsStrengthAnalysisOutput analyze(NonBlank password);
 
-    Number strength();
-
-    boolean isStrong();
-
-  }
-
-  public abstract AnalysisOutput analyze(NonBlank password);
-
-  public interface ImprovementOutput extends AnalysisOutput {
-
-    /**
-     * @return Optional.empty only when password is strong and no suggestion was
-     *         needed
-     */
-    Optional<NonBlank> strongerPasswordMask();
-  }
-
-  public interface ImprovementOutputFactory {
-
-    ImprovementOutput create(Number strength, boolean isStrong,
-        NonBlank passwordMask);
-
-    ImprovementOutput create(Number strength, boolean isStrong);
-
-  }
-
-  protected abstract ImprovementOutputFactory getImprovementOutputFactory();
-
-  public ImprovementOutput suggestImprovementIfNeeded(NonBlank password) {
+  public PasswordsStrengthImprovementOutput suggestImprovementIfNeeded(
+      NonBlank password) {
     final var output = analyze(password);
 
     if (output.isStrong())
-      return getImprovementOutputFactory().create(output.strength(),
-          output.isStrong());
+      return output.asImprovementOutput();
 
     // TODO: implement password improvement suggestion
     return null;
   }
+
+  protected abstract PasswordsStrengthImprovementOutputFactory improvementOutputFactory();
+
+  private static final Log LOG = Logs.forClass()
+      .getLog(PasswordsStrengthAnalyzer.class);
+
+  private static final String PASSWORD_SYMBOLS = """
+      !"#$%&'()*+,-./:;<=>?@[\\]^_`{|}~!@#$%^&!@#$%^&!@#$%^&!@#$%^&!@#$%^\
+      &ABCDEFGHIJKLMNOPQRSTUWVXYZ1234567890\
+      """;
 
 }
