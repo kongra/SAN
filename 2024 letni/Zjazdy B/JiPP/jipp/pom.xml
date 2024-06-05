@@ -85,6 +85,11 @@
       <artifactId>eclipse-collections</artifactId>
       <version>${eclipse-collections.version}</version>
     </dependency>
+    <dependency>
+      <groupId>kongra</groupId>
+      <artifactId>telsos-java</artifactId>
+      <version>1.0</version>
+    </dependency>
   </dependencies>
   <build>
     <pluginManagement>

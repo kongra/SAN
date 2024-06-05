@@ -4,7 +4,7 @@ package edu.san;
 import java.security.SecureRandom;
 import java.util.Random;
 
-import edu.san.utils.Delay;
+import telsos.Delay;
 
 interface Program11 {
 
@@ -29,8 +29,8 @@ interface Program11 {
     Random r = new SecureRandom();
     var flag = r.nextBoolean();
     if (flag) {
-      System.out.println("main::" + m.value());
-      System.out.println("main::" + m.value());
+      System.out.println("main::" + m.get());
+      System.out.println("main::" + m.get());
     } else {
       System.out.println("main::obliczenie nie było potrzebne");
     }

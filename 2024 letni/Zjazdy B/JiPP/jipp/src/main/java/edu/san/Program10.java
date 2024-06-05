@@ -1,11 +1,11 @@
 // © 2024 Konrad Grzanek <kongra@gmail.com>
 package edu.san;
 
-import edu.san.utils.DynVar;
+import telsos.DynVar;
 
 class Program10 {
 
-  static final DynVar<Integer> n = DynVar.initially(3);
+  static final DynVar<Integer> n = DynVar.newInstance();
 
   static int m = 3;
 
@@ -14,18 +14,18 @@ class Program10 {
   }
 
   static void goo() {
-    System.out.println("goo::" + n.value());
+    System.out.println("goo::" + n.get());
   }
 
   static void main(String... args) {
     // test1();
 
     goo();
-    n.binding(4, () -> {
+    n.exec(4, () -> {
       goo();
-      n.binding(5, () -> {
+      n.exec(5, () -> {
         goo();
-        n.binding(6, () -> {
+        n.exec(6, () -> {
           goo();
         });
         goo();
