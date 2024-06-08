@@ -6,15 +6,20 @@ import java.util.UUID;
 import javax.sql.DataSource;
 
 import edu.san.dbi.DBI;
-import io.quarkus.logging.Log;
 import io.smallrye.common.annotation.RunOnVirtualThread;
 import jakarta.ws.rs.GET;
 import jakarta.ws.rs.Path;
 import jakarta.ws.rs.Produces;
 import jakarta.ws.rs.core.MediaType;
+import telsos.logging.Log;
+import telsos.logging.Logs;
+import telsos.logging.MDC;
+import telsos.strings.NonBlank;
 
 @Path("/hello")
 class GreetingResource {
+
+  private static final Log LOG = Logs.forClass().getLog(GreetingResource.class);
 
   private static final String SQL_SELECT_1 = "select first_name from persons where id=?";
 
@@ -26,12 +31,27 @@ class GreetingResource {
     this.dataSource = Objects.requireNonNull(dataSource);
   }
 
+  private static MDC createMDC() {
+    final var profileId = NonBlank.of("profileId").orElseThrow();
+    final var profileIdValue = NonBlank.of("123").orElseThrow();
+
+    return Logs.forClass()
+        .mdcBuilder()
+        .put(profileId, profileIdValue)
+        .build();
+  }
+
   @GET
   @Produces(MediaType.TEXT_PLAIN)
   @RunOnVirtualThread
   public String hello() {
+    return MDC.eval(GreetingResource::createMDC, this::helloImpl);
+  }
+
+  private String helloImpl() {
     return DBI.evalReadCommitted(dataSource, conn -> {
-      Log.info("isolation=" + conn.getTransactionIsolation());
+      LOG.info("isolation=" + conn.getTransactionIsolation());
+      LOG.info("Thread is " + Thread.currentThread().toString());
 
       try (var stmt = conn
           .prepareStatement(SQL_INSERT_1)) {
