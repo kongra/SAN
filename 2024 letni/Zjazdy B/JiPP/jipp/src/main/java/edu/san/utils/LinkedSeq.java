@@ -7,6 +7,9 @@ final class LinkedSeq<E> implements Seq<E> {
 
   private final Seq<E> rest;
 
+  // (1, 2, 3, 4)
+  // [1] -> [2] -> [3] -> [4] -> Nil
+
   LinkedSeq(E first, Seq<E> rest) {
     this.first = first;
     this.rest  = rest;

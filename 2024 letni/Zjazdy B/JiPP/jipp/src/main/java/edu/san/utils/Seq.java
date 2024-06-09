@@ -1,6 +1,8 @@
 // © 2024 Konrad Grzanek <kongra@gmail.com>
 package edu.san.utils;
 
+import java.util.Optional;
+
 public interface Seq<E> {
 
   E first();
@@ -53,4 +55,16 @@ public interface Seq<E> {
     return buff.append(")").toString();
   }
 
+  public static <T> Optional<T> nth(Seq<T> seq, int n) {
+    while (true) {
+      if (seq.isEmpty())
+        return Optional.empty();
+
+      if (n == 0)
+        return Optional.of(seq.first());
+
+      n--;
+      seq = seq.rest();
+    }
+  }
 }
