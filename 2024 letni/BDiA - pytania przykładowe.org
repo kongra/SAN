@@ -1,0 +1,10 @@
+- Co to są transakcje w systemach wykorzystujących bazy danych?
+- Jakie jest znaczenie liter w akronimie ACID?
+- Jakie znasz poziomy izolacji transakcji?
+- Jakie niekorzystne zjawiska występują w systemach transakcyjnych przy poszczególnych poziomach izolacji?
+- Co się stanie, kiedy dwie jednoczesne transakcje SERIALIZABLE   brudzą ten sam rekord w tabeli?
+- Co się stanie, kiedy dwie jednoczesne transakcje READ COMMITTED brudzą ten sam rekord w tabeli?
+- Co się stanie, kiedy dwie jednoczesne transakcje SERIALIZABLE   brudzą dwa różne rekordy w tabeli?
+- Co to jest optimistic locking?
+- Jaką architekturę systemu zaproponować, kiedy elementami logiki biznesowej objętej gwarancjami transakcyjnymi (z możliwością restartów transakcji) są "uderzenia" w zewnętrzne end-pointy?
+- Jakie kroki należy podjąć w kodzie programu, aby zadać zapytanie (query lub upsert/delete) do bazy danych na poziomie wybranego języka programowania (Java/C#, etc.)?

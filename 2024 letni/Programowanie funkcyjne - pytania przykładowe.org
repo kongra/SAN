@@ -1,0 +1,20 @@
+- Co to jest programowanie funkcyjne?
+- Co to jest rekurencja?
+- Jaki proces obliczeniowy nazywamy iteracyjnym?
+- Jaki proces obliczeniowy nazywamy rekurencyjnym?
+- Czym się różni rekurencja w sensie definicji procedury (w zapisie) od rekurencji w sensie procesowym?
+- Czy każda procedura rekurencyjnie zdefiniowana jest jednocześnie realizacją rekurencyjnego procesu obliczeniowego? Od czego to zależy?
+- Co to jest optymalizacja rekurencji krańcowej?
+- W jaki sposób realizowana jest optymalizacja rekurencji krańcowej w Clojure?
+- Działanie operatora map
+- Działanie operatora reduce
+- Co to są s-wyrażenia (s-expressions) w Lispie (np. w Clojure)?
+- Co to są lambda-wyrażenia?
+- Czym się różni wyrażenie (print x) od (print (quote x)) w Clojure?
+- Co to są procedury wyższego rzędu (higher-order procedures)?
+- Co to znaczy, że pewna konstrukcja języka programowania jest first-class w tym języku?
+- W jaki sposób w Clojure definiuje się procedury?
+- Przykład procedury w Clojure lub Javie, która nie jest realizacją funkcji w sensie matematycznym
+- Czy w programowaniu funkcyjnym dopuszczone jest stosowanie zmiennych (uzasadnij)?
+- Co to są zmienne stanu (state variables)?
+- Czym są niezmienne (persistent) struktury danych w Clojure (podaj przykłady)?

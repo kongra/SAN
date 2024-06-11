@@ -1,0 +1,7 @@
+- Dependency inversion i dependency injection w wybranej technologii
+- Co to jest event-driven architecture?
+- Co to jest CQRS?
+- Na czym polega DDD (Domain-Driven Design)?
+- Co to są agregaty w DDD?
+- Co to jest architektura heksagonalna?
+- Dlaczego odddzielanie logiki biznesowej od bibliotek/frameworków jest korzystne?

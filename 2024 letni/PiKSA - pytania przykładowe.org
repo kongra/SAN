@@ -1,0 +1,5 @@
+- Co to jest REST?
+- Jakie są najważniejsze metody HTTP wykorzystywane w REST i jak się je stosuje?
+- Jakiego API można używać w Twojej ulubionej technologii (JEE, Spring, .NET) do przetwarzania JSONa - opisz jego cechy?
+- Co to jest dependency injection i jak się je realizuje/stosuje w Twojej ulubionej technologii?
+- HTTP jest protokołem bezstanowym. W jaki sposób można realizować utrzymanie stanu komunikacji pomiędzy klientem a serwerem w oprogramowaniu korzystającym z tego protokołu?

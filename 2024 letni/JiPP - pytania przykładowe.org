@@ -1,0 +1,21 @@
+- Co to jest zmienna?
+- Co to jest typ danych?
+- Jakie znasz proste typy danych w języku Java lub C#?
+- Czy pomiędzy typami prostymi istnieje relacja "jest rodzajem"?
+- Co to jest polimorfizm?
+- Jakie znasz rodzaje polimorfizmu?
+- Czy przeciążanie nazw (overloading) jest odmianą polimorfizmu?
+- Czy niejawna konwersja (type coercion) jest odmianą polimorfizmu?
+- Na czym polega polimorfizm inkluzyjny?
+- Co to jest polimorfizm ad-hoc?
+- Co to jest wczesne i późne wiązanie?
+- Odmianą jakiego polimorfizmu są typy generyczne w języku Java/C#?
+- Co to jest zmienna typowa (type variable)?
+- Co to jest klasa?
+- Co to jest interfejs?
+- Co to jest this?
+- Jakie są cechy programowania obiektowego?
+- Co to jest obiekt?
+- Co to jest konstruktor?
+- Co to jest metoda?
+- Co to jest hermetyzacja?
