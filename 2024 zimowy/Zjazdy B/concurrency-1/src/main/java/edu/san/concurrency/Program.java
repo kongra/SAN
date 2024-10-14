@@ -2,7 +2,7 @@ package edu.san.concurrency;
 
 class Program {
 
-  static final long counter = 0;
+  static long counter = 0;
 
   public static void main(String... args) {
     System.out.println("Before: " + counter);
